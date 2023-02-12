@@ -14,37 +14,48 @@ GO
 ------- Create reference tables -------
 
 -- Create the Element table
+CREATE TABLE Sex(
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	Name VARCHAR(1) NOT NULL,
+);
+-- Create the Element table
+CREATE TABLE Rarities(
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	Grade INT NOT NULL,
+);
+-- Create the Element table
 CREATE TABLE Elements(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+	Name VARCHAR(10) NOT NULL,
 );
 -- Create the Region table
 CREATE TABLE Regions(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+	Name VARCHAR(10) NOT NULL,
 );
 -- Create the WeaponType table
 CREATE TABLE WeaponTypes(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+	Name VARCHAR(10) NOT NULL,
 );
 -- Create the StatType table
 CREATE TABLE StatTypes (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	Name VARCHAR(10) NOT NULL
 );
 -- Create the StatsName table
 CREATE TABLE StatsNames(
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Label VARCHAR(255) NOT NULL,
-    StatTypeId INT NOT NULL,
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	Label VARCHAR(15) NOT NULL,
+	StatTypeId INT NOT NULL,
 	FOREIGN KEY (StatTypeId) REFERENCES StatTypes(Id)
 );
 -- Create the Piece table
 CREATE TABLE Pieces (
-    Id INT IDENTITY(1,1) PRIMARY KEY,	
-    Name VARCHAR(255) NOT NULL,
+	Id INT IDENTITY(1,1) PRIMARY KEY,	
+	Name VARCHAR(255) NOT NULL,
 );
+
 
 
 ------- Create Main Tables -------
@@ -61,13 +72,13 @@ CREATE TABLE Stats(
 CREATE TABLE Weapons(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
-    Description TEXT
+    Description TEXT NULL,
 );
 -- Create the Artefacts table
 CREATE TABLE Artefacts(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
-    Description TEXT,
+    Description TEXT NULL,
     PieceId INT NOT NULL,
 
     FOREIGN KEY (PieceId) REFERENCES Pieces(Id)
@@ -76,10 +87,14 @@ CREATE TABLE Artefacts(
 CREATE TABLE Characters(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
-    Description TEXT,
+
 	ElementId INT NOT NULL,
-	RegionId INT NOT NULL,
 	WeaponTypeId INT NOT NULL,
+	RegionId INT NOT NULL,
+	RarityId INT NOT NULL,
+	SexId INT NOT NULL,
+
+	IsCollab BIT NOT NULL,
 
 	WeaponId INT NULL,
 
@@ -87,6 +102,8 @@ CREATE TABLE Characters(
     FOREIGN KEY (ElementId) REFERENCES Elements(Id),
     FOREIGN KEY (RegionId) REFERENCES Regions(Id),
     FOREIGN KEY (WeaponTypeId) REFERENCES WeaponTypes(Id),
+    FOREIGN KEY (SexId) REFERENCES Sex(Id),
+    FOREIGN KEY (RarityId) REFERENCES Rarities(Id)
 );
 
 ------ Create associations tables ------

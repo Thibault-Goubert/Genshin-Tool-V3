@@ -1,9 +1,11 @@
 SOLID, CleanArchi, Hexagonal
 
-- Front => Electron, Angular, React, HTML, JS, CSS
-- Back => C#, API, UnitTest (fixtures)
-- DB => SQLServer
-- Git, CI/CD, AutoUpdates
+- Front => Angular (HTML, SCSS, TS)
+- Back => .NET Core 6, C#, Dapper (easy to use, lightweight and performant)
+- DB => T-SQL, SQLs
+- Gestion fichiers: Git
+
+Outils: VisualStudio/Code, SSMS, GitHub Desktop
 
 -Ajout de la couche de sécurité pour protéger l'application des attaques comme l'injection SQL, l'authentification et l'autorisation.
 
@@ -15,11 +17,7 @@ SOLID, CleanArchi, Hexagonal
 
 -Ajout d'un mécanisme de journalisation pour enregistrer les activités de l'application et les utiliser pour le débogage et l'analyse.
 
-=> objectif microservices
-
-Ya du taff :D
-
-Electron is used as the framework for building the desktop application. It allows for the development of cross-platform desktop apps using web technologies such as JavaScript, HTML, and CSS.
+=> objectif microservices (docker ?)
 
 Angular is used as the front-end framework for building the user interface of the application. Angular's component-based architecture and powerful data binding capabilities make it a great choice for building complex and responsive UIs.
 
