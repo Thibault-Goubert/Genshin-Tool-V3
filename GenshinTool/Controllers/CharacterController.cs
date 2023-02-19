@@ -4,7 +4,7 @@ namespace GenshinTool.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CharacterController
+    public class CharacterController : BaseGenericController
     {
 
     }
