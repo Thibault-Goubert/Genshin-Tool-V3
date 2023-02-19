@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool", "GenshinTool.csproj", "{886C1C5F-831F-40C4-9C85-CFFFCAB58F5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool", "GenshinTool.csproj", "{886C1C5F-831F-40C4-9C85-CFFFCAB58F5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{B18A809D-2728-4A8B-86B3-0BA8CE9E7E3C}"
 EndProject
@@ -13,15 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{DF2E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D53E214E-7BF4-47F9-B37F-183E78CF3FE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool.Application", "..\GenshinTool.Application\GenshinTool.Application.csproj", "{63FDC533-70C7-4191-8166-438F917A94DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Application", "..\GenshinTool.Application\GenshinTool.Application.csproj", "{63FDC533-70C7-4191-8166-438F917A94DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool.Application.Domain", "..\GenshinTool.Application.Domain\GenshinTool.Application.Domain.csproj", "{05AAD635-05F9-46D8-95B8-22FA8F1EF576}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Application.Domain", "..\GenshinTool.Application.Domain\GenshinTool.Application.Domain.csproj", "{05AAD635-05F9-46D8-95B8-22FA8F1EF576}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool.Application.Interface", "..\GenshinTool.Application.Interface\GenshinTool.Application.Interface.csproj", "{AB80CC10-F564-4E19-9D2D-F953471A49E6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{53F3EA10-FCF1-41B2-BF7A-8B05D38D668F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Common", "..\GenshinTool.Common\GenshinTool.Common.csproj", "{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Application.Interface", "..\GenshinTool.Application.Interface\GenshinTool.Application.Interface.csproj", "{AB80CC10-F564-4E19-9D2D-F953471A49E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +41,6 @@ Global
 		{AB80CC10-F564-4E19-9D2D-F953471A49E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB80CC10-F564-4E19-9D2D-F953471A49E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB80CC10-F564-4E19-9D2D-F953471A49E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,7 +50,6 @@ Global
 		{63FDC533-70C7-4191-8166-438F917A94DE} = {DF2E4399-92A5-48A5-8424-B2891ACC14D0}
 		{05AAD635-05F9-46D8-95B8-22FA8F1EF576} = {DF2E4399-92A5-48A5-8424-B2891ACC14D0}
 		{AB80CC10-F564-4E19-9D2D-F953471A49E6} = {DF2E4399-92A5-48A5-8424-B2891ACC14D0}
-		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B} = {53F3EA10-FCF1-41B2-BF7A-8B05D38D668F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F1D3395-DCEC-4328-8500-B36E754CBC0A}

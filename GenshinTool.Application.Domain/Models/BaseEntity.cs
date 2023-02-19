@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GenshinTool.Application.Domain.Models
 {
-    public class BaseEntity
+    internal class BaseEntity
     {
-        public long Id { get; set; }
     }
 }
