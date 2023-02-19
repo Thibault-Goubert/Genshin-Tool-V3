@@ -1,4 +1,5 @@
 ﻿using GenshinTool.Common.Converters.Json;
+using GenshinTool.Common.Logger;
 using GenshinTool.Common.Rest.Core;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,17 @@ namespace GenshinTool.Common.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    public static void InjectLoggerServices(this IServiceCollection services)
+    {
+        services.Scan(x => x
+            .FromAssembliesOf(typeof(LogBase))
+            .AddClasses(c => c.AssignableTo<ILogBase>())
+            .AsImplementedInterfaces()
+            .AsMatchingInterface()
+            .WithTransientLifetime()
+        );
+    }
+
     public static void InjectMapster(this IServiceCollection services, TypeAdapterConfig config)
     {
         config.Scan(AppDomain.CurrentDomain.GetAssemblies());
