@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GenshinTool.Common.Logger;
+using GenshinTool.Common.Rest.Core;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GenshinTool.Controllers
 {
@@ -6,6 +8,9 @@ namespace GenshinTool.Controllers
     [Route("[controller]")]
     public class CharacterController : BaseGenericController
     {
-
+        public CharacterController(IBaseMapper mapper, IEnumerable<ILogBase> loggers, IConfiguration configuration) 
+            : base(mapper, loggers, configuration)
+        {
+        }
     }
 }

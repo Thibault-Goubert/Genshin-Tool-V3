@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using GenshinTool.Common.Configuration;
+using log4net;
 using log4net.Util;
 using System.Configuration;
 using System.Globalization;
@@ -39,6 +40,7 @@ public abstract class LogBase : ILogBase
     private bool IsLoggerActive(string loggerName)
     {
         var loggers = ConfigurationHelper.GetConfig("LoggerActive");
+
         if (!string.IsNullOrEmpty(loggers))
         {
             return loggers.ToLowerInvariant().Contains(loggerName.ToLowerInvariant());
@@ -47,30 +49,25 @@ public abstract class LogBase : ILogBase
         return false;
     }
 
-
     public bool IsLevelDebugActive()
     {
         return IsLoggerActive(LoggerName) && _log?.IsDebugEnabled == true;
     }
-
 
     public bool IsLevelErrorActive()
     {
         return IsLoggerActive(LoggerName) && _log?.IsErrorEnabled == true;
     }
 
-
     public bool IsLevelFatalActive()
     {
         return IsLoggerActive(LoggerName) && _log?.IsFatalEnabled == true;
     }
 
-
     public bool IsLevelInfoActive()
     {
         return IsLoggerActive(LoggerName) && _log != null && _log.IsInfoEnabled;
     }
-
 
     public bool IsLevelWarnActive()
     {

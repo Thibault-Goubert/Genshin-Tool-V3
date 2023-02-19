@@ -1,8 +1,12 @@
 ﻿using GenshinTool.Common.Configuration;
+using GenshinTool.Common.Extensions;
 using GenshinTool.Common.Logger;
+using GenshinTool.Common.Models.Enums;
+using GenshinTool.Common.Models.Rest.Concretes;
+using GenshinTool.Common.Models.Rest.Interfaces;
+using GenshinTool.Common.Watcher;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using RestSharp;
 
 namespace GenshinTool.Common.Rest.Core
 {
@@ -16,7 +20,6 @@ namespace GenshinTool.Common.Rest.Core
             ConfigurationHelper.SetConfig(configuration);
             loggers.ToList().ForEach(LogHelper.SetLogger);
         }
-
 
         protected static IResponseItem<TResult> CreateResponse<TResult>(Func<TResult> function, string message)
         {
@@ -94,33 +97,17 @@ namespace GenshinTool.Common.Rest.Core
         private static TResult ExceptionResponse<TResult>(Exception e)
             where TResult : IResponse, new()
         {
-            LogHelper.GetLogger<ApplicationLog>()?.LogError(e, $"ExceptionResponse  {new Context()}");
+            LogHelper.GetLogger<ApplicationLog>()?.LogError(e, $"ExceptionResponse {new Context()}");
 
-            var messages = e.FromHierarchy(ex => ex.InnerException)
-                .Select(ex =>
-                {
-#if !DEBUG   
-                    // If the inner exception is a SqlException then the exception message is replaced with a more generic text
-                    // to avoid to show to the end user sensible information such as the SQL Server URL and/or the database name.
-                    if (ex is SqlException)
-                    {
-                        return Messages.GenericSqlExceptionMessage;
-                    }
-#endif
+            var messages = e.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
 
-                    return ex.Message;
-                });
+            var stackTrace = e.FromHierarchy(ex => ex.InnerException).Select(ex => ex.StackTrace);
 
-            var stackTrace = e.FromHierarchy(ex => ex.InnerException)
-                .Select(ex => ex.StackTrace);
-
-            var businessException = e as BusinessException;
             return new TResult
             {
                 Exception = e,
-                ExceptionType = businessException != null ? businessException.Type : ExceptionType.Technical,
-                Message = String.Join(Environment.NewLine, messages),
-                StackTrace = String.Join(Environment.NewLine, stackTrace),
+                Message = string.Join(Environment.NewLine, messages),
+                StackTrace = string.Join(Environment.NewLine, stackTrace),
                 Status = ResponseStatus.Exception
             };
         }
