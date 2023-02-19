@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenshinTool.Application.Domain.Models
+namespace GenshinTool.Common.Configuration
 {
-    public class BaseEntity
+    internal class SectionConfig
     {
-        public long Id { get; set; }
     }
 }
+    
