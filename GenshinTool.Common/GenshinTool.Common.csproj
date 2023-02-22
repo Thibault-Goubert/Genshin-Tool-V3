@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Entities\**" />
+    <EmbeddedResource Remove="Models\Entities\**" />
+    <None Remove="Models\Entities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Mapster" Version="7.3.0" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
@@ -19,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Entities\" />
+    <Folder Include="Service\Concrete\" />
   </ItemGroup>
 
 </Project>

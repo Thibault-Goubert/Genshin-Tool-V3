@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GenshinTool.Common\GenshinTool.Common.csproj" />
+  </ItemGroup>
+
 </Project>

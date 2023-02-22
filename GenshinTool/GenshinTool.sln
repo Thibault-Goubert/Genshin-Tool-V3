@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool.Application.Int
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{53F3EA10-FCF1-41B2-BF7A-8B05D38D668F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Common", "..\GenshinTool.Common\GenshinTool.Common.csproj", "{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTool.Common", "..\GenshinTool.Common\GenshinTool.Common.csproj", "{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Infrastructure.Sql", "..\GenshinTool.Infrastructure.Sql\GenshinTool.Infrastructure.Sql.csproj", "{A38318A1-59CD-48F1-9A4B-3A227CC81356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTool.Infrastructure.Interface", "..\GenshinTool.Infrastructure.Interface\GenshinTool.Infrastructure.Interface.csproj", "{79B25CCB-CDEF-4A97-88BB-950FDDE997E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,14 @@ Global
 		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38318A1-59CD-48F1-9A4B-3A227CC81356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38318A1-59CD-48F1-9A4B-3A227CC81356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38318A1-59CD-48F1-9A4B-3A227CC81356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38318A1-59CD-48F1-9A4B-3A227CC81356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B25CCB-CDEF-4A97-88BB-950FDDE997E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B25CCB-CDEF-4A97-88BB-950FDDE997E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B25CCB-CDEF-4A97-88BB-950FDDE997E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B25CCB-CDEF-4A97-88BB-950FDDE997E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +71,8 @@ Global
 		{05AAD635-05F9-46D8-95B8-22FA8F1EF576} = {DF2E4399-92A5-48A5-8424-B2891ACC14D0}
 		{AB80CC10-F564-4E19-9D2D-F953471A49E6} = {DF2E4399-92A5-48A5-8424-B2891ACC14D0}
 		{9F26F1CA-DC70-4851-B61D-3A068AA38A0B} = {53F3EA10-FCF1-41B2-BF7A-8B05D38D668F}
+		{A38318A1-59CD-48F1-9A4B-3A227CC81356} = {46DD5C80-AC93-4F82-8FF3-A6331DE7557B}
+		{79B25CCB-CDEF-4A97-88BB-950FDDE997E5} = {46DD5C80-AC93-4F82-8FF3-A6331DE7557B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F1D3395-DCEC-4328-8500-B36E754CBC0A}
