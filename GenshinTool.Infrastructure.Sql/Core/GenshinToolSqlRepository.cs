@@ -1,5 +1,5 @@
-﻿using GenshinTool.Common.Models.Domain.Core;
-using GenshinTool.Common.Models.Dto;
+﻿using GenshinTool.Common.Models.Core.Dom;
+using GenshinTool.Common.Models.Core.Dto;
 using GenshinTool.Common.Rest.Core;
 
 namespace GenshinTool.Infrastructure.Sql.Core;

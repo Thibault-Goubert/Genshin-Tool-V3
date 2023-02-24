@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenshinTool.Common.Models.Dto;
+namespace GenshinTool.Common.Service.Interface.Core;
 
-public class BaseDto : IBaseDto
+public interface IBaseService
 {
-    public long Id { get; set; }
+    IUowFactory UowFactory { get; set; }
 }

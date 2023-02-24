@@ -1,12 +1,12 @@
-﻿using GenshinTool.Common.Models.Domain.Core;
-using GenshinTool.Common.Models.Dto;
+﻿using GenshinTool.Common.Models.Core.Dom;
+using GenshinTool.Common.Models.Core.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenshinTool.Common.Service.Interface;
+namespace GenshinTool.Common.Service.Interface.Repo;
 
 public interface IDatabaseRepository<TDom, TDto> : IRepository<TDom, TDto>
     where TDom : class, IBaseDom
