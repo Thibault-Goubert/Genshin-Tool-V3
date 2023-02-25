@@ -1,5 +1,5 @@
 ﻿using GenshinTool.Application.Domain.Models;
-using GenshinTool.Common.Service.Interface;
+using GenshinTool.Common.Service.Interface.Repo;
 using GenshinTool.Infrastructure.Interface.Dto;
 using System;
 using System.Collections.Generic;

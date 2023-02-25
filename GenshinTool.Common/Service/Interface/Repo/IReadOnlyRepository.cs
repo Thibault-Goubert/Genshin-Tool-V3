@@ -1,8 +1,8 @@
-﻿using GenshinTool.Common.Models.Domain.Core;
-using GenshinTool.Common.Models.Dto;
+﻿using GenshinTool.Common.Models.Core.Dom;
+using GenshinTool.Common.Models.Core.Dto;
 using GenshinTool.Common.Rest.Core;
 
-namespace GenshinTool.Common.Service.Interface;
+namespace GenshinTool.Common.Service.Interface.Repo;
 
 public interface IReadOnlyRepository<TDom, TDto> : IBaseRepository
     where TDom : class, IBaseDom

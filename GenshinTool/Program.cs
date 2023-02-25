@@ -1,3 +1,4 @@
+using GenshinTool.Api.Extensions;
 using GenshinTool.Common.Extensions;
 using GenshinTool.Controllers;
 using Mapster;
@@ -20,6 +21,7 @@ builder.Services.InjectSwaggerGen(
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.InjectMapster(TypeAdapterConfig.GlobalSettings);
+builder.Services.InjectRepositoriesServices();
 builder.Services.InjectResponseCompression();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 builder.Services.AddEndpointsApiExplorer();

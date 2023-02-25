@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenshinTool.Common.Models.Dto
+namespace GenshinTool.Common.Models.Core.Model;
+
+public interface IBaseModel
 {
-    public interface IBaseDto
-    {
-        long Id { get; set; }
-    }
+    long Id { get; set; }
 }
