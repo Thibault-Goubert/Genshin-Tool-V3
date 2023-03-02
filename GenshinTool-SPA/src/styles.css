@@ -1,0 +1,139 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    background-color: #36393f;
+}
+
+::selection {
+    background-color: #CCC;
+}
+
+.flex{
+    display: flex;
+}
+.flex.row{
+    flex-direction: row;
+}
+.flex.col{
+    flex-direction: column;
+}
+.item_center{    
+    align-items: center;
+    justify-content: center;
+}
+
+input, .btn, span, p{
+    text-align: center;
+    background-color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
+    border-radius: 3px;
+}
+.btn{    
+    height: 30px;
+    width: 100px;
+}
+
+textarea{
+    resize:none;
+    overflow-wrap:normal;
+    overflow:hidden;
+
+    display:inline-block;
+    vertical-align:middle;
+    text-align:center;
+
+    width: 100px;
+
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
+}
+.hide{
+    opacity: .1;
+}
+.collapsed{
+    display: none;
+    overflow: hidden;
+}
+.invisible{
+    opacity: 0;
+}
+.panel{
+    width: 62px;
+    height: 85px;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 5px 5px 5px 5px;
+    margin: 6px;
+    box-shadow: 0px 0px 4px black; 
+}
+.panel.high{
+    height: 98px;
+}
+.panel_empty {
+    width: 62px;
+    height: 85px;
+    margin: 6px;
+}
+.panel_content{    
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 5px 5px 0px 0px;
+}
+.panel_content_image{
+    width: 62px;
+    height: 62px;
+    position: absolute;
+    border-radius: 5px 5px 0px 0px;
+}
+.panel_footer{
+    align-items: center;
+    background-color: #e9e5dc;
+    border-radius: 0px 0px 5px 5px;
+    align-items: center;
+    height: 23px;
+}
+.panel_footer input{
+    width: 28px;
+    height: 23px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    outline: none;
+    border: none;
+    padding: 0px 0px;
+
+    border-radius: 0px 0px 5px 5px;
+}
+.panel_footer.high{
+    height: 36px;
+}
+.panel_footer.high input{
+    height: 18px;
+}
+
+.btn{
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #282a2f;
+    color: #474851;
+    user-select: none;
+    box-shadow: 0px 0px 4px black; 
+}
+.btn_principal{ 
+    margin-left: 6px; 
+    margin-right: 6px;
+}
+#btn_groupe_principal{
+    margin-top: 10px;
+}
+.active {
+    background-color: #e9e5dc;
+  }
