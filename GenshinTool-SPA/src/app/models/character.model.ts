@@ -1,20 +1,20 @@
 export class Character {
     id!: number;
-    Name!: string;
-    ElementId!: number;
-    WeaponTypeId!: number;
-    RegionId!: number;
-    RarityId!: number;
-    SexId!: number;
-    WeaponId!: number;
-    IsCollab!: boolean;
-    Element!: string;
-    WeaponType!: string;
-    Region!: string;
-    Rarity!: string;
-    Sex!: string;
-    Weapon!: string;
-    BackgroundImg!: string;
-    PortraitImg!: string;
-    ElementImg!: string;
+    name!: string;
+    elementId!: number;
+    weaponTypeId!: number;
+    regionId!: number;
+    rarityId!: number;
+    sexId!: number;
+    weaponId!: number;
+    isCollab!: boolean;
+    element!: string;
+    weaponType!: string;
+    region!: string;
+    rarity!: string;
+    sex!: string;
+    weapon!: string;
+    backgroundImg!: string;
+    portraitImg!: string;
+    elementImg!: string;
   } 

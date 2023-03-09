@@ -1,0 +1,12 @@
+{
+    "/gt/*": {
+      "target": "https://localhost:7167",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/gt": "/gt/v1"
+      }
+    }
+  }
+  

@@ -1,52 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Character } from '../models/character.model';
+import { ResponseItems } from '../models/responseItems.model';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments';
 
 @Injectable({
     providedIn: 'root'
   })
 export class CharacterService{
-    characters: Character[] = [
-        {
-            id: 1,
-            Name: "test",
-            ElementId: 1,
-            WeaponTypeId: 1, 
-            RegionId: 1,
-            RarityId: 1,
-            SexId: 1,
-            WeaponId: 1, 
-            IsCollab: false,
-            Element: "test Element",
-            WeaponType: "test WeaponType",
-            Region: "test Region",
-            Rarity: "test Rarity",
-            Sex: "test Sex",
-            Weapon: "test Weapon",
+    private baseUrl: string = environment.baseUrl + 'Character/';
+    
+    constructor(private http: HttpClient) {}
 
-            BackgroundImg: "./assets/icons/characters/case5nat.png",
-            PortraitImg: "./assets/icons/characters/char_ayaka.png",
-            ElementImg: "./assets/icons/filters/element_cryo.png"
-        },
-        {
-            id: 1,
-            Name: "test",
-            ElementId: 1,
-            WeaponTypeId: 1, 
-            RegionId: 1,
-            RarityId: 1,
-            SexId: 1,
-            WeaponId: 1, 
-            IsCollab: false,
-            Element: "test Element",
-            WeaponType: "test WeaponType",
-            Region: "test Region",
-            Rarity: "test Rarity",
-            Sex: "test Sex",
-            Weapon: "test Weapon",
-
-            BackgroundImg: "./assets/icons/characters/case4nat.png",
-            PortraitImg: "./assets/icons/characters/char_sayu.png",
-            ElementImg: "./assets/icons/filters/element_anemo.png"
-        }
-    ];
+    public getCharacters(): Observable<ResponseItems<Character>> {
+        return this.http.get<ResponseItems<Character>>(
+            this.baseUrl + 'GetAllCharacters');
+    }
+    
 }
