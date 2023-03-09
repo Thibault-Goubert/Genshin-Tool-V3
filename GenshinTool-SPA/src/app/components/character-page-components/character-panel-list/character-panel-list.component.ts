@@ -13,6 +13,12 @@ export class CharacterPanelListComponent implements OnInit{
   constructor(private characterService: CharacterService){}
 
   ngOnInit(): void {
-    this.characters = this.characterService.characters;
+    this.getCharacters();
+  }
+
+  private getCharacters() {
+    this.characterService.getCharacters().subscribe(characters => {
+      this.characters = characters.items;
+    });
   }
 }

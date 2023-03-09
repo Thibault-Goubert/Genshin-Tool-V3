@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Character } from '../../../models/character.model';
-import { CharacterService} from '../../../services/characters.service';
 
 @Component({
   selector: 'app-character-panel',
@@ -11,10 +9,12 @@ import { CharacterService} from '../../../services/characters.service';
 export class CharacterPanelComponent implements OnInit {
   @Input() character!: Character;
 
-  constructor(private characterService: CharacterService){}
+  constructor(){}
 
   ngOnInit(): void {
-
+    this.character.portraitImg = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
+    this.character.backgroundImg = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
+    this.character.elementImg  = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
   }
 
 }
