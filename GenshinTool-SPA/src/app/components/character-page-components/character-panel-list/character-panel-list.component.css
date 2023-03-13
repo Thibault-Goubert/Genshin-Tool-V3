@@ -1,0 +1,8 @@
+#characters-list{
+    margin-top: 28px;
+    width: 1500px;
+
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}

@@ -6,6 +6,7 @@ using GenshinTool.Infrastructure.Sql.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,11 @@ namespace GenshinTool.Infrastructure.Sql.Repositories
     {
         public CharacterRepository(IBaseMapper mapper) : base(mapper)
         {
+        }
+
+        public IEnumerable<CharacterDom> GetByElementId(long elementId)
+        {
+            return GetByDynamicParameters(new { ElementId = elementId });
         }
     }
 }

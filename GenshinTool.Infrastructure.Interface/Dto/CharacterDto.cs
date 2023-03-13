@@ -12,8 +12,8 @@ public class CharacterDto : BaseDto
     [Required][ForeignKey("dbo.Elements")] public long ElementId { get; set; }
     [Required][ForeignKey("dbo.WeaponTypes")] public long WeaponTypeId { get; set; }
     [Required][ForeignKey("dbo.Regions")] public long RegionId { get; set; }
-    [Required][ForeignKey("dbo.Rarities")] public long RarityId { get; set; }
     [Required][ForeignKey("dbo.Sex")] public long SexId { get; set; }
-    public bool IsCollab { get; set; }
     [ForeignKey("dbo.Weapons")] public long WeaponId { get; set; }
+    public bool IsCollab { get; set; }
+    public long Rarity { get; set; }
 }

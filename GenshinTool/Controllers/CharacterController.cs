@@ -1,6 +1,5 @@
 ﻿using GenshinTool.Application.Interface.Services;
 using GenshinTool.Common.Logger;
-using GenshinTool.Common.Models.Domain.Concretes;
 using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
@@ -24,7 +23,7 @@ public class CharacterController : BaseGenericController
     }
 
     /// <summary>
-    ///     Get All Tariff
+    ///     Get All Characters
     /// </summary>
     /// <returns></returns>
     [HttpGet(nameof(GetAllCharacters))]
@@ -33,5 +32,17 @@ public class CharacterController : BaseGenericController
         return CreateResponseItems<ICharacterModel>(
             () => _characterService.GetAll(),
             $"{nameof(GetAllCharacters)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters by element
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetByElementId) + "/{id:int}")]
+    public IResponseItems<ICharacterModel> GetByElementId(long id)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetByElementId(id),
+            $"{nameof(GetByElementId)} Success");
     }
 }

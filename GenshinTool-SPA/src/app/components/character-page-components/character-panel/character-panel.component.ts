@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Character } from '../../../models/character.model';
 
+const iconsPath = "/assets/icons/";
+
 @Component({
   selector: 'app-character-panel',
   templateUrl: './character-panel.component.html',
@@ -12,9 +14,27 @@ export class CharacterPanelComponent implements OnInit {
   constructor(){}
 
   ngOnInit(): void {
-    this.character.portraitImg = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
-    this.character.backgroundImg = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
-    this.character.elementImg  = "../../../assets/icons/characters/char_" + this.character.name.toLowerCase().replace(' ', '_') + ".png";
+    this.character.portraitImg = this.buildCharacterPortraitPath();
+    this.character.backgroundImg = this.buildCharacterBackgroundPath();
+    this.character.elementImg  = this.buildCharacterElementPath();
+  }
+
+  private buildCharacterPortraitPath(): string{
+    let charName = this.character.name.toLowerCase().replace(' ', '_').replace("traveler", "aether");
+    let charPortraitPath = iconsPath + "characters/char_" + charName + ".png";
+    return charPortraitPath;
+  } 
+
+  private buildCharacterBackgroundPath(): string{
+    let path = iconsPath + "characters/case" + this.character.rarity + "nat";
+    if(this.character.isCollab){
+      path += "collab";
+    }
+    return path + ".png";
+  }
+
+  private buildCharacterElementPath(): string{
+    return iconsPath + "filters/element_" + this.character.element.toLowerCase() + ".png";
   }
 
 }

@@ -16,6 +16,7 @@ import { NotesPageComponent } from './pages/notes-page/notes-page.component';
 
 import { CharacterPanelComponent } from './components/character-page-components/character-panel/character-panel.component';
 import { CharacterPanelListComponent } from './components/character-page-components/character-panel-list/character-panel-list.component';
+import { CharacterFiltersComponent } from './components/character-page-components/filters/character-filters/character-filters.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CharacterPanelListComponent } from './components/character-page-compone
     NotesPageComponent,
 
     CharacterPanelComponent,
-    CharacterPanelListComponent
+    CharacterPanelListComponent,
+    CharacterFiltersComponent
   ],
   imports: [
     BrowserModule,

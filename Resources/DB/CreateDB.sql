@@ -19,11 +19,6 @@ CREATE TABLE Sex(
 	Name VARCHAR(1) NOT NULL,
 );
 -- Create the Element table
-CREATE TABLE Rarities(
-	Id INT IDENTITY(1,1) PRIMARY KEY,
-	Grade INT NOT NULL,
-);
--- Create the Element table
 CREATE TABLE Elements(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
 	Name VARCHAR(10) NOT NULL,
@@ -91,7 +86,7 @@ CREATE TABLE Characters(
 	ElementId INT NOT NULL,
 	WeaponTypeId INT NOT NULL,
 	RegionId INT NOT NULL,
-	RarityId INT NOT NULL,
+	Rarity INT NOT NULL,
 	SexId INT NOT NULL,
 
 	IsCollab BIT NOT NULL,
@@ -102,8 +97,7 @@ CREATE TABLE Characters(
     FOREIGN KEY (ElementId) REFERENCES Elements(Id),
     FOREIGN KEY (RegionId) REFERENCES Regions(Id),
     FOREIGN KEY (WeaponTypeId) REFERENCES WeaponTypes(Id),
-    FOREIGN KEY (SexId) REFERENCES Sex(Id),
-    FOREIGN KEY (RarityId) REFERENCES Rarities(Id)
+    FOREIGN KEY (SexId) REFERENCES Sex(Id)
 );
 
 ------ Create associations tables ------

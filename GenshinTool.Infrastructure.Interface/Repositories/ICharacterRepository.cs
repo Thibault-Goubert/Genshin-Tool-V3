@@ -11,5 +11,5 @@ namespace GenshinTool.Infrastructure.Interface.Repositories;
 
 public interface ICharacterRepository : IRepository<CharacterDom, CharacterDto>
 {
-
+    IEnumerable<CharacterDom> GetByElementId(long elementId);
 }
