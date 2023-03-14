@@ -9,13 +9,6 @@ VALUES
 (1,'M'),(2,'F')
 SET IDENTITY_INSERT Sex OFF;
 
--- Insert Rarity --
-SET IDENTITY_INSERT Rarities ON;
-INSERT INTO Rarities (Id,Grade)
-VALUES
-(1,3),(2,4),(3,5)
-SET IDENTITY_INSERT Rarities OFF;
-
 -- Insert StatTypes --
 SET IDENTITY_INSERT StatTypes ON;
 INSERT INTO StatTypes (Id,Name)
@@ -70,53 +63,53 @@ SET IDENTITY_INSERT WeaponTypes OFF;
 -- Insert Chars --
 SET IDENTITY_INSERT Characters ON;
 INSERT INTO Characters 
-(Id,Name,ElementId,RegionId,WeaponTypeId,RarityId,SexId,IsCollab)
+(Id,Name,ElementId,RegionId,WeaponTypeId,Rarity,SexId,IsCollab)
 VALUES
 (1,'Albedo',2,1,1,3,1,0),
 (2,'Alhaitham',4,4,1,3,1,0),
-(3,'Aloy',6,8,2,3,2,1),
+(3,'Aloy',7,8,2,3,2,1),
 (4,'Amber',6,1,2,3,2,0),
-(5,'Ayaka',6,3,1,3,2,0),
+(5,'Ayaka',7,3,1,3,2,0),
 (6,'Ayato',5,3,1,3,1,0),
 (7,'Barbara',5,1,5,2,2,0),
 (8,'Beidou',3,2,4,2,2,0),
 (9,'Bennett',6,1,1,2,1,0),
 (10,'Candace',5,4,3,2,2,0),
 (11,'Collei',4,4,2,2,2,0),
-(12,'Chongyun',6,2,4,2,1,0),
+(12,'Chongyun',7,2,4,2,1,0),
 (13,'Cyno',3,4,3,3,1,0),
 (14,'Diluc',6,1,4,3,1,0),
-(15,'Diona',6,1,2,2,2,0),
+(15,'Diona',7,1,2,2,2,0),
 (16,'Dori',3,4,4,2,2,0),
-(17,'Eula',6,1,4,3,2,0),
+(17,'Eula',7,1,4,3,2,0),
 (18,'Faruzan',1,4,2,2,2,0),
 (19,'Fischl',3,1,2,2,2,0),
-(20,'Ganyu',6,2,2,3,2,0),
+(20,'Ganyu',7,2,2,3,2,0),
 (21,'Gorou',2,3,2,2,1,0),
 (22,'Heizou',1,3,5,2,1,0),
 (23,'Hu Tao',6,2,3,3,2,0),
 (24,'Itto',2,3,4,3,1,0),
 (25,'Jean',1,1,1,3,2,0),
-(26,'Kaeya',6,1,1,2,1,0),
+(26,'Kaeya',7,1,1,2,1,0),
 (27,'Kazuha',1,3,1,3,1,0),
 (28,'Keqing',3,2,1,3,2,0),
 (29,'Klee',6,1,5,3,2,0),
 (30,'Kokomi',5,3,5,3,2,0),
 (31,'Kujou Sara',3,3,2,3,2,0),
 (32,'Kuki Shinobu',3,3,1,2,2,0),
-(33,'Layla',6,4,1,2,2,0),
+(33,'Layla',7,4,1,2,2,0),
 (34,'Lisa',3,1,5,2,2,0),
 (35,'Mona',5,1,5,3,2,0),
 (36,'Nahida',4,4,5,3,2,0),
 (37,'Ningguang',2,2,5,2,2,0),
 (38,'Nilou',5,4,1,3,2,0),
 (39,'Noelle',2,1,4,2,2,0),
-(40,'Qiqi',6,2,1,3,2,0),
+(40,'Qiqi',7,2,1,3,2,0),
 (41,'Razor',3,1,4,2,1,0),
 (42,'Raiden Shogun',3,3,3,3,2,0),
-(43,'Rosaria',6,1,3,2,2,0),
+(43,'Rosaria',7,1,3,2,2,0),
 (44,'Sayu',1,3,4,2,2,0),
-(45,'Shenhe',6,2,3,3,2,0),
+(45,'Shenhe',7,2,3,3,2,0),
 (46,'Sucrose',1,1,5,2,2,0),
 (47,'Tartaglia',5,7,2,3,1,0),
 (48,'Thoma',6,3,3,2,1,0),
@@ -138,5 +131,17 @@ VALUES
 (64,'Yun Jin',2,2,3,2,2,0),
 (65,'Zhongli',2,2,3,3,1,0)
 SET IDENTITY_INSERT Characters OFF;
+
+update [GenshinToolDB].[dbo].[Characters]
+SET Rarity = 5
+WHERE Rarity = 3
+
+update [GenshinToolDB].[dbo].[Characters]
+SET Rarity = 4
+WHERE Rarity = 2
+
+update [GenshinToolDB].[dbo].[Characters]
+SET Rarity = 3
+WHERE Rarity = 1
 
 -- Insert Weapons --

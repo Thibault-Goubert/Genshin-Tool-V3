@@ -11,6 +11,9 @@ using GenshinTool.Common.Service.Interface.Repo;
 using GenshinTool.Common.Service.Interface.Context;
 using GenshinTool.Common.Models.Core.Dom;
 using GenshinTool.Common.Models.Core.Dto;
+using System.Text;
+using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 namespace GenshinTool.Infrastructure.Sql.Core;
 
@@ -26,8 +29,8 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
     }
 
     private IDbContext _dataSourceContext;
-    private static string SqlTableName => typeof(TDto).GetTableAttributeName<TableAttribute>();
     private static string GetAllQuery => SqlConstants.SELECT + SqlConstants.ALL_FROM + SqlTableName + SqlConstants.WHERE;
+    private static string SqlTableName => typeof(TDto).GetTableAttributeName<TableAttribute>();
     private static readonly string PropertyId = "Id";
 
     public IContext DataSourceContext
@@ -50,6 +53,58 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         {
             return Mapper.Map<TDom>(_dataSourceContext.Connection.Get<TDto>(id));
         }
+    }
+
+    protected IEnumerable<TDom> GetByDynamicParameters(object parameters)
+    {
+        if (parameters != null)
+        {
+            var builder = new StringBuilder();
+            var dbParams = CreateDynamicParameters(parameters);
+            var props = parameters.GetType().GetProperties();
+            var sql = GetAllQuery + " 1 = 1 ";
+
+            sql = props.Aggregate(sql, (current, prop) =>
+                    $"{current} {SqlConstants.AND} {prop.Name} = LOWER(' {prop.GetValue(parameters)} ')");
+
+            using (new ExecutionWatcher(sql))
+            {
+                return Mapper.Map<IEnumerable<TDom>>(_dataSourceContext.Connection.Query<TDto>(sql, dbParams));
+            }
+        }
+
+        return Enumerable.Empty<TDom>();
+    }
+
+
+    protected IEnumerable<TDom> GetByParameters(IEnumerable<KeyValuePair<string, IEnumerable<long>>> paramsFields)
+    {
+        using (new ExecutionWatcher(MethodHelper.GetCurrentMethodWithParams()))
+        {
+            if (!paramsFields.HasAny())
+            {
+                return new List<TDom>();
+            }
+
+            var query = new StringBuilder($"{SqlConstants.SELECT} * {SqlConstants.FROM} {SqlTableName} {SqlConstants.WHERE} 1=1");
+            foreach (var paramField in paramsFields)
+            {
+                if (!string.IsNullOrEmpty(paramField.Key) && paramField.Value != null && paramField.Value.Any())
+                {
+                    var idsJoin = string.Join(",", paramField.Value.Select(n => n.ToString()).ToArray());
+                    query.Append($"{SqlConstants.AND} {paramField.Key} {SqlConstants.IN} ({idsJoin})");
+                }
+            }
+
+            return Mapper.Map<IEnumerable<TDom>>(_dataSourceContext.Connection.Query<TDto>(query.ToString()));
+        }
+    }
+
+    private static DynamicParameters CreateDynamicParameters(object parameters)
+    {
+        var dbParams = new DynamicParameters();
+        dbParams.AddDynamicParams(parameters);
+        return dbParams;
     }
 
     public virtual TDom Insert(TDom domObject)

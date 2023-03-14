@@ -1,0 +1,8 @@
+<div class="personnage_panel">
+    <div class="personnage_panel_portrait_content">
+        <img class="personnage_panel_background" [src]="character.backgroundImg">
+        <img class="personnage_panel_portrait" [src]="character.portraitImg">
+        <img *ngIf="character.name != 'Traveler'" class="personnage_panel_element" [src]="character.elementImg">
+    </div>
+    <div class="personnage_panel_name">{{ character.name }}</div>
+</div>

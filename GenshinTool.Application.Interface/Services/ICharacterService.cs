@@ -11,4 +11,5 @@ namespace GenshinTool.Application.Interface.Services;
 public interface ICharacterService : IBaseService
 {
     IEnumerable<CharacterDom> GetAll();
+    IEnumerable<CharacterDom> GetByElementId(long elementId);
 }
