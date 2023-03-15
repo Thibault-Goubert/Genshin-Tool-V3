@@ -14,6 +14,9 @@ using GenshinTool.Common.Models.Core.Dto;
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
+using GenshinTool.Common.Data.Sql.Dapper.QueryGenerator;
+using System.Collections;
+using Microsoft.Extensions.Primitives;
 
 namespace GenshinTool.Infrastructure.Sql.Core;
 
@@ -39,6 +42,7 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         set => _dataSourceContext = (IDbContext)value;
     }
 
+    #region Gets
     public virtual IEnumerable<TDom> GetAll()
     {
         using (new ExecutionWatcher(MethodHelper.GetCurrentMethodWithParams()))
@@ -76,7 +80,6 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         return Enumerable.Empty<TDom>();
     }
 
-
     protected IEnumerable<TDom> GetByParameters(IEnumerable<KeyValuePair<string, IEnumerable<long>>> paramsFields)
     {
         using (new ExecutionWatcher(MethodHelper.GetCurrentMethodWithParams()))
@@ -100,13 +103,29 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         }
     }
 
-    private static DynamicParameters CreateDynamicParameters(object parameters)
+    public IEnumerable<TDom> Get(IQueryContext contextQuery)
     {
-        var dbParams = new DynamicParameters();
-        dbParams.AddDynamicParams(parameters);
-        return dbParams;
-    }
+        var query = new StringBuilder();
 
+        query.Append($"{SqlConstants.SET_NOCOUNT}{SqlConstants.ON};");
+        query.Append($"{SqlConstants.SELECT}{SqlConstants.ALL_FROM}{SqlTableName}");
+
+        if (contextQuery != null)
+        {
+            if (contextQuery.ParentAggregateSelectors.HasAny())
+            {
+                query.Append($"{SqlConstants.WHERE} 1=1");
+                GenerateParentQuery(contextQuery, query);
+            }
+        }
+
+        query.Append($"{SqlConstants.SET_NOCOUNT}{SqlConstants.OFF};");
+
+        return Mapper.Map<IEnumerable<TDom>>(_dataSourceContext.Connection.Query(query.ToString()));
+    }
+    #endregion
+
+    #region Inserts
     public virtual TDom Insert(TDom domObject)
     {
         using (new ExecutionWatcher(MethodHelper.GetCurrentMethodWithParams()))
@@ -132,6 +151,39 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         return result;
     }
 
+    private TDom InsertEntity(TDom domainEntity)
+    {
+        if (domainEntity == null)
+        {
+            return default;
+        }
+
+        domainEntity.Id = _dataSourceContext.Connection.Insert(Mapper.Map<TDto>(domainEntity));
+        return domainEntity;
+    }
+
+    private async Task<IEnumerable<TDom>> InsertEntities(IEnumerable<TDom> domainEntities)
+    {
+        if (!domainEntities.HasAny())
+        {
+            return default;
+        }
+
+        var dic =
+            typeof(TDto)
+                .GetProperties()
+                .Where(propertyInfo => propertyInfo.Name != PropertyId)
+                .ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
+
+        var entities = Mapper.Map<IEnumerable<TDto>>(domainEntities).ToList();
+        var result = await _dataSourceContext.Connection.BulkInsert(entities, SqlTableName, dic);
+        var resultDomain = Mapper.Map<IEnumerable<TDom>>(result);
+
+        return resultDomain;
+    }
+    #endregion
+
+    #region Updates
     public virtual TDom Update(TDom domObject)
     {
         var entity = Mapper.Map<TDto>(domObject);
@@ -155,6 +207,9 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
 
         return Mapper.Map<IEnumerable<TDom>>(entities);
     }
+    #endregion
+
+    #region Deletes
     public virtual void Delete(TDom domObject)
     {
         var entity = Mapper.Map<TDto>(domObject);
@@ -195,36 +250,33 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
             }
         }
     }
+    #endregion
 
-    private TDom InsertEntity(TDom domainEntity)
+    private static DynamicParameters CreateDynamicParameters(object parameters)
     {
-        if (domainEntity == null)
-        {
-            return default;
-        }
-
-        domainEntity.Id = _dataSourceContext.Connection.Insert(Mapper.Map<TDto>(domainEntity));
-        return domainEntity;
+        var dbParams = new DynamicParameters();
+        dbParams.AddDynamicParams(parameters);
+        return dbParams;
     }
 
-    private async Task<IEnumerable<TDom>> InsertEntities(IEnumerable<TDom> domainEntities)
+    private void GenerateParentQuery(IQueryContext contextQuery, StringBuilder query)
     {
-        if (!domainEntities.HasAny())
+        foreach (var paramField in contextQuery.ParentAggregateSelectors.Where(s => s.GetValue() != default))
         {
-            return default;
+            switch (paramField)
+            {
+                case QueryFilterTypeListLong:
+                case QueryFilterTypeLong:
+                    {
+                        var idsJoin = string.Join(",", ((IEnumerable<long>)paramField.GetValue()).Select(n => n.ToString()).ToArray());
+                        query.Append($"{SqlConstants.AND} {SqlTableName}.{paramField.FieldName} {SqlConstants.IN} ({idsJoin})");
+                        break;
+                    }
+                default:
+                    query.Append($"{SqlConstants.AND} {SqlTableName}.{paramField.FieldName} = ({paramField.GetValue().ToString()})");
+                    break;
+            }
         }
-
-        var dic =
-            typeof(TDto)
-                .GetProperties()
-                .Where(propertyInfo => propertyInfo.Name != PropertyId)
-                .ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
-
-        var entities = Mapper.Map<IEnumerable<TDto>>(domainEntities).ToList();
-        var result = await _dataSourceContext.Connection.BulkInsert(entities, SqlTableName, dic);
-        var resultDomain = Mapper.Map<IEnumerable<TDom>>(result);
-
-        return resultDomain;
     }
 
 }

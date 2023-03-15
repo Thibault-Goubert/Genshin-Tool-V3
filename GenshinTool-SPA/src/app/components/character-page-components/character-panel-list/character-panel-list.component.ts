@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterRequest } from 'src/app/models/characterRequest.model';
 import { Character } from '../../../models/character.model';
 import { CharacterService} from '../../../services/characters.service';
 
@@ -9,6 +10,7 @@ import { CharacterService} from '../../../services/characters.service';
 })
 export class CharacterPanelListComponent implements OnInit{
   characters!: Character[]
+  characterRequest!: CharacterRequest
 
   constructor(private characterService: CharacterService){}
 
@@ -20,5 +22,15 @@ export class CharacterPanelListComponent implements OnInit{
     this.characterService.getCharacters().subscribe(characters => {
       this.characters = characters.items;
     });
+  }
+
+  private getCharactersByRequest(req: CharacterRequest){
+    this.characterService.getCharactersByRequest(req).subscribe(characters =>{
+      this.characters = characters.items;
+    });
+  }
+
+  public getRequestFromFilter($event: CharacterRequest){
+    this.getCharactersByRequest($event);
   }
 }

@@ -1,6 +1,7 @@
 ﻿using GenshinTool.Application.Interface.Services;
 using GenshinTool.Common.Logger;
 using GenshinTool.Common.Models.Domain.Interfaces;
+using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
 using Microsoft.AspNetCore.Mvc;
@@ -35,14 +36,62 @@ public class CharacterController : BaseGenericController
     }
 
     /// <summary>
-    ///     Get Characters by element
+    ///     Get Characters by Rarity
     /// </summary>
     /// <returns></returns>
-    [HttpGet(nameof(GetByElementId) + "/{id:int}")]
-    public IResponseItems<ICharacterModel> GetByElementId(long id)
+    [HttpGet(nameof(GetByRarity) + "/{rarity:int}")]
+    public IResponseItems<ICharacterModel> GetByRarity([FromRoute] long rarity)
     {
         return CreateResponseItems<ICharacterModel>(
-            () => _characterService.GetByElementId(id),
+            () => _characterService.GetByRarity(rarity),
+            $"{nameof(GetByRarity)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters by ElementId
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetByElementId) + "/{elementId:int}")]
+    public IResponseItems<ICharacterModel> GetByElementId([FromRoute] long elementId)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetByElementId(elementId),
             $"{nameof(GetByElementId)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters by WeaponTypeId
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetByWeaponTypeId) + "/{weaponTypeId:int}")]
+    public IResponseItems<ICharacterModel> GetByWeaponTypeId([FromRoute] long weaponTypeId)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetByWeaponTypeId(weaponTypeId),
+            $"{nameof(GetByWeaponTypeId)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters by SexId
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetBySexId) + "/{sexId:int}")]
+    public IResponseItems<ICharacterModel> GetBySexId([FromRoute] long sexId)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetBySexId(sexId),
+            $"{nameof(GetBySexId)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters by Request
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost(nameof(GetByRequest))]
+    public IResponseItems<ICharacterModel> GetByRequest([FromBody] CharacterRequest req)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetByRequest(req),
+            $"{nameof(GetByRequest)} Success");
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace GenshinTool.Common.Data.Sql;
+namespace GenshinTool.Common.Data.Sql.Dapper;
 
 public class SqlDapperContext : IDbContext
 {
