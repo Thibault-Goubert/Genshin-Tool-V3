@@ -11,14 +11,20 @@
         <div id="liste_personnages_filtres_arme" class="btn btn_filtre_flat">Armes</div>
     </div>
     <div id="liste_personnages_filtres_etoiles">
-        <div id="liste_personnages_filtres_etoiles_cinq" class="btn btn_filtre_flat flex row no_justify_left_padding">
+        <div    (click)="AddOrRemoveRarityFilter(5)" 
+                id="liste_personnages_filtres_etoiles_cinq" 
+                class="btn btn_filtre_flat flex row no_justify_left_padding" 
+                [ngClass]="{ checked : RequestCountainsRarity(5) }">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
         </div>
-        <div id="liste_personnages_filtres_etoiles_quatre" class="btn btn_filtre_flat flex row no_justify_left_padding">
+        <div    (click)="AddOrRemoveRarityFilter(4)" 
+                id="liste_personnages_filtres_etoiles_quatre" 
+                class="btn btn_filtre_flat flex row no_justify_left_padding" 
+                [ngClass]="{ checked : RequestCountainsRarity(4) }">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
             <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
@@ -26,50 +32,50 @@
         </div>
     </div>
     <div id="liste_personnages_filtres_elements" class="flex row">
-        <div (click)="AddElementFilter(elements.Pyro)" id="liste_personnages_filtres_elements_feu" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Pyro)" id="liste_personnages_filtres_elements_feu" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Pyro) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_pyro.png">
         </div>
-        <div (click)="AddElementFilter(elements.Cryo)" id="liste_personnages_filtres_elements_glace" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Cryo)" id="liste_personnages_filtres_elements_glace" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Cryo) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_cryo.png">
         </div>
-        <div (click)="AddElementFilter(elements.Electro)" id="liste_personnages_filtres_elements_electro" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Electro)" id="liste_personnages_filtres_elements_electro" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Electro) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_electro.png">
         </div>
-        <div (click)="AddElementFilter(elements.Hydro)" id="liste_personnages_filtres_elements_eau" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Hydro)" id="liste_personnages_filtres_elements_eau" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Hydro) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_hydro.png">
         </div>
-        <div (click)="AddElementFilter(elements.Anemo)" id="liste_personnages_filtres_elements_anemo" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Anemo)" id="liste_personnages_filtres_elements_anemo" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Anemo) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_anemo.png">
         </div>
-        <div (click)="AddElementFilter(elements.Geo)" id="liste_personnages_filtres_elements_geo" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Geo)" id="liste_personnages_filtres_elements_geo" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Geo) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_geo.png">
         </div>
-        <div (click)="AddElementFilter(elements.Dendro)" id="liste_personnages_filtres_elements_dendro" class="btn btn_filtre">
+        <div (click)="AddOrRemoveElementFilter(elements.Dendro)" id="liste_personnages_filtres_elements_dendro" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsElement(elements.Dendro) }">
             <img class="btn_filtre_image" src="assets/icons/filters/element_dendro.png">
         </div>
     </div>
     <div id="liste_personnages_filtres_armes" class="flex row">
-        <div id="liste_personnages_filtres_armes_epee" class="btn btn_filtre">
+        <div (click)="AddOrRemoveWeaponTypeFilter(weaponTypes.Sword)" id="liste_personnages_filtres_armes_epee" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsWeaponType(weaponTypes.Sword) }">
             <img class="btn_filtre_image" src="assets/icons/filters/sword27.png">
         </div>
-        <div id="liste_personnages_filtres_armes_arc" class="btn btn_filtre">
+        <div (click)="AddOrRemoveWeaponTypeFilter(weaponTypes.Bow)" id="liste_personnages_filtres_armes_arc" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsWeaponType(weaponTypes.Bow) }">
             <img class="btn_filtre_image" src="assets/icons/filters/bow27.png">
         </div>
-        <div id="liste_personnages_filtres_armes_lance" class="btn btn_filtre">
+        <div (click)="AddOrRemoveWeaponTypeFilter(weaponTypes.Polearm)" id="liste_personnages_filtres_armes_lance" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsWeaponType(weaponTypes.Polearm) }">
             <img class="btn_filtre_image" src="assets/icons/filters/polearm27.png">
         </div>
-        <div id="liste_personnages_filtres_armes_claymore" class="btn btn_filtre">
+        <div (click)="AddOrRemoveWeaponTypeFilter(weaponTypes.Claymore)" id="liste_personnages_filtres_armes_claymore" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsWeaponType(weaponTypes.Claymore) }">
             <img class="btn_filtre_image" src="assets/icons/filters/claymore27.png">
         </div>
-        <div id="liste_personnages_filtres_armes_catalyste" class="btn btn_filtre">
+        <div (click)="AddOrRemoveWeaponTypeFilter(weaponTypes.Catalyst)" id="liste_personnages_filtres_armes_catalyste" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsWeaponType(weaponTypes.Catalyst) }">
             <img class="btn_filtre_image" src="assets/icons/filters/catalyst27.png">
         </div>
     </div>
     <div id="liste_personnages_filtres_sex_both" class="flex row">
-        <div id="liste_personnages_filtres_sex_f" class="btn btn_filtre">
+        <div (click)="AddOrRemoveSexFilter(sex.F)" id="liste_personnages_filtres_sex_f" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsSex(sex.F) }">
             <img class="btn_filtre_image" src="assets/icons/filters/sex_female.png">
         </div>
-        <div id="liste_personnages_filtres_sex_m" class="btn btn_filtre">
+        <div (click)="AddOrRemoveSexFilter(sex.M)" id="liste_personnages_filtres_sex_m" class="btn btn_filtre" [ngClass]="{ checked : RequestCountainsSex(sex.M) }">
             <img class="btn_filtre_image" src="assets/icons/filters/sex_male.png">
         </div>
     </div>

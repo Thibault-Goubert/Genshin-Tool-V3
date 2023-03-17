@@ -31,6 +31,7 @@ export class CharacterPanelListComponent implements OnInit{
   }
 
   public getRequestFromFilter($event: CharacterRequest){
+    console.log("received");
     this.getCharactersByRequest($event);
   }
 }
