@@ -1,9 +1,9 @@
 export enum Element{
-    Pyro = 1,
-    Cryo,
-    Electro,
-    Hydro,
-    Anemo,
+    Anemo = 1,
     Geo,
-    Dendro
+    Electro,
+    Dendro,
+    Hydro,
+    Pyro,
+    Cryo
 }

@@ -1,2 +1,33 @@
-<p>characters-page works!</p>
-<app-character-panel-list></app-character-panel-list>
+<div id="characters-filters">
+    <app-character-filters (filter)="getRequestFromFilter($event)"></app-character-filters>
+</div>
+<app-character-panel-list 
+    [initialTemplate]="all"
+    [byGroupTemplate]="byGroup">
+</app-character-panel-list>
+
+<ng-template #all>
+    <div id="character_list" class="flex row limitCardsNumberByRow">
+        <app-character-panel 
+            *ngFor="let char of characters" 
+            [character]="char">
+        </app-character-panel>
+    </div>
+</ng-template>
+
+<ng-template #byGroup>
+    <div id="character_list" class="flex col">
+        <div class="flex row" *ngFor="let group of characterGroups" [ngClass]="{limitCardsNumberByRow : !isFilteredByElement && !isFilteredByWeaponType}">
+            <div class="weapon_panel" *ngIf="isFilteredByWeaponType">
+                <img class="weapon_panel_icon center" [src]="group.weaponTypeImg" />
+            </div>
+            <app-character-panel 
+                [isFilteredByElement]="isFilteredByElement"
+                [isFilteredByWeaponType]="isFilteredByWeaponType"
+                [isFilteredByRegion]="isFilteredByRegion"
+                *ngFor="let char of group.characters" 
+                [character]="char">
+            </app-character-panel>
+        </div>
+    </div>
+</ng-template>

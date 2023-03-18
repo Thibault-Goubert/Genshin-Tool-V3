@@ -18,6 +18,7 @@ public interface ICharacterModel : IBaseModel
     long Rarity { get; set; }
     long WeaponTypeId { get; set; }
     long RegionId { get; set; }
+    string Region { get; set; }
     long SexId { get; set; }
     bool IsCollab { get; set; }
     long WeaponId { get; set; }

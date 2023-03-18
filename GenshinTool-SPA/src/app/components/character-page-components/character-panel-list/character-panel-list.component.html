@@ -1,7 +1,3 @@
-<p>character-panel-list works!</p>
-<div id="characters-filters">
-    <app-character-filters (filter)="getRequestFromFilter($event)"></app-character-filters>
-</div>
-<div id="characters-list">
-    <app-character-panel *ngFor="let char of characters" [character]="char"></app-character-panel>
-</div>
+<ng-container 
+    *ngTemplateOutlet="currentTemplate">
+</ng-container>

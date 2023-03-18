@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CharacterRequest } from 'src/app/models/characterRequest.model';
-import { Character } from '../../../models/character.model';
-import { CharacterService} from '../../../services/characters.service';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-character-panel-list',
@@ -9,29 +6,27 @@ import { CharacterService} from '../../../services/characters.service';
   styleUrls: ['./character-panel-list.component.css']
 })
 export class CharacterPanelListComponent implements OnInit{
-  characters!: Character[]
-  characterRequest!: CharacterRequest
+  @Input() initialTemplate!: TemplateRef<any>;
+  @Input() byGroupTemplate!: TemplateRef<any>;
+  currentTemplate!: TemplateRef<any>;
 
-  constructor(private characterService: CharacterService){}
+  constructor() {}
 
   ngOnInit(): void {
-    this.getCharacters();
+    this.currentTemplate = this.initialTemplate;
   }
-
-  private getCharacters() {
-    this.characterService.getCharacters().subscribe(characters => {
-      this.characters = characters.items;
-    });
-  }
-
-  private getCharactersByRequest(req: CharacterRequest){
-    this.characterService.getCharactersByRequest(req).subscribe(characters =>{
-      this.characters = characters.items;
-    });
-  }
-
-  public getRequestFromFilter($event: CharacterRequest){
-    console.log("received");
-    this.getCharactersByRequest($event);
+  
+  public triggerTemplateChange(templateId: number){ 
+    switch(templateId){
+      case(1): 
+        this.currentTemplate = this.initialTemplate;
+        break;
+      case(2):
+        this.currentTemplate = this.byGroupTemplate;
+        break;
+      default:
+        this.currentTemplate = this.initialTemplate;
+        break;
+    }
   }
 }

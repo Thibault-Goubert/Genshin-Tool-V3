@@ -31,6 +31,7 @@ public class CharacterService : BaseService, ICharacterService
         chars.ForEach(c =>
         {
             c.Element = (Element)c.ElementId;
+            c.Region = (Region)c.RegionId;
         });
 
         return chars;

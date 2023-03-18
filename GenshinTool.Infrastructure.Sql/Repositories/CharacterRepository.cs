@@ -74,6 +74,10 @@ namespace GenshinTool.Infrastructure.Sql.Repositories
             {
                 filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.SexId), FieldValue = req.SexIds });
             }
+            if (req.RegionsIds.HasAny())
+            {
+                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.RegionId), FieldValue = req.RegionsIds });
+            }
 
             return filters;
         }

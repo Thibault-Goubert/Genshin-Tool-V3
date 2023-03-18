@@ -16,6 +16,7 @@ namespace GenshinTool.Application.Domain.Models
         public long Rarity { get; set; }
         public long WeaponTypeId { get; set; }
         public long RegionId { get; set; }
+        public Region Region { get; set; }
         public long SexId { get; set; }
         public bool IsCollab { get; set; }
         public long WeaponId { get; set; }

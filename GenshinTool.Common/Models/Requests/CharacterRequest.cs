@@ -6,4 +6,5 @@ public class CharacterRequest
     public IEnumerable<long>? ElementsIds { get; set; }
     public IEnumerable<long>? WeaponsTypesIds { get; set; }
     public IEnumerable<long>? SexIds { get; set; }
+    public IEnumerable<long>? RegionsIds { get; set; }
 }

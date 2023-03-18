@@ -10,6 +10,7 @@ export class Character {
     weaponId!: number;  
       
     element!: string;
+    region!: string;
 
     backgroundImg!: string;
     portraitImg!: string;

@@ -1,0 +1,29 @@
+#character_list{
+    margin-top: 28px;
+}
+.limitCardsNumberByRow {
+    width: 1500px;
+    flex-flow: wrap;
+    flex-direction: row;
+}
+.weapon_panel {
+    position: relative;
+    width: 90px;
+    min-width: 90px;
+    height: 120px;
+    min-height: 120px;
+    user-select: none;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+.weapon_panel_icon {
+    position: absolute;
+}
+#characters-list{
+    margin-top: 28px;
+    width: 1500px;
+
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
