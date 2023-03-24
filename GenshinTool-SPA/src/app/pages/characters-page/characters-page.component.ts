@@ -68,6 +68,9 @@ export class CharactersPageComponent implements OnInit {
   private manageGroups() {
     if(this._requestHasAny){
         this.groupCharacters();
+        this.characterGroups.forEach(g => {        
+          g.characters = g.characters.filter((value, index, self) => self.map(x => x.name).indexOf(value.name) == index)
+        })
       }
       else{
         this.characterGroups = []
@@ -107,99 +110,84 @@ export class CharactersPageComponent implements OnInit {
       group.characters = this.characters;
       this.characterGroups.push(group)
     }
-    this.characterGroups.forEach(g => {        
-      g.characters = g.characters.filter((value, index, self) => self.map(x => x.name).indexOf(value.name) == index)
-    })
-  }
+  }  
 
-  private groupByWeaponTypes(): CharacterGroup[]{   
-    var groups: CharacterGroup[] = [];
+  private genericGroupBy<T>(type: T, charProperty: number[]): CharacterGroup[] {
+    const groups: CharacterGroup[] = [];
 
-    this.characterRequest.weaponsTypesIds.forEach(weaponTypeId => {      
-      var group: CharacterGroup = new CharacterGroup();
-      group.weaponTypeImg = "./assets/icons/filters/filter_weapon" + WeaponType[weaponTypeId].toLowerCase() + "50.png"
-
-      this.characters.forEach(c => {
-        if(c.weaponTypeId == weaponTypeId){
-          group.characters.push(c);
-        }
-      })
-
-      groups.push(group);
+    charProperty.forEach(id => {
+      const group: CharacterGroup = new CharacterGroup();
+      if(type == WeaponType){group.weaponTypeImg = `./assets/icons/filters/${WeaponType[id].toLowerCase()}50.png`;}
     });
-
-    if(this.characterRequest.elementsIds.length > 0){
-      groups.forEach(g => {
-        var characters: Character[] = [];
-        this.orderByElement(g.characters).forEach(c => characters.push(c))
-        g.characters = characters;
-      })
-    }
-    else if(this.characterRequest.regionsIds.length > 0){
-      groups.forEach(g => {
-        var characters: Character[] = [];
-        this.orderByRegion(g.characters).forEach(c => characters.push(c))
-        g.characters = characters;
-      })
-    }
-
-    if(this.characterRequest.sexIds.length > 0){
-      var groupsBySex: CharacterGroup[] = [];
-      groups.forEach(g => {
-        var groupBySex: CharacterGroup[] = [];
-        this.characterRequest.sexIds.forEach(sexId => {
-          var group: CharacterGroup = new CharacterGroup();
-          if(groupBySex.length == 0){ group.weaponTypeImg = g.weaponTypeImg; }
-          g.characters.forEach(c => {
-            if(c.sexId == sexId){
-              group.characters.push(c);
-            }
-          })
-          groupBySex.push(group);
-        });
-        groupBySex.forEach(gbs => groupsBySex.push(gbs));
-      });
-      groups = groupsBySex;
-    }
 
     return groups;
   }
-  private groupByElement(): CharacterGroup[]{
-    var groups: CharacterGroup[] = [];
-    this.characterRequest.elementsIds.forEach(elementId => {      
-      var group: CharacterGroup = new CharacterGroup();
-      this.characters.forEach(c => {
-        if(c.element == Element[elementId]){
-          group.characters.push(c);
-        }
-      })
+  private groupByWeaponTypes(): CharacterGroup[] {
+    const groups: CharacterGroup[] = [];
+  
+    this.characterRequest.weaponsTypesIds.forEach(weaponTypeId => {
+      const group: CharacterGroup = new CharacterGroup();
+        group.weaponTypeImg = `./assets/icons/filters/filter_weapon${WeaponType[weaponTypeId].toLowerCase()}50.png`;
+  
+      const predicateWT = function(c: Character, id: number): boolean{
+        return c.weaponTypeId === id;
+      }
+      group.characters = this.characters.filter((c) => predicateWT(c, weaponTypeId));
+  
       groups.push(group);
     });
-
-    if(this.characterRequest.elementsIds.length > 0){
+  
+    if (this.characterRequest.elementsIds.length > 0) {
       groups.forEach(g => {
-        var characters: Character[] = [];
-        this.orderByElement(g.characters).forEach(c => characters.push(c))
-        g.characters = characters;
-      })
+        g.characters.concat(this.orderByElement(g.characters));
+      });
+    } else if (this.characterRequest.regionsIds.length > 0) {
+      groups.forEach(g => {
+        g.characters.concat(this.orderByRegion(g.characters));
+      });
     }
-
-    if(this.characterRequest.sexIds.length > 0){
-      var groupsBySex: CharacterGroup[] = [];
+  
+    if (this.characterRequest.sexIds.length > 0) {
+      const groupsBySex: CharacterGroup[] = [];
       groups.forEach(g => {
         this.characterRequest.sexIds.forEach(sexId => {
-          var group: CharacterGroup = new CharacterGroup();
-          g.characters.forEach(c => {
-            if(c.sexId == sexId){
-              group.characters.push(c);
-            }
-          })
+          const group: CharacterGroup = new CharacterGroup();
+          group.weaponTypeImg = groups[0].weaponTypeImg;
+  
+          group.characters = g.characters.filter(c => c.sexId === sexId);
           groupsBySex.push(group);
         });
       });
-      groups = groupsBySex;
+      return groupsBySex;
     }
-
+  
+    return groups;
+  }
+  
+  private groupByElement(): CharacterGroup[] {
+    const groups: CharacterGroup[] = [];
+  
+    this.characterRequest.elementsIds.forEach(elementId => {
+      const group: CharacterGroup = new CharacterGroup();
+  
+      group.characters = this.characters.filter(c => c.element === Element[elementId]);
+  
+      groups.push(group);
+    });
+  
+    if (this.characterRequest.sexIds.length > 0) {
+      const groupsBySex: CharacterGroup[] = [];
+      groups.forEach(g => {
+        this.characterRequest.sexIds.forEach(sexId => {
+          const group: CharacterGroup = new CharacterGroup();
+  
+          group.characters = g.characters.filter(c => c.sexId === sexId);
+          groupsBySex.push(group);
+        });
+      });
+      return groupsBySex;
+    }
+  
     return groups;
   }
   private groupByRegion(): CharacterGroup[]{
@@ -217,9 +205,7 @@ export class CharactersPageComponent implements OnInit {
 
     if(this.characterRequest.elementsIds.length > 0){
       groups.forEach(g => {
-        var characters: Character[] = [];
-        this.orderByRarity(g.characters).forEach(c => characters.push(c))
-        g.characters = characters;
+        g.characters = this.orderByRarity(g.characters);
       })
     }
 
@@ -255,9 +241,7 @@ export class CharactersPageComponent implements OnInit {
     
     if(this.characterRequest.rarities.length > 0){
       groups.forEach(g => {
-        var characters: Character[] = [];
-        this.orderByRarity(g.characters).forEach(c => characters.push(c))
-        g.characters = characters;
+        g.characters = this.orderByRarity(g.characters);
       })
     }
 
@@ -293,6 +277,7 @@ export class CharactersPageComponent implements OnInit {
     return groups;
   }
 
+
   private orderByElement(charToOrder: Character[]): Character[]{
     var charactersOrdered: Character[] = [];
 
@@ -304,10 +289,10 @@ export class CharactersPageComponent implements OnInit {
         }
       })
       if(this.characterRequest.rarities.length > 0){
-        this.orderByRarity(charactersSubOrder).forEach(c => charactersOrdered.push(c))
+        charactersOrdered.concat(this.orderByRarity(charactersSubOrder));
       }
       else{
-        charactersSubOrder.forEach(c => charactersOrdered.push(c));
+        charactersOrdered.concat(charactersSubOrder);
       }
     });
     
@@ -324,10 +309,10 @@ export class CharactersPageComponent implements OnInit {
         }
       })
       if(this.characterRequest.rarities.length > 0){
-        this.orderByRarity(charactersSubOrder).forEach(c => charactersOrdered.push(c))
+        charactersOrdered.concat(this.orderByRarity(charactersSubOrder));
       }
       else{
-        charactersSubOrder.forEach(c => charactersOrdered.push(c));
+        charactersOrdered.concat(charactersSubOrder);
       }
     });
     
