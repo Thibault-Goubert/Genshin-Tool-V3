@@ -2,6 +2,7 @@
     display: flex;
     width: 30px;
     height: 30px;
+    margin-left: 4px;
 }
 .btn_filtre_image{
     width: 27px;
@@ -29,7 +30,8 @@
 #liste_personnages_filtres_sex_both,
 #liste_personnages_filtres_armes,
 #liste_personnages_filtres_elements,
-#liste_personnages_filtres_etoiles
+#liste_personnages_filtres_etoiles,
+#liste_personnages_filtres_regions
 {
     margin-left: 24px;
 }
@@ -42,20 +44,4 @@
 }
 #liste_personnages{
     margin-left: 6px;
-}
-
-#liste_personnages_filtres_sex_m,
-#liste_personnages_filtres_etoile,
-#liste_personnages_filtres_armes_arc,
-#liste_personnages_filtres_armes_lance,
-#liste_personnages_filtres_armes_claymore,
-#liste_personnages_filtres_armes_catalyste,
-#liste_personnages_filtres_elements_geo,
-#liste_personnages_filtres_elements_anemo,
-#liste_personnages_filtres_elements_eau,
-#liste_personnages_filtres_elements_electro,
-#liste_personnages_filtres_elements_dendro,
-#liste_personnages_filtres_elements_glace
-{
-    margin-left: 4px;
 }

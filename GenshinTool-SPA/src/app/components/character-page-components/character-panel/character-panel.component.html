@@ -2,7 +2,13 @@
     <div class="personnage_panel_portrait_content">
         <img class="personnage_panel_background" [src]="character.backgroundImg">
         <img class="personnage_panel_portrait" [src]="character.portraitImg">
-        <img *ngIf="character.name != 'Traveler'" class="personnage_panel_element" [src]="character.elementImg">
+        <img 
+            *ngIf="isElementVisible" 
+            class="personnage_panel_element" 
+            [src]="character.elementImg">
+        <div class="corner-ribbon__inner" *ngIf="isFilteredByRegion">
+            <div class="corner-ribbon__ribbon" [style.background-color]="ribbonColor"></div>
+        </div>
     </div>
     <div class="personnage_panel_name">{{ character.name }}</div>
 </div>

@@ -1,4 +1,4 @@
-﻿using GenshinTool.Common.Data.Sql;
+﻿using GenshinTool.Common.Data.Sql.Dapper;
 using GenshinTool.Common.Service.Interface.Context;
 using GenshinTool.Common.Service.Interface.Core;
 using GenshinTool.Common.Service.Interface.Repo;

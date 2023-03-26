@@ -32,7 +32,7 @@ import { CharacterFiltersComponent } from './components/character-page-component
 
     CharacterPanelComponent,
     CharacterPanelListComponent,
-    CharacterFiltersComponent
+    CharacterFiltersComponent,
   ],
   imports: [
     BrowserModule,

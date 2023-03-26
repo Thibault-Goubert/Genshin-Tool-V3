@@ -3,11 +3,9 @@
 body{
     background-color: #36393f;
 }
-
 ::selection {
     background-color: #CCC;
 }
-
 .flex{
     display: flex;
 }
@@ -21,7 +19,6 @@ body{
     align-items: center;
     justify-content: center;
 }
-
 input, .btn, span, p{
     text-align: center;
     background-color: #e9e5dc;
@@ -31,11 +28,6 @@ input, .btn, span, p{
     color: #36393f;
     border-radius: 3px;
 }
-.btn{    
-    height: 30px;
-    width: 100px;
-}
-
 textarea{
     resize:none;
     overflow-wrap:normal;
@@ -117,8 +109,10 @@ textarea{
 .panel_footer.high input{
     height: 18px;
 }
-
 .btn{
+    height: 30px;
+    width: 100px;
+
     align-items: center;
     justify-content: center;
     
@@ -131,9 +125,18 @@ textarea{
     margin-left: 6px; 
     margin-right: 6px;
 }
+.btn.checked{
+    background-color: #e9e5dc;
+}
 #btn_groupe_principal{
     margin-top: 10px;
 }
 .active {
     background-color: #e9e5dc;
-  }
+}
+.center{    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+

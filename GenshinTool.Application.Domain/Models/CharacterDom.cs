@@ -13,10 +13,10 @@ namespace GenshinTool.Application.Domain.Models
         public string? Name { get; set; }
         public long ElementId { get; set; }
         public Element Element { get; set; }
-        public long RarityId { get; set; }
         public long Rarity { get; set; }
         public long WeaponTypeId { get; set; }
         public long RegionId { get; set; }
+        public Region Region { get; set; }
         public long SexId { get; set; }
         public bool IsCollab { get; set; }
         public long WeaponId { get; set; }
