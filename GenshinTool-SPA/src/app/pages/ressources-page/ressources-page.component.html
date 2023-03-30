@@ -11,7 +11,10 @@
         routerLink="harvestables" routerLinkActive="active">Récoltables</div>
 
     <div id="btn_monsters" class="btn flex btn_principal" 
-        routerLink="monsters" routerLinkActive="active">Monstres</div>    
+        routerLink="monsters" routerLinkActive="active">Monstres</div> 
+        
+    <div id="btn_toggleRessourcesGoalChange" class="btn flex toggle" 
+        (click)="onToggleRessourceGoalClick()" [ngClass]="{active: canRessourceGoalChange}"></div>
 </div>
 
 <router-outlet></router-outlet>

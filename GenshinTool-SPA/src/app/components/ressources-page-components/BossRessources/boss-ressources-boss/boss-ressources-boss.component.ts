@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Definition } from 'src/app/models/Ressource/test/definition.model';
-import bossDefinition from "../../../../models/Ressource/bossRessourcesDefinition.json"
+import bossDefinition from "./bossRessourcesDefinition.json"
 
 @Component({
   selector: 'app-boss-ressources-boss',
@@ -12,6 +12,5 @@ export class BossRessourcesBossComponent implements OnInit{
 
   ngOnInit(): void {
     this.def = bossDefinition.definition;
-    console.log(this.def)
   }
 } 

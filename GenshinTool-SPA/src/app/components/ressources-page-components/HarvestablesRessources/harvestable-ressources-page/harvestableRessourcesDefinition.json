@@ -1,0 +1,126 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"local_calla_lily", "rarities":["gr"]
+							},
+							{
+								"name":"local_cecilia", "rarities":["gr"]
+							},
+							{
+								"name":"local_dandelion_seed", "rarities":["gr"]
+							},
+							{
+								"name":"local_philanemo_mushroom", "rarities":["gr"]
+							},
+							{
+								"name":"local_small_lamp_grass", "rarities":["gr"]
+							},
+							{
+								"name":"local_valberry", "rarities":["gr"]
+							},
+							{
+								"name":"local_windwheel_aster", "rarities":["gr"]
+							},
+							{
+								"name":"local_wolfhook", "rarities":["gr"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"local_cor_lapis", "rarities":["gr"]
+							},
+							{
+								"name":"local_glaze_lily", "rarities":["gr"]
+							},
+							{
+								"name":"local_jueyun_chili", "rarities":["gr"]
+							},
+							{
+								"name":"local_noctilucous_jade", "rarities":["gr"]
+							},
+							{
+								"name":"local_silk_flower", "rarities":["gr"]
+							},
+							{
+								"name":"local_starconch", "rarities":["gr"]
+							},
+							{
+								"name":"local_violetgrass", "rarities":["gr"]
+							},
+							{
+								"name":"local_qingxin", "rarities":["gr"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"local_amakumo_fruit", "rarities":["gr"]
+							},
+							{
+								"name":"local_crystal_marrow", "rarities":["gr"]
+							},
+							{
+								"name":"local_dendrobium", "rarities":["gr"]
+							},
+							{
+								"name":"local_naku_weed", "rarities":["gr"]
+							},
+							{
+								"name":"local_onikabuto", "rarities":["gr"]
+							},
+							{
+								"name":"local_sakura_bloom", "rarities":["gr"]
+							},
+							{
+								"name":"local_sango_pearl", "rarities":["gr"]
+							},
+							{
+								"name":"local_sea_ganoderma", "rarities":["gr"]
+							},
+							{
+								"name":"local_fluorescent_fungus", "rarities":["gr"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"local_nilotpala_lotus", "rarities":["gr"]
+							},
+							{
+								"name":"local_kalpalata_lotus", "rarities":["gr"]
+							},
+							{
+								"name":"local_rukkhashava_mushroom", "rarities":["gr"]
+							},
+							{
+								"name":"local_padisarah", "rarities":["gr"]
+							},
+							{
+								"name":"local_henna_berry", "rarities":["gr"]
+							},
+							{
+								"name":"local_scarab", "rarities":["gr"]
+							},
+							{
+								"name":"local_sand_grease", "rarities":["gr"]
+							},
+							{
+								"name":"local_mourning_flower", "rarities":["gr"]
+							}
+						]
+					}
+                ]
+            }
+        ]
+    }
+}

@@ -7,6 +7,7 @@ export interface RessourceDomainDefinition {
 }
 
 export interface Block {
+    days: string[];
     class: string;
     title: Title;
     frame: Frame;

@@ -45,13 +45,28 @@ export class CharactersPageComponent implements OnInit {
       this.characterRequest.sexIds.length > 0);
   }
 
+  private tabOpenedSaveKey = "charactersPage_mainTab";
+
   constructor(private characterService: CharacterService){}
 
   ngOnInit(): void {
     this.characters = [];
     this.characterGroups = [];
     this.characterRequest = new CharacterRequest();
+
     this.getRequestFromFilter(this.characterRequest);
+
+    this.removeOtherTabSavedKeyFromStorage();
+    localStorage.setItem(this.tabOpenedSaveKey, "open");
+  }
+
+  removeOtherTabSavedKeyFromStorage() {
+    for(let index=0;index<localStorage.length;index++){
+      let key = localStorage.key(index) ?? "";
+      if(key.includes("mainTab")){
+        localStorage.removeItem(key);
+      }
+    }
   }
 
   public async getRequestFromFilter($event: CharacterRequest){

@@ -2,22 +2,22 @@
     <div class="mora_xp_minerais">
         <div class="flex row">
             <div class="panel large high" id='panel_mora'>
-                <div class="panel_content hideable large">
+                <div class="panel_content large" (click)="OnClick($event)">
                     <img class="panel_content_image center large" src="assets/icons/recoltables/case_gr.png">
                     <img class="panel_content_image center" src="assets/icons/recoltables/moras.png">
                 </div>
                 <div class="panel_footer item_center high">
                     <div class="flex item_center">
-                        <input type="text" placeholder="x" id="input_left-nb_mora" />
+                        <input type="text" placeholder="x" id="input_left-nb_mora" #leftInputMora (input)='onInputChange(leftInputMora)'/>
                     </div>
                     <div class="flex row item_center">
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-total_mora" />
+                        <input type="text" placeholder="x" id="input_right-total_mora" #rightInputMora (input)='onInputChange(rightInputMora)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>
             <div class="panel large high" id='panel_xp'>
-                <div class="panel_content hideable large flex row">
+                <div class="panel_content large flex row" (click)="OnClick($event)">
                     <img class="panel_content_image left" src="assets/icons/recoltables/case_vi.png">
                     <img class="panel_content_image left" src="assets/icons/recoltables/xp_books_b.png">
 
@@ -26,54 +26,45 @@
                 </div>
                 <div class="panel_footer item_center high">
                     <div class="flex row item_center">
-                        <input type="text" placeholder="x" id="input_left-nb_book_vi" />
+                        <input type="text" placeholder="x" id="input_left-nb_book_vi" #leftInputBookVi (input)='onBookInputChange(leftInputBookVi)'/>
                         <span>+</span>
-                        <input type="text" placeholder="x" id="input_left-nb_book_b" />
+                        <input type="text" placeholder="x" id="input_left-nb_book_b" #leftInputBookB (input)='onBookInputChange(leftInputBookB)'/>
                     </div>
                     <div class="flex row item_center">
                         <span>=</span>
-                        <input type="text" placeholder="x" id="input_left-xp_total" />
+                        <input type="text" placeholder="x" id="input_left-xp_total" #leftInputBookTotal (focus)="onRightInputMineraisFocus(leftInputBookTotal)" (input)='onInputChange(leftInputBookTotal)' />
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-xp_total" />
+                        <input type="text" placeholder="x" id="input_right-xp_total" #rightInputBookTotal (input)='onInputChange(rightInputBookTotal)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>					
-            <div class="panel" id="panel-crown">
-                <div class="panel_content hideable">
+            <div class="panel" id="panel_crown">
+                <div class="panel_content" (click)="OnClick($event)">
                     <img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
                     <img class="panel_content_image" src="assets/icons/recoltables/crown.png">
                 </div>
                 <div class="panel_footer item_center flex row high">
-                    <input type="text" placeholder="x" id="input_left-crown" />
+                    <input type="text" placeholder="x" id="input_left-crown" #leftInputCrown (input)='onInputChange(leftInputCrown)'/>
                     <span>/</span>
-                    <input type="text" placeholder="x" id="input_right-crown" />
+                    <input type="text" placeholder="x" id="input_right-crown" #rightInputCrown (input)='onInputChange(rightInputCrown)' (focus)="onRightInputFocus($event)"/>
                 </div>
             </div>
             <div class="panel high" id='panel_minerais'>
-                <div class="panel_content hideable">
+                <div class="panel_content" (click)="OnClick($event)">
                     <img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
                     <img class="panel_content_image" src="assets/icons/recoltables/minerais.png">
                 </div>
                 <div class="panel_footer item_center high">
                     <div class="flex row item_center">
-                        <input type="text" placeholder="x" id="input_left-nb_minerais" />
+                        <input type="text" placeholder="x" id="input_left-nb_minerais" #leftInputMinerais (input)='onInputChange(leftInputMinerais)'/>
                     </div>
                     <div class="flex row item_center">
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-total_minerais" />
+                        <input type="text" placeholder="x" id="input_right-total_minerais" #rightInputMinerais (input)='onInputChange(rightInputMinerais)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>
-            <div class="panel high" id='panel_parametric_transformer'>
-                <div class="panel_content" id='panel_parametric_transformer_content'>
-                    <img class="panel_content_image"  src="assets/icons/recoltables/case_vi.png">
-                    <img class="panel_content_image center" src="assets/icons/recoltables/parametric_transformer.png">
-                </div>
-                <div class="panel_footer item_center high" id="panel_parametric_transformer_timer">
-                    <div class="flex row item_center" id="panel_parametric_transformer_days"></div>
-                    <div class="flex row item_center" id="panel_parametric_transformer_hours_mins"></div>
-                </div>
-            </div>
+            <app-general-ressources-parametric></app-general-ressources-parametric>
         </div>
     </div>
 </div>

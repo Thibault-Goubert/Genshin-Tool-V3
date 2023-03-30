@@ -1,0 +1,129 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "normal_loot_list1",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"common_slime", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_mask", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_scroll", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_arrowhead", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_fatui_insigna", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_hoarder_insigna", "rarities":["gr","ve","b"]
+							}
+                        ]
+                    }
+                ]
+            },
+			{
+				"class": "normal_loot_list2 bigLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"common_nectar", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_handguard", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_specter_husk", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_fungal_dust", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_red_bandage", "rarities":["gr","ve","b"]
+							}
+                        ]
+                    }
+                ]
+            },
+			{
+				"class": "rare_loot_list1 bigLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elite_horn", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_branch", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_chaos_core", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_mist_grass", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_lame", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_bone", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_shell", "rarities":["ve","b","vi"]
+							}
+                        ]
+                    }
+                ]
+            },
+			{
+				"class": "rare_loot_list2 bigLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elite_chaos_gear", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_prism", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_wolf_claw", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_statuette", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_chaos_module", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_fungal_nucleus", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_desert_prism", "rarities":["ve","b","vi"]
+							}
+                        ]
+                    }
+                ]
+            },
+			{
+				"class": "rare_loot_list3 bigLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elite_flower", "rarities":["ve","b","vi"]
+							}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -27,6 +27,10 @@ import { BossRessourcesElementsComponent } from './components/ressources-page-co
 import { MonsterRessourcesPageComponent } from './components/ressources-page-components/MonstersRessources/monster-ressources-page/monster-ressources-page.component';
 import { BossRessourcesBossComponent } from './components/ressources-page-components/BossRessources/boss-ressources-boss/boss-ressources-boss.component';
 import { RessourcePanelComponent } from './components/ressources-page-components/ressource-panel/ressource-panel.component';
+import { GeneralRessourcesParametricComponent } from './components/ressources-page-components/GeneralRessources/general-ressources-parametric/general-ressources-parametric.component';
+import { CalculatorPageComponent } from './pages/calculator-page/calculator-page/calculator-page.component';
+import { CalculatorCharacterComponent } from './components/calculator-page-components/calculator-character/calculator-character.component';
+import { CalculatorWeaponComponent } from './components/calculator-page-components/calculator-weapon/calculator-weapon.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { RessourcePanelComponent } from './components/ressources-page-components
     MonsterRessourcesPageComponent,
     BossRessourcesBossComponent,
     RessourcePanelComponent,
+    GeneralRessourcesParametricComponent,
+    CalculatorPageComponent,
+    CalculatorCharacterComponent,
+    CalculatorWeaponComponent,
   ],
   imports: [
     BrowserModule,
