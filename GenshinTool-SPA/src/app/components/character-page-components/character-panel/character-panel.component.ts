@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Character } from '../../../models/character.model';
+import { Character } from '../../../models/Character/character.model';
 import { RegionRibbonColor } from '../../../models/enums/regionRibbonColor.enum';
 
 const iconsPath = "/assets/icons/";

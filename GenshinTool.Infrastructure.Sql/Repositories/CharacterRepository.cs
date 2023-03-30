@@ -54,32 +54,25 @@ namespace GenshinTool.Infrastructure.Sql.Repositories
             return Get(query);
         }
 
-        private static IEnumerable<IQueryFilter> BuildParentSelectors(CharacterRequest req)
+        private IEnumerable<IQueryFilter> BuildParentSelectors(CharacterRequest req)
         {
             List<IQueryFilter> filters = new List<IQueryFilter>();
 
-            if (req.Rarities.HasAny())
-            {
-                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.Rarity), FieldValue = req.Rarities });
-            }
-            if (req.ElementsIds.HasAny())
-            {
-                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.ElementId), FieldValue = req.ElementsIds });
-            }
-            if (req.WeaponsTypesIds.HasAny())
-            {
-                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.WeaponTypeId), FieldValue = req.WeaponsTypesIds });
-            }
-            if (req.SexIds.HasAny())
-            {
-                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.SexId), FieldValue = req.SexIds });
-            }
-            if (req.RegionsIds.HasAny())
-            {
-                filters.Add(new QueryFilterTypeListLong { FieldName = nameof(CharacterDom.RegionId), FieldValue = req.RegionsIds });
-            }
+            AddFilter(filters, req.Rarities, nameof(CharacterDom.Rarity));
+            AddFilter(filters, req.ElementsIds, nameof(CharacterDom.ElementId));
+            AddFilter(filters, req.WeaponsTypesIds, nameof(CharacterDom.WeaponTypeId));
+            AddFilter(filters, req.SexIds, nameof(CharacterDom.SexId));
+            AddFilter(filters, req.RegionsIds, nameof(CharacterDom.RegionId));
 
             return filters;
+        }
+
+        private void AddFilter(List<IQueryFilter> filters, IEnumerable<long> ids, string propName)
+        {
+            if (ids.HasAny())
+            {
+                filters.Add(new QueryFilterTypeListLong { FieldName = propName, FieldValue = ids });
+            }
         }
     }
 }

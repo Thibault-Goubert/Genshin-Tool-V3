@@ -1,0 +1,11 @@
+<div class="panel" [id]="ressourceId" [ngClass]="{hide: isHided}" (click)="OnClick()">
+    <div class="panel_content hideable">
+        <img class="panel_content_image" [src]="backgroundImg">
+        <img class="panel_content_image" [src]="ressourceImg">
+    </div>
+    <div class="panel_footer item_center flex row">
+        <input type="text" placeholder="x" [id]="leftInputId" />
+        <span>/</span>
+        <input type="text" placeholder="x" [id]="rightInputId" />
+    </div>
+</div>

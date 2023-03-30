@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Character } from '../models/character.model';
-import { CharacterRequest } from '../models/characterRequest.model';
+import { Character } from '../models/Character/character.model';
+import { CharacterRequest } from '../models/Character/characterRequest.model';
 import { ResponseItems } from '../models/responseItems.model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments';

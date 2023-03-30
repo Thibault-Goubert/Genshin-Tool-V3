@@ -1,0 +1,133 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"boss_dvalin_feather", "rarities":["g"]
+							},
+							{
+								"name":"boss_dvalin_sigh", "rarities":["g"]
+							},
+							{
+								"name":"boss_dvalin_claw", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_dvalin_feather", "rarities":["g"]
+							},
+							{
+								"name":"boss_dvalin_sigh", "rarities":["g"]
+							},
+							{
+								"name":"boss_dvalin_claw", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_boreas_tail", "rarities":["g"]
+							},
+							{
+								"name":"boss_boreas_ring", "rarities":["g"]
+							},
+							{
+								"name":"boss_boreas_locket", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_childe_shadow", "rarities":["g"]
+							},
+							{
+								"name":"boss_childe_tusk", "rarities":["g"]
+							},
+							{
+								"name":"boss_childe_shard", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_azhdaha_scale", "rarities":["g"]
+							},
+							{
+								"name":"boss_azhdaha_crown", "rarities":["g"]
+							},
+							{
+								"name":"boss_azhdaha_branch", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_signora_heart", "rarities":["g"]
+							},
+							{
+								"name":"boss_signora_flower", "rarities":["g"]
+							},
+							{
+								"name":"boss_signora_butterfly", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_raiden_hand", "rarities":["g"]
+							},
+							{
+								"name":"boss_raiden_tear", "rarities":["g"]
+							},
+							{
+								"name":"boss_raiden_fan", "rarities":["g"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_scaramouche_bell", "rarities":["g"]
+							},
+							{
+								"name":"boss_scaramouche_mirror", "rarities":["g"]
+							},
+							{
+								"name":"boss_scaramouche_string", "rarities":["g"]
+							}
+						]
+					}
+				]
+			},
+			{
+				"class": "smallLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"boss_guardian_amber", "rarities":["g"]
+							},
+							{
+								"name":"boss_guardian_bloom", "rarities":["g"]
+							},
+							{
+								"name":"boss_guardian_fern", "rarities":["g"]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,53 @@
+#btn_groupe_ressources, #btn_groupe_gestions {
+  margin-top: 23px;
+}
+.panel {
+  width: 62px;
+  height: 85px;
+  box-shadow: 0px 0px 4px black;
+  border-radius: 5px 5px 5px 5px;
+  margin: 6px;
+  box-shadow: 0px 0px 4px black;
+}
+.panel_content {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 5px 5px 0px 0px;
+}
+.panel_content_image {
+  width: 62px;
+  height: 62px;
+  position: absolute;
+  border-radius: 5px 5px 0px 0px;
+}
+.panel.high {
+  height: 98px;
+}
+.panel_footer {
+  align-items: center;
+  background-color: #e9e5dc;
+  border-radius: 0px 0px 5px 5px;
+  align-items: center;
+  height: 23px;
+}
+.panel_footer input {
+  width: 28px;
+  height: 23px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  padding: 0px 0px;
+  border-radius: 0px 0px 5px 5px;
+}
+.panel_footer.high {
+  height: 36px;
+}
+.panel_footer.high input {
+  height: 18px;
+}
+.large, div.large, img.large {
+  width: 124px;
+}
