@@ -1,0 +1,23 @@
+#liste_ressources_generales, #btn_groupe_ressources, #btn_groupe_gestions {
+    margin-top: 23px;
+}
+#input_left-nb_mora {
+    width: 120px;
+}
+#input_right-total_mora {
+    width: 110px;
+}
+.large, div.large, img.large {
+  width: 124px;
+}
+img.left {
+    left: 0%;
+    border-radius: 5px 0px 0px 0px;
+}
+img.right {
+    right: 0%;
+    border-radius: 0px 5px 0px 0px;
+}
+#input_left-xp_total, #input_right-xp_total, #input_left-nb_minerais, #input_right-total_minerais, #input_left-nb_book_vi, #input_left-nb_book_b {
+    width: 55px;
+}

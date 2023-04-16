@@ -2,9 +2,12 @@
 
 body{
     background-color: #36393f;
-}
-::selection {
-    background-color: #CCC;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .flex{
     display: flex;
@@ -27,6 +30,28 @@ input, .btn, span, p{
     font-size:smaller;
     color: #36393f;
     border-radius: 3px;
+}
+.btn{
+    height: 30px;
+    width: 100px;
+
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #282a2f;
+    color: #474851;
+    user-select: none;
+    box-shadow: 0px 0px 4px black; 
+}
+.btn_principal{ 
+    margin-left: 6px; 
+    margin-right: 6px;
+}
+.btn.checked{
+    background-color: #e9e5dc;
+}
+#btn_groupe_principal{
+    margin-top: 10px;
 }
 textarea{
     resize:none;
@@ -109,28 +134,6 @@ textarea{
 .panel_footer.high input{
     height: 18px;
 }
-.btn{
-    height: 30px;
-    width: 100px;
-
-    align-items: center;
-    justify-content: center;
-    
-    background-color: #282a2f;
-    color: #474851;
-    user-select: none;
-    box-shadow: 0px 0px 4px black; 
-}
-.btn_principal{ 
-    margin-left: 6px; 
-    margin-right: 6px;
-}
-.btn.checked{
-    background-color: #e9e5dc;
-}
-#btn_groupe_principal{
-    margin-top: 10px;
-}
 .active {
     background-color: #e9e5dc;
 }
@@ -139,4 +142,9 @@ textarea{
     top: 50%;
     transform: translate(-50%, -50%)
 }
-
+img {
+    pointer-events: none;
+}
+.bigLeftSpace{  
+    margin-left: 60px;
+}

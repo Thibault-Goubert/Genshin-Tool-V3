@@ -1,0 +1,11 @@
+<div class="gem_list">
+    <div class="flex row">
+        <div class="gem_list">
+            <div class="flex row" *ngFor="let name of gemNames">
+                <app-ressource-panel  *ngFor="let rarity of gemRarities" 
+                    [ressource]="{name: name + '_' + rarity, rarity: rarity}">
+                </app-ressource-panel>
+            </div>
+        </div>
+    </div>
+</div>

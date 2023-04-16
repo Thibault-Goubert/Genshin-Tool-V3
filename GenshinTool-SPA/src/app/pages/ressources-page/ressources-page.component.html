@@ -1,1 +1,17 @@
-<p>ressources-page works!</p>
+<app-general-ressources></app-general-ressources>
+
+<div id="btn_groupe_ressources" class="flex row">
+    <div id="btn_domains" class="btn flex btn_principal" 
+        routerLink="domains" routerLinkActive="active">Domains</div>
+        
+    <div id="btn_boss" class="btn flex btn_principal" 
+        routerLink="boss" routerLinkActive="active">Boss</div>
+
+    <div id="btn_harvestables" class="btn flex btn_principal" 
+        routerLink="harvestables" routerLinkActive="active">Récoltables</div>
+
+    <div id="btn_monsters" class="btn flex btn_principal" 
+        routerLink="monsters" routerLinkActive="active">Monstres</div>    
+</div>
+
+<router-outlet></router-outlet>

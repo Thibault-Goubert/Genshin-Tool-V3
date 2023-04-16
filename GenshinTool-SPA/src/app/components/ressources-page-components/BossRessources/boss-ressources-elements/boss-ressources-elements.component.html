@@ -1,0 +1,15 @@
+<div class="flex row elem_list bigLeftSpace">
+    <div class="flex col" *ngFor="let col of def.cols">
+        <div *ngFor="let row of col.rows" class="flex row" [ngClass]="{smallLeftSpace: col.class.includes('smallLeftSpace')}">
+            <ng-template *ngFor="let ressource of row.ressources" [ngIf]="ressource.name != ''" [ngIfElse]="empty">
+                <app-ressource-panel *ngFor="let rarity of ressource.rarities"
+                    [ressource]="{name: ressource.name, rarity: rarity}">
+                </app-ressource-panel>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<ng-template #empty>
+    <div class="panel_empty"></div>
+</ng-template>

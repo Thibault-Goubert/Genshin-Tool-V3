@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CharacterRequest } from 'src/app/models/characterRequest.model';
+import { CharacterRequest } from 'src/app/models/Character/characterRequest.model';
 import { Element } from 'src/app/models/enums/element.enum';
 import { WeaponType } from 'src/app/models/enums/weaponType.enum';
 import { Sex } from 'src/app/models/enums/sex.enum';
@@ -45,7 +45,7 @@ export class CharacterFiltersComponent implements OnInit {
     }
     const list = this.characterRequest.elementsIds;
     this.AddOrRemoveValueFromArray(list, element);
-    list.sort((a,b) => a - b)
+    list.sort((a: number,b: number) => a - b)
     this.filter.emit(this.characterRequest);
   }
   public AddOrRemoveWeaponTypeFilter(weaponType: WeaponType){
@@ -75,7 +75,7 @@ export class CharacterFiltersComponent implements OnInit {
     }
     const list = this.characterRequest.regionsIds;
     this.AddOrRemoveValueFromArray(list, region);
-    list.sort((a,b) => a - b)
+    list.sort((a: number,b: number) => a - b)
     this.filter.emit(this.characterRequest);
   }
 

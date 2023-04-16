@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CharacterPanelListComponent } from 'src/app/components/character-page-components/character-panel-list/character-panel-list.component';
-import { Character } from 'src/app/models/character.model';
-import { CharacterGroup } from 'src/app/models/characterGroup.model';
-import { CharacterRequest } from 'src/app/models/characterRequest.model';
+import { Character } from 'src/app/models/Character/character.model';
+import { CharacterGroup } from 'src/app/models/Character/characterGroup.model';
+import { CharacterRequest } from 'src/app/models/Character/characterRequest.model';
 import { CharacterService } from 'src/app/services/characters.service';
 import { WeaponType } from 'src/app/models/enums/weaponType.enum';
 import { Element } from 'src/app/models/enums/element.enum';
 import { Region } from 'src/app/models/enums/region.enum';
-import { Sex } from 'src/app/models/enums/sex.enum';
-
 
 @Component({
   selector: 'app-characters-page',
@@ -69,7 +67,7 @@ export class CharactersPageComponent implements OnInit {
     if(this._requestHasAny){
         this.groupCharacters();
         this.characterGroups.forEach(g => {        
-          g.characters = g.characters.filter((value, index, self) => self.map(x => x.name).indexOf(value.name) == index)
+          g.characters = g.characters.filter((value: { name: any; }, index: any, self: any[]) => self.map((x: { name: any; }) => x.name).indexOf(value.name) == index)
         })
       }
       else{
@@ -125,7 +123,7 @@ export class CharactersPageComponent implements OnInit {
   private groupByWeaponTypes(): CharacterGroup[] {
     const groups: CharacterGroup[] = [];
   
-    this.characterRequest.weaponsTypesIds.forEach(weaponTypeId => {
+    this.characterRequest.weaponsTypesIds.forEach((weaponTypeId: number) => {
       const group: CharacterGroup = new CharacterGroup();
         group.weaponTypeImg = `./assets/icons/filters/filter_weapon${WeaponType[weaponTypeId].toLowerCase()}50.png`;
   
@@ -150,11 +148,11 @@ export class CharactersPageComponent implements OnInit {
     if (this.characterRequest.sexIds.length > 0) {
       const groupsBySex: CharacterGroup[] = [];
       groups.forEach(g => {
-        this.characterRequest.sexIds.forEach(sexId => {
+        this.characterRequest.sexIds.forEach((sexId: any) => {
           const group: CharacterGroup = new CharacterGroup();
           group.weaponTypeImg = groups[0].weaponTypeImg;
   
-          group.characters = g.characters.filter(c => c.sexId === sexId);
+          group.characters = g.characters.filter((c: { sexId: any; }) => c.sexId === sexId);
           groupsBySex.push(group);
         });
       });
@@ -167,7 +165,7 @@ export class CharactersPageComponent implements OnInit {
   private groupByElement(): CharacterGroup[] {
     const groups: CharacterGroup[] = [];
   
-    this.characterRequest.elementsIds.forEach(elementId => {
+    this.characterRequest.elementsIds.forEach((elementId: number) => {
       const group: CharacterGroup = new CharacterGroup();
   
       group.characters = this.characters.filter(c => c.element === Element[elementId]);
@@ -178,10 +176,10 @@ export class CharactersPageComponent implements OnInit {
     if (this.characterRequest.sexIds.length > 0) {
       const groupsBySex: CharacterGroup[] = [];
       groups.forEach(g => {
-        this.characterRequest.sexIds.forEach(sexId => {
+        this.characterRequest.sexIds.forEach((sexId: any) => {
           const group: CharacterGroup = new CharacterGroup();
   
-          group.characters = g.characters.filter(c => c.sexId === sexId);
+          group.characters = g.characters.filter((c: { sexId: any; }) => c.sexId === sexId);
           groupsBySex.push(group);
         });
       });
@@ -193,7 +191,7 @@ export class CharactersPageComponent implements OnInit {
   private groupByRegion(): CharacterGroup[]{
     var groups: CharacterGroup[] = [];
     
-    this.characterRequest.regionsIds.forEach(regionId => {      
+    this.characterRequest.regionsIds.forEach((regionId: number) => {      
       var group: CharacterGroup = new CharacterGroup();
       this.characters.forEach(c => {
         if(c.regionId == regionId){
@@ -212,9 +210,9 @@ export class CharactersPageComponent implements OnInit {
     if(this.characterRequest.sexIds.length > 0){
       var groupsBySex: CharacterGroup[] = [];
       groups.forEach(g => {
-        this.characterRequest.sexIds.forEach(sexId => {
+        this.characterRequest.sexIds.forEach((sexId: any) => {
           var group: CharacterGroup = new CharacterGroup();
-          g.characters.forEach(c => {
+          g.characters.forEach((c) => {
             if(c.sexId == sexId){
               group.characters.push(c);
             }
@@ -229,7 +227,7 @@ export class CharactersPageComponent implements OnInit {
   }
   private groupBySex(): CharacterGroup[] {
     var groups: CharacterGroup[] = [];
-    this.characterRequest.sexIds.forEach(sexId => {      
+    this.characterRequest.sexIds.forEach((sexId: number) => {      
       var group: CharacterGroup = new CharacterGroup();
       this.characters.forEach(c => {
         if(c.sexId == sexId){
@@ -248,9 +246,9 @@ export class CharactersPageComponent implements OnInit {
     if(this.characterRequest.rarities.length > 0){
       var groupsByRarity: CharacterGroup[] = [];
       groups.forEach(g => {
-        this.characterRequest.rarities.forEach(rarity => {
+        this.characterRequest.rarities.forEach((rarity: number) => {
           var group: CharacterGroup = new CharacterGroup();
-          g.characters.forEach(c => {
+          g.characters.forEach((c) => {
             if(c.rarity == rarity){
               group.characters.push(c);
             }
@@ -265,7 +263,7 @@ export class CharactersPageComponent implements OnInit {
   }
   private groupByRarities(): CharacterGroup[] {
     var groups: CharacterGroup[] = [];
-    this.characterRequest.rarities.forEach(rarity => {      
+    this.characterRequest.rarities.forEach((rarity: number) => {      
       var group: CharacterGroup = new CharacterGroup();
       this.characters.forEach(c => {
         if(c.rarity == rarity){
@@ -281,7 +279,7 @@ export class CharactersPageComponent implements OnInit {
   private orderByElement(charToOrder: Character[]): Character[]{
     var charactersOrdered: Character[] = [];
 
-    this.characterRequest.elementsIds.forEach(e => {
+    this.characterRequest.elementsIds.forEach((e: number) => {
       var charactersSubOrder: Character[] = [];
       charToOrder.forEach(c => {
         if(c.element == Element[e]){
@@ -301,7 +299,7 @@ export class CharactersPageComponent implements OnInit {
   private orderByRegion(charToOrder: Character[]): Character[]{
     var charactersOrdered: Character[] = [];
 
-    this.characterRequest.regionsIds.forEach(r => {
+    this.characterRequest.regionsIds.forEach((r: number) => {
       var charactersSubOrder: Character[] = [];
       charToOrder.forEach(c => {
         if(c.region == Region[r]){
@@ -321,7 +319,7 @@ export class CharactersPageComponent implements OnInit {
   private orderByRarity(charToOrder: Character[]): Character[]{
     var charactersOrdered: Character[] = [];
 
-    this.characterRequest.rarities.forEach(r => {
+    this.characterRequest.rarities.forEach((r: number) => {
       charToOrder.forEach(c => {
         if(c.rarity == r){
           charactersOrdered.push(c);

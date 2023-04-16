@@ -1,0 +1,270 @@
+{
+	"ressourceDomainDefinition": {
+	  "blocks": [
+		{
+		  "class": "flex col domain_ressources_monday_thursday",
+		  "title": {
+			"class": "domain_ressources_days",
+			"id": "domain_ressources_days_monday_thursday",
+			"text": "Lundi & Jeudi"
+		  },
+		  "frame": {
+			"class": "flex row domain_ressources_frame",
+			"id": "domain_ressources_monday_thursday_frame"
+		  },
+		  "cols": [
+			{
+			  "class": "domain_ressources_monday_thursday_talent",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "talent_freedom",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_prosperity",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_transience",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_admonition",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			},
+			{
+			  "class": "domain_ressources_monday_thursday_domains",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_tablette",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_pillar",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_coral",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_keychain",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			}
+		  ]
+		},
+		{
+		  "class": "flex col domain_ressources_tuesday_friday bigLeftSpace",
+		  "title": {
+			"class": "domain_ressources_days",
+			"id": "domain_ressources_days_tuesday_friday",
+			"text": "Mardi & Vendredi"
+		  },
+		  "frame": {
+			"class": "flex row domain_ressources_frame",
+			"id": "domain_ressources_tuesday_friday_frame"
+		  },
+		  "cols": [
+			{
+			  "class": "domain_ressources_tuesday_friday_talent",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "talent_resistance",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_diligence",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_elegance",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_ingenuity",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			},
+			{
+			  "class": "domain_ressources_tuesday_friday_domains",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_fang",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_billes",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_narukami",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_plate",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			}
+		  ]
+		},
+		{
+		  "class": "flex col domain_ressources_wednesday_saturday bigLeftSpace",
+		  "title": {
+			"class": "domain_ressources_days",
+			"id": "domain_ressources_days_wednesday_saturday",
+			"text": "Mercredi & Samedi"
+		  },
+		  "frame": {
+			"class": "flex row domain_ressources_frame",
+			"id": "domain_ressources_wednesday_saturday_frame"
+		  },
+		  "cols": [
+			{
+			  "class": "domain_ressources_wednesday_saturday_talent",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "talent_ballad",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_gold",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_light",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "talent_praxis",
+					  "rarities": ["ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			},
+			{
+			  "class": "domain_ressources_wednesday_saturday_domains",
+			  "rows": [
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_menottes",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_puzzle",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_oni_mask",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				},
+				{
+				  "ressources": [
+					{
+					  "name": "weapon_scarab",
+					  "rarities": ["g","ve","b","vi"]
+					}
+				  ]
+				}
+			  ]
+			}
+		  ]
+		}
+	  ]
+	}
+  }

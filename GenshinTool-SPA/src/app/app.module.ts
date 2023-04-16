@@ -9,30 +9,46 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
-import { RessourcesPageComponent } from './pages/ressources-page/ressources-page.component';
 import { CharactersPageComponent } from './pages/characters-page/characters-page.component';
-import { ArtefactsPageComponent } from './pages/artefacts-page/artefacts-page.component';
-import { NotesPageComponent } from './pages/notes-page/notes-page.component';
-
 import { CharacterPanelComponent } from './components/character-page-components/character-panel/character-panel.component';
 import { CharacterPanelListComponent } from './components/character-page-components/character-panel-list/character-panel-list.component';
 import { CharacterFiltersComponent } from './components/character-page-components/filters/character-filters/character-filters.component';
 
+import { ArtefactsPageComponent } from './pages/artefacts-page/artefacts-page.component';
+import { NotesPageComponent } from './pages/notes-page/notes-page.component';
+
+import { RessourcesPageComponent } from './pages/ressources-page/ressources-page.component';
+import { GeneralRessourcesComponent } from './components/ressources-page-components/GeneralRessources/general-ressources/general-ressources.component';
+import { DomainRessourcesPageComponent } from './components/ressources-page-components/DomainsRessources/domain-ressources-page/domain-ressources-page.component';
+import { BossRessourcesPageComponent } from './components/ressources-page-components/BossRessources/boss-ressources-page/boss-ressources-page.component';
+import { HarvestableRessourcesPageComponent } from './components/ressources-page-components/HarvestablesRessources/harvestable-ressources-page/harvestable-ressources-page.component';
+import { BossRessourcesGemsComponent } from './components/ressources-page-components/BossRessources/boss-ressources-gems/boss-ressources-gems.component';
+import { BossRessourcesElementsComponent } from './components/ressources-page-components/BossRessources/boss-ressources-elements/boss-ressources-elements.component';
+import { MonsterRessourcesPageComponent } from './components/ressources-page-components/MonstersRessources/monster-ressources-page/monster-ressources-page.component';
+import { BossRessourcesBossComponent } from './components/ressources-page-components/BossRessources/boss-ressources-boss/boss-ressources-boss.component';
+import { RessourcePanelComponent } from './components/ressources-page-components/ressource-panel/ressource-panel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-
     HeaderComponent,
     LandingPageComponent,
-
     RessourcesPageComponent,
     CharactersPageComponent,
     ArtefactsPageComponent,
     NotesPageComponent,
-
     CharacterPanelComponent,
     CharacterPanelListComponent,
     CharacterFiltersComponent,
+    BossRessourcesPageComponent,
+    DomainRessourcesPageComponent,
+    HarvestableRessourcesPageComponent,
+    GeneralRessourcesComponent,
+    BossRessourcesGemsComponent,
+    BossRessourcesElementsComponent,
+    MonsterRessourcesPageComponent,
+    BossRessourcesBossComponent,
+    RessourcePanelComponent,
   ],
   imports: [
     BrowserModule,

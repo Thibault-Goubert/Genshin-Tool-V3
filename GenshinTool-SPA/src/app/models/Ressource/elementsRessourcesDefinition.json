@@ -1,0 +1,137 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elem_a_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_a_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_c_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_c_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_e_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_e_2", "rarities":["vi"]
+							},
+							{
+								"name":"elem_e_3", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_h_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_h_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_p_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_p_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_g_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_g_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_d_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_d_2", "rarities":["vi"]
+							}
+						]
+					}
+				]
+			},
+			{
+				"class": "smallLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elem_duo_1",
+								"rarities":["vi"]
+							},
+							{
+								"name":"elem_duo_2",
+								"rarities":["vi"]
+							},
+							{
+								"name":"elem_duo_3",
+								"rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_duo_4",
+								"rarities":["vi"]
+							},
+							{
+								"name":"elem_duo_5",
+								"rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"",
+								"rarities":[]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_trio_1",
+								"rarities":["vi"]
+							},
+							{
+								"name":"elem_trio_2",
+								"rarities":["vi"]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
