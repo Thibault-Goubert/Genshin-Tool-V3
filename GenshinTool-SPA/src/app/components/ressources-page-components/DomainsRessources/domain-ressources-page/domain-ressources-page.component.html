@@ -1,9 +1,9 @@
 <div id="list_ressources_domains" class="flex row">    
     <div *ngFor="let block of def.blocks" class="{{block.class}}">
-        <div class="{{block.title.class}}" id="{{block.title.id}}">
+        <div class="{{block.title.class}}" id="{{block.title.id}}" [ngClass]="{day_active: block.days.includes(currentDay)}">
             <p>{{block.title.text}}</p>
         </div>
-        <div class="{{block.frame.class}}" id="{{block.frame.id}}">
+        <div class="{{block.frame.class}}" id="{{block.frame.id}}" [ngClass]="{frame_active: block.days.includes(currentDay)}">
             <div *ngFor="let col of block.cols" class="{{col.class}}">
                 <div *ngFor="let row of col.rows">
                     <div *ngFor="let ressource of row.ressources" class="flex row">

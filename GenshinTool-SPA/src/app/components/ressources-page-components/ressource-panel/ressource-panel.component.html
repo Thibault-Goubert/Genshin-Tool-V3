@@ -1,11 +1,11 @@
-<div class="panel" [id]="ressourceId" [ngClass]="{hide: isHided}" (click)="OnClick()">
-    <div class="panel_content hideable">
+<div class="panel" [id]="ressourceId" [ngClass]="{hide: isHided}">
+    <div class="panel_content hideable" (click)="OnClick()">
         <img class="panel_content_image" [src]="backgroundImg">
         <img class="panel_content_image" [src]="ressourceImg">
     </div>
     <div class="panel_footer item_center flex row">
-        <input type="text" placeholder="x" [id]="leftInputId" />
+        <input #leftInput type="text" placeholder="x" [id]="leftInputId" (input)='onInputChange(leftInput)'/>
         <span>/</span>
-        <input type="text" placeholder="x" [id]="rightInputId" />
+        <input #rightInput type="text" placeholder="x" [id]="rightInputId" (input)='onInputChange(rightInput)' (focus)="onRightInputFocus($event)"/>
     </div>
 </div>

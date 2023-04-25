@@ -21,3 +21,6 @@ img.right {
 #input_left-xp_total, #input_right-xp_total, #input_left-nb_minerais, #input_right-total_minerais, #input_left-nb_book_vi, #input_left-nb_book_b {
     width: 55px;
 }
+.panel{
+    transition: opacity 0.15s;
+}

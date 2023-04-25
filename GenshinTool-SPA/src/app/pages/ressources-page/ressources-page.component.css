@@ -51,3 +51,12 @@
 .large, div.large, img.large {
   width: 124px;
 }
+.toggle{
+  margin-top: 8px;
+  margin-left: 6px; 
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  border-radius: 8px;
+}

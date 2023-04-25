@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RessourceDomainDefinition } from 'src/app/models/Ressource/test/definition.model';
-import domainDefinition from "../../../../models/Ressource/domainsRessourcesDefinition.json";
+import domainDefinition from "./domainsRessourcesDefinition.json";
+import { Day } from "../../../../models/enums/days.enum"
 
 @Component({
   selector: 'app-domain-ressources-page',
@@ -10,9 +11,23 @@ import domainDefinition from "../../../../models/Ressource/domainsRessourcesDefi
 
 export class DomainRessourcesPageComponent implements OnInit{
   def!: RessourceDomainDefinition;
+  private subTabOpenedSaveKey = "ressourcesPage_subTab_domains";
+  currentDay!: string;
 
   ngOnInit(): void {
     this.def = domainDefinition.ressourceDomainDefinition;
-    console.log(this.def)
+    this.removeOtherTabSavedKeyFromStorage();
+    localStorage.setItem(this.subTabOpenedSaveKey, "btn_domains");
+    this.currentDay = Day[new Date().getDay()];
+  }
+
+  removeOtherTabSavedKeyFromStorage() {
+    for(let index=0;index<localStorage.length;index++){
+      let key = localStorage.key(index) ?? "";
+      if(key.includes("subTab")){
+        localStorage.removeItem(key);
+        break;
+      }
+    }
   }
 }

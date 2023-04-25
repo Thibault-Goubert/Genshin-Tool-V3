@@ -41,7 +41,7 @@ input, .btn, span, p{
     background-color: #282a2f;
     color: #474851;
     user-select: none;
-    box-shadow: 0px 0px 4px black; 
+    box-shadow: 0px 0px 4px black;   
 }
 .btn_principal{ 
     margin-left: 6px; 

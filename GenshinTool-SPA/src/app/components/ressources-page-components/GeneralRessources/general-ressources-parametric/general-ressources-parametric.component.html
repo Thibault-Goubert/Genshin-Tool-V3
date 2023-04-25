@@ -1,0 +1,16 @@
+<div class="panel high" id='panel_parametric_transformer' [ngClass]="{hide: isHided}">
+    <div class="panel_content" id='panel_parametric_transformer_content' (click)="onClick()">
+        <img class="panel_content_image"  src="assets/icons/recoltables/case_vi.png">
+        <img class="panel_content_image center" src="assets/icons/recoltables/parametric_transformer.png">
+    </div>
+    <div class="panel_footer item_center high" id="panel_parametric_transformer_timer">
+        <div *ngIf="showTimeRemaining == true">
+            <div class="flex row item_center" id="panel_parametric_transformer_days">
+                <span>{{displayDaysRemaining}}</span>
+            </div>
+            <div class="flex row item_center" id="panel_parametric_transformer_hours_mins">
+                <span>{{displayHoursAndMinutesRemaining}}</span>
+            </div>
+        </div>    
+    </div>
+</div>
