@@ -1,1 +1,193 @@
-<p>calculator-character works!</p>
+
+<div id="calculateur-personnage">
+    <span id="calculateur_personnage_titre">
+        Calculateur Personnages
+    </span>
+    <div id="calculateur_personnage_infos" class="flex row">
+        <div class="flex col">
+            <span>Lv.</span>
+            <div class="flex notes-btn small">
+                <app-my-select-picker id="selectPicker-characterLvl" [selectPickerValues]="lvlChoicesValues" (selectedValueEvent)="currentLvlSelected($event)"></app-my-select-picker>
+            </div>
+        </div>
+        <div style="margin-left: 3px;">
+            <span class="flex text-center">Talents</span>
+            <div class="flex row">
+                <input #currentTalentInput id="calculateur_personnage_infos_talent_current_input" class="notes-btn big" (input)='onInputChange(currentTalentInput)'>
+                <span id="calculateur_personnage_talents_arrow">→</span>
+                <div class="flex notes-btn big" >
+                    <app-my-select-picker id="selectPicker-characterTalents" [selectPickerValues]="talentChoicesValues" (selectedValueEvent)="targetTalentsSelected($event)"></app-my-select-picker>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="calculateur-personnage-btn-calculer" class="btn-calculateur-calculer" (click)="onComputeCharacterRessourcesClick()">
+        Calculer
+    </div>
+    <div #characterResult id="calculateur-personnage-resultat" class="flex row collapsed">
+            <div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-bouquin" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img src="assets/icons/recoltables/xp_books_vi.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-bouquin-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.xpBook}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-gem-ve" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-gem-ve-background" 
+                                src="assets/icons/recoltables/case_ve.png" 
+                                class="icon-width27-height27-bradius6" 
+                                style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-gem-ve-icon" 
+                                src="assets/icons/recoltables/calc_gem_ve.png" 
+                                class="icon-width27-height27-bradius6 image-rendering-optimized" 
+                                style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-gem-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.gemVe}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-elem" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-elem-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-elem-icon" src="assets/icons/recoltables/calc_elem.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-elem-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.elem}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-mob-gr" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-mob-gr-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-mob-gr-icon" src="assets/icons/recoltables/calc_common_gr.png" class="icon-width27-height27-bradius6 image-rendering-pixelated" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-mob-gr-amount"  class="calculateur-text-result" style="margin-left: 3px;">{{result.commonGr}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-talent-ve" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-talent-ve-background" src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-talent-ve-icon" src="assets/icons/recoltables/calc_talent_ve.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <div>
+                        <span id="calculateur-personnage-resultat-talent-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.talentVe}}</span>
+                    </div>
+                </div>
+            </div>	
+            <div style="margin-left: 10px;">
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-moras" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-moras-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-moras-icon" 		src="assets/icons/recoltables/moras.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-moras-amount" class="calculateur-text-result" style="margin-left: 3px;width: 10px;">{{result.mora}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-gem-b" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-gem-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-gem-b-icon" 		src="assets/icons/recoltables/calc_gem_b.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-gem-b-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.gemB}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-plant" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-plant-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-plant-icon" src="assets/icons/recoltables/calc_local.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-plant-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.local}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-mob-ve" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-mob-ve-background" src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-mob-ve-icon" src="assets/icons/recoltables/calc_common_ve.png" class="icon-width27-height27-bradius6 image-rendering-pixelated" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-mob-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.commonVe}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-talent-b" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-talent-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-talent-b-icon" src="assets/icons/recoltables/calc_talent_b.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-talent-b-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.talentB}}</span>
+                </div>
+            </div>		
+            <div style="margin-left: 10px;">
+                <div style="width: 27px;height: 27px;margin-top: 4px;">
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-gem-vi" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-gem-vi-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-gem-vi-icon" src="assets/icons/recoltables/calc_gem_vi.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-gem-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.gemVi}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-week" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-week-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-week-icon" src="assets/icons/recoltables/calc_boss.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-week-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.boss}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-mob-b" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-mob-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-mob-b-icon" src="assets/icons/recoltables/calc_common_b.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-mob-b-amount" class="calculateur-text-result" style="margin-left: 3px;width: 10px;">{{result.commonB}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-talent-vi" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-talent-vi-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-talent-vi-icon" src="assets/icons/recoltables/calc_talent_vi.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div> 
+                    <span id="calculateur-personnage-resultat-talent-vi-amount" class="calculateur-text-result" style="margin-left: 3px;;width: 10px;">{{result.talentVi}}</span>
+                </div>
+            </div>		
+            <div style="margin-left: 10px;">
+                <div style="width: 27px;height: 27px;margin-top: 4px;">
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-gem-g" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-gem-g-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-gem-g-icon" src="assets/icons/recoltables/calc_gem_g.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-gem-g-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.gemG}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div id="calculateur-personnage-resultat-crown" class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img id="calculateur-personnage-resultat-gemcrown-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-personnage-resultat-gemcrown-icon" src="assets/icons/recoltables/crown.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-personnage-resultat-crown-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.crown}}</span>
+                </div>	
+            </div>						
+    </div>
+</div>

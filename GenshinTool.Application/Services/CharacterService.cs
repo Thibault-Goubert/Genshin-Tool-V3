@@ -5,6 +5,7 @@ using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Service.Concrete;
 using GenshinTool.Common.Service.Interface.Core;
 using GenshinTool.Infrastructure.Interface.Repositories;
+using System.Diagnostics;
 
 namespace GenshinTool.Application.Services;
 
@@ -58,5 +59,4 @@ public class CharacterService : BaseService, ICharacterService
         return Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetByWeaponTypeId(weaponTypeId));
     }
     #endregion
-
 }

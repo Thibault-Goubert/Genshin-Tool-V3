@@ -1,10 +1,19 @@
 <header>
-    <nav>
-        <div id="btn_groupe_principal" class="flex row">
+    <div class="flex">
+        <nav class="flex">
             <div #btnRessources routerLink="ressources" routerLinkActive="active" class="btn flex btn_principal">Ressources</div>
             <div #btnCharacters routerLink="characters" routerLinkActive="active" class="btn flex btn_principal">Personnages</div>
             <div #btnArtefacts routerLink="artefacts" routerLinkActive="active" class="btn flex btn_principal">Artéfacts</div>
             <div #btnNotes routerLink="notes" routerLinkActive="active" class="btn flex btn_principal">Notes</div>
+        </nav>
+        <div style="margin-left: 6px;">
+            <div #btnDailies id="btn_toggle_dailies" class="btn toggle" (click)="onDailiesClick()">Daily</div> 
+        </div>      
+        <div id="btn_groupe_toggles" class="flex row">
+            <div #btnDailyCo id="btn_toggle_linkDailyCo" class="btn toggle" (click)="onDailyCoClick()">Co</div>
+            <div id="btn_toggle_linkGiftCodePage" class="btn toggle" (click)="onGiftCodePageClick()">Gift</div>
+            <div id="btn_toggle_copyMpd" class="btn toggle" (click)="onCopyMdpClick()">Mdp</div>
+            <div id="btn_toggle_changeApp" class="btn toggle" (click)="onChangeAppClick()">App</div>
         </div>
-    </nav>
+    </div>
 </header>

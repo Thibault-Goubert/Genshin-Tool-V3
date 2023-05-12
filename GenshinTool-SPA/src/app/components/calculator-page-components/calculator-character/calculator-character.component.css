@@ -1,0 +1,98 @@
+
+span{
+    background: none;
+    color: #e9e5dc;
+}
+.notes-btn{
+    background-color: #4c505a;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    width: 30px;
+    height: 30px; 
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    color: #e9e5dc;
+}
+.notes-btn.small{
+    width: 25px;
+    height: 25px;
+}
+.notes-btn.big{
+    width: 40px;
+    height: 25px;
+}
+.text-center{
+    justify-content: center;
+}
+.calculateur-text-result{  
+    align-self: center;
+}
+.icon-width27-height27-bradius6{
+    width: 27px;
+    height: 27px;
+    border-radius: 6px;
+}
+.image-rendering-optimized{
+    image-rendering:-webkit-optimize-contrast;
+}
+
+#calculateur-personnage{
+    width: 319.5px
+}
+#calculateur_personnage_titre{
+    margin-bottom: 13px;
+    font-weight: bold;
+    font-size: medium;
+    color: #e9e5dc;
+}
+#calculateur_personnage_talents_arrow{
+    width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#calculateur-personnage-btn-calculer{
+    margin-top: 17px;
+}
+#calculateur-personnage-resultat{
+    margin-top: 17px;
+}
+
+.btn-calculateur-calculer{
+    display: flex;
+    width: 80px;
+    height: 30px;
+    background-color: #282a2f;
+    border-radius: 5px;
+    color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+    box-shadow: 0px 0px 4px #e9e5dc;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+#selectPicker-characterLvl{
+    width: 19px;
+    height: 16px;
+    background-color: #4c505a;
+    color: #e9e5dc;
+    border-radius: 5px;
+    z-index: 1;
+    display: block;
+    margin: auto;
+}
+#selectPicker-characterTalents{
+    width: 27px;
+    height: 16px;
+    background-color: #4c505a;
+    color: #e9e5dc;
+    border-radius: 5px;
+    z-index: 1;
+    display: block;
+    margin: auto;
+}

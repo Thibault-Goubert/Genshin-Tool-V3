@@ -18,6 +18,7 @@ internal static class CharacterServiceCollectionExtensions
             .AsImplementedInterfaces()
             .AsMatchingInterface()
             .WithTransientLifetime()
+
             .FromAssembliesOf(typeof(CharacterService))
             .AddClasses(c => c.AssignableTo<IBaseService>())
             .AsImplementedInterfaces()

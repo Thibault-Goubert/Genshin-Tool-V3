@@ -1,1 +1,148 @@
-<p>calculator-weapon works!</p>
+<div id="calculator-weapon">
+    <span id="calculator-weapon-titre">
+        Calculateur Armes
+    </span>
+    <div id="calculator-weapon-infos" class="flex row">
+        <div class="flex col">
+            <span>Lv.</span>
+            <div class="flex notes-btn small">
+                <app-my-select-picker 
+                    id="selectPicker-weaponLvl" 
+                    [selectPickerValues]="lvlChoicesValues" 
+                    (selectedValueEvent)="currentLvlSelected($event)"></app-my-select-picker>
+            </div>
+        </div>        
+        <div style="margin-left: 3px;">
+            <span class="flex text-center">Rarity</span>
+            <div class="flex">
+                <app-my-select-picker 
+                    id="selectPicker-weaponRarities" 
+                    [selectPickerImages]="rarityChoices" 
+                    (selectedValueEvent)="currentRaritySelected($event)"></app-my-select-picker>
+            </div>
+        </div>
+    </div>
+    <div id="calculateur-weapon-btn-calculer" class="btn-calculateur-calculer" (click)="onComputeWeaponRessourcesClick()">
+        Calculer
+    </div>
+    <div #weaponResult id="calculateur-arme-resultat" class="collapsed" style="margin-top: 15px;">
+        <div class="flex row">
+            <div style="">
+                <div class="flex row" style="margin-top: 4px;">
+                    <div class="icon-width27-height27-bradius6" style="position: relative;">
+                        <img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                        <img src="assets/icons/recoltables/minerais.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                    </div>
+                    <span id="calculateur-arme-result-minerais-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.xpOre}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div class="icon-width27-height27-bradius6" style="position: relative;">
+                        <img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                        <img id="calculateur-arme-resultat-domain-icon-ve" src="assets/icons/recoltables/calc_weapon_ve.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                    </div>
+                    <span id="calculateur-arme-result-domain-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.weaponVe}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div class="icon-width27-height27-bradius6" style="position: relative;">
+                        <img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                        <img id="calculateur-arme-resultat-elite-icon-ve" src="assets/icons/recoltables/calc_elite_ve.png" class="icon-width27-height27-bradius6 image-rendering-pixelated" style="position: absolute;">
+                    </div>
+                    <span id="calculateur-arme-result-elite-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.eliteVe}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div class="icon-width27-height27-bradius6" style="position: relative;">
+                        <img src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                        <img id="calculateur-arme-resultat-common-icon-gr" src="assets/icons/recoltables/calc_common_gr.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                    </div>
+                    <span id="calculateur-arme-result-common-gr-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.commonGr}}</span>
+                </div>
+            </div>
+            <div style="margin-left: 10px;">
+                <div class="flex row" style="margin-top: 4px;width: 10px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img src="assets/icons/recoltables/moras.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-moras-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.mora}}</span>
+                </div>	
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-domain-icon-b" src="assets/icons/recoltables/calc_weapon_b.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-domain-b-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.weaponB}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-elite-icon-b" src="assets/icons/recoltables/calc_elite_b.png" class="icon-width27-height27-bradius6 image-rendering-pixelated" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-elite-b-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.eliteB}}</span>
+                </div>	
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-common-icon-ve" src="assets/icons/recoltables/calc_common_ve.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-common-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.commonVe}}</span>
+                </div>			
+            </div>	
+            <div style="margin-left: 10px;">
+                <div style="width: 27px;height: 27px;margin-top: 4px;">
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-domain-icon-vi" src="assets/icons/recoltables/calc_weapon_vi.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-domain-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.weaponVi}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-elite-icon-vi" src="assets/icons/recoltables/calc_elite_vi.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-elite-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.eliteVi}}</span>
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-common-icon-b" src="assets/icons/recoltables/calc_common_b.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-common-b-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.commonB}}</span>
+                </div>					
+            </div>
+            <div style="margin-left: 10px;">
+                <div style="width: 27px;height: 27px;margin-top: 4px;">
+                </div>
+                <div class="flex row" style="margin-top: 4px;">
+                    <div>
+                        <div class="icon-width27-height27-bradius6" style="position: relative;">
+                            <img src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
+                            <img id="calculateur-arme-resultat-domain-icon-g" src="assets/icons/recoltables/calc_weapon_g.png" class="icon-width27-height27-bradius6 image-rendering-optimized" style="position: absolute;">
+                        </div>
+                    </div>
+                    <span id="calculateur-arme-result-domain-g-amount" class="calculateur-text-result" style="margin-left: 3px;">{{result.weaponG}}</span>
+                </div>					
+                <div style="width: 27px;height: 27px;" style="margin-top: 4px;">
+                </div>
+                <div style="width: 27px;height: 27px;" style="margin-top: 4px;">
+                </div>					
+            </div>
+        </div>
+    </div>
+</div>
