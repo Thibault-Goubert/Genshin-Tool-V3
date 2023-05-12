@@ -1,0 +1,18 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"xp_books_vi", "rarities":["g"]
+							}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

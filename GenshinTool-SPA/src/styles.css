@@ -57,6 +57,7 @@ textarea{
     resize:none;
     overflow-wrap:normal;
     overflow:hidden;
+    outline: none;
 
     display:inline-block;
     vertical-align:middle;

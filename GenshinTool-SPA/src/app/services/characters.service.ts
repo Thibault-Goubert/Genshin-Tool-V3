@@ -19,9 +19,8 @@ export class CharacterService{
             this.baseUrl + 'GetAllCharacters');
     }
 
-    public getCharactersByRequest(req: CharacterRequest): Observable<ResponseItems<Character>>{
+    public getCharactersByRequest(req: CharacterRequest): Observable<ResponseItems<Character>>{        
         return this.http.post<ResponseItems<Character>>(
-            this.baseUrl + 'GetByRequest', req);
+            this.baseUrl + 'GetByRequest', req);   
     }
-    
 }

@@ -1,0 +1,30 @@
+.custom_select_style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: smaller;
+    user-select: none;
+}
+.custom_select_options{
+    border-radius: inherit;
+    color: inherit;
+    background-color: inherit; 
+    box-shadow: 0px 0px 2px #282a2f;
+}
+.custom_select_options_space{
+    margin-top: 2px;
+}
+.custom-select-choices-image{
+    box-shadow: 0px 0px 2px #282a2f;
+    border-radius: 5px;
+}
+.custom-select-selected-image{
+    border-radius: 5px;
+}
+.inherit-size{
+    height: inherit;
+    width: inherit;
+}

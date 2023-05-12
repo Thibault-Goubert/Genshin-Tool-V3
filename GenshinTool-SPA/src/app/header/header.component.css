@@ -1,0 +1,19 @@
+header{
+    margin-top: 10px;
+}
+.btn.toggle{
+    display: flex;
+    box-shadow: 0px 0px 4px black;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}
+#btn_groupe_toggles{
+    margin-left: auto;
+    column-gap: 6px;
+}
+.clicked{
+    background-color: #e9e5dc;
+}

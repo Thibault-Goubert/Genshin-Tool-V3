@@ -1,0 +1,26 @@
+
+<ng-template [ngIf]="!isChoicesImages" [ngIfElse]="selectedImg">
+    <div class="custom_select_style" (click)="onSelectedChoiceClick()">{{selectedValue}}</div>
+</ng-template>
+<div #choices class="collapsed inherit-size">
+    <ng-template [ngIf]="!isChoicesImages" [ngIfElse]="imgChoices">
+        <div *ngFor="let value of selectPickerValues" 
+            class="custom_select_style custom_select_options custom_select_options_space"
+            (click)="onChoiceClick(value)">
+            {{value.displayValue}}
+        </div>    
+    </ng-template>
+</div>
+
+<ng-template #selectedImg>
+    <div class="flex" (click)="onSelectedChoiceClick()">
+        <img class="custom-select-selected-image" src="{{selectedImage}}"/>
+    </div>
+</ng-template>
+
+<ng-template #imgChoices>
+    <div *ngFor="let image of selectPickerImages" (click)="onChoiceImageClick(image)" 
+        class="flex custom-select-choices-image custom_select_options_space">
+        <img class="flex custom-select-choices-image" src="{{image}}"/>
+    </div>
+</ng-template>

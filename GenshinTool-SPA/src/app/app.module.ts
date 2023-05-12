@@ -28,9 +28,10 @@ import { MonsterRessourcesPageComponent } from './components/ressources-page-com
 import { BossRessourcesBossComponent } from './components/ressources-page-components/BossRessources/boss-ressources-boss/boss-ressources-boss.component';
 import { RessourcePanelComponent } from './components/ressources-page-components/ressource-panel/ressource-panel.component';
 import { GeneralRessourcesParametricComponent } from './components/ressources-page-components/GeneralRessources/general-ressources-parametric/general-ressources-parametric.component';
-import { CalculatorPageComponent } from './pages/calculator-page/calculator-page/calculator-page.component';
 import { CalculatorCharacterComponent } from './components/calculator-page-components/calculator-character/calculator-character.component';
 import { CalculatorWeaponComponent } from './components/calculator-page-components/calculator-weapon/calculator-weapon.component';
+import { MySelectPickerComponent } from './components/calculator-page-components/my-select-picker/my-select-picker.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -54,15 +55,16 @@ import { CalculatorWeaponComponent } from './components/calculator-page-componen
     BossRessourcesBossComponent,
     RessourcePanelComponent,
     GeneralRessourcesParametricComponent,
-    CalculatorPageComponent,
     CalculatorCharacterComponent,
     CalculatorWeaponComponent,
+    MySelectPickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
