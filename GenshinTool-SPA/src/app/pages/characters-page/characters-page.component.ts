@@ -130,7 +130,7 @@ export class CharactersPageComponent implements OnInit {
 
     charProperty.forEach(id => {
       const group: CharacterGroup = new CharacterGroup();
-      if(type == WeaponType){group.weaponTypeImg = `./assets/icons/filters/${WeaponType[id].toLowerCase()}50.png`;}
+      if(type == WeaponType){group.weaponTypeImg = `assets/icons/filters/${WeaponType[id].toLowerCase()}50.png`;}
     });
 
     return groups;
@@ -140,7 +140,7 @@ export class CharactersPageComponent implements OnInit {
   
     this.characterRequest.weaponsTypesIds.forEach((weaponTypeId: number) => {
       const group: CharacterGroup = new CharacterGroup();
-        group.weaponTypeImg = `./assets/icons/filters/filter_weapon${WeaponType[weaponTypeId].toLowerCase()}50.png`;
+        group.weaponTypeImg = `assets/icons/filters/filter_weapon${WeaponType[weaponTypeId].toLowerCase()}50.png`;
   
       const predicateWT = function(c: Character, id: number): boolean{
         return c.weaponTypeId === id;
