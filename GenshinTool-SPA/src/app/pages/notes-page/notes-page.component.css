@@ -31,3 +31,19 @@
     border-radius: 5px;
     padding: 10px;
 }
+textarea{
+    resize:none;
+    overflow-wrap:normal;
+    overflow:hidden;
+
+    display:inline-block;
+    vertical-align:middle;
+    text-align:center;
+
+    width: 100px;
+
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
+}

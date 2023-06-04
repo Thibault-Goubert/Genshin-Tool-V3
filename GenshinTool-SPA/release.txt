@@ -1,0 +1,11 @@
+
+
+electron-builder --publish always
+||
+npm run publish
+
+https://github.com/settings/tokens/new
+
+Powershell ->  [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
+
+publish draft release

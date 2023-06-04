@@ -12,7 +12,7 @@
                     </div>
                     <div class="flex row item_center">
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-total_mora" #rightInputMora (input)='onInputChange(rightInputMora)' (focus)="onRightInputFocus($event)"/>
+                        <input type="text" placeholder="x" tabindex="-1" id="input_right-total_mora" #rightInputMora (input)='onInputChange(rightInputMora)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>
@@ -32,9 +32,9 @@
                     </div>
                     <div class="flex row item_center">
                         <span>=</span>
-                        <input type="text" placeholder="x" id="input_left-xp_total" #leftInputBookTotal (focus)="onRightInputMineraisFocus(leftInputBookTotal)" (input)='onInputChange(leftInputBookTotal)' />
+                        <input type="text" placeholder="x" tabindex="-1" id="input_left-xp_total" #leftInputBookTotal (focus)="onRightInputMineraisFocus(leftInputBookTotal)" (input)='onInputChange(leftInputBookTotal)' />
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-xp_total" #rightInputBookTotal (input)='onInputChange(rightInputBookTotal)' (focus)="onRightInputFocus($event)"/>
+                        <input type="text" placeholder="x" tabindex="-1" id="input_right-xp_total" #rightInputBookTotal (input)='onInputChange(rightInputBookTotal)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>					
@@ -46,7 +46,7 @@
                 <div class="panel_footer item_center flex row high">
                     <input type="text" placeholder="x" id="input_left-crown" #leftInputCrown (input)='onInputChange(leftInputCrown)'/>
                     <span>/</span>
-                    <input type="text" placeholder="x" id="input_right-crown" #rightInputCrown (input)='onInputChange(rightInputCrown)' (focus)="onRightInputFocus($event)"/>
+                    <input type="text" placeholder="x" tabindex="-1" id="input_right-crown" #rightInputCrown (input)='onInputChange(rightInputCrown)' (focus)="onRightInputFocus($event)"/>
                 </div>
             </div>
             <div class="panel high" id='panel_minerais'>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="flex row item_center">
                         <span>/</span>
-                        <input type="text" placeholder="x" id="input_right-total_minerais" #rightInputMinerais (input)='onInputChange(rightInputMinerais)' (focus)="onRightInputFocus($event)"/>
+                        <input type="text" placeholder="x" tabindex="-1" id="input_right-total_minerais" #rightInputMinerais (input)='onInputChange(rightInputMinerais)' (focus)="onRightInputFocus($event)"/>
                     </div>
                 </div>
             </div>
