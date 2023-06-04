@@ -5,6 +5,8 @@
 ## Angular ##
 # compiled output
 dist/
+release/
+genshin-tool-win32-x64/
 tmp/
 app/**/*.js
 app/**/*.js.map

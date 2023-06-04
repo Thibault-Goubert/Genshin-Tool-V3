@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HelperService } from '../services/helperService';
+import { genshin, starRail } from 'src/urls';
+import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +19,11 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.findAndOpenLastOpenedMainTab();
+    this.checkDailiesResetDate();
+    this.restoreDailies();
   }
 
-  constructor(private helperService: HelperService) {    
+  constructor(private helperService: HelperService, private clipboard: Clipboard) {    
   }
 
   findAndOpenLastOpenedMainTab() {
@@ -47,33 +51,78 @@ export class HeaderComponent implements OnInit{
   }
 
   onDailiesClick(){
-    this.btnDailies.nativeElement.classList.add("clicked");
+    let nativeElement = this.btnDailies.nativeElement;
+
+    nativeElement.classList.add("clicked");    
+    localStorage.setItem(nativeElement.id, "clicked")
+
+    this.setResetToMidnight(nativeElement.id+'_reset');
   }
   onDailyCoClick(){
-    let urlGenshin = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481&mhy_auth_required=true&mhy_presentation_style=fullscreen&utm_source=share&utm_medium=link&utm_campaign=web' 
-    let urlStarRail = 'https://act.hoyolab.com/bbs/event/signin/hkrpg/index.html?act_id=e202303301540311&bbs_auth_required=true&bbs_presentation_style=fullscreen&lang=fr-fr&utm_source=share&utm_medium=link&utm_campaign=web'
-    
-    this.openLinkOnFirefoxAndChrome(urlGenshin);
-    this.openLinkOnFirefoxAndChrome(urlStarRail);
+    let nativeElement = this.btnDailyCo.nativeElement;
 
-    this.btnDailyCo.nativeElement.classList.add("clicked");
+    this.openLinkOnFirefoxAndChrome(genshin.dailyCo);
+    this.openLinkOnFirefoxAndChrome(starRail.dailyCo);
+
+    nativeElement.classList.add("clicked");
+    localStorage.setItem(nativeElement.id, "clicked")
+
+    this.setResetToMidnight(nativeElement.id+'_reset');
   }
   onGiftCodePageClick(){
-    let urlGenshin = 'https://genshin.mihoyo.com/en/gift' 
-    let urlStarRail = 'https://hsr.hoyoverse.com/gift?code'
-
-    this.openLinkOnFirefoxAndChrome(urlGenshin);
-    this.openLinkOnFirefoxAndChrome(urlStarRail);
+    this.openLinkOnFirefoxAndChrome(genshin.giftCode);
+    this.openLinkOnFirefoxAndChrome(starRail.giftCode);
   }
   onCopyMdpClick(){
-    
   }
   onChangeAppClick(){
     
   }
 
   openLinkOnFirefoxAndChrome(link: string){    
-    let c = this.helperService.openLink(link, 'chrome');
-    let f = this.helperService.openLink(link, 'firefox');
+    this.helperService.openLink(link, 'chrome');
+    this.helperService.openLink(link, 'firefox');
+  }
+  
+  checkDailiesResetDate() {
+    this.findKeyAndRemoveIfResetDateOutdated(this.btnDailies.nativeElement);
+    this.findKeyAndRemoveIfResetDateOutdated(this.btnDailyCo.nativeElement);
+  }
+  restoreDailies() {
+    this.findKeyAndApplyClass(this.btnDailies.nativeElement)
+    this.findKeyAndApplyClass(this.btnDailyCo.nativeElement)
+  }
+  findKeyAndApplyClass(element: HTMLElement) {
+    let value = this.findLocalStorageKey(element.id)
+    if(value){
+      element.classList.add(value)
+    }
+  }
+  findKeyAndRemoveIfResetDateOutdated(element: HTMLElement){
+    let resetDate = this.findLocalStorageKey(element.id+'_reset')
+    if(resetDate){
+      let currentDate = new Date();
+      if(currentDate > new Date(resetDate)){
+        localStorage.removeItem(element.id)
+        localStorage.removeItem(element.id+'_reset')
+      }
+    }
+  }
+  findLocalStorageKey(key: string){
+    return localStorage.getItem(key)
+  }
+
+  setResetToMidnight(key: string){
+    let now = new Date().setHours(23, 59, 59, 999);
+    localStorage.setItem(key, now.toString())
+  }
+
+  resetOnRightClick(event: Event){    
+    let element = (event.target as Element);
+    let key = element.id;
+    localStorage.removeItem(key);    
+    localStorage.removeItem(key+'_reset');
+    element.classList.remove("clicked")
+    return false;
   }
 }

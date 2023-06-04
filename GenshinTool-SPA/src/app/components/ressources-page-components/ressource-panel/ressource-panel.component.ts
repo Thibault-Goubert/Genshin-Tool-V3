@@ -27,6 +27,13 @@ export class RessourcePanelComponent implements OnInit{
   constructor(private ressourceService: RessourceService){}
 
   ngOnInit(): void {
+    this.canRessourceGoalChange = this.ressourceService.currentCanRessourceGoalChange;
+    
+    this.ressourceService.canRessourceGoalChange.subscribe(b => {
+      this.canRessourceGoalChange = b;
+      this.setTabIndexAttribute();
+    });
+
     this.ressourceId = `panel-${this.ressource.name}`;
 
     this.backgroundImg = `assets/icons/recoltables/case_${this.ressource.rarity}.png`;
@@ -36,11 +43,21 @@ export class RessourcePanelComponent implements OnInit{
     this.rightInputId = `input_right-${this.ressource.name}`
 
     this.setVisibility();
-
-    this.ressourceService.canRessourceGoalChange.subscribe(b => this.canRessourceGoalChange = b);
-
     this.setInputValues();
-  }    
+
+    this.setTabIndexAttribute();
+  } 
+
+  setTabIndexAttribute() {
+    if(this.canRessourceGoalChange){
+      this.rightInput.nativeElement.removeAttribute('tabIndex');
+      this.leftInput.nativeElement.setAttribute('tabIndex', '-1');
+    }
+    else{      
+      this.rightInput.nativeElement.setAttribute('tabIndex', '-1');
+      this.leftInput.nativeElement.removeAttribute('tabIndex');
+    }
+  }
 
   OnClick(): void{
     this.isHided = !this.isHided;
@@ -57,6 +74,7 @@ export class RessourcePanelComponent implements OnInit{
   }
 
   onRightInputFocus(event: Event){
+    console.log(this.canRessourceGoalChange)
     if(!this.canRessourceGoalChange){
       (event.currentTarget as HTMLElement).blur();
     }

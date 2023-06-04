@@ -15,7 +15,7 @@ export class GeneralRessourcesParametricComponent implements OnInit{
   private parametriqueTargetDateStorageKey = "parametrique_targetDate";
   private parametriqueHideStorageKey = "panel_parametric_transformer_hide";
 
-  isHided!: boolean;
+  isHided: boolean = false;
 
   ngOnInit(): void {    
     this.setVisibility();
@@ -23,16 +23,18 @@ export class GeneralRessourcesParametricComponent implements OnInit{
   }
 
   setParametriqueValues() {
-    let value = localStorage.getItem(this.parametriqueTargetDateStorageKey) ?? "";
+    let value = localStorage.getItem(this.parametriqueTargetDateStorageKey);
 
-    if(value.length > 0){
+    if(value){
       let targetDate = Number.parseInt(value);
       let currentDate = Date.parse(new Date().toString());
       this.timeRemaining = Math.round((targetDate-currentDate)/1000);
 
-      if(this.timeRemaining > 0){
-        this.updateDisplay();
+      if(this.timeRemaining <= 0){
+        localStorage.removeItem(this.parametriqueHideStorageKey)
+        localStorage.removeItem(this.parametriqueTargetDateStorageKey)
       }
+      this.updateDisplay();
     }    
     this.showTimeRemaining = this.timeRemaining > 0;
   } 

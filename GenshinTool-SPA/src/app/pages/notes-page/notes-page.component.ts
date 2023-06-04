@@ -11,6 +11,16 @@ export class NotesPageComponent implements OnInit{
   ngOnInit(): void {
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
+    this.setSavedValues();
+  }
+  setSavedValues() {
+    let textareas = document.getElementsByName("textarea")
+    textareas.forEach(element => {
+      let value = localStorage.getItem(element.id)
+      if(value){
+        (element as HTMLTextAreaElement).value = value;
+      }
+    });
   }
   
   removeOtherTabSavedKeyFromStorage() {
@@ -23,4 +33,8 @@ export class NotesPageComponent implements OnInit{
     }
   }
 
+  onChange(event: Event){
+    let element = event.target as HTMLTextAreaElement;
+    localStorage.setItem(element.id, element.value)
+  }
 }

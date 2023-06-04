@@ -1,15 +1,16 @@
 {
   "name": "genshin-tool",
-  "version": "3.0.0",
+  "version": "3.0.2",
+  "description": "Outil de gestion pour Genshin Impact",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng build --base-href ./ && electron .",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "publish": "electron-builder --win -p always"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.0",
     "@angular/cdk": "^15.2.9",
@@ -32,6 +33,9 @@
     "@angular/cli": "~15.2.1",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "electron": "^25.0.0",
+    "electron-packager": "^17.1.1",
+    "electron-wix-msi": "^5.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -39,5 +43,48 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thibault-Goubert/Genshin-Tool-V3.git"
+  },
+  "author": "ThibaultGoubert",
+  "private": true,
+  "build": {
+    "productName": "GenshinTool",
+    "appId": "GenshinTool",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "src/",
+      "main.js",
+      "package.json",
+      "exe-icon.ico"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Thibault-Goubert",
+        "repo": "Genshin-Tool-V3",
+        "private": false
+      }
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "postinstall": "electron-builder install-app-deps"
 }

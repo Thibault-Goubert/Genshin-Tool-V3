@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+import { app, BrowserWindow } from 'electron';
+import { autoUpdater } from "electron-updater"
 
 let win;
 
@@ -8,7 +9,7 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true
-    }
+    }    
   });
 
   win.loadURL(`file://${__dirname}/dist/genshin-tool/index.html`);
@@ -30,4 +31,8 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+app.on('ready', function()  {
+  autoUpdater.checkForUpdatesAndNotify();
 });
