@@ -1,15 +1,16 @@
-import { app, BrowserWindow } from 'electron';
-import { autoUpdater } from "electron-updater"
+const { app, BrowserWindow } = require('electron')
+const { autoUpdater } = require("electron-updater")
 
 let win;
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1813,
+    height: 961,
     webPreferences: {
       nodeIntegration: true
-    }    
+    },
+    icon: "GenshinTool-SPA/src/assets/icons/icon.ico"
   });
 
   win.loadURL(`file://${__dirname}/dist/genshin-tool/index.html`);

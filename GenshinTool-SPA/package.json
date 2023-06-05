@@ -1,15 +1,14 @@
 {
   "name": "genshin-tool",
-  "version": "3.0.2",
+  "version": "3.0.4",
   "description": "Outil de gestion pour Genshin Impact",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --base-href ./ && electron .",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "publish": "electron-builder --win -p always"
+    "start": "ng build --base-href ./ && electron .",
+    "publish:dev": "ng build --base-href ./ && electron-builder --win -p never",
+    "publish:prod": "ng build --base-href ./ && electron-builder --win -p always"
   },
   "dependencies": {
     "@angular/animations": "^15.2.0",
@@ -23,6 +22,7 @@
     "@angular/router": "^15.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@types/node": "^20.2.5",
+    "electron-updater": "^5.3.0",
     "request": "^2.88.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -58,15 +58,14 @@
       "node_modules/",
       "src/",
       "main.js",
-      "package.json",
-      "exe-icon.ico"
+      "package.json"
     ],
     "win": {
       "target": [
-        "nsis",
-        "zip"
+        "nsis"
       ],
-      "artifactName": "${productName}-Setup-${version}.${ext}"
+      "artifactName": "${productName}-Setup-${version}.${ext}",
+      "icon": "icon.ico"
     },
     "nsis": {
       "oneClick": false,
