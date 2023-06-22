@@ -1,31 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { CharactersPageComponent } from './Genshin/pages/characters-page/characters-page.component';
+import { ArtefactsPageComponent } from './Genshin/pages/artefacts-page/artefacts-page.component';
+import { NotesPageComponent } from './Genshin/pages/notes-page/notes-page.component';
 
-import { CharactersPageComponent } from './pages/characters-page/characters-page.component';
-import { ArtefactsPageComponent } from './pages/artefacts-page/artefacts-page.component';
-import { NotesPageComponent } from './pages/notes-page/notes-page.component';
-
-import { RessourcesPageComponent } from './pages/ressources-page/ressources-page.component';
-import { BossRessourcesPageComponent } from './components/ressources-page-components/BossRessources/boss-ressources-page/boss-ressources-page.component';
-import { DomainRessourcesPageComponent } from './components/ressources-page-components/DomainsRessources/domain-ressources-page/domain-ressources-page.component';
-import { HarvestableRessourcesPageComponent } from './components/ressources-page-components/HarvestablesRessources/harvestable-ressources-page/harvestable-ressources-page.component';
-import { MonsterRessourcesPageComponent } from './components/ressources-page-components/MonstersRessources/monster-ressources-page/monster-ressources-page.component';
+import { RessourcesPageComponent } from './Genshin/pages/ressources-page/ressources-page.component';
+import { BossRessourcesPageComponent } from './Genshin/components/ressources-page-components/BossRessources/boss-ressources-page/boss-ressources-page.component';
+import { DomainRessourcesPageComponent } from './Genshin/components/ressources-page-components/DomainsRessources/domain-ressources-page/domain-ressources-page.component';
+import { HarvestableRessourcesPageComponent } from './Genshin/components/ressources-page-components/HarvestablesRessources/harvestable-ressources-page/harvestable-ressources-page.component';
+import { MonsterRessourcesPageComponent } from './Genshin/components/ressources-page-components/MonstersRessources/monster-ressources-page/monster-ressources-page.component';
+import { GenshinImpactPageComponent } from './Genshin/pages/genshin-impact-page/genshin-impact-page.component';
+import { HonkaiStarRailPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-page/honkai-star-rail-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'ressources', component: RessourcesPageComponent,
-    children:[
-      { path: 'boss', component: BossRessourcesPageComponent },
-      { path: 'domains', component: DomainRessourcesPageComponent },
-      { path: 'harvestables', component: HarvestableRessourcesPageComponent },
-      { path: 'monsters', component: MonsterRessourcesPageComponent }
+  { path: '', redirectTo: '/genshinimpact', pathMatch: 'full' },
+  { path: 'cheatCode', redirectTo: '/genshinimpact', pathMatch: 'full' },
+  { path: 'genshinimpact', component: GenshinImpactPageComponent,
+    children: [
+      { path: 'ressources', component: RessourcesPageComponent,
+        children:[
+          { path: 'boss', component: BossRessourcesPageComponent },
+          { path: 'domains', component: DomainRessourcesPageComponent },
+          { path: 'harvestables', component: HarvestableRessourcesPageComponent },
+          { path: 'monsters', component: MonsterRessourcesPageComponent }
+        ]
+      },
+      { path: 'characters', component: CharactersPageComponent },
+      { path: 'artefacts', component: ArtefactsPageComponent },
+      { path: 'notes', component: NotesPageComponent }
     ]
   },
-  { path: 'characters', component: CharactersPageComponent },
-  { path: 'artefacts', component: ArtefactsPageComponent },
-  { path: 'notes', component: NotesPageComponent }
+  { path: 'honkaistarrail', component: HonkaiStarRailPageComponent,
+    children: [
+      
+    ]
+  }
 ];
 
 @NgModule({
