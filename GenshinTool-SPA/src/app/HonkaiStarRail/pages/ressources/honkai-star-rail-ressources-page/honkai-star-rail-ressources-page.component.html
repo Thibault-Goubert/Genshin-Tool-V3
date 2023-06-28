@@ -1,0 +1,11 @@
+<app-honkai-star-rail-general-ressources></app-honkai-star-rail-general-ressources>
+
+<div id="btn_groupe_ressources" class="flex row">
+    <div id="btn_farm" class="btn flex btn_principal" 
+        routerLink="farm" routerLinkActive="active" tabindex="-1">Farm</div>
+        
+    <div id="btn_toggleRessourcesGoalChange" class="btn flex toggle" 
+        (click)="onToggleRessourceGoalClick()" [ngClass]="{active: canRessourceGoalChange}"></div>
+</div>
+
+<router-outlet></router-outlet>

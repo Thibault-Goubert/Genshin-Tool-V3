@@ -1,0 +1,11 @@
+<div class="flex row hsr_farm_list">
+    <div class="flex col" *ngFor="let col of def.cols">
+        <div *ngFor="let row of col.rows" class="flex row" [ngClass]="{smallLeftSpace: col.class.includes('smallLeftSpace')}">
+            <div *ngFor="let ressource of row.ressources">
+                <app-hsr-ressource-panel *ngFor="let rarity of ressource.rarities"
+                    [ressource]="{name: ressource.name, rarity: rarity}">
+                </app-hsr-ressource-panel>
+            </div>
+        </div>
+    </div>
+</div>

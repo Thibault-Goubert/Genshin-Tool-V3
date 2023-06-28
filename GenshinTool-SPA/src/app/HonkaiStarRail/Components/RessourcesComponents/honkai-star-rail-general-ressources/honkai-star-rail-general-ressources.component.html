@@ -1,0 +1,76 @@
+<div id="liste_ressources_generales" class="flex row">
+    <div class="general_ressources">
+        <div class="flex row">
+            <div class="panel hsr large high" id='hsr_panel_credits'>
+                <div class="panel_content hsr large" (click)="OnClick($event)">
+                    <img class="panel_content_image hsr center large" src="assets/honkai-star-rail/icons/filter/case_gr.png">
+                    <img class="panel_content_image hsr center" src="assets/honkai-star-rail/icons/filter/credits.png">
+                </div>
+                <div class="panel_footer hsr item_center high">
+                    <div class="flex item_center">
+                        <input class="hsr" type="text" placeholder="x" id="input_left-nb_credits" #leftInputCredits (input)='onInputChange(leftInputCredits)'/>
+                    </div>
+                    <div class="flex row item_center">
+                        <span class="hsr">/</span>
+                        <input class="hsr" type="text" placeholder="x" tabindex="-1" id="input_right-total_credits" #rightInputCredits (input)='onInputChange(rightInputCredits)' (focus)="onRightInputFocus($event)"/>
+                    </div>
+                </div>
+                <div class="panel_footer_underline underline_grey"></div>
+            </div>
+            <div class="panel hsr large high" id='hsr_panel_books'>
+                <div class="panel_content hsr large flex row" (click)="OnClick($event)">
+                    <img class="panel_content_image hsr left" src="assets/honkai-star-rail/icons/filter/case_vi.png">
+                    <img class="panel_content_image hsr left" src="assets/honkai-star-rail/icons/filter/xp_books_vi.png">
+
+                    <img class="panel_content_image hsr right hsr" src="assets/honkai-star-rail/icons/filter/case_b.png">
+                    <img class="panel_content_image hsr right hsr" src="assets/honkai-star-rail/icons/filter/xp_books_b.png">
+                </div>
+                <div class="panel_footer hsr item_center high">
+                    <div class="flex row item_center">
+                        <input class="hsr" type="text" placeholder="x" id="input_left-nb_books_vi" #leftInputBooksVi (input)='onBookInputChange(leftInputBooksVi)'/>
+                        <span class="hsr">+</span>
+                        <input class="hsr" type="text" placeholder="x" id="input_left-nb_books_b" #leftInputBooksB (input)='onBookInputChange(leftInputBooksB)'/>
+                    </div>
+                    <div class="flex row item_center">
+                        <span class="hsr">=</span>
+                        <input class="hsr" type="text" placeholder="x" tabindex="-1" id="input_left-books_total" #leftInputBooksTotal (focus)="onRightInputMineraisFocus(leftInputBooksTotal)" (input)='onInputChange(leftInputBooksTotal)' />
+                        <span class="hsr">/</span>
+                        <input class="hsr" type="text" placeholder="x" tabindex="-1" id="input_right-books_total" #rightInputBooksTotal (input)='onInputChange(rightInputBooksTotal)' (focus)="onRightInputFocus($event)"/>
+                    </div>
+                </div>
+                <div class="flex row">
+                    <div class="panel_footer_underline pfu_half underline_purple"></div>
+                    <div class="panel_footer_underline pfu_half underline_blue"></div>
+                </div>
+            </div>					
+            <div class="panel hsr high" id="hsr_panel_track_of_destiny">
+                <div class="panel_content" (click)="OnClick($event)">
+                    <img class="panel_content_image hsr" src="assets/honkai-star-rail/icons/filter/case_g.png">
+                    <img class="panel_content_image hsr" src="assets/honkai-star-rail/icons/filter/track_of_destiny.png">
+                </div>
+                <div class="panel_footer hsr item_center flex row high">
+                    <input class="hsr" type="text" placeholder="x" id="input_left-track_of_destiny" #leftInputTrackOfDestiny (input)='onInputChange(leftInputTrackOfDestiny)'/>
+                    <span class="hsr">/</span>
+                    <input class="hsr" type="text" placeholder="x" tabindex="-1" id="input_right-track_of_destiny" #rightInputTrackOfDestiny (input)='onInputChange(rightInputTrackOfDestiny)' (focus)="onRightInputFocus($event)"/>
+                </div>
+                <div class="panel_footer_underline underline_gold"></div>
+            </div>
+            <div class="panel hsr high" id='hsr_panel_aether'>
+                <div class="panel_content" (click)="OnClick($event)">
+                    <img class="panel_content_image hsr" src="assets/honkai-star-rail/icons/filter/case_b.png">
+                    <img class="panel_content_image hsr" src="assets/honkai-star-rail/icons/filter/aether.png">
+                </div>
+                <div class="panel_footer hsr item_center high">
+                    <div class="flex row item_center">
+                        <input class="hsr" type="text" placeholder="x" id="input_left-nb_aether" #leftInputAether (input)='onInputChange(leftInputAether)'/>
+                    </div>
+                    <div class="flex row item_center">
+                        <span class="hsr">/</span>
+                        <input class="hsr" type="text" placeholder="x" tabindex="-1" id="input_right-total_aether" #rightInputAether (input)='onInputChange(rightInputAether)' (focus)="onRightInputFocus($event)"/>
+                    </div>
+                </div>
+                <div class="panel_footer_underline underline_blue"></div>
+            </div>
+        </div>
+    </div>
+</div>
