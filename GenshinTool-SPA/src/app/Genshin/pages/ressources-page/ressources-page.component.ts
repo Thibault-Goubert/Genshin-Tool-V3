@@ -16,6 +16,7 @@ export class RessourcesPageComponent implements OnInit{
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
     this.findAndOpenLastOpenedSubTab();
+    this.canRessourceGoalChange = this.ressourceService.currentCanRessourceGoalChange;
   }
 
   findAndOpenLastOpenedSubTab() {

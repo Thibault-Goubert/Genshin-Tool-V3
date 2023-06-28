@@ -33,34 +33,61 @@ import { CalculatorWeaponComponent } from './Genshin/components/calculator-page-
 import { MySelectPickerComponent } from './Genshin/components/calculator-page-components/my-select-picker/my-select-picker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenshinImpactPageComponent } from './Genshin/pages/genshin-impact-page/genshin-impact-page.component';
+
 import { HonkaiStarRailPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-page/honkai-star-rail-page.component';
+import { HonkaiStarRailRelicsPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-relics-page/honkai-star-rail-relics-page.component';
+import { HonkaiStarRailNotesPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-notes-page/honkai-star-rail-notes-page.component';
+import { HonkaiStarRailRessourcesPageComponent } from './HonkaiStarRail/pages/ressources/honkai-star-rail-ressources-page/honkai-star-rail-ressources-page.component';
+import { HonkaiStarRailCharactersPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-characters-page/honkai-star-rail-characters-page.component';
+import { HonkaiStarRailGeneralRessourcesComponent } from './HonkaiStarRail/Components/RessourcesComponents/honkai-star-rail-general-ressources/honkai-star-rail-general-ressources.component';
+import { HonkaiStarRailFarmRessourcesPageComponent } from './HonkaiStarRail/pages/ressources/honkai-star-rail-farm-ressources-page/honkai-star-rail-farm-ressources-page.component';
+import { HsrRessourcePanelComponent } from './HonkaiStarRail/Components/RessourcesComponents/hsr-ressource-panel/hsr-ressource-panel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+
+    GenshinImpactPageComponent,
+    GenshinImpactHeaderComponent,
+
     RessourcesPageComponent,
-    CharactersPageComponent,
-    ArtefactsPageComponent,
-    NotesPageComponent,
-    CharacterPanelComponent,
-    CharacterPanelListComponent,
-    CharacterFiltersComponent,
-    BossRessourcesPageComponent,
-    DomainRessourcesPageComponent,
-    HarvestableRessourcesPageComponent,
+
+    RessourcePanelComponent,
+
     GeneralRessourcesComponent,
+    GeneralRessourcesParametricComponent,
+
+    DomainRessourcesPageComponent,
+    BossRessourcesPageComponent,
     BossRessourcesGemsComponent,
     BossRessourcesElementsComponent,
-    MonsterRessourcesPageComponent,
     BossRessourcesBossComponent,
-    RessourcePanelComponent,
-    GeneralRessourcesParametricComponent,
+    HarvestableRessourcesPageComponent,
+    MonsterRessourcesPageComponent,
+
+    CharactersPageComponent,
+
+    CharacterFiltersComponent,
+    CharacterPanelComponent,
+    CharacterPanelListComponent,
+
+    ArtefactsPageComponent,
+
+    NotesPageComponent,
+    
     CalculatorCharacterComponent,
     CalculatorWeaponComponent,
     MySelectPickerComponent,
-    GenshinImpactPageComponent,
+
     HonkaiStarRailPageComponent,
     HonkaiStarRailHeaderComponent,
-    GenshinImpactHeaderComponent
+    HonkaiStarRailRelicsPageComponent,
+    HonkaiStarRailNotesPageComponent,
+    HonkaiStarRailRessourcesPageComponent,
+    HonkaiStarRailCharactersPageComponent,
+    HonkaiStarRailGeneralRessourcesComponent,
+    HonkaiStarRailFarmRessourcesPageComponent,
+    HsrRessourcePanelComponent
   ],
   imports: [
     BrowserModule,

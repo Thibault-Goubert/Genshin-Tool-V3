@@ -1,0 +1,264 @@
+{
+	"definition":{
+		"cols":[
+			{
+				"class": "",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"trace_blade_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_blade_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_blade_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_arrow_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_arrow_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_arrow_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_key_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_key_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_key_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_music_box_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_music_box_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_music_box_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_obsidian_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_obsidian_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_obsidian_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_shield_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_shield_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_shield_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"trace_greenery_ve", "rarities":["ve"]
+							},
+							{
+								"name":"trace_greenery_b", "rarities":["b"]
+							},
+							{
+								"name":"trace_greenery_vi", "rarities":["vi"]
+							}
+						]
+					}
+				]
+			},
+			{
+				"class": "smallLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"boss_doomsday", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_cocolia", "rarities":["vi"]
+							}
+						]
+					}
+				]
+			},
+			{
+				"class": "smallLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"elem_physical_1", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_fire_1", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_ice_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_ice_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_lightning_1", "rarities":["vi"]
+							},
+							{
+								"name":"elem_lightning_2", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_wind_1", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_quantum_1", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"elem_imaginary_1", "rarities":["vi"]
+							}
+						]
+					}
+				]
+			},
+			{
+				"class": "smallLeftSpace",
+				"rows":[
+					{
+						"ressources":[
+							{
+								"name":"monster_dna_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_dna_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_dna_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"monster_core_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_core_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_core_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"monster_medal_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_medal_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_medal_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"monster_engine_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_engine_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_engine_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"monster_branch_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_branch_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_branch_vi", "rarities":["vi"]
+							}
+						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"monster_artifex_ve", "rarities":["ve"]
+							},
+							{
+								"name":"monster_artifex_b", "rarities":["b"]
+							},
+							{
+								"name":"monster_artifex_vi", "rarities":["vi"]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

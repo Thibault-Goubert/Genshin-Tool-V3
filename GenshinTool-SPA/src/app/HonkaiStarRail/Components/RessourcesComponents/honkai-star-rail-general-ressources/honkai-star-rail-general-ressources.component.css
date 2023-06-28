@@ -1,0 +1,33 @@
+#liste_ressources_generales, 
+#btn_groupe_ressources, 
+#btn_groupe_gestions {
+    margin-top: 23px;
+}
+#input_left-nb_credits {
+    width: 120px;
+}
+#input_right-total_credits {
+    width: 110px;
+}
+.large, div.large, img.large {
+  width: 124px;
+}
+img.left {
+    left: 0%;
+    border-radius: 1px 0px 0px 0px;
+}
+img.right {
+    right: 0%;
+    border-radius: 1px 15px 1px 1px;
+}
+#input_left-books_total, 
+#input_right-books_total, 
+#input_left-nb_aether, 
+#input_right-total_aether, 
+#input_left-nb_books_vi, 
+#input_left-nb_books_b {
+    width: 55px;
+}
+.panel{
+    transition: opacity 0.15s;
+}

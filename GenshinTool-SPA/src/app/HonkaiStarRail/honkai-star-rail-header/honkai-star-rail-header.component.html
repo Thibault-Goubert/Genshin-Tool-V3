@@ -1,18 +1,17 @@
-<p>honkai-star-rail-header works!</p>
 <header>
     <div class="flex">
         <nav class="flex">
-            <div #btnRessources routerLink="ressources" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Ressources</div>
-            <div #btnCharacters routerLink="characters" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Personnages</div>
-            <div #btnArtefacts routerLink="artefacts" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Artéfacts</div>
-            <div #btnNotes routerLink="notes" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Notes</div>
+            <div #btnRessources routerLink="ressources" routerLinkActive="active" class="hsr btn flex btn_principal" tabindex="-1">Ressources</div>
+            <div #btnCharacters routerLink="characters" routerLinkActive="active" class="hsr btn flex btn_principal" tabindex="-1">Personnages</div>
+            <div #btnArtefacts routerLink="relics" routerLinkActive="active" class="hsr btn flex btn_principal" tabindex="-1">Reliques</div>
+            <div #btnNotes routerLink="notes" routerLinkActive="active" class="hsr btn flex btn_principal" tabindex="-1">Notes</div>
         </nav>
         <div style="margin-left: 6px;">
             <!-- (click)="onDailiesClick()" (contextmenu)="resetOnRightClick($event)" -->
-            <div #btnDailies id="btn_toggle_dailies" class="btn toggle"  tabindex="-1">Daily</div> 
+            <div #btnDailies id="btn_toggle_dailies" class="hsr btn toggle"  tabindex="-1">Daily</div> 
         </div> 
         <div id="btn_groupe_toggles" class="flex row">
-            <div id="btn_toggle_changeApp" class="btn toggle" (click)="onChangeAppClick()" tabindex="-1">App</div>
+            <div id="btn_toggle_changeApp" class="hsr btn toggle" (click)="onChangeAppClick()" tabindex="-1">App</div>
         </div>
     </div>
 </header>
