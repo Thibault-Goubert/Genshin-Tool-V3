@@ -7,7 +7,7 @@ import { HSRRessourceService } from 'src/app/HonkaiStarRail/Services/hsr-ressour
   styleUrls: ['./honkai-star-rail-ressources-page.component.css']
 })
 export class HonkaiStarRailRessourcesPageComponent implements OnInit{
-  private tabOpenedSaveKey = "HSR_ressourcesPage_mainTab";
+  private tabOpenedSaveKey = "hsr_ressourcesPage_mainTab";
   canRessourceGoalChange: boolean = false;
 
   constructor(private ressourceService: HSRRessourceService){}
@@ -23,7 +23,7 @@ export class HonkaiStarRailRessourcesPageComponent implements OnInit{
     for(let index=0;index<localStorage.length;index++){
       let key = localStorage.key(index) ?? "";
       
-      if(key.includes("ressourcesPage_subTab")){
+      if(key.includes("hsr_subTab_ressourcesPage")){
         let value = localStorage.getItem(key);
         if(value != undefined){
           let btn = document.getElementById(value)
@@ -36,7 +36,7 @@ export class HonkaiStarRailRessourcesPageComponent implements OnInit{
   removeOtherTabSavedKeyFromStorage() {
     for(let index=0;index<localStorage.length;index++){
       let key = localStorage.key(index) ?? "";
-      if(key.includes("mainTab")){
+      if(key.includes("hsr_mainTab")){
         localStorage.removeItem(key);
         break;
       }

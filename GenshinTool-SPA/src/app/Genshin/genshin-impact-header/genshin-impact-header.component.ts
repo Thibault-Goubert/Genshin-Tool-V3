@@ -21,17 +21,15 @@ export class GenshinImpactHeaderComponent {
   protected GenshinImpactMainPagePath: string = routes.genshin;
 
   ngOnInit(): void {
-    this.refresh();
+    if(this.router.url != routes.genshinNotes){
+      this.findAndOpenLastOpenedMainTab();
+    }
+    this.checkDailiesResetDate();
+    this.restoreDailies();
   }
 
   constructor(private helperService: HelperService, private router: Router, private activatedRoute: ActivatedRoute) {    
   }
-  
-  refresh() {
-    this.findAndOpenLastOpenedMainTab();
-    this.checkDailiesResetDate();
-    this.restoreDailies();
-  } 
 
   findAndOpenLastOpenedMainTab() {
     for(let index=0;index<localStorage.length;index++){
@@ -81,7 +79,7 @@ export class GenshinImpactHeaderComponent {
     this.openLinkOnFirefoxAndChrome(starRail.giftCode);
   }
   onChangeAppClick(){
-    this.router.navigateByUrl(routes.honkaisr);
+    this.router.navigateByUrl(routes.hsrNotes);
   }
 
   openLinkOnFirefoxAndChrome(link: string){    

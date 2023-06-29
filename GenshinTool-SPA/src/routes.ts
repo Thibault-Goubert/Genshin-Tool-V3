@@ -1,4 +1,6 @@
 export const routes = {
     genshin: '/genshinimpact',
-    honkaisr: '/honkaistarrail'
+    genshinNotes: '/genshinimpact/notes',
+    honkaisr: '/honkaistarrail',
+    hsrNotes: '/honkaistarrail/notes',
 }

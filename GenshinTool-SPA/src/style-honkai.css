@@ -3,7 +3,8 @@ span.hsr,
 p.hsr,
 .btn.hsr
 {
-    font-family: Calibri Regular;
+    font-family: 'Calibri';
+    font-weight: bold;
     background-color: #2c2c30;
 }
 
@@ -16,6 +17,7 @@ p.hsr,
 
 .btn.hsr{
     border-radius: 1px;
+    box-shadow: 0px 0px 2.5px black;
 }
 
 .panel_footer.hsr{
