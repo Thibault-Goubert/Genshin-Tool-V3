@@ -27,8 +27,8 @@ body{
 input, .btn, span, p{
     text-align: center;
     background-color: #e9e5dc;
-    font-family: Calibri;
-    font-weight: lighter;
+    font-family: 'Calibri';
+    font-weight: normal;
     font-size:smaller;
     color: #36393f;
     border-radius: 3px;
@@ -67,9 +67,8 @@ textarea{
 
     width: 100px;
 
-    font-family: Calibri;
-    font-weight: lighter;
-    font-size:smaller;
+    font-family: 'Calibri';
+    font-weight: normal;
     color: #36393f;
 }
 .hide{

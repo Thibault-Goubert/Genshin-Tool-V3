@@ -9,8 +9,21 @@ import farmDefinition from "./hsr_FarmRessourcesDefinition.json"
 })
 export class HonkaiStarRailFarmRessourcesPageComponent implements OnInit{
   def!: Definition;
+  private subTabOpenedSaveKey = "hsr_subTab_ressourcesPage_farm";
 
   ngOnInit(): void {
     this.def = farmDefinition.definition;
+    this.removeOtherTabSavedKeyFromStorage();
+    localStorage.setItem(this.subTabOpenedSaveKey, "btn_farm");
+  }
+
+  removeOtherTabSavedKeyFromStorage() {
+    for(let index=0;index<localStorage.length;index++){
+      let key = localStorage.key(index) ?? "";
+      if(key.includes("hsr_subTab")){
+        localStorage.removeItem(key);
+        break;
+      }
+    }
   }
 } 
