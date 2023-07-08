@@ -42,6 +42,10 @@ import { HonkaiStarRailCharactersPageComponent } from './HonkaiStarRail/pages/ho
 import { HonkaiStarRailGeneralRessourcesComponent } from './HonkaiStarRail/Components/RessourcesComponents/honkai-star-rail-general-ressources/honkai-star-rail-general-ressources.component';
 import { HonkaiStarRailFarmRessourcesPageComponent } from './HonkaiStarRail/pages/ressources/honkai-star-rail-farm-ressources-page/honkai-star-rail-farm-ressources-page.component';
 import { HsrRessourcePanelComponent } from './HonkaiStarRail/Components/RessourcesComponents/hsr-ressource-panel/hsr-ressource-panel.component';
+import { HsrDailiesComponent } from './HonkaiStarRail/Components/hsr-dailies/hsr-dailies.component';
+import { GiDailiesComponent } from './Genshin/components/gi-dailies/gi-dailies.component';
+import { HsrToolsComponent } from './HonkaiStarRail/Components/hsr-tools/hsr-tools.component';
+import { GiToolsComponent } from './Genshin/components/gi-tools/gi-tools.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +91,11 @@ import { HsrRessourcePanelComponent } from './HonkaiStarRail/Components/Ressourc
     HonkaiStarRailCharactersPageComponent,
     HonkaiStarRailGeneralRessourcesComponent,
     HonkaiStarRailFarmRessourcesPageComponent,
-    HsrRessourcePanelComponent
+    HsrRessourcePanelComponent,
+    HsrDailiesComponent,
+    GiDailiesComponent,
+    HsrToolsComponent,
+    GiToolsComponent
   ],
   imports: [
     BrowserModule,

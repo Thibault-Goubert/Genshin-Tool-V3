@@ -45,8 +45,4 @@ export class HonkaiStarRailHeaderComponent implements OnInit{
       }
     }
   }
-
-  onChangeAppClick(){
-    this.router.navigateByUrl(routes.genshinNotes);
-  }
 }

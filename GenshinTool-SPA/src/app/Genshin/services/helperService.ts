@@ -12,7 +12,20 @@ export class HelperService{
     
     constructor(private http: HttpClient) {}
 
-    public openLink(link:string, browser:string): void{ 
+    private openLink(link:string, browser:string): void{ 
       this.http.post(this.baseUrl + "OpenLink", new OpenLinkRequest(link, browser)).subscribe();
+    }
+
+    public openLinkOnFirefox(link:string){
+      this.openLink(link, "firefox");
+    }
+    
+    public openLinkOnChrome(link:string){
+      this.openLink(link, "chrome");
+    }
+
+    public openLinkOnFirefoxAndChrome(link:string){
+      this.openLinkOnFirefox(link);
+      this.openLinkOnChrome(link);
     }
 }

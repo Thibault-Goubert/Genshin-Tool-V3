@@ -1,0 +1,21 @@
+.btn_toggle_changeApp{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+#hsr_checkIn{
+    left: -40px;
+}
+#hsr_achievements{
+    left: -35px;
+    top: 40px;
+}
+#hsr_map{
+    left: -4px;
+    top: 65px;
+}
+#hsr_gift{
+    left: 35px;
+    top: 68px;
+}

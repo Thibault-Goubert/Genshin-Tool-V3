@@ -15,8 +15,8 @@ export class GenshinImpactHeaderComponent {
   @ViewChild('btnArtefacts', {static: true}) btnArtefacts!: ElementRef<HTMLElement>;
   @ViewChild('btnNotes', {static: true}) btnNotes!: ElementRef<HTMLElement>;
 
-  @ViewChild('btnDailies', {static: true}) btnDailies!: ElementRef<HTMLElement>;
-  @ViewChild('btnDailyCo', {static: true}) btnDailyCo!: ElementRef<HTMLElement>;
+  // @ViewChild('btnDailies', {static: true}) btnDailies!: ElementRef<HTMLElement>;
+  // @ViewChild('btnDailyCo', {static: true}) btnDailyCo!: ElementRef<HTMLElement>;
 
   protected GenshinImpactMainPagePath: string = routes.genshin;
 
@@ -24,8 +24,6 @@ export class GenshinImpactHeaderComponent {
     if(this.router.url != routes.genshinNotes){
       this.findAndOpenLastOpenedMainTab();
     }
-    this.checkDailiesResetDate();
-    this.restoreDailies();
   }
 
   constructor(private helperService: HelperService, private router: Router, private activatedRoute: ActivatedRoute) {    
@@ -55,77 +53,30 @@ export class GenshinImpactHeaderComponent {
     }
   }
 
-  onDailiesClick(){
-    let nativeElement = this.btnDailies.nativeElement;
+  // findKeyAndApplyClass(element: HTMLElement) {
+  //   let value = this.findLocalStorageKey(element.id)
+  //   if(value){
+  //     element.classList.add(value)
+  //   }
+  // }
 
-    nativeElement.classList.add("clicked");    
-    localStorage.setItem(nativeElement.id, "clicked")
+  // findKeyAndRemoveIfResetDateOutdated(element: HTMLElement){
+  //   let resetDate = this.findLocalStorageKey(element.id+'_reset')
+  //   if(resetDate){
+  //     let currentDate = new Date();
+  //     if(currentDate > new Date(resetDate)){
+  //       localStorage.removeItem(element.id)
+  //       localStorage.removeItem(element.id+'_reset')
+  //     }
+  //   }
+  // }
 
-    this.setResetToMidnight(nativeElement.id+'_reset');
-  }
-  onDailyCoClick(){
-    let nativeElement = this.btnDailyCo.nativeElement;
+  // findLocalStorageKey(key: string){
+  //   return localStorage.getItem(key)
+  // }
 
-    this.openLinkOnFirefoxAndChrome(genshin.dailyCo);
-    this.openLinkOnFirefoxAndChrome(starRail.dailyCo);
-
-    nativeElement.classList.add("clicked");
-    localStorage.setItem(nativeElement.id, "clicked")
-
-    this.setResetToMidnight(nativeElement.id+'_reset');
-  }
-  onGiftCodePageClick(){
-    this.openLinkOnFirefoxAndChrome(genshin.giftCode);
-    this.openLinkOnFirefoxAndChrome(starRail.giftCode);
-  }
-  onChangeAppClick(){
-    this.router.navigateByUrl(routes.hsrNotes);
-  }
-
-  openLinkOnFirefoxAndChrome(link: string){    
-    this.helperService.openLink(link, 'chrome');
-    this.helperService.openLink(link, 'firefox');
-  }
-
-  checkDailiesResetDate() {
-    this.findKeyAndRemoveIfResetDateOutdated(this.btnDailies.nativeElement);
-    this.findKeyAndRemoveIfResetDateOutdated(this.btnDailyCo.nativeElement);
-  }
-  restoreDailies() {
-    this.findKeyAndApplyClass(this.btnDailies.nativeElement)
-    this.findKeyAndApplyClass(this.btnDailyCo.nativeElement)
-  }
-  findKeyAndApplyClass(element: HTMLElement) {
-    let value = this.findLocalStorageKey(element.id)
-    if(value){
-      element.classList.add(value)
-    }
-  }
-  findKeyAndRemoveIfResetDateOutdated(element: HTMLElement){
-    let resetDate = this.findLocalStorageKey(element.id+'_reset')
-    if(resetDate){
-      let currentDate = new Date();
-      if(currentDate > new Date(resetDate)){
-        localStorage.removeItem(element.id)
-        localStorage.removeItem(element.id+'_reset')
-      }
-    }
-  }
-  findLocalStorageKey(key: string){
-    return localStorage.getItem(key)
-  }
-
-  setResetToMidnight(key: string){
-    let now = new Date().setHours(23, 59, 59, 999);
-    localStorage.setItem(key, now.toString())
-  }
-
-  resetOnRightClick(event: Event){    
-    let element = (event.target as Element);
-    let key = element.id;
-    localStorage.removeItem(key);    
-    localStorage.removeItem(key+'_reset');
-    element.classList.remove("clicked")
-    return false;
-  }
+  // setResetToMidnight(key: string){
+  //   let now = new Date().setHours(23, 59, 59, 999);
+  //   localStorage.setItem(key, now.toString())
+  // }
 }

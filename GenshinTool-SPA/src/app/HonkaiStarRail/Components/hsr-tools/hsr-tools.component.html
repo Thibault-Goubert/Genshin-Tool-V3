@@ -1,0 +1,19 @@
+
+
+<div id="btn_groupe_toggles" class="flex row" style="position: relative;">
+    <div id="hsr_logo" class="hsr btn toggle btn_toggle_changeApp" (click)="onChangeAppClick()" tabindex="-1" style="position: absolute;">
+        <img src="assets/honkai-star-rail/icons/dailies/hsr_logo.png">
+    </div>
+    <div #dailyCheckIn id="hsr_checkIn" style="position: absolute;" (click)="onDailyCoClick()" tabindex="-1">
+        <img src="assets/honkai-star-rail/icons/dailies/{{dailyCheckInImg}}.png">
+    </div>
+    <div id="hsr_achievements" style="position: absolute;" (click)="onAchievementsClick()" tabindex="-1">
+        <img src="assets/honkai-star-rail/icons/dailies/hsr_achievements.png">
+    </div>
+    <div id="hsr_map" style="position: absolute;" (click)="onMapClick()" tabindex="-1">
+        <img src="assets/honkai-star-rail/icons/dailies/hsr_map.png">
+    </div>
+    <div id="hsr_gift" style="position: absolute;" (click)="onGiftCodeClick()" tabindex="-1">
+        <img src="assets/honkai-star-rail/icons/dailies/hsr_gift.png">
+    </div>
+</div>

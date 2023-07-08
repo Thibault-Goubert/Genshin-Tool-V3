@@ -1,0 +1,27 @@
+
+<div id="hsr_dailies" class="flex row" style="margin-left: 6px;">
+    <div #btnDailies id="btn_toggle_dailies" class="hsr btn toggle"  tabindex="-1" (click)="onDailiesClick()" (contextmenu)="onResetDailiesAndHebdosRightClick()">
+        <img src="assets/honkai-star-rail/icons/dailies/{{dailiesImg}}.png">
+    </div> 
+    <div #dailiesPopup class="flex col collapsed" id="btn_toggle_dailies_popup" tabindex="-1" >
+        <div class="flex row" tabindex="-1">
+            <div class="btn_toggle_dailies" tabindex="-1" #hsrStamina id="hsr_DailyBtn_Stamina" (click)="onDailyClick(hsrStamina)">
+                <img class="btn_toggle_dailies_img" src="assets/honkai-star-rail/icons/dailies/hsr_stamina.png">
+            </div>
+            <div class="btn_toggle_dailies left_space" tabindex="-1" #hsrAssignements id="hsr_DailyBtn_assignements" (click)="onDailyClick(hsrAssignements)">
+                <img class="btn_toggle_dailies_img" src="assets/honkai-star-rail/icons/dailies/hsr_assignements.png">
+            </div>
+            <div class="btn_toggle_dailies left_space" tabindex="-1" #hsrMissions id="hsr_DailyBtn_missions" (click)="onDailyClick(hsrMissions)">
+                <img class="btn_toggle_dailies_img" src="assets/honkai-star-rail/icons/dailies/hsr_missions.png">
+            </div>
+        </div>
+        <div class="flex row btn_toggle_dailies_lowerRow" tabindex="-1">
+            <div class="btn_toggle_dailies" tabindex="-1" #hsrMemory id="hsr_HebdoBtn_memory" (click)="onDailyClick(hsrMemory)">
+                <img class="btn_toggle_dailies_img" src="assets/honkai-star-rail/icons/dailies/hsr_memory.png">
+            </div>
+            <div class="btn_toggle_dailies left_space" tabindex="-1" #hsrSu id="hsr_HebdoBtn_su" (click)="onDailyClick(hsrSu)">
+                <img class="btn_toggle_dailies_img" src="assets/honkai-star-rail/icons/dailies/hsr_su.png">
+            </div>
+        </div>
+    </div>
+</div> 
