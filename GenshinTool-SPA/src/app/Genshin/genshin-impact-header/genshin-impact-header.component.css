@@ -17,3 +17,10 @@ header{
 .clicked{
     background-color: #e9e5dc;
 }
+
+.btn.toggle.btn_toggle_changeApp{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    right: -48px;bottom: -30px;
+}

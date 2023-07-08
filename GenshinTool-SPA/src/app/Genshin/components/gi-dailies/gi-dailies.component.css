@@ -1,0 +1,14 @@
+#gi_dailies{
+    position: absolute;
+}
+.dailyDone{
+    background-color: #6aa84f;
+}
+
+.btn.toggle.btn_toggle_changeApp{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    right: -48px;
+    bottom: -30px;
+}

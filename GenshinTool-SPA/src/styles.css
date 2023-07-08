@@ -150,3 +150,36 @@ img {
 .bigLeftSpace{  
     margin-left: 60px;
 }
+
+.btn_toggle_dailies{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #2c2c30;
+}
+
+.btn_toggle_dailies.left_space{
+    margin-left: 2px;
+}
+
+.btn_toggle_dailies_lowerRow{
+    margin-left: -12px;
+}
+
+#btn_toggle_dailies_popup{
+    margin-top: 7px;
+    margin-left: 8px;
+}
+
+.btn.toggle{
+    display: flex;
+    box-shadow: 0px 0px 4px black;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}

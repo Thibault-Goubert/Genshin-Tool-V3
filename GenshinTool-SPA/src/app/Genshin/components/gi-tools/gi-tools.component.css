@@ -1,0 +1,21 @@
+.btn_toggle_changeApp{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+#gi_checkIn{
+    left: -40px;
+}
+#gi_achievements{
+    left: -35px;
+    top: 40px;
+}
+#gi_map{
+    left: -4px;
+    top: 65px;
+}
+#gi_gift{
+    left: 35px;
+    top: 68px;
+}

@@ -6,13 +6,7 @@
             <div #btnArtefacts routerLink="artefacts" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Artéfacts</div>
             <div #btnNotes routerLink="notes" routerLinkActive="active" class="btn flex btn_principal" tabindex="-1">Notes</div>
         </nav>
-        <div style="margin-left: 6px;">
-            <div #btnDailies id="btn_toggle_dailies" class="btn toggle" (click)="onDailiesClick()" (contextmenu)="resetOnRightClick($event)" tabindex="-1">Daily</div> 
-        </div>      
-        <div id="btn_groupe_toggles" class="flex row">
-            <div #btnDailyCo id="btn_toggle_linkDailyCo" class="btn toggle" (click)="onDailyCoClick()" (contextmenu)="resetOnRightClick($event)" tabindex="-1">Co</div>
-            <div id="btn_toggle_linkGiftCodePage" class="btn toggle" (click)="onGiftCodePageClick()" tabindex="-1">Gift</div>
-            <div id="btn_toggle_changeApp" class="btn toggle" (click)="onChangeAppClick()" tabindex="-1">App</div>
-        </div>
+        <app-gi-dailies></app-gi-dailies>
+        <app-gi-tools style="width: 65px;margin-left: auto;"></app-gi-tools>
     </div>
 </header>
