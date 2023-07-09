@@ -207,5 +207,13 @@ export class CharacterFiltersComponent implements OnInit {
     return true;
   } 
 
+  public OnResetClick(){
+    this.characterRequest.rarities = [];
+    this.characterRequest.sexIds = [];
+    this.characterRequest.elementsIds = [];
+    this.characterRequest.weaponsTypesIds = [];
+    this.characterRequest.regionsIds = [];
+    this.filter.emit(this.characterRequest);
+  }
 }
 

@@ -31,11 +31,11 @@
 #liste_personnages_filtres_armes,
 #liste_personnages_filtres_elements,
 #liste_personnages_filtres_etoiles,
-#liste_personnages_filtres_regions
+#liste_personnages_filtres_regions,
+#liste_personnages_filtres_reset
 {
     margin-left: 24px;
 }
-#liste_personnages_filtres_arme,
 #liste_personnages_filtres_etoiles_quatre{
     margin-top: 4px;;
 }

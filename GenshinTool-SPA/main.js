@@ -35,6 +35,5 @@ app.on('activate', () => {
 });
 
 app.on('ready', function()  {
-  let result = autoUpdater.checkForUpdatesAndNotify();
-  console.log("update result", result);
+  autoUpdater.checkForUpdatesAndNotify();
 });
