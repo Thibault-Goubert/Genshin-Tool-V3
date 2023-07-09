@@ -78,6 +78,11 @@ textarea{
     display: none;
     overflow: hidden;
 }
+.collapsed.transition{
+    display: flex;
+    overflow: visible;  
+    transition: display 0.15s;
+}
 .invisible{
     opacity: 0;
 }
@@ -182,4 +187,14 @@ img {
     border-radius: 15px;
     justify-content: center;
     align-items: center;
+}
+
+.btn_principal{
+    transition: background-color 0.15s;
+}
+.btn_principal.hsr{
+    transition: border-radius 0.15s;
+}
+.btn_toggle_dailies{
+    transition: background-color 0.15s;
 }

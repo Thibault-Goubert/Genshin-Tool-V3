@@ -1,7 +1,7 @@
 {
-  "name": "genshin-tool",
-  "version": "3.0.4",
-  "description": "Outil de gestion pour Genshin Impact",
+  "name": "hyvtool",
+  "version": "3.0.5",
+  "description": "Outil de gestion pour Hoyoverse",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -51,8 +51,8 @@
   "author": "ThibaultGoubert",
   "private": true,
   "build": {
-    "productName": "GenshinTool",
-    "appId": "GenshinTool",
+    "productName": "HYVTool",
+    "appId": "HYVTool",
     "files": [
       "dist/",
       "node_modules/",

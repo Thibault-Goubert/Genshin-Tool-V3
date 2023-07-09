@@ -47,3 +47,6 @@ textarea{
     font-size:smaller;
     color: #36393f;
 }
+#notes-calculator_display{
+    margin-left: 45px;
+}
