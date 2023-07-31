@@ -29,6 +29,7 @@ export class GiToolsComponent{
   }
   onDailyCoClick(){
     this.helperService.openLinkOnFirefoxAndChrome(genshin.dailyCo);
+    this.helperService.openLinkOnFirefoxAndChrome(starRail.dailyCo);
   }
   onGiftCodePageClick(){
     this.helperService.openLinkOnFirefoxAndChrome(genshin.giftCode);

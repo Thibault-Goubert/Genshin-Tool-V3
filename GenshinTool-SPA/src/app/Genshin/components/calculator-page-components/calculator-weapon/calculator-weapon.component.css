@@ -42,8 +42,8 @@ span{
     image-rendering:-webkit-optimize-contrast;
 }
 
-#calculateur-weapon-btn-calculer{
-    margin-top: 17px;
+#calculateur-weapon-btn-calculer:hover{
+    background-color: #2f3136;
 }
 .calculateur-text-result{  
     align-self: center;

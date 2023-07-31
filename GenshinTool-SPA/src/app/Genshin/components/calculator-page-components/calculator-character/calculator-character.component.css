@@ -57,6 +57,9 @@ span{
 #calculateur-personnage-btn-calculer{
     margin-top: 17px;
 }
+#calculateur-personnage-btn-calculer:hover{
+    background-color: #2f3136;
+}
 #calculateur-personnage-resultat{
     margin-top: 17px;
 }

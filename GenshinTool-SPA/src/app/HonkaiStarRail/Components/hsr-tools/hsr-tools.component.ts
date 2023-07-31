@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/Genshin/services/helperService';
 import { routes } from 'src/routes';
-import { starRail } from 'src/urls';
+import { starRail, genshin } from 'src/urls';
 
 @Component({
   selector: 'app-hsr-tools',
@@ -29,6 +29,7 @@ export class HsrToolsComponent implements OnInit{
   }
   onDailyCoClick(){
     this.helperService.openLinkOnFirefoxAndChrome(starRail.dailyCo);
+    this.helperService.openLinkOnFirefoxAndChrome(genshin.dailyCo);
   }
   onGiftCodeClick(){
     this.helperService.openLinkOnFirefoxAndChrome(starRail.giftCode);
