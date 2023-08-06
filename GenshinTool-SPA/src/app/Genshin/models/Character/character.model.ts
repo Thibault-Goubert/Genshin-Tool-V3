@@ -3,6 +3,7 @@ export class Character {
     name!: string;
     isCollab!: boolean;
     rarity!: number;
+    isUsed!: boolean;
 
     weaponTypeId!: number;
     regionId!: number;

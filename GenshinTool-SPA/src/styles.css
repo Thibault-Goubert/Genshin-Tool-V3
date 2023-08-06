@@ -144,6 +144,12 @@ textarea{
 .active {
     background-color: #e9e5dc;
 }
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
 .center{    
     left: 50%;
     top: 50%;
@@ -206,3 +212,5 @@ img {
 .btn_tools:hover{
     opacity: 70%;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

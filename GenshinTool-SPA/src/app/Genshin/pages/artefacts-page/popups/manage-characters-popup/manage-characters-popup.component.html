@@ -1,0 +1,34 @@
+<div id="popup_manageCharacters">
+    <div id="popup_manageCharacters_Header" class="flex row">
+        <span id="popup_manageCharacters_Title">Gestion des Personnages</span>
+        <div id="popup_manageCharacters_btnClose" (click)="onClose()"><span>X</span></div>
+    </div>
+    <div id="popup_manageCharacters_Content" class="flex row">
+        <div id="popup_manageCharacters_LeftContent" class="flex col">
+            <input #inputCurrentCharacters id="popup_manageCharacters_CurrentCharactersInput" 
+                (input)="onCurrentCharactersInputChange(inputCurrentCharacters.value)" placeholder="Personnages utilisés...">
+            <div id="popup_manageCharacters_CurrentCharactersList">
+                <div *ngFor="let char of currentDisplayedCharacters" 
+                    class="flex row popup_manageCharacters_List_Row" 
+                    (dblclick)="removeCharacterFromCurrent(char)">
+                    <span class="popup_manageCharacters_List_CharacterName">{{char.name}}</span>
+                    <div class="popup_manageCharacters_CurrentCharactersList_Remove" (click)="removeCharacterFromCurrent(char)">X</div>    
+                </div>
+            </div>
+        </div>
+        <div id="popup_manageCharacters_Middle" class="flex">
+            <div id="popup_manageCharacters_SwitchSymbol">&lt;</div>
+        </div>
+        <div id="popup_manageCharacters_RightContent" class="flex col">
+            <input #inputAllCharacters id="popup_manageCharacters_AllCharactersInput" 
+                (input)="onAllCharactersInputChange(inputAllCharacters.value)" placeholder="Liste entière...">
+            <div id="popup_manageCharacters_AllCharactersList" class="flex col">
+                <div *ngFor="let char of allDisplayedCharacters" 
+                    class="flex row popup_manageCharacters_List_Row"
+                    (dblclick)="addCharacterToCurrent(char)">
+                    <span class="popup_manageCharacters_List_CharacterName">{{char.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

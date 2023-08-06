@@ -21,5 +21,6 @@ public interface ICharacterModel : IBaseModel
     string Region { get; set; }
     long SexId { get; set; }
     bool IsCollab { get; set; }
-    long WeaponId { get; set; }
+    long? WeaponId { get; set; }
+    bool IsUsed { get; set; }
 }

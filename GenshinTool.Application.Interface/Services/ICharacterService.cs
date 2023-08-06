@@ -1,4 +1,5 @@
 ﻿using GenshinTool.Application.Domain.Models;
+using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Service.Interface.Core;
 
@@ -12,4 +13,7 @@ public interface ICharacterService : IBaseService
     IEnumerable<CharacterDom> GetBySexId(long sexId);
     IEnumerable<CharacterDom> GetByWeaponTypeId(long weaponTypeId);
     IEnumerable<CharacterDom> GetByRequest(CharacterRequest req);
+    CharacterDom GetByName(string name);
+    bool SetIsUsed(string name, bool isUsed);
+    IEnumerable<CharacterDom> GetUsed();
 }

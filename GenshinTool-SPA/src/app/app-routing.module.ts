@@ -19,7 +19,8 @@ import { HonkaiStarRailCharactersPageComponent } from './HonkaiStarRail/pages/ho
 import { HonkaiStarRailRelicsPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-relics-page/honkai-star-rail-relics-page.component';
 import { HonkaiStarRailNotesPageComponent } from './HonkaiStarRail/pages/honkai-star-rail-notes-page/honkai-star-rail-notes-page.component';
 import { HonkaiStarRailFarmRessourcesPageComponent } from './HonkaiStarRail/pages/ressources/honkai-star-rail-farm-ressources-page/honkai-star-rail-farm-ressources-page.component';
-
+import { ManageCharactersPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-characters-popup/manage-characters-popup.component';
+import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-artefacts-popup/manage-artefacts-popup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/genshinimpact', pathMatch: 'full' },
@@ -35,7 +36,12 @@ const routes: Routes = [
         ]
       },
       { path: 'characters', component: CharactersPageComponent },
-      { path: 'artefacts', component: ArtefactsPageComponent },
+      { path: 'artefacts', component: ArtefactsPageComponent,
+        children:[
+          { path: 'manageCharacters', component: ManageCharactersPopupComponent },
+          { path: 'manageArtefacts', component: ManageArtefactsPopupComponent }
+        ]
+      },
       { path: 'notes', component: NotesPageComponent }
     ]
   },

@@ -1,0 +1,148 @@
+#popup_manageCharacters{
+    width: 370px;
+    height: 400px;
+    background-color: #282a2f;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;;
+}
+
+#popup_manageCharacters_Header{
+    height: 20px;
+}
+#popup_manageCharacters_Title{
+    margin-left: 5px;
+}
+#popup_manageCharacters_btnClose{
+    display: flex;
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+}
+#popup_manageCharacters_btnClose>span{
+    margin: auto;
+}
+
+span{
+    background: none;
+    color: #e9e5dc;
+}
+input{
+    user-select: none;
+    border: none;
+    outline: none;
+    padding: 0px;
+    border-radius: 3px;
+    color: #e9e5dc;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background-color: #36393f;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #e9e5dc;
+}
+
+#popup_manageCharacters_Content{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+#popup_manageCharacters_LeftContent{
+    height: 345px;
+    margin-bottom: 15px;
+}
+#popup_manageCharacters_CurrentCharactersInput{
+    height: 20px;
+    width: 150px;
+    background-color: #36393f;
+}
+#popup_manageCharacters_CurrentCharactersList{
+    height: 322px;
+    width: 150px;
+    background-color: #36393f;
+    margin-top: 3px;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+#popup_manageCharacters_Middle{
+    width: 40px;
+}
+#popup_manageCharacters_SwitchSymbol{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #e9e5dc;
+    align-self: center;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size:large;
+}
+
+#popup_manageCharacters_RightContent{
+    height: 345px;
+    margin-bottom: 15px;
+}
+#popup_manageCharacters_AllCharactersInput{
+    height: 20px;
+    width: 150px;
+    background-color: #36393f;
+}
+#popup_manageCharacters_AllCharactersList{
+    height: 337px;
+    width: 150px;
+    background-color: #36393f;
+    margin-top: 3px;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+.popup_manageCharacters_List_Row{
+    height: 15px;
+    align-items: center;
+}
+.popup_manageCharacters_List_CharacterName{
+    margin-left: 3px;    
+}
+.popup_manageCharacters_CurrentCharactersList_Remove{
+    display: flex;
+    width: 12px;
+    height: 12px;
+    border-radius: 20px;
+    margin-left: auto;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: red;
+    color: #e9e5dc;
+
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: 'Calibri';
+    font-weight: normal;
+    font-size: smaller;
+
+    visibility: hidden;
+}
+.popup_manageCharacters_List_Row:hover .popup_manageCharacters_CurrentCharactersList_Remove{
+    visibility: visible;
+}
+
+.popup_manageCharacters_List_Row:hover{
+    background-color: #e9e5dc;
+}
+.popup_manageCharacters_List_Row:hover > span{
+    color: #282a2f;
+}
