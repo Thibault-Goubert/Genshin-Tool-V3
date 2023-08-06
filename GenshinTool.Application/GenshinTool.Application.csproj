@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GenshinTool.Application.Interface\GenshinTool.Application.Interface.csproj" />
-    <ProjectReference Include="..\GenshinTool.Common\GenshinTool.Common.csproj" />
-    <ProjectReference Include="..\GenshinTool.Infrastructure.Interface\GenshinTool.Infrastructure.Interface.csproj" />
+    <Compile Remove="Factory\**" />
+    <EmbeddedResource Remove="Factory\**" />
+    <None Remove="Factory\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Factory\" />
+    <ProjectReference Include="..\GenshinTool.Application.Interface\GenshinTool.Application.Interface.csproj" />
+    <ProjectReference Include="..\GenshinTool.Common\GenshinTool.Common.csproj" />
+    <ProjectReference Include="..\GenshinTool.Infrastructure.Interface\GenshinTool.Infrastructure.Interface.csproj" />
   </ItemGroup>
 
 </Project>

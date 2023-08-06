@@ -19,6 +19,7 @@ namespace GenshinTool.Application.Domain.Models
         public Region Region { get; set; }
         public long SexId { get; set; }
         public bool IsCollab { get; set; }
-        public long WeaponId { get; set; }
+        public long? WeaponId { get; set; }
+        public bool IsUsed { get; set; }
     }
 }

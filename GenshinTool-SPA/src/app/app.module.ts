@@ -46,6 +46,8 @@ import { HsrDailiesComponent } from './HonkaiStarRail/Components/hsr-dailies/hsr
 import { GiDailiesComponent } from './Genshin/components/gi-dailies/gi-dailies.component';
 import { HsrToolsComponent } from './HonkaiStarRail/Components/hsr-tools/hsr-tools.component';
 import { GiToolsComponent } from './Genshin/components/gi-tools/gi-tools.component';
+import { ManageCharactersPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-characters-popup/manage-characters-popup.component';
+import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-artefacts-popup/manage-artefacts-popup.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { GiToolsComponent } from './Genshin/components/gi-tools/gi-tools.compone
     HsrDailiesComponent,
     GiDailiesComponent,
     HsrToolsComponent,
-    GiToolsComponent
+    GiToolsComponent,
+    ManageCharactersPopupComponent,
+    ManageArtefactsPopupComponent
   ],
   imports: [
     BrowserModule,

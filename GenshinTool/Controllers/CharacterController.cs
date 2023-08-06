@@ -5,6 +5,7 @@ using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace GenshinTool.Controllers;
 
@@ -93,5 +94,29 @@ public class CharacterController : BaseGenericController
         return CreateResponseItems<ICharacterModel>(
             () => _characterService.GetByRequest(req),
             $"{nameof(GetByRequest)} Success");
+    }
+
+    /// <summary>
+    ///     Update Characters IsUsed
+    /// </summary>
+    /// <returns></returns>
+    [HttpPatch(nameof(SetIsUsed) + "/{name}/{isUsed}")]
+    public IResponseItem<bool> SetIsUsed([FromRoute] string name, bool isUsed)
+    {
+        return CreateResponse(
+            () => _characterService.SetIsUsed(name, isUsed),
+            $"{nameof(SetIsUsed)} Success");
+    }
+
+    /// <summary>
+    ///     Get Characters Used
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetUsed))]
+    public IResponseItems<ICharacterModel> GetUsed()
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetUsed(),
+            $"{nameof(GetUsed)} Success");
     }
 }

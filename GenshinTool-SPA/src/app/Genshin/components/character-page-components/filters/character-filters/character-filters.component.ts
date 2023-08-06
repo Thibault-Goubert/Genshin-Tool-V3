@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CharacterRequest } from 'src/app/Genshin/models/Character/characterRequest.model';
 import { Element } from 'src/app/Genshin/models/enums/element.enum';
 import { WeaponType } from 'src/app/Genshin/models/enums/weaponType.enum';

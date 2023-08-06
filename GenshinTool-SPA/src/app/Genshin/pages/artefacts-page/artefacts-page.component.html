@@ -1,1 +1,36 @@
-<p>artefacts-page works!</p>
+<div id="btnGroup_Artefacts" class="flex row">
+    <div 
+        id="btn_manageCharacters" 
+        class="btn flex btn_principal"
+        [ngClass]="{active : isCharPopupDisplayed}"
+        tabindex="-1" (click)="onManageCharactersClick()">Gestion des Personnages</div>        
+    <div 
+        id="btn_manageArtefacts" 
+        class="btn flex btn_principal" 
+        [ngClass]="{active : isArtePopupDisplayed}"
+        tabindex="-1" (click)="onManageArtefactsClick()">Gestion des Artéfacts</div>
+</div>
+
+<div id="artefacts_ChracterList" class="flex row">
+    <div class="artefacts_ChracterList_Character relative" *ngFor="let char of characters" (click)="onCharacterClick(char)">
+        <div class="artefacts_ChracterList_Character_Border absolute center"></div>
+        <div class="artefacts_ChracterList_Character_Background absolute center"></div>
+        <img class="artefacts_ChracterList_Character_Portrait absolute center" [src]="getCharacterSideImgSrc(char.name)">
+    </div>
+</div>
+
+<div id="artefacts_CharacterInfos" class="flex row">
+    <div id="artefacts_CharacterInfos_Card" class="relative">
+        <img class="absolute center" *ngIf="selectedCharacter" [src]="getCharacterCardImgSrc()">
+    </div>
+
+</div>
+
+<div id="artefacts_popup" *ngIf="isCharPopupDisplayed || isArtePopupDisplayed">
+    <app-manage-characters-popup *ngIf="isCharPopupDisplayed"
+        (characterUsedListChangedEvent)="updateCharactersListHandler($event)" 
+        (closeCharactersPopupEvent)="closeCharactersPopupHandler()">
+    </app-manage-characters-popup>
+    <app-manage-artefacts-popup *ngIf="isArtePopupDisplayed"></app-manage-artefacts-popup>
+</div>
+
