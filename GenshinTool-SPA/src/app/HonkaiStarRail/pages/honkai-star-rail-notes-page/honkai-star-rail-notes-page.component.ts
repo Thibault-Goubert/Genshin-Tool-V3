@@ -14,6 +14,17 @@ export class HonkaiStarRailNotesPageComponent implements OnInit{
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
     this.findAndOpenLastOpenedSubTab();
+    this.setSavedValues();
+  }
+  
+  setSavedValues() {
+    let textareas = document.getElementsByName("textarea")
+    textareas.forEach(element => {
+      let value = localStorage.getItem(element.id)
+      if(value){
+        (element as HTMLTextAreaElement).value = value;
+      }
+    });
   }
 
   findAndOpenLastOpenedSubTab() {
@@ -38,5 +49,10 @@ export class HonkaiStarRailNotesPageComponent implements OnInit{
         break;
       }
     }
+  }
+
+  onChange(event: Event){
+    let element = event.target as HTMLTextAreaElement;
+    localStorage.setItem(element.id, element.value)
   }
 }

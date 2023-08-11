@@ -1,1 +1,15 @@
-<p>honkai-star-rail-notes-page works!</p>
+<div id="hsr_notes" class="flex row">
+    <div id="hsr_notes-calculator" class="flex col">
+        <div id="hsr_notes-calculator_display" class="flex row">
+        </div>
+        <div id="hsr_notes-calculator_notes" class="flex row">
+            <textarea name="textarea" id="hsr_calculator_notes-textarea1" class="notes-textarea-custom-style" (input)="onChange($event)"></textarea>
+            <textarea name="textarea" id="hsr_calculator_notes-textarea2" class="notes-textarea-custom-style" (input)="onChange($event)"></textarea>
+        </div>
+    </div>
+    <div class="flex row">
+        <textarea name="textarea" id="hsr_notes-textarea1" class="notes-textarea-custom-style" (input)="onChange($event)"></textarea>
+        <textarea name="textarea" id="hsr_notes-textarea2" class="notes-textarea-custom-style" (input)="onChange($event)"></textarea>
+        <textarea name="textarea" id="hsr_notes-textarea3" class="notes-textarea-custom-style" (input)="onChange($event)"></textarea>     
+    </div>
+</div>
