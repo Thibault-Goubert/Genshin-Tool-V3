@@ -1,11 +1,12 @@
 
 
-electron-builder --publish always
-||
-npm run publish
+ng build --base-href ./ && electron-builder --win -p always
+publish draft release
+
 
 https://github.com/settings/tokens/new
 
 Powershell ->  [Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
+[Environment]::GetEnvironmentVariable("GH_TOKEN","User")
 
-publish draft release
+-> npm run publish:prod
