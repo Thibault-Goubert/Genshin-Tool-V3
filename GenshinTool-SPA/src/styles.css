@@ -80,7 +80,7 @@ textarea{
 }
 .collapsed.transition{
     display: flex;
-    overflow: visible;  
+    overflow: visible;
     transition: display 0.15s;
 }
 .invisible{
