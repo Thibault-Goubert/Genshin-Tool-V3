@@ -11,7 +11,8 @@ p.hsr
 .btn.hsr.active
 {
     background-color: white;
-    border-radius: 1px 15px 1px 1px;
+    border-radius: 1px 15px 1px 1px;    
+    transition: border-radius 0.15s;
 }
 
 .btn.hsr{
