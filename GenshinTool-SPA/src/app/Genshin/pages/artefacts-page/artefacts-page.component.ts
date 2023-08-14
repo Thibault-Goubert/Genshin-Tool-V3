@@ -77,11 +77,11 @@ export class ArtefactsPageComponent implements OnInit{
   }
 
   getCharacterSideImgSrc(name: string): string{
-    return "../../../../assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_front.png";
+    return "assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_front.png";
   }
 
   getCharacterCardImgSrc(): string{
-    return "../../../../assets/icons/characters/char_"+this.selectedCharacter.name.toLowerCase().replace(' ','_')+"_card.png";
+    return "assets/icons/characters/char_"+this.selectedCharacter.name.toLowerCase().replace(' ','_')+"_card.png";
   }
 
   onCharacterClick(character: Character){

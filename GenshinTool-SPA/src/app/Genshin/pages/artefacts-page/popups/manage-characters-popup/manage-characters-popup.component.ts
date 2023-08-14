@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Character } from 'src/app/Genshin/models/Character/character.model';
 import { CharacterService } from 'src/app/Genshin/services/characters.service';
-import { routes } from 'src/routes';
 
 @Component({
   selector: 'app-manage-characters-popup',
@@ -20,6 +19,9 @@ export class ManageCharactersPopupComponent implements OnInit{
   
   @Output() characterUsedListChangedEvent = new EventEmitter();
   @Output() closeCharactersPopupEvent = new EventEmitter();
+
+  private selectedCharacter!: Character | null;
+  private selectedDiv!: HTMLDivElement | null;
   
   constructor(private characterService: CharacterService, private router: Router) {
     this.allCharacterFilter = '';
@@ -71,6 +73,24 @@ export class ManageCharactersPopupComponent implements OnInit{
       else{
         console.log(result);
       }
+    }
+
+    this.selectedCharacter = null;
+  }
+
+  onSelectCharacter(char: Character){
+    this.selectedCharacter = char;
+
+    if(this.selectedDiv){
+      this.selectedDiv.classList.remove("selectedRow");
+    }
+    this.selectedDiv = document.getElementById("popup_manageCharacters_List_Row_" + char.name) as HTMLDivElement
+    this.selectedDiv.classList.add("selectedRow");
+  }
+
+  onSwitchClick(){
+    if(this.selectedCharacter){
+      this.addCharacterToCurrent(this.selectedCharacter);
     }
   }
 

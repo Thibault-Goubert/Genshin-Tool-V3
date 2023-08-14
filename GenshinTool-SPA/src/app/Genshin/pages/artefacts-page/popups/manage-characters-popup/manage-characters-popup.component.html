@@ -17,14 +17,16 @@
             </div>
         </div>
         <div id="popup_manageCharacters_Middle" class="flex">
-            <div id="popup_manageCharacters_SwitchSymbol">&lt;</div>
+            <div id="popup_manageCharacters_SwitchSymbol" (click)="onSwitchClick()">&lt;</div>
         </div>
         <div id="popup_manageCharacters_RightContent" class="flex col">
             <input #inputAllCharacters id="popup_manageCharacters_AllCharactersInput" 
                 (input)="onAllCharactersInputChange(inputAllCharacters.value)" placeholder="Liste entière...">
             <div id="popup_manageCharacters_AllCharactersList" class="flex col">
-                <div *ngFor="let char of allDisplayedCharacters" 
+                <div *ngFor="let char of allDisplayedCharacters"
+                    id="popup_manageCharacters_List_Row_{{char.name}}"
                     class="flex row popup_manageCharacters_List_Row"
+                    (click)="onSelectCharacter(char)"
                     (dblclick)="addCharacterToCurrent(char)">
                     <span class="popup_manageCharacters_List_CharacterName">{{char.name}}</span>
                 </div>

@@ -146,3 +146,10 @@ input{
 .popup_manageCharacters_List_Row:hover > span{
     color: #282a2f;
 }
+
+.selectedRow{
+    background-color: #e9e5dc;
+}
+.selectedRow > span{
+    color: #282a2f;
+}
