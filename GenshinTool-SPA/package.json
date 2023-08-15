@@ -2,7 +2,7 @@
   "name": "hyvtool",
   "version": "3.0.12",
   "description": "Outil de gestion pour Hoyoverse",
-  "main": "main.ts",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
