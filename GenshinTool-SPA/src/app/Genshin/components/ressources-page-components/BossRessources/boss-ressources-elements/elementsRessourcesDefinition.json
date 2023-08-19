@@ -7,126 +7,104 @@
 					{
 						"ressources":[
 							{
-								"name":"elem_a_1", "rarities":["vi"]
+								"name":"elem_m_1", "rarities":["vi"]
 							},
 							{
-								"name":"elem_a_2", "rarities":["vi"]
+								"name":"elem_m_2", "rarities":["vi"]
+							},
+							{
+								"name":"elem_m_3", "rarities":["vi"]
+							},
+							{
+								"name":"elem_m_4", "rarities":["vi"]
 							}
 						]
 					},
 					{
 						"ressources":[
 							{
-								"name":"elem_c_1", "rarities":["vi"]
+								"name":"elem_l_1", "rarities":["vi"]
 							},
 							{
-								"name":"elem_c_2", "rarities":["vi"]
+								"name":"elem_l_2", "rarities":["vi"]
+							},
+							{
+								"name":"elem_l_3", "rarities":["vi"]
+							},
+							{
+								"name":"elem_l_4", "rarities":["vi"]
+							},
+							{
+								"name":"elem_l_5", "rarities":["vi"]
 							}
 						]
 					},
 					{
 						"ressources":[
 							{
-								"name":"elem_e_1", "rarities":["vi"]
+								"name":"elem_i_1", "rarities":["vi"]
 							},
 							{
-								"name":"elem_e_2", "rarities":["vi"]
+								"name":"elem_i_2", "rarities":["vi"]
 							},
 							{
-								"name":"elem_e_3", "rarities":["vi"]
+								"name":"elem_i_3", "rarities":["vi"]
+							},
+							{
+								"name":"elem_i_4", "rarities":["vi"]
+							},
+							{
+								"name":"elem_i_5", "rarities":["vi"]
+							},
+							{
+								"name":"elem_i_6", "rarities":["vi"]
+							},
+							{
+								"name":"elem_i_7", "rarities":["vi"]
 							}
 						]
 					},
 					{
 						"ressources":[
 							{
-								"name":"elem_h_1", "rarities":["vi"]
+								"name":"elem_su_1", "rarities":["vi"]
 							},
 							{
-								"name":"elem_h_2", "rarities":["vi"]
+								"name":"elem_su_2", "rarities":["vi"]
+							},
+							{
+								"name":"elem_su_3", "rarities":["vi"]
+							},
+							{
+								"name":"elem_su_4", "rarities":["vi"]
+							},
+							{
+								"name":"elem_su_5", "rarities":["vi"]
+							},
+							{
+								"name":"elem_su_6", "rarities":["vi"]
+							},
+							{
+								"name":"elem_su_7", "rarities":["vi"]
 							}
 						]
 					},
 					{
 						"ressources":[
 							{
-								"name":"elem_p_1", "rarities":["vi"]
+								"name":"elem_f_1", "rarities":["vi"]
 							},
 							{
-								"name":"elem_p_2", "rarities":["vi"]
-							}
-						]
-					},
-					{
-						"ressources":[
-							{
-								"name":"elem_g_1", "rarities":["vi"]
+								"name":"elem_f_2", "rarities":["vi"]
 							},
 							{
-								"name":"elem_g_2", "rarities":["vi"]
-							}
-						]
-					},
-					{
-						"ressources":[
-							{
-								"name":"elem_d_1", "rarities":["vi"]
+								"name":"elem_f_3", "rarities":["vi"]
 							},
 							{
-								"name":"elem_d_2", "rarities":["vi"]
-							}
-						]
-					}
-				]
-			},
-			{
-				"class": "smallLeftSpace",
-				"rows":[
-					{
-						"ressources":[
-							{
-								"name":"elem_duo_1",
-								"rarities":["vi"]
+								"name":"elem_f_4", "rarities":["vi"]
 							},
 							{
-								"name":"elem_duo_2",
-								"rarities":["vi"]
-							},
-							{
-								"name":"elem_duo_3",
-								"rarities":["vi"]
-							}
-						]
-					},
-					{
-						"ressources":[
-							{
-								"name":"elem_duo_4",
-								"rarities":["vi"]
-							},
-							{
-								"name":"elem_duo_5",
-								"rarities":["vi"]
-							}
-						]
-					},
-					{
-						"ressources":[
-							{
-								"name":"",
-								"rarities":[]
-							}
-						]
-					},
-					{
-						"ressources":[
-							{
-								"name":"elem_trio_1",
-								"rarities":["vi"]
-							},
-							{
-								"name":"elem_trio_2",
-								"rarities":["vi"]
+								"name":"elem_f_5", "rarities":["vi"]
 							}
 						]
 					}

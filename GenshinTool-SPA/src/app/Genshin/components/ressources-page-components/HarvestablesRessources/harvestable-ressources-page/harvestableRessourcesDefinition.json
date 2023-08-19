@@ -118,6 +118,28 @@
 								"name":"local_mourning_flower", "rarities":["gr"]
 							}
 						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"local_rainbow_rose", "rarities":["gr"]
+							},
+							{
+								"name":"local_lumidouce", "rarities":["gr"]
+							},
+							{
+								"name":"local_romaritime", "rarities":["gr"]
+							},
+							{
+								"name":"local_beryl_conch", "rarities":["gr"]
+							},
+							{
+								"name":"local_lumitoile", "rarities":["gr"]
+							},
+							{
+								"name":"local_meka_scarab", "rarities":["gr"]
+							}							
+						]
 					}
                 ]
             }
