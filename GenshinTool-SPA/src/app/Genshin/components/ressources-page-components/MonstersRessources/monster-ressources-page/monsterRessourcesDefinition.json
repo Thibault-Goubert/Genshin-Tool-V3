@@ -23,6 +23,9 @@
 							},
 							{
 								"name":"common_hoarder_insigna", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_nectar", "rarities":["gr","ve","b"]
 							}
                         ]
                     }
@@ -34,9 +37,6 @@
 					{
 						"ressources":[
 							{
-								"name":"common_nectar", "rarities":["gr","ve","b"]
-							},
-							{
 								"name":"common_handguard", "rarities":["gr","ve","b"]
 							},
 							{
@@ -47,6 +47,12 @@
 							},
 							{
 								"name":"common_red_bandage", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_oceanic_pearl", "rarities":["gr","ve","b"]
+							},
+							{
+								"name":"common_meka_gear", "rarities":["gr","ve","b"]
 							}
                         ]
                     }
@@ -119,6 +125,15 @@
 						"ressources":[
 							{
 								"name":"elite_flower", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_tainted_water", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_primus_core", "rarities":["ve","b","vi"]
+							},
+							{
+								"name":"elite_fatui_watch", "rarities":["ve","b","vi"]
 							}
                         ]
                     }

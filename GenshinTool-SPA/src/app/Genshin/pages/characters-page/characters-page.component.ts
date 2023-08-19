@@ -72,7 +72,7 @@ export class CharactersPageComponent implements OnInit {
   public async getRequestFromFilter($event: CharacterRequest){
     this.characterRequest = $event;
     this.characterService.getCharactersByRequest(this.characterRequest).subscribe(characters => {
-      this.characters = characters.items;
+      this.characters = characters.items.sort((a, b) => a.name.localeCompare(b.name));
       this.manageGroups();
       this.manageTemplate();
     });    
