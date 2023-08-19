@@ -7,7 +7,6 @@ changer l'ordre des boutons de daily
  (L1: Serenitea Pot, Résine, Commissions - 
   L2: Fragile Resine, WB, Reputation, Parametric, Nouveau, Abyss)
 
-Est-ce que 'appli peut se souvenir d'où je la met ? Pour pas qu'elle se rouvre toujours sur l'écran du milieu et que je doive la redeplacer à chaque fois
 Je peux cliquer 2 fois sur l'onglet ressources, et ca cache tout (je dois recliquer sur un sous onglet pour que ca affiche quelque chose => enlever ça
 Onglet Ressource: Quand j'appuie sur le bouton pour modifier les ecrits à droite et que je change d'onglet puis revient, le bouton reste activé mais je ne peux rien écrire nulle part => Faire en sorte qu'en changeant d'onglet le bouton se désactive automatiquement et donc en revenant je ne puisse écrire qu'a gauche.
 Notes: Possibilité de mettre en gras+italique
@@ -16,4 +15,3 @@ possiblement dedoubler les daily car je les fais sur ton compte aussi après tou
 quand la derniere daily est check, automatiquement cacher les petit boutons
 Rajouter un indicateur pour que je pense à faire le check-in (typical rond avec point d'exclamation blanc sur fond rouge, qui se remet au reset comme les daily)
 Quand je lance l'appli et que les daily sont pas en vert => faire qu'elles soient developpés par defaut (vu que j'dois les faire du coup x) )
-Faire que les Notes aillent aussi bas que possible (ref a jusqu'ou descend l'onglet Rossources/Boss)

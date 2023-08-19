@@ -10,6 +10,8 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 .flex{
     display: flex;
@@ -212,5 +214,3 @@ img {
 .btn_tools:hover{
     opacity: 70%;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
