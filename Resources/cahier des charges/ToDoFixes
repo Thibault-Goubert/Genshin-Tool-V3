@@ -1,7 +1,7 @@
 Changements Appli:
 - HSR: Manque le boutuon de l'Echo of War sur la seconde ligne des daily (j'ai pas donner d'image c'est pour ca je pense)
 - HSR: Le calculateur
-HSR: les daily mette longtemps a se reset (1-2s)
+- HSR: les daily mette longtemps a se reset (1-2s)
 Genshin => Daily: rajouter 2 petits boutons sur la ligne du bas (reset lundi)
 changer l'ordre des boutons de daily 
  (L1: Serenitea Pot, Résine, Commissions - 
@@ -11,7 +11,7 @@ Je peux cliquer 2 fois sur l'onglet ressources, et ca cache tout (je dois recliq
 Onglet Ressource: Quand j'appuie sur le bouton pour modifier les ecrits à droite et que je change d'onglet puis revient, le bouton reste activé mais je ne peux rien écrire nulle part => Faire en sorte qu'en changeant d'onglet le bouton se désactive automatiquement et donc en revenant je ne puisse écrire qu'a gauche.
 Notes: Possibilité de mettre en gras+italique
 descendre legerement le calculateur en hauteur (trop proche visuellement des boutons daily)
-possiblement dedoubler les daily car je les fais sur ton compte aussi après tout ? Possiblement les affiché cote a cote peu importe le jeu
+Possiblement dedoubler les daily car je les fais sur ton compte aussi après tout ? Possiblement les affiché cote a cote peu importe le jeu
 quand la derniere daily est check, automatiquement cacher les petit boutons
 Rajouter un indicateur pour que je pense à faire le check-in (typical rond avec point d'exclamation blanc sur fond rouge, qui se remet au reset comme les daily)
 Quand je lance l'appli et que les daily sont pas en vert => faire qu'elles soient developpés par defaut (vu que j'dois les faire du coup x) )
