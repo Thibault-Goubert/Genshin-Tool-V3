@@ -8,6 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class GiDailiesComponent implements OnInit{
   @ViewChild('btnDailies', {static: true}) btnDailies!: ElementRef<HTMLDivElement>;
   @ViewChild('dailiesPopup', {static: true}) dailiesPopup!: ElementRef<HTMLDivElement>;  
+  @ViewChild('dailiesPopup2', {static: true}) dailiesPopup2!: ElementRef<HTMLDivElement>;  
 
   @ViewChild('giCommissions', {static: true}) giCommissions!: ElementRef<HTMLDivElement>;  
   @ViewChild('giTeapot', {static: true}) giTeapot!: ElementRef<HTMLDivElement>;  
@@ -83,11 +84,15 @@ export class GiDailiesComponent implements OnInit{
 
   onDailiesClick(){
     var dailiesClasses = this.dailiesPopup.nativeElement.classList;
+    var dailiesClasses2 = this.dailiesPopup2.nativeElement.classList;
+
     if(dailiesClasses.contains(this.collapsedClass)){
       dailiesClasses.remove(this.collapsedClass);
+      dailiesClasses2.remove(this.collapsedClass);
     }
     else{
       dailiesClasses.add(this.collapsedClass);
+      dailiesClasses2.add(this.collapsedClass);
     }
   }
 
