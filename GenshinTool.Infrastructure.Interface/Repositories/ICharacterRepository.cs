@@ -12,6 +12,6 @@ public interface ICharacterRepository : IRepository<CharacterDom, CharacterDto>
     IEnumerable<CharacterDom> GetBySexId(long sexId);
     IEnumerable<CharacterDom> GetByWeaponTypeId(long weaponTypeId);
     IEnumerable<CharacterDom> GetByRequest(CharacterRequest req);
-    CharacterDom GetByNameAndElement(string name, int element);
+    CharacterDom GetByNameAndElement(string name, int elementId);
     IEnumerable<CharacterDom> GetUsed();
 }

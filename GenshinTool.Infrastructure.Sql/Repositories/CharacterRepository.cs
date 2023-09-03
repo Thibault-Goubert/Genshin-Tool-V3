@@ -41,13 +41,9 @@ namespace GenshinTool.Infrastructure.Sql.Repositories
         {
             return GetByDynamicParameters(new { WeaponTypeId = weaponTypeId });
         }
-        public CharacterDom GetByNameAndElement(string name, int element)
+        public CharacterDom GetByNameAndElement(string name, int elementId)
         {
-            return GetByDynamicParameters(new { Name = name, ElementId = element }).FirstOrDefault();
-        }
-        public CharacterDom GetByNameAndElement(string name, int element)
-        {
-            return GetByDynamicParameters(new { Name = name, ElementId = element }).SingleOrDefault();
+            return GetByDynamicParameters(new { Name = name, ElementId = elementId }).FirstOrDefault();
         }
 
         public IEnumerable<CharacterDom> GetUsed()
