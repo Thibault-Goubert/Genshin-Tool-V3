@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 
 var nameAssembly = typeof(CharacterController).Assembly.GetName().Name;
-var basePath = builder.Configuration["BasePath"];
+var basePath = builder.Configuration["BasePath"]; 
 var serverUrl = $"{builder.Configuration["Kestrel:Endpoints:Https:Url"]}{basePath}";
 
 builder.Services.InjectSwaggerGen(
