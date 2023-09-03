@@ -36,6 +36,8 @@ export class CalculatorCharacterComponent implements OnInit{
     this.talentChoicesValues = [
       {value: '666',  displayValue:'666'},
       {value: '999', displayValue: '999'},
+      {value: 'x99', displayValue: 'x99'},
+      {value: 'xx9', displayValue: 'xx9'},
       {value: 'xxx', displayValue: 'xxx'}
     ]
   }
