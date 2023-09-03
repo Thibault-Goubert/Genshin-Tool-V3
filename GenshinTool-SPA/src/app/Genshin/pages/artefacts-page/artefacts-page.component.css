@@ -65,3 +65,7 @@
     width: 186px;
     height: 611px;
 }
+
+.artefacts_ChracterList_Character.selected > div.artefacts_ChracterList_Character_Background{
+    background-color: #e9e5dc;
+}

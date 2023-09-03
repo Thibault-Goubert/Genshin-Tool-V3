@@ -18,6 +18,7 @@ export class ArtefactsPageComponent implements OnInit{
   public characters!: Character[];
 
   public selectedCharacter!: Character;
+  private selectedCardFace!: HTMLDivElement;
 
   constructor(private router: Router, private characterService: CharacterService) {
     this.characters = [];
@@ -84,7 +85,14 @@ export class ArtefactsPageComponent implements OnInit{
     return "assets/icons/characters/char_"+this.selectedCharacter.name.toLowerCase().replace(' ','_')+"_card.png";
   }
 
-  onCharacterClick(character: Character){
+  onCharacterClick(character: Character, cardCharFace: HTMLDivElement){
     this.selectedCharacter = character;
+
+    if(this.selectedCardFace){
+      this.selectedCardFace.classList.remove("selected");
+    }
+
+    this.selectedCardFace = cardCharFace;
+    this.selectedCardFace.classList.add("selected");
   }
 }

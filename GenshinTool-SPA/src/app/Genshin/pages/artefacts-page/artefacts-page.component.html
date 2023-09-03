@@ -12,7 +12,7 @@
 </div>
 
 <div id="artefacts_ChracterList" class="flex row">
-    <div class="artefacts_ChracterList_Character relative" *ngFor="let char of characters" (click)="onCharacterClick(char)">
+    <div #cardCharFace class="artefacts_ChracterList_Character relative" *ngFor="let char of characters" (click)="onCharacterClick(char, cardCharFace)">
         <div class="artefacts_ChracterList_Character_Border absolute center"></div>
         <div class="artefacts_ChracterList_Character_Background absolute center"></div>
         <img class="artefacts_ChracterList_Character_Portrait absolute center" [src]="getCharacterSideImgSrc(char.name)">

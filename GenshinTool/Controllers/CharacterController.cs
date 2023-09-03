@@ -112,11 +112,11 @@ public class CharacterController : BaseGenericController
     ///     Update Characters IsUsed
     /// </summary>
     /// <returns></returns>
-    [HttpPatch(nameof(SetIsUsed) + "/{name}/{isUsed}")]
-    public IResponseItem<bool> SetIsUsed([FromRoute] string name, bool isUsed)
+    [HttpPatch(nameof(SetIsUsed) + "/{name}/{elementId}/{isUsed}")]
+    public IResponseItem<bool> SetIsUsed([FromRoute] string name, int elementId, bool isUsed)
     {
         return CreateResponse(
-            () => _characterService.SetIsUsed(name, isUsed),
+            () => _characterService.SetIsUsed(name, elementId, isUsed),
             $"{nameof(SetIsUsed)} Success");
     }
 
