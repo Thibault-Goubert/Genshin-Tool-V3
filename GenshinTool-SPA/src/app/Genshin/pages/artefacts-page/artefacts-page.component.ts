@@ -77,7 +77,7 @@ export class ArtefactsPageComponent implements OnInit{
   }
 
   getCharacterSideImgSrc(name: string): string{
-    return "assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_front.png";
+    return "assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_face.png";
   }
 
   getCharacterCardImgSrc(): string{
