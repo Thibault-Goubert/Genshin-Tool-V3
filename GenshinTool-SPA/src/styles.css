@@ -10,6 +10,8 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 .flex{
     display: flex;
@@ -80,7 +82,7 @@ textarea{
 }
 .collapsed.transition{
     display: flex;
-    overflow: visible;  
+    overflow: visible;
     transition: display 0.15s;
 }
 .invisible{
@@ -185,6 +187,11 @@ img {
     margin-left: 8px;
 }
 
+#btn_toggle_dailies_popup2{
+    margin-top: 7px;
+    margin-left: 20px;
+}
+
 .btn.toggle{
     display: flex;
     box-shadow: 0px 0px 4px black;
@@ -212,5 +219,3 @@ img {
 .btn_tools:hover{
     opacity: 70%;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

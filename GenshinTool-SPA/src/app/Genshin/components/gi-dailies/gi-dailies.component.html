@@ -3,30 +3,59 @@
     <div #btnDailies id="btn_toggle_dailies" class="btn toggle" tabindex="-1" (click)="onDailiesClick()" (contextmenu)="onResetDailiesAndHebdosRightClick()">
         <img src="assets/icons/dailies/{{dailiesImg}}.png">
     </div> 
-    <div #dailiesPopup class="flex col collapsed" id="btn_toggle_dailies_popup" tabindex="-1" >
-        <div class="flex row" tabindex="-1">
-            <div class="btn_toggle_dailies" tabindex="-1" #giCommissions id="gi_DailyBtn_Commissions" (click)="onDailyClick(giCommissions)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_commissions.png">
+    <div class="flex row">
+        <div #dailiesPopup class="flex col collapsed" id="btn_toggle_dailies_popup" tabindex="-1" >
+            <div class="flex row" tabindex="-1">
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giTeapot id="gi_DailyBtn_Teapot" (click)="onDailyClick(giTeapot)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_teapot.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giResine id="gi_DailyBtn_Resine" (click)="onDailyClick(giResine)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_resine.png">
+                </div>
+                <div class="btn_toggle_dailies" tabindex="-1" #giCommissions id="gi_DailyBtn_Commissions" (click)="onDailyClick(giCommissions)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_commissions.png">
+                </div>
             </div>
-            <div class="btn_toggle_dailies left_space" tabindex="-1" #giTeapot id="gi_DailyBtn_Teapot" (click)="onDailyClick(giTeapot)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_teapot.png">
-            </div>
-            <div class="btn_toggle_dailies left_space" tabindex="-1" #giResine id="gi_DailyBtn_Resine" (click)="onDailyClick(giResine)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_resine.png">
+            <div class="flex row btn_toggle_dailies_lowerRow" tabindex="-1">
+                <div class="btn_toggle_dailies" tabindex="-1" #giFragileResine id="gi_DailyBtn_FragileResine" (click)="onDailyClick(giFragileResine)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_fragile_resine.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giBoss id="gi_DailyBtn_Boss" (click)="onDailyClick(giBoss)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_boss.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giReputation id="gi_DailyBtn_Reputation" (click)="onDailyClick(giReputation)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_reputation.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giAbyss id="gi_DailyBtn_Abyss" (click)="onDailyClick(giAbyss)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_abyss.png">
+                </div>
             </div>
         </div>
-        <div class="flex row btn_toggle_dailies_lowerRow" tabindex="-1">
-            <div class="btn_toggle_dailies" tabindex="-1" #giFragileResine id="gi_DailyBtn_FragileResine" (click)="onDailyClick(giFragileResine)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_fragile_resine.png">
+        <div #dailiesPopup2 class="flex col collapsed" id="btn_toggle_dailies_popup2" tabindex="-1" >
+            <div class="flex row" tabindex="-1">
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giTeapot2 id="gi_DailyBtn_Teapot2" (click)="onDailyClick(giTeapot2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_teapot.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giResine2 id="gi_DailyBtn_Resine2" (click)="onDailyClick(giResine2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_resine.png">
+                </div>
+                <div class="btn_toggle_dailies" tabindex="-1" #giCommissions2 id="gi_DailyBtn_Commissions2" (click)="onDailyClick(giCommissions2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_commissions.png">
+                </div>
             </div>
-            <div class="btn_toggle_dailies left_space" tabindex="-1" #giReputation id="gi_DailyBtn_Reputation" (click)="onDailyClick(giReputation)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_reputation.png">
-            </div>
-            <div class="btn_toggle_dailies left_space" tabindex="-1" #giBoss id="gi_DailyBtn_Boss" (click)="onDailyClick(giBoss)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_boss.png">
-            </div>
-            <div class="btn_toggle_dailies left_space" tabindex="-1" #giAbyss id="gi_DailyBtn_Abyss" (click)="onDailyClick(giAbyss)">
-                <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_abyss.png">
+            <div class="flex row btn_toggle_dailies_lowerRow" tabindex="-1">
+                <div class="btn_toggle_dailies" tabindex="-1" #giFragileResine2 id="gi_DailyBtn_FragileResine2" (click)="onDailyClick(giFragileResine2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_fragile_resine.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giBoss2 id="gi_DailyBtn_Boss2" (click)="onDailyClick(giBoss2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_boss.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giReputation2 id="gi_DailyBtn_Reputation2" (click)="onDailyClick(giReputation2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_reputation.png">
+                </div>
+                <div class="btn_toggle_dailies left_space" tabindex="-1" #giAbyss2 id="gi_DailyBtn_Abyss2" (click)="onDailyClick(giAbyss2)">
+                    <img class="btn_toggle_dailies_img" src="assets/icons/dailies/gi_abyss.png">
+                </div>
             </div>
         </div>
     </div>

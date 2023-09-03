@@ -113,6 +113,13 @@
 								"name":"boss_cocolia", "rarities":["vi"]
 							}
 						]
+					},
+					{
+						"ressources":[
+							{
+								"name":"boss_phantylia", "rarities":["vi"]
+							}
+						]
 					}
 				]
 			},
