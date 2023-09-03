@@ -13,8 +13,7 @@ public interface ICharacterService : IBaseService
     IEnumerable<CharacterDom> GetBySexId(long sexId);
     IEnumerable<CharacterDom> GetByWeaponTypeId(long weaponTypeId);
     IEnumerable<CharacterDom> GetByRequest(CharacterRequest req);
-    CharacterDom GetByName(string name);
-    CharacterDom GetByNameAndElement(string name);
-    bool SetIsUsed(string name, bool isUsed);
+    CharacterDom GetByNameAndElement(string name, int elementId);
+    bool SetIsUsed(string name, int elementId, bool isUsed);
     IEnumerable<CharacterDom> GetUsed();
 }

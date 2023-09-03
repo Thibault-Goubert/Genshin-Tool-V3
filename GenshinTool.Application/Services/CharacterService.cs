@@ -30,9 +30,9 @@ public class CharacterService : BaseService, ICharacterService
         return MapProperties(() => Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetByRequest(req)));
     }
 
-    public CharacterDom GetByName(string name)
+    public CharacterDom GetByNameAndElement(string name, int elementId)
     {
-        return Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetByName(name));
+        return Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetByNameAndElement(name, elementId));
     }
 
     public IEnumerable<CharacterDom> GetUsed()
@@ -40,11 +40,11 @@ public class CharacterService : BaseService, ICharacterService
         return Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetUsed());
     }
 
-    public bool SetIsUsed(string name, int element, bool isUsed) {
+    public bool SetIsUsed(string name, int elementId, bool isUsed) {
         return Execute(unitOfWork => {
             var repo = unitOfWork.GetRepository<ICharacterRepository>();
 
-            var character = repo.GetByNameAndElement(name, element);
+            var character = repo.GetByNameAndElement(name, elementId);
 
             if(character is null)
             {

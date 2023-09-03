@@ -97,7 +97,7 @@ export class ManageCharactersPopupComponent implements OnInit{
   removeCharacterFromCurrent(char: Character){
     let currentIndex = this.currentCharacters.indexOf(char);
     if(currentIndex >= 0){
-      let result = this.characterService.setCharacterUsed(char.name, false).subscribe();      
+      let result = this.characterService.setCharacterUsed(char.name, char.elementId, false).subscribe();      
       if(result){
         this.currentCharacters.splice(currentIndex, 1);
         this.allCharacters.push(char);
