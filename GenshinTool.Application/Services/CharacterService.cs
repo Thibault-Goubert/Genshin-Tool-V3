@@ -19,9 +19,10 @@ public class CharacterService : BaseService, ICharacterService
     {
     }
 
-    public IEnumerable<CharacterDom> GetAll()
+    public IEnumerable<CharacterDom> GetAll(bool allTravelers)
     {
-        return MapProperties(() => Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetAll().DistinctBy(c => c.Name)));
+        var chars = MapProperties(() => Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetAll()));
+        return allTravelers ? chars : chars.DistinctBy(c => c.Name);
     }
 
     public IEnumerable<CharacterDom> GetByRequest(CharacterRequest req)
@@ -39,11 +40,11 @@ public class CharacterService : BaseService, ICharacterService
         return Execute(unitOfWork => unitOfWork.GetRepository<ICharacterRepository>().GetUsed());
     }
 
-    public bool SetIsUsed(string name, bool isUsed) {
+    public bool SetIsUsed(string name, int element, bool isUsed) {
         return Execute(unitOfWork => {
             var repo = unitOfWork.GetRepository<ICharacterRepository>();
 
-            var character = repo.GetByName(name);
+            var character = repo.GetByNameAndElement(name, element);
 
             if(character is null)
             {

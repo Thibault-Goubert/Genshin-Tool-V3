@@ -34,7 +34,7 @@ export class ManageCharactersPopupComponent implements OnInit{
   }
 
   ngOnInit(): void {    
-    this.characterService.getCharacters().subscribe(characters => {
+    this.characterService.getAllCharacters().subscribe(characters => {
       this.allCharacters = characters.items.filter(character => !character.isUsed);
       console.log(this.allCharacters);
       this.currentCharacters = characters.items.filter(character => character.isUsed);
@@ -64,7 +64,7 @@ export class ManageCharactersPopupComponent implements OnInit{
     let allIndex = this.allCharacters.indexOf(char);
 
     if(allIndex >= 0){
-      let result = this.characterService.setCharacterUsed(char.name, true).subscribe();      
+      let result = this.characterService.setCharacterUsed(char.name, char.elementId, true).subscribe();      
       if(result){
         this.currentCharacters.push(char);
         this.allCharacters.splice(allIndex, 1);

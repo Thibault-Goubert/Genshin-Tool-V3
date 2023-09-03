@@ -9,6 +9,7 @@ export class Character {
     regionId!: number;
     sexId!: number;
     weaponId!: number;  
+    elementId!: number;  
       
     element!: string;
     region!: string;

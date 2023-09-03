@@ -32,7 +32,19 @@ public class CharacterController : BaseGenericController
     public IResponseItems<ICharacterModel> GetAllCharacters()
     {
         return CreateResponseItems<ICharacterModel>(
-            () => _characterService.GetAll(),
+            () => _characterService.GetAll(false),
+            $"{nameof(GetAllCharacters)} Success");
+    }
+
+    /// <summary>
+    ///     Get All Characters
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetAllCharacters)+ "/{allTravelers}")]
+    public IResponseItems<ICharacterModel> GetAllCharacters([FromRoute] bool allTravelers)
+    {
+        return CreateResponseItems<ICharacterModel>(
+            () => _characterService.GetAll(allTravelers),
             $"{nameof(GetAllCharacters)} Success");
     }
 
