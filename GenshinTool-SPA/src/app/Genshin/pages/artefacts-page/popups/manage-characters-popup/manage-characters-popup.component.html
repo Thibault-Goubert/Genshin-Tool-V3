@@ -11,7 +11,7 @@
                 <div *ngFor="let char of currentDisplayedCharacters" 
                     class="flex row popup_manageCharacters_List_Row" 
                     (dblclick)="removeCharacterFromCurrent(char)">
-                    <span class="popup_manageCharacters_List_CharacterName">{{char.name}}</span>
+                    <span class="popup_manageCharacters_List_CharacterName">{{char.name == 'Traveler' ? char.name + ' (' + char.element + ')': char.name}}</span>
                     <div class="popup_manageCharacters_CurrentCharactersList_Remove" (click)="removeCharacterFromCurrent(char)">X</div>    
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     class="flex row popup_manageCharacters_List_Row"
                     (click)="onSelectCharacter(char)"
                     (dblclick)="addCharacterToCurrent(char)">
-                    <span class="popup_manageCharacters_List_CharacterName">{{char.name}}</span>
+                    <span class="popup_manageCharacters_List_CharacterName">{{char.name == 'Traveler' ? char.name + ' (' + char.element + ')': char.name}}</span>
                 </div>
             </div>
         </div>

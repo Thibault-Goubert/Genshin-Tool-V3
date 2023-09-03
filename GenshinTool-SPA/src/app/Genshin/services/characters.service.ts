@@ -14,8 +14,12 @@ export class CharacterService{
     
     constructor(private http: HttpClient) {}
 
-    public getCharacters(): Observable<ResponseItems<Character>> {
+    public getDistinctCharacters(): Observable<ResponseItems<Character>> {
         return this.http.get<ResponseItems<Character>>(this.baseUrl + 'GetAllCharacters');
+    }
+
+    public getAllCharacters(): Observable<ResponseItems<Character>> {
+        return this.http.get<ResponseItems<Character>>(this.baseUrl + 'GetAllCharacters/' + true);
     }
 
     public getCharactersByRequest(req: CharacterRequest): Observable<ResponseItems<Character>>{        
@@ -26,7 +30,7 @@ export class CharacterService{
         return this.http.get<ResponseItems<Character>>(this.baseUrl + 'GetUsed');  
     }
 
-    public setCharacterUsed(name: string, isUsed: boolean): Observable<ResponseItem<boolean>>{
-        return this.http.patch<ResponseItem<boolean>>(this.baseUrl + 'SetIsUsed/' + name + '/' + isUsed, null);
+    public setCharacterUsed(name: string, element: number, isUsed: boolean): Observable<ResponseItem<boolean>>{
+        return this.http.patch<ResponseItem<boolean>>(this.baseUrl + 'SetIsUsed/' + name + '/' + element + '/' + isUsed, null);
     }
 }
