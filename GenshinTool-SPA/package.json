@@ -1,6 +1,6 @@
 {
   "name": "hyvtool",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "description": "Outil de gestion pour Hoyoverse",
   "main": "main.js",
   "scripts": {
