@@ -7,8 +7,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class GiDailiesComponent implements OnInit{
   @ViewChild('btnDailies', {static: true}) btnDailies!: ElementRef<HTMLDivElement>;
-  @ViewChild('dailiesPopup', {static: true}) dailiesPopup!: ElementRef<HTMLDivElement>;  
-  @ViewChild('dailiesPopup2', {static: true}) dailiesPopup2!: ElementRef<HTMLDivElement>;  
+  @ViewChild('dailiesPopup', {static: true}) dailiesPopup!: ElementRef<HTMLDivElement>;   
 
   @ViewChild('giCommissions', {static: true}) giCommissions!: ElementRef<HTMLDivElement>;  
   @ViewChild('giTeapot', {static: true}) giTeapot!: ElementRef<HTMLDivElement>;  
@@ -18,6 +17,17 @@ export class GiDailiesComponent implements OnInit{
   @ViewChild('giReputation', {static: true}) giReputation!: ElementRef<HTMLDivElement>;
   @ViewChild('giBoss', {static: true}) giBoss!: ElementRef<HTMLDivElement>;
   @ViewChild('giAbyss', {static: true}) giAbyss!: ElementRef<HTMLDivElement>;
+
+  @ViewChild('dailiesPopup2', {static: true}) dailiesPopup2!: ElementRef<HTMLDivElement>; 
+
+  @ViewChild('giCommissions2', {static: true}) giCommissions2!: ElementRef<HTMLDivElement>;  
+  @ViewChild('giTeapot2', {static: true}) giTeapot2!: ElementRef<HTMLDivElement>;  
+  @ViewChild('giResine2', {static: true}) giResine2!: ElementRef<HTMLDivElement>;  
+
+  @ViewChild('giFragileResine2', {static: true}) giFragileResine2!: ElementRef<HTMLDivElement>;
+  @ViewChild('giReputation2', {static: true}) giReputation2!: ElementRef<HTMLDivElement>;
+  @ViewChild('giBoss2', {static: true}) giBoss2!: ElementRef<HTMLDivElement>;
+  @ViewChild('giAbyss2', {static: true}) giAbyss2!: ElementRef<HTMLDivElement>;
 
   dailyDoneClass = "dailyDone";
   collapsedClass = "collapsed";
@@ -36,13 +46,22 @@ export class GiDailiesComponent implements OnInit{
     this.dailiesButtons = [
       this.giCommissions.nativeElement,
       this.giTeapot.nativeElement,
-      this.giResine.nativeElement
+      this.giResine.nativeElement,
+      
+      this.giCommissions2.nativeElement,
+      this.giTeapot2.nativeElement,
+      this.giResine2.nativeElement
     ]
     this.hebdosButtons = [
       this.giFragileResine.nativeElement,
       this.giReputation.nativeElement,
       this.giBoss.nativeElement,
-      this.giAbyss.nativeElement
+      this.giAbyss.nativeElement,
+      
+      this.giFragileResine2.nativeElement,
+      this.giReputation2.nativeElement,
+      this.giBoss2.nativeElement,
+      this.giAbyss2.nativeElement
     ]
     this.resetClassesValues();
     this.setCurrentDateAndStartDailiesResetTimer();
@@ -100,6 +119,9 @@ export class GiDailiesComponent implements OnInit{
     $event.classList.add(this.dailyDoneClass);
     localStorage.setItem($event.id, this.dailyDoneClass);
     this.setDailyImg();
+    if(this.areAllDailiesDone() && this.areAllHebdosDone()){
+      this.onDailiesClick();
+    }
   }
 
   //#region Dailies
@@ -183,15 +205,9 @@ export class GiDailiesComponent implements OnInit{
   //#endregion
 
   onResetDailiesAndHebdosRightClick(){
-    this.dailiesButtons.forEach(element =>  {
-      localStorage.removeItem(element.id)
-      element.classList.remove(this.dailyDoneClass);
-    });
-    this.hebdosButtons.forEach(element =>  {
-      localStorage.removeItem(element.id)
-      element.classList.remove(this.dailyDoneClass);
-    });
-    this.dailiesImg = this.dailiesTodoImgPath;
+    this.resetDailies();
+    this.resetHebdos();
+    this.onDailiesClick();
 
     return false;
   }

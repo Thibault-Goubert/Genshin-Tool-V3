@@ -13,8 +13,8 @@ function createWindow() {
   win = new BrowserWindow({
     x: mainWindowState.x,
     y: mainWindowState.y,
-    width: mainWindowState.width,
-    height: mainWindowState.height,
+    width: mainWindowState.width < 1813 ? 1813 : mainWindowState.width,
+    height: mainWindowState.height < 1017 ? 1017 : mainWindowState.height,
     webPreferences: {
       nodeIntegration: true
     },

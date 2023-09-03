@@ -7,12 +7,20 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class HsrDailiesComponent implements OnInit{
   @ViewChild('btnDailies', {static: true}) btnDailies!: ElementRef<HTMLDivElement>;
+
   @ViewChild('dailiesPopup', {static: true}) dailiesPopup!: ElementRef<HTMLDivElement>;  
   @ViewChild('hsrStamina', {static: true}) hsrStamina!: ElementRef<HTMLDivElement>;
   @ViewChild('hsrAssignements', {static: true}) hsrAssignements!: ElementRef<HTMLDivElement>;
   @ViewChild('hsrMissions', {static: true}) hsrMissions!: ElementRef<HTMLDivElement>;
   @ViewChild('hsrMemory', {static: true}) hsrMemory!: ElementRef<HTMLDivElement>;
   @ViewChild('hsrSu', {static: true}) hsrSu!: ElementRef<HTMLDivElement>;
+
+  @ViewChild('dailiesPopup2', {static: true}) dailiesPopup2!: ElementRef<HTMLDivElement>;  
+  @ViewChild('hsrStamina2', {static: true}) hsrStamina2!: ElementRef<HTMLDivElement>;
+  @ViewChild('hsrAssignements2', {static: true}) hsrAssignements2!: ElementRef<HTMLDivElement>;
+  @ViewChild('hsrMissions2', {static: true}) hsrMissions2!: ElementRef<HTMLDivElement>;
+  @ViewChild('hsrMemory2', {static: true}) hsrMemory2!: ElementRef<HTMLDivElement>;
+  @ViewChild('hsrSu2', {static: true}) hsrSu2!: ElementRef<HTMLDivElement>;
 
   dailyDoneClass = "dailyDone";
   collapsedClass = "collapsed";
@@ -31,11 +39,18 @@ export class HsrDailiesComponent implements OnInit{
     this.dailiesButtons = [
       this.hsrStamina.nativeElement,
       this.hsrAssignements.nativeElement,
-      this.hsrMissions.nativeElement
+      this.hsrMissions.nativeElement,
+      
+      this.hsrStamina2.nativeElement,
+      this.hsrAssignements2.nativeElement,
+      this.hsrMissions2.nativeElement
     ]
     this.hebdosButtons = [
       this.hsrMemory.nativeElement,
-      this.hsrSu.nativeElement
+      this.hsrSu.nativeElement,
+
+      this.hsrMemory2.nativeElement,
+      this.hsrSu2.nativeElement
     ]
     this.resetClassesValues();
     this.setCurrentDateAndStartDailiesResetTimer();
@@ -77,11 +92,15 @@ export class HsrDailiesComponent implements OnInit{
 
   onDailiesClick(){
     var dailiesClasses = this.dailiesPopup.nativeElement.classList;
+    var dailiesClasses2 = this.dailiesPopup2.nativeElement.classList;
+
     if(dailiesClasses.contains(this.collapsedClass)){
       dailiesClasses.remove(this.collapsedClass);
+      dailiesClasses2.remove(this.collapsedClass);
     }
     else{
       dailiesClasses.add(this.collapsedClass);
+      dailiesClasses2.add(this.collapsedClass);
     }
   }
 
@@ -89,6 +108,9 @@ export class HsrDailiesComponent implements OnInit{
     $event.classList.add(this.dailyDoneClass);
     localStorage.setItem($event.id, this.dailyDoneClass);
     this.setDailyImg();
+    if(this.areAllDailiesDone() && this.areAllHebdosDone()){
+      this.onDailiesClick();
+    }
   }
 
   //#region Dailies
@@ -172,15 +194,9 @@ export class HsrDailiesComponent implements OnInit{
   //#endregion
 
   onResetDailiesAndHebdosRightClick(){
-    this.dailiesButtons.forEach(element =>  {
-      localStorage.removeItem(element.id)
-      element.classList.remove(this.dailyDoneClass);
-    });
-    this.hebdosButtons.forEach(element =>  {
-      localStorage.removeItem(element.id)
-      element.classList.remove(this.dailyDoneClass);
-    });
-    this.dailiesImg = this.dailiesTodoImgPath;
+    this.resetDailies();
+    this.resetHebdos();
+    this.onDailiesClick();
 
     return false;
   }

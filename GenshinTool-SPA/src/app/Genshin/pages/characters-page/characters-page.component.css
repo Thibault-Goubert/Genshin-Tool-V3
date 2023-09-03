@@ -1,5 +1,11 @@
 #character_list{
     margin-top: 28px;
+    width: 1500px;
+    margin-left: 6px;
+
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
 }
 .limitCardsNumberByRow {
     width: 1500px;
@@ -18,12 +24,4 @@
 }
 .weapon_panel_icon {
     position: absolute;
-}
-#characters-list{
-    margin-top: 28px;
-    width: 1500px;
-
-    display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
 }
