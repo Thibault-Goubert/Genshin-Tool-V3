@@ -65,7 +65,7 @@ export class ArtefactsPageComponent implements OnInit{
 
   updateUsed(){
     this.characterService.getCharactersUsed().subscribe(characters => {
-      this.characters = characters.items;
+      this.characters = characters.items.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
     });
   }
 
