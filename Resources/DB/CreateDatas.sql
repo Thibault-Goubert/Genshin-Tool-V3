@@ -136,6 +136,10 @@ VALUES
 ('Traveler',		5,8,1,5,2,0),
 ('Kirara',			4,3,1,4,1,0),
 ('Wriothesley',		7,5,5,5,2,0),
-('Neuvillette',		5,5,5,5,2,0)
+('Neuvillette',		5,5,5,5,2,0),
+('Kaveh',			4,4,4,4,2,0),
+('Baizhu',			4,2,5,5,2,0),
+('Mika',			7,1,3,4,2,0),
+('Dehya',			6,4,4,5,1,0)
 
 -- Insert Weapons --

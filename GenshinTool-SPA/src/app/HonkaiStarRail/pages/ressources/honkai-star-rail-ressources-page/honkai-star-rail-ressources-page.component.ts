@@ -16,7 +16,7 @@ export class HonkaiStarRailRessourcesPageComponent implements OnInit{
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
     this.findAndOpenLastOpenedSubTab();
-    this.canRessourceGoalChange = this.ressourceService.currentCanRessourceGoalChange;
+    this.ressourceService.currentCanRessourceGoalChange = false;
   }
 
   findAndOpenLastOpenedSubTab() {

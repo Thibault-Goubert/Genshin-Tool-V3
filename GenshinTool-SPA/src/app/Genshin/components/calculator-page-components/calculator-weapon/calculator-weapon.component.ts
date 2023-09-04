@@ -32,10 +32,10 @@ export class CalculatorWeaponComponent implements OnInit{
       {value: '90', displayValue: '90'}
     ]
     this.rarityChoices = [
-      "assets/icons/filters/filter_rarity3.png",
+      "assets/icons/filters/filter_rarity5.png",
       "assets/icons/filters/filter_rarity4.png",
-      "assets/icons/filters/filter_rarity5.png"
-    ]
+      "assets/icons/filters/filter_rarity3.png"
+    ]    
   }
 
   currentLvlSelected(currentLvl: string) {

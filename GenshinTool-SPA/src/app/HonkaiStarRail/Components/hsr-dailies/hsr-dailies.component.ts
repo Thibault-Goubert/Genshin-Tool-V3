@@ -88,6 +88,9 @@ export class HsrDailiesComponent implements OnInit{
         element.classList.add(this.dailyDoneClass)
       }
     });
+    if(!this.areAllDailiesDone() || !this.areAllHebdosDone()){
+      this.onDailiesClick();
+    }
   }
 
   onDailiesClick(){
