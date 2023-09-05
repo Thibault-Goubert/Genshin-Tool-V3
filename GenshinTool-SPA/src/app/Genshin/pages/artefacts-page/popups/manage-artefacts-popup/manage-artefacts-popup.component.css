@@ -1,0 +1,90 @@
+span{
+    background: none;
+    color: #e9e5dc;
+}
+input{
+    -webkit-user-select: none;
+    user-select: none;
+    border: none;
+    outline: none;
+    padding: 0px;
+    border-radius: 3px;
+    color: #e9e5dc;
+    background-color: #36393f;
+}
+
+#popup_manageArtefacts{
+    width: 480px;
+    height: 456px;
+    background-color: #282a2f;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;
+}
+#popup_manageArtefacts_Header{
+    height: 35px;
+}
+#popup_manageArtefacts_Header_Title{
+    margin-left: 5px;
+}
+#popup_manageArtefacts_Header_Close{    
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+}
+#popup_manageArtefacts_Inventory{
+    margin-left: 9px;
+}
+#popup_manageArtefacts_Filters_BySet_Input{
+    width: 200px;
+    height: 30px;
+}
+#popup_manageArtefacts_Filters_ByPieces{
+    margin-top: 8px;
+    justify-content: space-between;
+}
+.filterPiecePanel{
+    width: 30px;
+    height: 30px;
+}
+#popup_manageArtefacts_List{
+    width: 200px;
+    background-color: #36393f;
+    margin-top: 8px;
+    height: 329px;
+}
+#popup_manageArtefacts_Creator{
+    margin-left: 30px;
+}
+#popup_manageArtefacts_Creator_SetSelector_Input{
+    width: 230px;
+    height: 30px;
+    margin-top: 8px;
+}
+#popup_manageArtefacts_Creator_PieceSelector{
+    justify-content: space-between;
+    margin-top: 8px;
+    width: 230px;
+}
+#popup_manageArtefacts_Creator_Stats{
+    width: 230px;
+    height: 250px;
+    background-color: #36393f;
+    margin-top: 15px;
+}
+#popup_manageArtefacts_Creator_Actions{
+    margin-top: 18px;
+    justify-content: end;
+}
+#popup_manageArtefacts_Creator_Actions_Add{
+    width: 75px;
+    height: 30px;
+    background-color: #e9e5dc;
+    color: #36393f;
+}
+#popup_manageArtefacts_Creator_Actions_Reset{
+    height: 30px;
+    width: 60px;
+    background-color: #36393f;
+    margin-left: 8px;
+    color: #e9e5dc;
+}

@@ -28,6 +28,7 @@ export class ArtefactsPageComponent implements OnInit{
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
     this.updateUsed();
+    this.onManageArtefactsClick();
   }
   
   removeOtherTabSavedKeyFromStorage() {

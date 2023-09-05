@@ -1,1 +1,70 @@
-<p>manage-artefacts-popup works!</p>
+<div id="popup_manageArtefacts">
+    <div id="popup_manageArtefacts_Header" class="flex row">
+        <span id="popup_manageArtefacts_Header_Title">Gestion des artéfacts</span>
+        <div id="popup_manageArtefacts_Header_Close" class="flex"><span>X</span></div>
+    </div>        
+    <div id="popup_manageArtefacts_Content" class="flex row">
+        <div id="popup_manageArtefacts_Inventory">
+            <div id="popup_manageArtefacts_Filters">
+                <div id="popup_manageArtefacts_Filters_BySet">
+                    <input id="popup_manageArtefacts_Filters_BySet_Input" placeholder="Filtrer par set">
+                    <div id="popup_manageArtefacts_Filters_BySet_List"></div>
+                </div>
+                <div id="popup_manageArtefacts_Filters_ByPieces" class="flex row">
+                    <div id="popup_manageArtefacts_Filters_ByPieces_Flower" class="filterPiecePanel">
+                        <img src="assets/icons/filters/artifact_icon_flower30.png">
+                    </div>
+                    <div id="popup_manageArtefacts_Filters_ByPieces_Feather" class="filterPiecePanel">
+                        <img src="assets/icons/filters/artifact_icon_plume30.png">
+                    </div>
+                    <div id="popup_manageArtefacts_Filters_ByPieces_Goblet" class="filterPiecePanel">
+                        <img src="assets/icons/filters/artifact_icon_goblet30.png">
+                    </div>
+                    <div id="popup_manageArtefacts_Filters_ByPieces_Sand" class="filterPiecePanel">
+                        <img src="assets/icons/filters/artifact_icon_sands30.png">
+                    </div>
+                    <div id="popup_manageArtefacts_Filters_ByPieces_Circlet" class="filterPiecePanel">
+                        <img src="assets/icons/filters/artifact_icon_circlet30.png">
+                    </div>
+                </div>
+            </div>
+            <div id="popup_manageArtefacts_List" class="flex col">
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+                <span>test</span>
+            </div>
+        </div>
+        <div id="popup_manageArtefacts_Creator">
+            <span>Ajouter un artéfact</span>
+            <div id="popup_manageArtefacts_Creator_SetSelector">
+                <input id="popup_manageArtefacts_Creator_SetSelector_Input" placeholder="Choisir le set...">
+                <div></div>
+            </div>
+            <div id="popup_manageArtefacts_Creator_PieceSelector" class="flex row">
+                <div id="popup_manageArtefacts_Creator_PieceSelector_Flower" class="filterPiecePanel">
+                    <img src="assets/icons/filters/artifact_icon_flower30.png">
+                </div>
+                <div id="popup_manageArtefacts_Creator_PieceSelector_Feather" class="filterPiecePanel">
+                    <img src="assets/icons/filters/artifact_icon_plume30.png">
+                </div>
+                <div id="popup_manageArtefacts_Creator_PieceSelector_Goblet" class="filterPiecePanel">
+                    <img src="assets/icons/filters/artifact_icon_goblet30.png">
+                </div>
+                <div id="popup_manageArtefacts_Creator_PieceSelector_Sand" class="filterPiecePanel">
+                    <img src="assets/icons/filters/artifact_icon_sands30.png">
+                </div>
+                <div id="popup_manageArtefacts_Creator_PieceSelector_Circlet" class="filterPiecePanel">
+                    <img src="assets/icons/filters/artifact_icon_circlet30.png">
+                </div>
+            </div>
+            <div id="popup_manageArtefacts_Creator_Stats">
+
+            </div>
+            <div id="popup_manageArtefacts_Creator_Actions" class="flex row">
+                <div id="popup_manageArtefacts_Creator_Actions_Add" class="flex btn active">Ajouter</div>
+                <div id="popup_manageArtefacts_Creator_Actions_Reset" class="flex btn">Reset</div>
+            </div>
+        </div>
+    </div>
+</div>
