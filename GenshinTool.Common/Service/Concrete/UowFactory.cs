@@ -3,11 +3,6 @@ using GenshinTool.Common.Service.Interface.Context;
 using GenshinTool.Common.Service.Interface.Core;
 using GenshinTool.Common.Service.Interface.Repo;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenshinTool.Common.Service.Concrete;
 

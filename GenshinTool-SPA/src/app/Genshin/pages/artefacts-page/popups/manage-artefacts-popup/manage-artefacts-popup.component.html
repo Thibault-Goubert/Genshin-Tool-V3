@@ -35,17 +35,12 @@
         </div>
         <div id="popup_manageArtefacts_Creator">
             <span>Ajouter un artéfact</span>
-            <div id="popup_manageArtefacts_Creator_SetSelector">
-                <input #inputSetSelector id="popup_manageArtefacts_Creator_SetSelector_Input" placeholder="Choisir le set..."
-                    (input)="onSetSelectorInputChange(inputSetSelector.value)" [value]="setSelectorInputValue">
-                <div id="popup_manageArtefacts_Creator_SetSelector_List" *ngIf="showSetSelectorSetList" class="flex col absolute">
-                    <div *ngFor="let set of setSelectorSetListDisplayed"
-                        class="flex row popup_manageArtefacts_Creator_SetSelector_List_Row"
-                        (click)="onSelectSet(set)">
-                        <span class="popup_manageArtefacts_Creator_SetSelector_List_Row_Text">{{set}}</span>
-                    </div>
-                </div>
-            </div>
+            <app-dropdownlist id="popup_manageArtefacts_Creator_SetSelector"
+                class="flex"
+                [dropdownInputPlaceholder]="dropdownSetSelectorPlaceholder"
+                [dropdownChoiceList]="dropdownSetSelectorChoiceList"
+                (onSelected)="dropdownSetSelectorOnSelect($event)"
+            ></app-dropdownlist>
             <div id="popup_manageArtefacts_Creator_PieceSelector" class="flex row">
                 <div #pieceSelectorFlower id="popup_manageArtefacts_Creator_PieceSelector_Flower" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorFlower,0)">
                     <img src="assets/icons/filters/artifact_icon_flower30.png">
@@ -63,14 +58,37 @@
                     <img src="assets/icons/filters/artifact_icon_circlet30.png">
                 </div>
             </div>
-            <div id="popup_manageArtefacts_Creator_Stats" class="flex">
+            <div id="popup_manageArtefacts_Creator_Stats" class="flex col relative">
                 <div id="popup_manageArtefacts_Creator_Stats_Header" class="flex row">
                     <div id="popup_manageArtefacts_Creator_Stats_SetName">
-                        <span>{{setSelectorSelectedSet}}</span>
+                        <span *ngIf="setSelectorSelectedArtefactImg">{{dropdownSetSelectorChoiceSelected.name}}</span>
                     </div>
                     <div id="popup_manageArtefacts_Creator_Stats_Img">
                         <img src="{{setSelectorSelectedArtefactImg}}">
                     </div>
+                </div>
+                <div id="popup_manageArtefacts_Creator_Stats_Values">
+                    <div id="popup_manageArtefacts_Creator_Stats_Values_Main" class="flex row">
+                        <div id="popup_manageArtefacts_Creator_Stats_Values_Main_Type" (click)="onStatTypeClick('mainType')">{{mainType}}</div>
+                        <input id="popup_manageArtefacts_Creator_Stats_Values_Main_Value" [value]="mainValue">
+                    </div>
+                    <div id="popup_manageArtefacts_Creator_Stats_Values_Subs" class="flex row">
+                        <div id="popup_manageArtefacts_Creator_Stats_Values_Subs_Type" class="flex col">
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub1Type')">{{sub1Type}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub2Type')">{{sub2Type}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub3Type')">{{sub3Type}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub4Type')">{{sub4Type}}</div>
+                        </div>
+                        <div id="popup_manageArtefacts_Creator_Stats_Values_Subs_Values" class="flex col">
+                            <input class="inputSubStatValue" [value]="sub1Value">
+                            <input class="inputSubStatValue" [value]="sub2Value">
+                            <input class="inputSubStatValue" [value]="sub3Value">
+                            <input class="inputSubStatValue" [value]="sub4Value">
+                        </div>
+                    </div>
+                </div>
+                <div #popupStatSelection id="popup_manageArtefacts_Creator_Stats_PopupStatSelection" class="flex absolute center" *ngIf="showPopupStatSelector">
+                    <div *ngFor="let stat of statNames" class="statChoices" (click)="onStatSelected(stat)">{{stat.label}}</div>
                 </div>
             </div>
             <div id="popup_manageArtefacts_Creator_Actions" class="flex row">

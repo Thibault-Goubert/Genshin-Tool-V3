@@ -1,15 +1,10 @@
 ﻿using GenshinTool.Application.Domain.Models;
 using GenshinTool.Application.Interface.Services;
-using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Enums;
 using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Service.Concrete;
 using GenshinTool.Common.Service.Interface.Core;
 using GenshinTool.Infrastructure.Interface.Repositories;
-using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Xml.Linq;
 
 namespace GenshinTool.Application.Services;
 

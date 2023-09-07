@@ -1,5 +1,4 @@
 ﻿using GenshinTool.Common.Converters.Json;
-using log4net;
 using System.Net;
 
 namespace GenshinTool.Common.Configuration;

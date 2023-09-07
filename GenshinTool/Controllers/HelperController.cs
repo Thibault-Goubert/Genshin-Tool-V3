@@ -1,9 +1,6 @@
 ﻿using GenshinTool.Application.Interface.Services;
-using GenshinTool.Application.Services;
 using GenshinTool.Common.Logger;
-using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Requests;
-using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
 using Microsoft.AspNetCore.Mvc;
 

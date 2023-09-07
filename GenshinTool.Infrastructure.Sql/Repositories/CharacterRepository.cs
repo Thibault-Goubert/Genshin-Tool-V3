@@ -1,18 +1,11 @@
 ﻿using GenshinTool.Application.Domain.Models;
 using GenshinTool.Common.Data.Sql.Dapper.QueryGenerator;
 using GenshinTool.Common.Extensions;
-using GenshinTool.Common.Models.Enums;
 using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Rest.Core;
 using GenshinTool.Infrastructure.Interface.Dto;
 using GenshinTool.Infrastructure.Interface.Repositories;
 using GenshinTool.Infrastructure.Sql.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenshinTool.Infrastructure.Sql.Repositories
 {

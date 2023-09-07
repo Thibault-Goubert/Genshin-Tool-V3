@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GenshinTool.Common.Models.Core.Dom;
+﻿using GenshinTool.Common.Models.Core.Dom;
 using GenshinTool.Common.Models.Enums;
 
 namespace GenshinTool.Application.Domain.Models

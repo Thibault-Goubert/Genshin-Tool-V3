@@ -5,18 +5,13 @@ using GenshinTool.Common.Rest.Core;
 using GenshinTool.Common.Watcher;
 using Dapper.Contrib.Extensions;
 using Dapper;
-using log4net;
 using static Dapper.SqlMapper;
 using GenshinTool.Common.Service.Interface.Repo;
 using GenshinTool.Common.Service.Interface.Context;
 using GenshinTool.Common.Models.Core.Dom;
 using GenshinTool.Common.Models.Core.Dto;
 using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using GenshinTool.Common.Data.Sql.Dapper.QueryGenerator;
-using System.Collections;
-using Microsoft.Extensions.Primitives;
 
 namespace GenshinTool.Infrastructure.Sql.Core;
 
