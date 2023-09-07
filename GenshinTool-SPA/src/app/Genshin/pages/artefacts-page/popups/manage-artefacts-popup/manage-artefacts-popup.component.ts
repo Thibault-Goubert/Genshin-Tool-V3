@@ -7,53 +7,73 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class ManageArtefactsPopupComponent implements OnInit{
   
-  private setList!: string[];
-  public setListDisplayed!: string[];
-  public showSetList!: boolean;
-  public setSelectorInputValue!: string;
-  public setSelectorSelectedSet!: string;
+  public setSelectorSetListDisplayed!: string[];
+  public showSetSelectorSetList: boolean = false; 
+  public setSelectorInputValue: string = "";
 
-  private selectedPieceElement!: HTMLDivElement | any;
-  private pieces!: string[];
-  private selectedPiece!: string;
+  private setSelectorSetList!: string[];
+  private setSelectorPieces!: string[];
+
+  private setSelectorSelectedPieceElement: HTMLDivElement | any = null;
+  private setSelectorSelectedPiece: string = "";
+  public setSelectorSelectedSet: string = "";
+
+  public setSelectorSelectedArtefactImg: string = "";
 
   constructor() {}
   
   ngOnInit(): void {
-    this.setList = ["Gladiator","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Archaic","Noblesse"];
-    this.setSelectorInputValue = "";
-    this.showSetList = false; 
-    this.selectedPieceElement = null;
-    this.pieces = ["flower","plume","goblet","sand","circlet"];
-    this.selectedPiece = "";
-    this.setSelectorSelectedSet = "";
+    this.setSelectorSetList = ["Gladiator","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Archaic Petra","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige","Noblesse Oblige"];
+    this.setSelectorPieces = ["flower","plume","goblet","sand","circlet"];
   }
 
   onSetSelectorInputChange(value: string): void {
     this.setSelectorInputValue = value;
-    this.setListDisplayed = this.setList.filter(s => s.toLowerCase().includes(value.toLowerCase()));
-    this.showSetList = value != "" ? true : false;
+    this.setSelectorSetListDisplayed = this.setSelectorSetList.filter(s => s.toLowerCase().includes(value.toLowerCase()));
+    this.showSetSelectorSetList = value != "" ? true : false;
   } 
 
   onSelectSet(value: string){
-    this.showSetList = false; 
+    this.showSetSelectorSetList = false; 
     this.setSelectorInputValue = value;
     this.setSelectorSelectedSet = value;
+    this.updateDisplay();
   }
 
   onPieceSelectorClick(element: HTMLDivElement, index: number): void {
-    if(this.selectedPieceElement == element){
-      (this.selectedPieceElement as HTMLDivElement).classList.remove("selected");
-      this.selectedPieceElement = null;
-      this.selectedPiece = "";
+    if(this.setSelectorSelectedPieceElement == element){
+      (this.setSelectorSelectedPieceElement as HTMLDivElement).classList.remove("selected");
+      this.setSelectorSelectedPieceElement = null;
+      this.setSelectorSelectedPiece = "";
     }
     else{
-      if(this.selectedPieceElement != null){
-        (this.selectedPieceElement as HTMLDivElement).classList.remove("selected");
+      if(this.setSelectorSelectedPieceElement != null){
+        (this.setSelectorSelectedPieceElement as HTMLDivElement).classList.remove("selected");
       }
-      this.selectedPieceElement = element;
-      this.selectedPiece = this.pieces[index];
-      (this.selectedPieceElement as HTMLDivElement).classList.add("selected");
+      this.setSelectorSelectedPieceElement = element;
+      this.setSelectorSelectedPiece = this.setSelectorPieces[index];
+      (this.setSelectorSelectedPieceElement as HTMLDivElement).classList.add("selected");
     }
+    this.updateDisplay();
+  }
+
+  updateDisplay(){
+    var isSetSelected = this.setSelectorSelectedSet != "";
+    var isPieceSelected = this.setSelectorSelectedPiece != "";
+
+    if(isSetSelected && isPieceSelected){
+      this.setSelectorSelectedArtefactImg = this.buildArtefactImgPath();
+    }
+  }
+
+  buildArtefactImgPath(): string {    
+    var initials: string[] = [];
+    this.setSelectorSelectedSet.toLowerCase().split(" ").forEach(s => initials.push(s.charAt(0)));
+
+    var basePath = "assets/icons/artifact/artifact_";
+    var setName = initials.join('');
+    var piece = this.setSelectorSelectedPiece.toLowerCase(); 
+    var extension = ".png";
+    return basePath + setName + "_" + piece + extension;
   }
 }

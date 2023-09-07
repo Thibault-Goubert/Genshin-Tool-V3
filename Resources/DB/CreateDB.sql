@@ -57,8 +57,14 @@ CREATE TABLE Pieces (
 	Id INT IDENTITY(1,1) PRIMARY KEY,	
 	Name VARCHAR(255) NOT NULL,
 );
-
-
+-- Create the ArtefactSets table
+IF OBJECT_ID(N'ArtefactSets', N'U') IS NULL
+CREATE TABLE ArtefactSets (
+	Id INT IDENTITY(1,1) PRIMARY KEY,	
+	Name VARCHAR(255) NOT NULL,
+	TwoPiecesEffect Text NOT NULL,
+	FourPiecesEffect Text NOT NULL
+);
 
 ------- Create Main Tables -------
 
@@ -82,11 +88,11 @@ CREATE TABLE Weapons(
 IF OBJECT_ID(N'Artefacts', N'U') IS NULL
 CREATE TABLE Artefacts(
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Description TEXT NULL,
+    SetId INT NOT NULL,
     PieceId INT NOT NULL,
 
-    FOREIGN KEY (PieceId) REFERENCES Pieces(Id)
+    FOREIGN KEY (PieceId) REFERENCES Pieces(Id),
+    FOREIGN KEY (SetId) REFERENCES ArtefactSets(Id)
 );
 -- Create the Characters table
 IF OBJECT_ID(N'Characters', N'U') IS NULL
