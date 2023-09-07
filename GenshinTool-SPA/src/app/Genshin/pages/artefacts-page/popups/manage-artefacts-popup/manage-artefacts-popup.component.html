@@ -1,7 +1,9 @@
 <div id="popup_manageArtefacts">
     <div id="popup_manageArtefacts_Header" class="flex row">
         <span id="popup_manageArtefacts_Header_Title">Gestion des artéfacts</span>
-        <div id="popup_manageArtefacts_Header_Close" class="flex"><span>X</span></div>
+        <div id="popup_manageArtefacts_Header_Close" class="flex">
+            <span>🞩</span>
+        </div>
     </div>        
     <div id="popup_manageArtefacts_Content" class="flex row">
         <div id="popup_manageArtefacts_Inventory">
@@ -36,8 +38,8 @@
             <div id="popup_manageArtefacts_Creator_SetSelector">
                 <input #inputSetSelector id="popup_manageArtefacts_Creator_SetSelector_Input" placeholder="Choisir le set..."
                     (input)="onSetSelectorInputChange(inputSetSelector.value)" [value]="setSelectorInputValue">
-                <div id="popup_manageArtefacts_Creator_SetSelector_List" *ngIf="showSetList" class="flex col absolute">
-                    <div *ngFor="let set of setListDisplayed"
+                <div id="popup_manageArtefacts_Creator_SetSelector_List" *ngIf="showSetSelectorSetList" class="flex col absolute">
+                    <div *ngFor="let set of setSelectorSetListDisplayed"
                         class="flex row popup_manageArtefacts_Creator_SetSelector_List_Row"
                         (click)="onSelectSet(set)">
                         <span class="popup_manageArtefacts_Creator_SetSelector_List_Row_Text">{{set}}</span>
@@ -61,9 +63,14 @@
                     <img src="assets/icons/filters/artifact_icon_circlet30.png">
                 </div>
             </div>
-            <div id="popup_manageArtefacts_Creator_Stats">
-                <div class="flex row"> 
-                    <span>{{setSelectorSelectedSet}}test</span>
+            <div id="popup_manageArtefacts_Creator_Stats" class="flex">
+                <div id="popup_manageArtefacts_Creator_Stats_Header" class="flex row">
+                    <div id="popup_manageArtefacts_Creator_Stats_SetName">
+                        <span>{{setSelectorSelectedSet}}</span>
+                    </div>
+                    <div id="popup_manageArtefacts_Creator_Stats_Img">
+                        <img src="{{setSelectorSelectedArtefactImg}}">
+                    </div>
                 </div>
             </div>
             <div id="popup_manageArtefacts_Creator_Actions" class="flex row">
