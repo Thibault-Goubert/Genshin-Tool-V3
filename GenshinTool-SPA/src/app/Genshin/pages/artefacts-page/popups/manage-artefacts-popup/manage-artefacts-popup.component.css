@@ -45,6 +45,11 @@ input{
 .filterPiecePanel{
     width: 30px;
     height: 30px;
+    border-radius: 30px;
+    border:#282a2f 1px solid;
+}
+.filterPiecePanel.selected{
+    border:#e9e5dc 1px solid;
 }
 #popup_manageArtefacts_List{
     width: 200px;
@@ -59,6 +64,27 @@ input{
     width: 230px;
     height: 30px;
     margin-top: 8px;
+}
+#popup_manageArtefacts_Creator_SetSelector_List{  
+    width: 230px;
+    background-color: #36393f;
+    margin-top: 2px;
+    border-radius: 3px;
+    max-height: 150px;
+    overflow: auto;  
+    box-shadow: 0px 0px 4px black;
+}
+.popup_manageArtefacts_Creator_SetSelector_List_Row{
+    align-items: center;
+}
+.popup_manageArtefacts_Creator_SetSelector_List_Row:hover{
+    background-color: #e9e5dc;
+}
+.popup_manageArtefacts_Creator_SetSelector_List_Row:hover > span{
+    color: #282a2f;
+}
+.popup_manageArtefacts_Creator_SetSelector_List_Row_Text{
+    margin-left: 3px;
 }
 #popup_manageArtefacts_Creator_PieceSelector{
     justify-content: space-between;

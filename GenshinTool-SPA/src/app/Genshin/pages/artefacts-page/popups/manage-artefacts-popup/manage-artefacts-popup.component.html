@@ -29,37 +29,42 @@
                 </div>
             </div>
             <div id="popup_manageArtefacts_List" class="flex col">
-                <span>test</span>
-                <span>test</span>
-                <span>test</span>
-                <span>test</span>
             </div>
         </div>
         <div id="popup_manageArtefacts_Creator">
             <span>Ajouter un artéfact</span>
             <div id="popup_manageArtefacts_Creator_SetSelector">
-                <input id="popup_manageArtefacts_Creator_SetSelector_Input" placeholder="Choisir le set...">
-                <div></div>
+                <input #inputSetSelector id="popup_manageArtefacts_Creator_SetSelector_Input" placeholder="Choisir le set..."
+                    (input)="onSetSelectorInputChange(inputSetSelector.value)" [value]="setSelectorInputValue">
+                <div id="popup_manageArtefacts_Creator_SetSelector_List" *ngIf="showSetList" class="flex col absolute">
+                    <div *ngFor="let set of setListDisplayed"
+                        class="flex row popup_manageArtefacts_Creator_SetSelector_List_Row"
+                        (click)="onSelectSet(set)">
+                        <span class="popup_manageArtefacts_Creator_SetSelector_List_Row_Text">{{set}}</span>
+                    </div>
+                </div>
             </div>
             <div id="popup_manageArtefacts_Creator_PieceSelector" class="flex row">
-                <div id="popup_manageArtefacts_Creator_PieceSelector_Flower" class="filterPiecePanel">
+                <div #pieceSelectorFlower id="popup_manageArtefacts_Creator_PieceSelector_Flower" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorFlower,0)">
                     <img src="assets/icons/filters/artifact_icon_flower30.png">
                 </div>
-                <div id="popup_manageArtefacts_Creator_PieceSelector_Feather" class="filterPiecePanel">
+                <div #pieceSelectorFeather id="popup_manageArtefacts_Creator_PieceSelector_Feather" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorFeather,1)">
                     <img src="assets/icons/filters/artifact_icon_plume30.png">
                 </div>
-                <div id="popup_manageArtefacts_Creator_PieceSelector_Goblet" class="filterPiecePanel">
+                <div #pieceSelectorGoblet id="popup_manageArtefacts_Creator_PieceSelector_Goblet" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorGoblet,2)">
                     <img src="assets/icons/filters/artifact_icon_goblet30.png">
                 </div>
-                <div id="popup_manageArtefacts_Creator_PieceSelector_Sand" class="filterPiecePanel">
+                <div #pieceSelectorSand id="popup_manageArtefacts_Creator_PieceSelector_Sand" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorSand,3)">
                     <img src="assets/icons/filters/artifact_icon_sands30.png">
                 </div>
-                <div id="popup_manageArtefacts_Creator_PieceSelector_Circlet" class="filterPiecePanel">
+                <div #pieceSelectorCirclet id="popup_manageArtefacts_Creator_PieceSelector_Circlet" class="filterPiecePanel" (click)="onPieceSelectorClick(pieceSelectorCirclet,4)">
                     <img src="assets/icons/filters/artifact_icon_circlet30.png">
                 </div>
             </div>
             <div id="popup_manageArtefacts_Creator_Stats">
-
+                <div class="flex row"> 
+                    <span>{{setSelectorSelectedSet}}test</span>
+                </div>
             </div>
             <div id="popup_manageArtefacts_Creator_Actions" class="flex row">
                 <div id="popup_manageArtefacts_Creator_Actions_Add" class="flex btn active">Ajouter</div>
