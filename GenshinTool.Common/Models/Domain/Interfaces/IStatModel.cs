@@ -5,11 +5,11 @@ using Newtonsoft.Json;
 
 namespace GenshinTool.Common.Models.Domain.Interfaces;
 
-[JsonConverter(typeof(ObjectConverter<ICharacterModel, CharacterModel>))]
+[JsonConverter(typeof(ObjectConverter<IStatModel, StatModel>))]
 public interface IStatModel : IBaseModel
 {
     decimal Value { get; set; }
     long StatNameId { get; set; }
-    IStatNameModel StatName { get; set; }
+    StatNameModel StatName { get; set; }
     bool IsMain { get; set; }
 }

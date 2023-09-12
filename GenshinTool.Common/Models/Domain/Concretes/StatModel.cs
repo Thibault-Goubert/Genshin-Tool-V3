@@ -7,6 +7,6 @@ public class StatModel : BaseModel, IStatModel
 {
     public decimal Value { get; set; }
     public long StatNameId { get; set; }
-    public IStatNameModel? StatName { get; set; }
+    public StatNameModel StatName { get; set; }
     public bool IsMain { get; set; }
 }

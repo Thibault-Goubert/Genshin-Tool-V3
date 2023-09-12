@@ -1,7 +1,7 @@
 ﻿using GenshinTool.Common.Converters.Json;
 using GenshinTool.Common.Models.Core.Model;
 using GenshinTool.Common.Models.Domain.Concretes;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace GenshinTool.Common.Models.Domain.Interfaces;
 

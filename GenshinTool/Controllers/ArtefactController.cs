@@ -51,6 +51,7 @@ public class ArtefactController : BaseGenericController
     [HttpPost(nameof(InsertArtefact))]
     public IResponseItem<IArtefactModel> InsertArtefact([FromBody] IArtefactModel artefact)
     {
+        var test = artefact;
         return CreateResponseItem<IArtefactModel>(
             () => _artefactService.InsertArtefact(Mapper.Map<ArtefactDom>(artefact)),
             $"{nameof(InsertArtefact)} Success");
