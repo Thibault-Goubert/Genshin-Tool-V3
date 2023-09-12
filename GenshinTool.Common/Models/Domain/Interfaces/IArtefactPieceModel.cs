@@ -5,9 +5,8 @@ using System.Text.Json.Serialization;
 
 namespace GenshinTool.Common.Models.Domain.Interfaces;
 
-[JsonConverter(typeof(ObjectConverter<IStatNameModel, StatNameModel>))]
-public interface IStatNameModel : IBaseModel
+[JsonConverter(typeof(ObjectConverter<IArtefactPieceModel, ArtefactPieceModel>))]
+public interface IArtefactPieceModel : IBaseModel
 {
-    string? Label { get; set; }
-    long StatTypeId { get; set; }
+    string? Name { get; set; }
 }

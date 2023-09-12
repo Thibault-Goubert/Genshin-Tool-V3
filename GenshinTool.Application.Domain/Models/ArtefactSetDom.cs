@@ -4,8 +4,8 @@ namespace GenshinTool.Application.Domain.Models;
 
 public class ArtefactSetDom : BaseDom
 {
-    public string? Name { get; set; }
-    public string? Initials { get; set; }
-    public string? TwoPiecesEffect { get; set; }
-    public string? FourPiecesEffect { get; set; }
+    public string? name { get; set; }
+    public string? initials { get; set; }
+    public string? twoPiecesEffect { get; set; }
+    public string? fourPiecesEffect { get; set; }
 }

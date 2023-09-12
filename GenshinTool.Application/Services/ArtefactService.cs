@@ -16,4 +16,28 @@ internal class ArtefactService : BaseService, IArtefactService
     {
         return Execute(unitOfWork => unitOfWork.GetRepository<IArtefactSetRepository>().GetAll());
     }
+
+    public IEnumerable<ArtefactPieceDom> GetAllPiece()
+    {
+        return Execute(unitOfWork => unitOfWork.GetRepository<IArtefactPieceRepository>().GetAll());
+    }
+
+    public ArtefactDom InsertArtefact(ArtefactDom Artefact)
+    {
+        ArtefactDom insertedArte = null;
+        //var insertedStats = new List<StatDom>();
+
+        //ExecuteWithTransaction(unitOfWork =>
+        //{
+        //    insertedArte = unitOfWork.GetRepository<IArtefactRepository>().Insert(Artefact);
+        //    insertedStats = unitOfWork.GetRepository<IStatRepository>().Insert(Artefact.Stats).ToList();
+        //});
+
+        //if (insertedArte is not null)
+        //{
+        //    insertedArte.Stats = insertedStats;
+        //}
+
+        return insertedArte;
+    }
 }

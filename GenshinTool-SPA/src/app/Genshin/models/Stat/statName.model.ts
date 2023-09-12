@@ -1,4 +1,7 @@
+import { StatType } from "./statType.model";
+
 export class StatName{
+    id!: number;
     label!: string;
-    statTypeId!: number;
+    statType!: StatType;
 }

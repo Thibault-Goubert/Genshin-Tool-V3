@@ -6,4 +6,6 @@ namespace GenshinTool.Application.Interface.Services;
 public interface IArtefactService : IBaseService
 {
     IEnumerable<ArtefactSetDom> GetAllSet();
+    IEnumerable<ArtefactPieceDom> GetAllPiece();
+    ArtefactDom InsertArtefact(ArtefactDom Artefact);
 }

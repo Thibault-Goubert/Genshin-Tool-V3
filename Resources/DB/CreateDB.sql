@@ -52,8 +52,8 @@ CREATE TABLE StatsNames(
 	FOREIGN KEY (StatTypeId) REFERENCES StatTypes(Id)
 );
 -- Create the Piece table
-IF OBJECT_ID(N'Pieces', N'U') IS NULL
-CREATE TABLE Pieces (
+IF OBJECT_ID(N'ArtefactPieces', N'U') IS NULL
+CREATE TABLE ArtefactPieces (
 	Id INT IDENTITY(1,1) PRIMARY KEY,	
 	Name VARCHAR(255) NOT NULL,
 );
@@ -74,6 +74,7 @@ CREATE TABLE Stats(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Value INT NOT NULL,
     StatsNameId INT NOT NULL,
+	IsMain bit not null,
 	FOREIGN KEY (StatsNameId) REFERENCES StatsNames(Id)
 );
 

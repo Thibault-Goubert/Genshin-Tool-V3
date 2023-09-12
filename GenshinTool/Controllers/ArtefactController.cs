@@ -1,5 +1,7 @@
-﻿using GenshinTool.Application.Interface.Services;
+﻿using GenshinTool.Application.Domain.Models;
+using GenshinTool.Application.Interface.Services;
 using GenshinTool.Common.Logger;
+using GenshinTool.Common.Models.Domain.Concretes;
 using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
@@ -33,4 +35,25 @@ public class ArtefactController : BaseGenericController
             () => _artefactService.GetAllSet(),
             $"{nameof(GetAllArtefactSet)} Success");
     }
+
+    /// <summary>
+    ///     Get All Artefact Piece
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet(nameof(GetAllArtefactPiece))]
+    public IResponseItems<IArtefactPieceModel> GetAllArtefactPiece()
+    {
+        return CreateResponseItems<IArtefactPieceModel>(
+            () => _artefactService.GetAllPiece(),
+            $"{nameof(GetAllArtefactPiece)} Success");
+    }
+
+    [HttpPost(nameof(InsertArtefact))]
+    public IResponseItem<IArtefactModel> InsertArtefact([FromBody] IArtefactModel artefact)
+    {
+        return CreateResponseItem<IArtefactModel>(
+            () => _artefactService.InsertArtefact(Mapper.Map<ArtefactDom>(artefact)),
+            $"{nameof(InsertArtefact)} Success");
+    }
 }
+
