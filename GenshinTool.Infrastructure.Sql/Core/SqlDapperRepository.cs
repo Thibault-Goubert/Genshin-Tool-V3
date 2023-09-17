@@ -381,7 +381,7 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
 
                 if (agr.QueryChilderContext != null)
                 {
-                    aggregate = ChildAggregator(aggregate, agr, reader);
+                    aggregate = ChildAggregator(aggregate, agr.QueryChilderContext, reader);
                 }
 
                 if (agr.IsManyLink())
@@ -413,18 +413,23 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
 
     private static KeyValuePair<object?, IEnumerable<object>> ChildAggregator(KeyValuePair<object?, IEnumerable<object>> aggregate, IQueryChildContext agr, GridReader reader)
     {
-        var childerMap = reader.Read(agr.QueryChilderContext.GetChildType())
-            .GroupBy(x => x.GetType().GetProperty(agr.QueryChilderContext.GetChildKeyPropertyName())?
+        var childerMap = reader.Read(agr.GetChildType())
+            .GroupBy(x => x.GetType().GetProperty(agr.GetChildKeyPropertyName())?
             .GetValue(x, null))?.ToDictionary(g => g.Key, g => g.AsEnumerable());
 
         Parallel.ForEach(aggregate.Value, item =>
         {
-            var key = item.GetType().GetProperty(agr.QueryChilderContext.GetParentKeyPropertyName())?.GetValue(item);
+            var key = item.GetType().GetProperty(agr.GetParentKeyPropertyName())?.GetValue(item);
             var agg = childerMap.FirstOrDefault(x => key != null && x.Key != null && (long)x.Key == (long)key);
 
-            if (agr.QueryChilderContext.IsManyLink())
+            if (agr.QueryChilderContext != null)
             {
-                var prop = item.GetType().GetProperty(agr.QueryChilderContext.GetPropertyNameToSet());
+                agg = ChildAggregator(agg, agr.QueryChilderContext, reader);
+            }
+
+            if (agr.IsManyLink())
+            {
+                var prop = item.GetType().GetProperty(agr.GetPropertyNameToSet());
 
                 if (prop == null)
                 {
@@ -441,7 +446,7 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
             }
             else
             {
-                item.GetType().GetProperty(agr.QueryChilderContext.GetPropertyNameToSet())?.SetValue(item, agg.Value?.FirstOrDefault());
+                item.GetType().GetProperty(agr.GetPropertyNameToSet())?.SetValue(item, agg.Value?.FirstOrDefault());
             }
         });
 
