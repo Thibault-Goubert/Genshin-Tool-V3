@@ -11,4 +11,9 @@ public class ArtefactSetRepository : GenshinToolSqlRepository<ArtefactSetDom, Ar
     public ArtefactSetRepository(IBaseMapper mapper) : base(mapper)
     {
     }
+
+    public ArtefactSetDom GetByName(string name)
+    {
+        return GetByDynamicParameters(new { Name = name }).FirstOrDefault();
+    }
 }

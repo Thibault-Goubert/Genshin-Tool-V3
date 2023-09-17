@@ -67,7 +67,7 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
             var sql = GetAllQuery + " 1 = 1 ";
 
             sql = props.Aggregate(sql, (current, prop) =>
-                    $"{current} {SqlConstants.AND} {prop.Name} = LOWER('{prop.GetValue(parameters)}') ");
+                    $"{current} {SqlConstants.AND} {prop.Name} = '{prop.GetValue(parameters)}' ");
 
             using (new ExecutionWatcher(sql))
             {

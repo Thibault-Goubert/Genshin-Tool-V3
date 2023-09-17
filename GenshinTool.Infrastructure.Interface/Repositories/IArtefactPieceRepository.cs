@@ -6,4 +6,5 @@ namespace GenshinTool.Infrastructure.Interface.Repositories;
 
 public interface IArtefactPieceRepository : IRepository<ArtefactPieceDom, ArtefactPieceDto>
 {
+    ArtefactPieceDom GetByName(string name);
 }

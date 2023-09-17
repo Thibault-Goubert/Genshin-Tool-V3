@@ -29,6 +29,12 @@ internal class ArtefactService : BaseService, IArtefactService
 
         var result = ExecuteWithTransaction((unitOfWork) =>
         {
+            var set = unitOfWork.GetRepository<IArtefactSetRepository>().GetByName(Artefact.Set.Name);
+            var piece = unitOfWork.GetRepository<IArtefactPieceRepository>().GetByName(Artefact.Piece.Name);
+
+            Artefact.SetId = set.Id;
+            Artefact.PieceId = piece.Id;
+
             insertedArte = unitOfWork.GetRepository<IArtefactRepository>().Insert(Artefact);
             insertedArte.Stats = 
                 unitOfWork.GetRepository<IStatRepository>()

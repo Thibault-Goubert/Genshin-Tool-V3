@@ -158,6 +158,6 @@ export class ManageArtefactsPopupComponent implements OnInit{
     ArtefactToCreate.set = this.dropdownSetSelectorChoiceSelected;
     ArtefactToCreate.stats = [statsMain,stats1,stats2,stats3,stats4];
 
-    this.artefactService.insertArtefact(ArtefactToCreate);
+    this.artefactService.insertArtefact(ArtefactToCreate).subscribe();
   }
 }

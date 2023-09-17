@@ -23,11 +23,11 @@
             </div>
             <div id="popup_manageArtefacts_List" class="flex col">
                 <div *ngFor="let arte of inventoryList">
-                    <span>arte.set.name</span>
-                    <span>arte.piece.name</span>
+                    <span>{{arte.set.name}}</span>
+                    <span>{{arte.piece.name}}</span>
                     <div *ngFor="let stat of arte.stats">
-                        <span>stat.statName.label</span>
-                        <span>stat.value</span>
+                        <span>{{stat.statName.label}}</span>
+                        <span>{{stat.value}}</span>
                     </div>
                 </div>
             </div>
