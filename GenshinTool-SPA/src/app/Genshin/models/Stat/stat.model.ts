@@ -5,10 +5,12 @@ export class Stat{
     value!: number;
     statName!: StatName;
     isMain!: boolean;
+    associationId!: number;
 
-    constructor(value: number, statName: StatName, isMain: boolean) {
+    constructor(value: number = 0, statName: StatName, isMain: boolean = false, associationId: number = 0) {
         this.value = value;
         this.statName = statName;
         this.isMain = isMain;
+        this.associationId = associationId;
     }
 }

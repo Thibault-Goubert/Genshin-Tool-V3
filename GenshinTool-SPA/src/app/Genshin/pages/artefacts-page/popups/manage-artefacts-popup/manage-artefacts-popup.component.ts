@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { ArtefactSet } from 'src/app/Genshin/models/Artefact/ArtefactSet.model';
 import { Artefact } from 'src/app/Genshin/models/Artefact/artefact.model';
@@ -18,6 +18,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
 
   constructor(private artefactService: ArtefactService, private statService: StatService) {}
 
+  //#region Arte Piece/Set
   public dropdownSetSelectorPlaceholder: string = "Choisir le set...";
   public dropdownSetSelectorChoiceList: SelectPickerValue[] = [];
   public dropdownSetSelectorChoiceSelected!: ArtefactSet;
@@ -26,7 +27,8 @@ export class ManageArtefactsPopupComponent implements OnInit{
   private setSelectorSelectedPiece!: ArtefactPiece;
 
   public setSelectorSelectedArtefactImg: string = "";
-
+  //#endregion
+  //#region Arte Stats
   public mainValue: number = 0;
   public sub1Value: number = 0;
   public sub2Value: number = 0;
@@ -42,7 +44,11 @@ export class ManageArtefactsPopupComponent implements OnInit{
   public statNames: StatName[] = [];
   private statChanging: string = "";
   public showPopupStatSelector: boolean = false;
-  
+  //#endregion
+  //#region Arte list
+  public inventoryList!: Artefact[];
+  //#endregion
+
   ngOnInit(): void {
     this.artefactService.getAllSet().subscribe(result => {
       result.items.forEach(element => {
@@ -55,6 +61,10 @@ export class ManageArtefactsPopupComponent implements OnInit{
     });
     this.statService.getAllName().subscribe(result => {
       this.statNames = result.items.sort((a,b) => a.label.length - b.label.length);
+    });
+    this.artefactService.getAll().subscribe(result => {
+      this.inventoryList = result.items;
+      console.log("getAll:", result.items)
     });
   }
 

@@ -23,8 +23,11 @@ import { Artefact } from "../models/Artefact/artefact.model";
         return this.http.get<ResponseItems<ArtefactSet>>(this.baseUrl + 'GetAllArtefactPiece'); 
     }
 
-    public insertArtefact(artefact: Artefact):  Observable<ResponseItem<Artefact>>{
-      console.log("insert");
-      return this.http.post<ResponseItem<Artefact>>(this.baseUrl + 'InsertArtefact', artefact); 
-  }
+    public insertArtefact(artefact: Artefact): Observable<ResponseItem<Artefact>>{
+      return this.http.post<ResponseItem<Artefact>>(this.baseUrl + 'InsertArtefact', artefact);
+    } 
+
+    public getAll(): Observable<ResponseItems<Artefact>>{
+      return this.http.get<ResponseItems<Artefact>>(this.baseUrl + 'GetAll'); 
+    }
   }

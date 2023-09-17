@@ -4,9 +4,10 @@ namespace GenshinTool.Application.Domain.Models
 {
     public class StatDom : BaseDom
     {
-        public decimal? value { get; set; }
-        public StatNameDom? statName { get; set; }
-        public long? statNameId { get; set; }
-        public bool? isMain { get; set; }
+        public decimal Value { get; set; }
+        public StatNameDom StatName { get; set; }
+        public long StatNameId { get; set; }
+        public bool IsMain { get; set; }
+        public long AssociationId { get; set; }
     }
 }

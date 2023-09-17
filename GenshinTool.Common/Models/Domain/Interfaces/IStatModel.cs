@@ -12,4 +12,5 @@ public interface IStatModel : IBaseModel
     long StatNameId { get; set; }
     StatNameModel StatName { get; set; }
     bool IsMain { get; set; }
+    long AssociationId { get; set; }
 }

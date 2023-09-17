@@ -19,22 +19,22 @@ public class GenshinToolRegister : IRegister
             return;
         }
 
-        config.Default.PreserveReference(true);
+        //config.Default.PreserveReference(true);
 
-        config.ForType<BaseDom, IBaseModel>()
-            .TwoWays()
-            .IncludeAttribute();
+        //config.ForType<BaseDom, IBaseModel>()
+        //    .TwoWays()
+        //    .IncludeAttribute();
 
-        config.ForType<ArtefactDom, IArtefactModel>()
-            .TwoWays();
+        //config.ForType<ArtefactDom, IArtefactModel>()
+        //    .TwoWays();
 
-        config.ForType<StatDom, IStatModel>()
-            .TwoWays();
+        //config.ForType<StatDom, IStatModel>()
+        //    .TwoWays();
 
-        config.ForType<ArtefactPieceDom, IArtefactPieceModel>()
-            .TwoWays();
+        //config.ForType<ArtefactPieceDom, IArtefactPieceModel>()
+        //    .TwoWays();
 
-        config.ForType<ArtefactSetDom, IArtefactSetModel>()
-            .TwoWays();
+        //config.ForType<ArtefactSetDom, IArtefactSetModel>()
+        //    .TwoWays();
     }
 }

@@ -8,6 +8,6 @@ namespace GenshinTool.Common.Models.Domain.Interfaces;
 [JsonConverter(typeof(ObjectConverter<IStatNameModel, StatNameModel>))]
 public interface IStatNameModel : IBaseModel
 {
-    string? Label { get; set; }
+    string Label { get; set; }
     long StatTypeId { get; set; }
 }

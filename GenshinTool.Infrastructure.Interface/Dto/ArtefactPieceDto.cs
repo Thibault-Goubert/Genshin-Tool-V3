@@ -6,5 +6,5 @@ namespace GenshinTool.Infrastructure.Interface.Dto;
 [Dapper.Contrib.Extensions.Table("dbo.ArtefactPieces")]
 public class ArtefactPieceDto : BaseDto
 {
-    [Required] public string? Name { get; set; }
+    [Required] public string Name { get; set; }
 }

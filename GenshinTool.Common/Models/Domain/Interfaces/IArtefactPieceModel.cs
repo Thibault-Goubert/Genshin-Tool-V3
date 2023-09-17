@@ -8,5 +8,5 @@ namespace GenshinTool.Common.Models.Domain.Interfaces;
 [JsonConverter(typeof(ObjectConverter<IArtefactPieceModel, ArtefactPieceModel>))]
 public interface IArtefactPieceModel : IBaseModel
 {
-    string? Name { get; set; }
+    string Name { get; set; }
 }

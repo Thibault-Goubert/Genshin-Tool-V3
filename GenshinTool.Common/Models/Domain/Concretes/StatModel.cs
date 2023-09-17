@@ -9,4 +9,5 @@ public class StatModel : BaseModel, IStatModel
     public long StatNameId { get; set; }
     public StatNameModel StatName { get; set; }
     public bool IsMain { get; set; }
+    public long AssociationId { get; set; }
 }

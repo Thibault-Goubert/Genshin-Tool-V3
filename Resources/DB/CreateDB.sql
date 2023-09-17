@@ -62,6 +62,7 @@ IF OBJECT_ID(N'ArtefactSets', N'U') IS NULL
 CREATE TABLE ArtefactSets (
 	Id INT IDENTITY(1,1) PRIMARY KEY,	
 	Name VARCHAR(255) NOT NULL,
+	Initials VARCHAR(50) NOT NULL,
 	TwoPiecesEffect Text NOT NULL,
 	FourPiecesEffect Text NOT NULL
 );
@@ -73,26 +74,27 @@ IF OBJECT_ID(N'Stats', N'U') IS NULL
 CREATE TABLE Stats(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Value INT NOT NULL,
-    StatsNameId INT NOT NULL,
+    StatNameId INT NOT NULL,
 	IsMain bit not null,
-	FOREIGN KEY (StatsNameId) REFERENCES StatsNames(Id)
+	AssociationId INT NOT NULL,
+	FOREIGN KEY (StatNameId) REFERENCES StatsNames(Id)
 );
 
 -- Create the Weapons table
 IF OBJECT_ID(N'Weapons', N'U') IS NULL
 CREATE TABLE Weapons(
-    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Id INT IDENTITY(10000,1) PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     Description TEXT NULL,
 );
 -- Create the Artefacts table
 IF OBJECT_ID(N'Artefacts', N'U') IS NULL
 CREATE TABLE Artefacts(
-    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Id INT IDENTITY(1000000,1) PRIMARY KEY,
     SetId INT NOT NULL,
     PieceId INT NOT NULL,
 
-    FOREIGN KEY (PieceId) REFERENCES Pieces(Id),
+    FOREIGN KEY (PieceId) REFERENCES ArtefactPieces(Id),
     FOREIGN KEY (SetId) REFERENCES ArtefactSets(Id)
 );
 -- Create the Characters table
@@ -119,9 +121,6 @@ CREATE TABLE Characters(
     FOREIGN KEY (WeaponTypeId) REFERENCES WeaponTypes(Id),
     FOREIGN KEY (SexId) REFERENCES Sex(Id)
 );
-ALTER TABLE Characters
-	ADD IsUsed BIT NOT NULL
-	DEFAULT (0);
 
 ------ Create associations tables ------
 

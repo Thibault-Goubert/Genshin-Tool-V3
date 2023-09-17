@@ -24,10 +24,6 @@ public class ArtefactController : BaseGenericController
         _artefactService = artefactService;
     }
 
-    /// <summary>
-    ///     Get All Artefact Set
-    /// </summary>
-    /// <returns></returns>
     [HttpGet(nameof(GetAllArtefactSet))]
     public IResponseItems<IArtefactSetModel> GetAllArtefactSet()
     {
@@ -36,10 +32,6 @@ public class ArtefactController : BaseGenericController
             $"{nameof(GetAllArtefactSet)} Success");
     }
 
-    /// <summary>
-    ///     Get All Artefact Piece
-    /// </summary>
-    /// <returns></returns>
     [HttpGet(nameof(GetAllArtefactPiece))]
     public IResponseItems<IArtefactPieceModel> GetAllArtefactPiece()
     {
@@ -51,10 +43,17 @@ public class ArtefactController : BaseGenericController
     [HttpPost(nameof(InsertArtefact))]
     public IResponseItem<IArtefactModel> InsertArtefact([FromBody] IArtefactModel artefact)
     {
-        var test = artefact;
         return CreateResponseItem<IArtefactModel>(
             () => _artefactService.InsertArtefact(Mapper.Map<ArtefactDom>(artefact)),
             $"{nameof(InsertArtefact)} Success");
+    }
+
+    [HttpGet(nameof(GetAll))]
+    public IResponseItems<IArtefactModel> GetAll()
+    {
+        return CreateResponseItems<IArtefactModel>(
+            () => _artefactService.GetAll(),
+            $"{nameof(GetAll)} Success");
     }
 }
 

@@ -6,8 +6,8 @@ namespace GenshinTool.Common.Models.Domain.Concretes;
 
 public class ArtefactSetModel : BaseModel, IArtefactSetModel
 {
-    public string? Name { get; set; }
-    public string? Initials { get; set; }
-    public string? TwoPiecesEffect { get; set; }
-    public string? FourPiecesEffect { get; set; }
+    public string Name { get; set; }
+    public string Initials { get; set; }
+    public string TwoPiecesEffect { get; set; }
+    public string FourPiecesEffect { get; set; }
 }

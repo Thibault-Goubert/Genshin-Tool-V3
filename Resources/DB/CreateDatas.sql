@@ -30,12 +30,12 @@ VALUES
 SET IDENTITY_INSERT StatsNames OFF;
 
 -- Insert PIECES --
-SET IDENTITY_INSERT PIECES ON;
-INSERT INTO PIECES (Id,Name)
+SET IDENTITY_INSERT ArtefactPieces ON;
+INSERT INTO ArtefactPieces (Id,Name)
 VALUES
 (1,'Plume'),(2,'Flower'),(3,'Sand'),
 (4,'Goblet'),(5,'Circlet')
-SET IDENTITY_INSERT PIECES OFF;
+SET IDENTITY_INSERT ArtefactPieces OFF;
 
 -- Insert Elements --
 SET IDENTITY_INSERT Elements ON;

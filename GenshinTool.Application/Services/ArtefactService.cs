@@ -25,19 +25,29 @@ internal class ArtefactService : BaseService, IArtefactService
     public ArtefactDom InsertArtefact(ArtefactDom Artefact)
     {
         ArtefactDom insertedArte = null;
-        var insertedStats = new List<StatDom>();
+        IEnumerable<StatDom> insertedStats = Enumerable.Empty<StatDom>();
 
-        ExecuteWithTransaction(unitOfWork =>
+        var result = ExecuteWithTransaction((unitOfWork) =>
         {
             insertedArte = unitOfWork.GetRepository<IArtefactRepository>().Insert(Artefact);
-            insertedStats = unitOfWork.GetRepository<IStatRepository>().Insert(Artefact.Stats).ToList();
+            insertedArte.Stats = 
+                unitOfWork.GetRepository<IStatRepository>()
+                    .Insert(insertedArte.Stats.Select(x => { x.AssociationId = insertedArte.Id; return x; }))
+                    .ToList();
+            return insertedArte;
         });
 
-        if (insertedArte is not null)
-        {
-            insertedArte.Stats = insertedStats;
-        }
+        return result;
+    }
 
-        return insertedArte;
+    public IEnumerable<ArtefactDom> GetAll()
+    {
+        return ExecuteWithTransaction((unitOfWork) => { 
+            var repo = unitOfWork.GetRepository<IArtefactRepository>();
+
+            var result = repo.GetAllWithAggregates();
+
+            return result;
+        });
     }
 }

@@ -7,5 +7,5 @@ namespace GenshinTool.Common.Models.Domain.Concretes;
 
 public class ArtefactPieceModel : BaseModel, IArtefactPieceModel
 {
-    public string? Name { get; set; }
+    public string Name { get; set; }
 }

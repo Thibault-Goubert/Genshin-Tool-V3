@@ -7,6 +7,6 @@ namespace GenshinTool.Infrastructure.Interface.Dto;
 [Dapper.Contrib.Extensions.Table("dbo.StatsNames")]
 public class StatNameDto : BaseDto
 {
-    [Required] public string? Label { get; set; }
+    [Required] public string Label { get; set; }
     [Required][ForeignKey("dbo.StatTypes")] public long StatTypeId { get; set; }
 }

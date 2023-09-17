@@ -4,5 +4,5 @@ namespace GenshinTool.Application.Domain.Models;
 
 public class ArtefactPieceDom : BaseDom
 {
-    public string? name { get; set; }
+    public string Name { get; set; }
 }

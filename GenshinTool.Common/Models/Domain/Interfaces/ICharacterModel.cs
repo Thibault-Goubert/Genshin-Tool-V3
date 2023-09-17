@@ -8,7 +8,7 @@ namespace GenshinTool.Common.Models.Domain.Interfaces;
 [JsonConverter(typeof(ObjectConverter<ICharacterModel, CharacterModel>))]
 public interface ICharacterModel : IBaseModel
 {
-    string? Name { get; set; }
+    string Name { get; set; }
     long ElementId { get; set; }
     string Element { get; set; }
     long Rarity { get; set; }

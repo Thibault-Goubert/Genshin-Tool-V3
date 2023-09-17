@@ -5,7 +5,7 @@ namespace GenshinTool.Common.Models.Domain.Concretes;
 
 public class CharacterModel : BaseModel, ICharacterModel
 {
-    public string? Name { get; set; }
+    public string Name { get; set; }
     public long ElementId { get; set; }
     public string? Element { get; set; }
     public long Rarity { get; set; }

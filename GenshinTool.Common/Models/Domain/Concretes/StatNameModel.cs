@@ -5,6 +5,6 @@ namespace GenshinTool.Common.Models.Domain.Concretes;
 
 public class StatNameModel : BaseModel, IStatNameModel
 {
-    public string? Label { get; set; }
+    public string Label { get; set; }
     public long StatTypeId { get; set; }
 }
