@@ -31,13 +31,7 @@ public class ArtefactRepository : GenshinToolSqlRepository<ArtefactDom, Artefact
     {
         ParentKey = x => x.Id,
         ChildKey = x => x.AssociationId,
-        PropertyIenumerableToSetFunc = x => x.Stats,
-
-        QueryChilderContext = new QueryChildContext<StatDto, StatNameDto> {
-            ParentKey = x => x.StatNameId,
-            ChildKey = x => x.Id,
-            PropertyToSetFunc = x => x.StatName
-        }
+        PropertyIenumerableToSetFunc = x => x.Stats
     };
     #endregion
 

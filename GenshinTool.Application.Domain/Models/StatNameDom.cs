@@ -1,4 +1,6 @@
 ﻿using GenshinTool.Common.Models.Core.Dom;
+using GenshinTool.Common.Models.Enums;
+using System.Data;
 
 namespace GenshinTool.Application.Domain.Models
 {
@@ -6,5 +8,6 @@ namespace GenshinTool.Application.Domain.Models
     {
         public string Label { get; set; }
         public long StatTypeId { get; set; }
+        public StatType StatType { get; set; }
     }
 }

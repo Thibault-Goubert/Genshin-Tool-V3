@@ -58,6 +58,11 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         }
     }
 
+    public virtual IEnumerable<TDom> GetByIds(IEnumerable<long> ids)
+    {
+        return GetByParameters(new Dictionary<string, IEnumerable<long>> { { "Id", ids } });
+    }
+
     protected IEnumerable<TDom> GetByDynamicParameters(object parameters)
     {
         if (parameters != null)
@@ -181,11 +186,13 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
             return default;
         }
 
-        var dic =
-            typeof(TDto)
-                .GetProperties()
-                .Where(propertyInfo => propertyInfo.Name != PropertyId)
-                .ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
+        var type = typeof(TDto);
+        var props = type.GetProperties();
+        var filtered = props.Where(propertyInfo => 
+            propertyInfo.CustomAttributes.All(s => s.AttributeType != typeof(ComputedAttribute)) &&
+            propertyInfo.Name != PropertyId);
+
+        var dic = filtered.ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
 
         var entities = Mapper.Map<IEnumerable<TDto>>(domainEntities).ToList();
         var result = await _dataSourceContext.Connection.BulkInsert(entities, SqlTableName, dic);
@@ -372,17 +379,12 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         {
             var childMap = reader.Read(agr.GetChildType())
                 .GroupBy(x => x.GetType().GetProperty(agr.GetChildKeyPropertyName())?.GetValue(x, null))
-                .ToDictionary(g => g.Key, g => g.AsEnumerable());
+                ?.ToDictionary(g => g.Key, g => g.AsEnumerable());
 
             Parallel.ForEach(parent, item =>
             {
                 var key = item.GetType().GetProperty(agr.GetParentKeyPropertyName())?.GetValue(item);
                 var aggregate = childMap.FirstOrDefault(x => key != null && x.Key != null && (long)x.Key == (long)key);
-
-                if (agr.QueryChilderContext != null)
-                {
-                    aggregate = ChildAggregator(aggregate, agr.QueryChilderContext, reader);
-                }
 
                 if (agr.IsManyLink())
                 {
@@ -409,47 +411,5 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         }
 
         return parent;
-    }
-
-    private static KeyValuePair<object?, IEnumerable<object>> ChildAggregator(KeyValuePair<object?, IEnumerable<object>> aggregate, IQueryChildContext agr, GridReader reader)
-    {
-        var childerMap = reader.Read(agr.GetChildType())
-            .GroupBy(x => x.GetType().GetProperty(agr.GetChildKeyPropertyName())?
-            .GetValue(x, null))?.ToDictionary(g => g.Key, g => g.AsEnumerable());
-
-        Parallel.ForEach(aggregate.Value, item =>
-        {
-            var key = item.GetType().GetProperty(agr.GetParentKeyPropertyName())?.GetValue(item);
-            var agg = childerMap.FirstOrDefault(x => key != null && x.Key != null && (long)x.Key == (long)key);
-
-            if (agr.QueryChilderContext != null)
-            {
-                agg = ChildAggregator(agg, agr.QueryChilderContext, reader);
-            }
-
-            if (agr.IsManyLink())
-            {
-                var prop = item.GetType().GetProperty(agr.GetPropertyNameToSet());
-
-                if (prop == null)
-                {
-                    return;
-                }
-
-                var type = prop.PropertyType;
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-                {
-                    var itemType = type.GetGenericArguments()[0];
-                    var listToSet = ConvertHelper.ConvertList(agg.Value.ToList(), itemType);
-                    prop?.SetValue(item, listToSet);
-                }
-            }
-            else
-            {
-                item.GetType().GetProperty(agr.GetPropertyNameToSet())?.SetValue(item, agg.Value?.FirstOrDefault());
-            }
-        });
-
-        return aggregate;
     }
 }

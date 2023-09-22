@@ -25,8 +25,7 @@ namespace GenshinTool.Common.Extensions
 
             for (var i = 0; i < numberOfBatches; i++)
             {
-                var dataToInsert = items.Skip(i * batchSize)
-                    .Take(batchSize);
+                var dataToInsert = items.Skip(i * batchSize).Take(batchSize);
                 var valueSql = GetQueries(dataToInsert, dataFunc);
 
                 sqlToExecute.Add($"{insertSql}{string.Join(", ", valueSql)}");

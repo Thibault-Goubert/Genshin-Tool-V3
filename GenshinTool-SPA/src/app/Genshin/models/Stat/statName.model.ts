@@ -1,4 +1,4 @@
-import { StatType } from "./statType.model";
+import { StatType } from "../enums/statType.enum";
 
 export class StatName{
     id!: number;

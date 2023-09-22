@@ -1,8 +1,12 @@
 ﻿using GenshinTool.Application.Domain.Models;
 using GenshinTool.Application.Interface.Services;
+using GenshinTool.Common.Models.Enums;
 using GenshinTool.Common.Service.Concrete;
 using GenshinTool.Common.Service.Interface.Core;
 using GenshinTool.Infrastructure.Interface.Repositories;
+using System.Collections.Generic;
+using System.IO.Pipelines;
+using System.Net;
 
 namespace GenshinTool.Application.Services;
 
@@ -27,33 +31,58 @@ internal class ArtefactService : BaseService, IArtefactService
         ArtefactDom insertedArte = null;
         IEnumerable<StatDom> insertedStats = Enumerable.Empty<StatDom>();
 
-        var result = ExecuteWithTransaction((unitOfWork) =>
+        return ExecuteWithTransaction((unitOfWork) =>
         {
-            var set = unitOfWork.GetRepository<IArtefactSetRepository>().GetByName(Artefact.Set.Name);
-            var piece = unitOfWork.GetRepository<IArtefactPieceRepository>().GetByName(Artefact.Piece.Name);
-
-            Artefact.SetId = set.Id;
-            Artefact.PieceId = piece.Id;
+            Artefact.SetId = Artefact.Set.Id;
+            Artefact.PieceId = Artefact.Piece.Id;
 
             insertedArte = unitOfWork.GetRepository<IArtefactRepository>().Insert(Artefact);
-            insertedArte.Stats = 
-                unitOfWork.GetRepository<IStatRepository>()
-                    .Insert(insertedArte.Stats.Select(x => { x.AssociationId = insertedArte.Id; return x; }))
-                    .ToList();
+            insertedArte.Stats = insertedArte.Stats.Select(x => { 
+                x.AssociationId = insertedArte.Id; 
+                x.StatNameId = x.StatName.Id;
+                return x; 
+            });
+
+            unitOfWork.GetRepository<IStatRepository>().Insert(insertedArte.Stats.ToList()).ToList();
             return insertedArte;
         });
-
-        return result;
     }
 
     public IEnumerable<ArtefactDom> GetAll()
     {
         return ExecuteWithTransaction((unitOfWork) => { 
-            var repo = unitOfWork.GetRepository<IArtefactRepository>();
+            var artefacts = unitOfWork.GetRepository<IArtefactRepository>().GetAllWithAggregates();
 
-            var result = repo.GetAllWithAggregates();
+            var statsNameIds = artefacts.SelectMany(x => x.Stats.Select(y => y.StatNameId)).Distinct();
+            var statNameRepo = unitOfWork.GetRepository<IStatNameRepository>().GetByIds(statsNameIds);
+
+            var result = artefacts.Select(x => new ArtefactDom() {
+                SetId = x.SetId,
+                PieceId = x.PieceId,
+                Set = x.Set,
+                Piece = x.Piece,
+                Stats = x.Stats.Select(y => {
+                    y.StatName = statNameRepo.FirstOrDefault(z => z.Id == y.StatNameId);
+                    return y;
+                })
+            });
 
             return result;
         });
     }
+
+
+    #region Helpers
+    private static IEnumerable<StatDom> MapProperties(Func<IEnumerable<StatDom>> func)
+    {
+        var stats = func.Invoke().ToList();
+
+        stats.ForEach(x =>
+        {
+            x.StatName.StatType = (StatType)x.StatName.StatTypeId;
+        });
+
+        return stats;
+    }
+    #endregion
 }

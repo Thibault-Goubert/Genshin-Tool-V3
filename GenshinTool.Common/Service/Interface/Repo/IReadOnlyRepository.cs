@@ -12,4 +12,5 @@ public interface IReadOnlyRepository<TDom, TDto> : IBaseRepository
 
     IEnumerable<TDom> GetAll();
     TDom GetById(long id);
+    IEnumerable<TDom> GetByIds(IEnumerable<long> ids);
 }

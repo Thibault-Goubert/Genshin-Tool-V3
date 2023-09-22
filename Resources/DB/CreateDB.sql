@@ -73,7 +73,7 @@ CREATE TABLE ArtefactSets (
 IF OBJECT_ID(N'Stats', N'U') IS NULL
 CREATE TABLE Stats(
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    Value INT NOT NULL,
+    Value decimal(10,3) NOT NULL,
     StatNameId INT NOT NULL,
 	IsMain bit not null,
 	AssociationId INT NOT NULL,

@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GenshinTool.Infrastructure.Interface.Dto;
 
-[Dapper.Contrib.Extensions.Table("dbo.Stats")]
+[Table("dbo.Stats")]
 public class StatDto : BaseDto
 {
-    [Required] public decimal Value { get; set; }
-    [Required] public long StatNameId { get; set; }
-    [Required] public bool IsMain { get; set; }
-    [Required] public long AssociationId { get; set; }
-    [Computed] public StatNameDto StatName { get; set; }
+    [Required]public decimal Value { get; set; }
+    [Required]public long StatNameId { get; set; }
+    [Required]public bool IsMain { get; set; }
+    [Required]public long AssociationId { get; set; }
+    [Computed]public StatNameDto StatName { get; set; }
 }

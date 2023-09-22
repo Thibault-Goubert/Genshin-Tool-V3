@@ -9,35 +9,44 @@
         <div id="popup_manageArtefacts_Inventory">
             <div id="popup_manageArtefacts_Filters">
                 <div id="popup_manageArtefacts_Filters_BySet">
-                    <input id="popup_manageArtefacts_Filters_BySet_Input" placeholder="Filtrer par set">
-                    <div id="popup_manageArtefacts_Filters_BySet_List"></div>
-                </div>
+                    <app-dropdownlist id="popup_manageArtefacts_Filters_BySet_Input"
+                        class="flex"
+                        [dropdownInputPlaceholder]="dropdownSetFilterPlaceholder"
+                        [dropdownChoiceList]="dropdownSetChoiceList"
+                        (onSelected)="dropdownSetFilterOnSelect($event)"
+                        [canUnselect]="true"
+                    ></app-dropdownlist>
+                </div>                
                 <div id="popup_manageArtefacts_Filters_ByPieces" class="flex row">
                     <div *ngFor="let piece of setSelectorPieces" 
                         id="popup_manageArtefacts_Filters_ByPieces_{{piece.name}}" 
                         class="filterPiecePanel" 
-                        (click)="onPieceSelectorClick(piece)">
+                        (click)="onPieceFilterClick(piece)">
                         <img src="assets/icons/filters/artifact_icon_{{piece.name.toLowerCase()}}30.png">
                     </div>
                 </div>
             </div>
             <div id="popup_manageArtefacts_List" class="flex col">
-                <div *ngFor="let arte of inventoryList">
-                    <span>{{arte.set.name}}</span>
-                    <span>{{arte.piece.name}}</span>
-                    <div *ngFor="let stat of arte.stats">
-                        <span>{{stat.statName.label}}</span>
-                        <span>{{stat.value}}</span>
+                <div *ngFor="let arte of inventoryListDisplayed" class="flex row popup_manageArtefacts_List_Row">
+                    <img [src]="buildArtefactImgPath(arte.set.initials, arte.piece.name)">
+                    <div *ngFor="let stat of filterStats(arte.stats, true)" class="flex row popup_manageArtefacts_List_Row_Main">
+                        <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>
+                    </div>
+                    <div class="flex col popup_manageArtefacts_List_Row_Subs">
+                        <div *ngFor="let stat of filterStats(arte.stats)" class="flex row popup_manageArtefacts_List_Row_Sub">
+                            <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="popup_manageArtefacts_Creator">
             <span>Ajouter un artéfact</span>
-            <app-dropdownlist id="popup_manageArtefacts_Creator_SetSelector"
+            <app-dropdownlist #DDSetSelector
+                id="popup_manageArtefacts_Creator_SetSelector"
                 class="flex"
                 [dropdownInputPlaceholder]="dropdownSetSelectorPlaceholder"
-                [dropdownChoiceList]="dropdownSetSelectorChoiceList"
+                [dropdownChoiceList]="dropdownSetChoiceList"
                 (onSelected)="dropdownSetSelectorOnSelect($event)"
             ></app-dropdownlist>
             <div id="popup_manageArtefacts_Creator_PieceSelector" class="flex row">
@@ -51,7 +60,7 @@
             <div id="popup_manageArtefacts_Creator_Stats" class="flex col relative">
                 <div id="popup_manageArtefacts_Creator_Stats_Header" class="flex row">
                     <div id="popup_manageArtefacts_Creator_Stats_SetName">
-                        <span *ngIf="setSelectorSelectedArtefactImg">{{dropdownSetSelectorChoiceSelected.name}}</span>
+                        <span *ngIf="setSelectorSelectedArtefactImg">{{dropdownSetSelectorChoiceSelected?.name}}</span>
                     </div>
                     <div id="popup_manageArtefacts_Creator_Stats_Img">
                         <img src="{{setSelectorSelectedArtefactImg}}">
@@ -59,23 +68,23 @@
                 </div>
                 <div id="popup_manageArtefacts_Creator_Stats_Values">
                     <div id="popup_manageArtefacts_Creator_Stats_Values_Main" class="flex row">
-                        <div id="popup_manageArtefacts_Creator_Stats_Values_Main_Type" (click)="onStatTypeClick('main')">{{mainName.label}}</div>
-                        <input #inputMain 
-                            id="popup_manageArtefacts_Creator_Stats_Values_Main_Value" 
-                            (input)="onStatValueInput(inputMain.value,0,$event)">
+                        <div id="popup_manageArtefacts_Creator_Stats_Values_Main_Type" 
+                            (click)="onStatTypeClick('main')">{{mainName?.label}}</div>
+                        <input #inputMain id="popup_manageArtefacts_Creator_Stats_Values_Main_Value"
+                            (input)="onStatValueInput(inputMain.value,0)">
                     </div>
                     <div id="popup_manageArtefacts_Creator_Stats_Values_Subs" class="flex row">
                         <div id="popup_manageArtefacts_Creator_Stats_Values_Subs_Type" class="flex col">
-                            <div class="divSubStatType" (click)="onStatTypeClick('sub1')">{{sub1Name.label}}</div>
-                            <div class="divSubStatType" (click)="onStatTypeClick('sub2')">{{sub2Name.label}}</div>
-                            <div class="divSubStatType" (click)="onStatTypeClick('sub3')">{{sub3Name.label}}</div>
-                            <div class="divSubStatType" (click)="onStatTypeClick('sub4')">{{sub4Name.label}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub1')">{{sub1Name?.label}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub2')">{{sub2Name?.label}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub3')">{{sub3Name?.label}}</div>
+                            <div class="divSubStatType" (click)="onStatTypeClick('sub4')">{{sub4Name?.label}}</div>
                         </div>
                         <div id="popup_manageArtefacts_Creator_Stats_Values_Subs_Values" class="flex col">
-                            <input #inputSub1 class="inputSubStatValue" (input)="onStatValueInput(inputSub1.value,1,$event)">
-                            <input #inputSub2 class="inputSubStatValue" (input)="onStatValueInput(inputSub2.value,2,$event)">
-                            <input #inputSub3 class="inputSubStatValue" (input)="onStatValueInput(inputSub3.value,3,$event)">
-                            <input #inputSub4 class="inputSubStatValue" (input)="onStatValueInput(inputSub4.value,4,$event)">
+                            <input #inputSub1 class="inputSubStatValue" (input)="onStatValueInput(inputSub1.value,1)">
+                            <input #inputSub2 class="inputSubStatValue" (input)="onStatValueInput(inputSub2.value,2)">
+                            <input #inputSub3 class="inputSubStatValue" (input)="onStatValueInput(inputSub3.value,3)">
+                            <input #inputSub4 class="inputSubStatValue" (input)="onStatValueInput(inputSub4.value,4)">
                         </div>
                     </div>
                 </div>
@@ -85,7 +94,7 @@
             </div>
             <div id="popup_manageArtefacts_Creator_Actions" class="flex row">
                 <div id="popup_manageArtefacts_Creator_Actions_Add" class="flex btn active" (click)="onAddClick()">Ajouter</div>
-                <div id="popup_manageArtefacts_Creator_Actions_Reset" class="flex btn">Reset</div>
+                <div id="popup_manageArtefacts_Creator_Actions_Reset" class="flex btn" (click)="onResetClick()">Reset</div>
             </div>
         </div>
     </div>

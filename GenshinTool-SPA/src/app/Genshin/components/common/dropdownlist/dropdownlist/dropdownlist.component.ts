@@ -8,21 +8,30 @@ import { SelectPickerValue } from 'src/app/Genshin/models/selectPickerValue.mode
 })
 export class DropdownlistComponent {
   @Input() dropdownInputPlaceholder!: string;
-  public dropdownInputValue: string = "";
+  protected dropdownInputValue: string = "";
   @Input() dropdownChoiceList: SelectPickerValue[] = [];
-  public dropdownChoiceListDisplayed!: SelectPickerValue[];
-  public isListDisplayed: boolean = false;
+  protected dropdownChoiceListDisplayed!: SelectPickerValue[];
+  protected isListDisplayed: boolean = false;
   @Output() onSelected = new EventEmitter<SelectPickerValue>();
+  @Input() canUnselect: boolean = false;
 
   onInput(value: string): void {
     this.dropdownInputValue = value;
     this.dropdownChoiceListDisplayed = this.dropdownChoiceList.filter(s => s.displayValue.toLowerCase().includes(value.toLowerCase()));
     this.isListDisplayed = (value || value.trim() !== "") ? true : false;
+    console.log(this.canUnselect, value.trim())
+    if(this.canUnselect && value.trim() == ""){
+      this.onSelected.emit(undefined);
+    }
   }
 
   onSelect(choice: SelectPickerValue): void {
     this.isListDisplayed = false;
     this.dropdownInputValue = choice.displayValue;
     this.onSelected.emit(choice);
+  }
+
+  resetInputValue(): void{
+    this.dropdownInputValue = "";
   }
 }
