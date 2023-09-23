@@ -31,6 +31,8 @@
         (characterUsedListChangedEvent)="updateCharactersListHandler($event)" 
         (closeCharactersPopupEvent)="closeCharactersPopupHandler()">
     </app-manage-characters-popup>
-    <app-manage-artefacts-popup *ngIf="isArtePopupDisplayed"></app-manage-artefacts-popup>
+    <app-manage-artefacts-popup *ngIf="isArtePopupDisplayed"
+        (closeArtefactsPopupEvent)="closeArtefactsPopupHandler()">
+    </app-manage-artefacts-popup>
 </div>
 

@@ -48,6 +48,14 @@ public class ArtefactController : BaseGenericController
             $"{nameof(InsertArtefact)} Success");
     }
 
+    [HttpDelete(nameof(DeleteArtefact) + "/{id:int}")]
+    public IResponseItem<bool> DeleteArtefact([FromRoute] long id)
+    {
+        return CreateResponse(
+            () => _artefactService.DeleteArtefact(id),
+            $"{nameof(DeleteArtefact)} Success");
+    }
+
     [HttpGet(nameof(GetAll))]
     public IResponseItems<IArtefactModel> GetAll()
     {

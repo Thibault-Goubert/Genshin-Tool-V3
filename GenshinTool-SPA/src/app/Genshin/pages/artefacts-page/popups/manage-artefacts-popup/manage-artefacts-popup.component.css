@@ -221,6 +221,7 @@ input{
     height: 40px;
 }
 .popup_manageArtefacts_List_Row{
+    position: relative;
     background-color: #46484d;
     height: 42px;
     margin-bottom: 1px;
@@ -237,4 +238,35 @@ input{
     margin-left: 8px;
     width: 59px;
     margin-right: auto;
+}
+.popup_manageArtefacts_List_Remove{
+display: flex;
+width: 12px;
+height: 12px;
+position: absolute;
+right: 2px;
+top: 2px;
+
+border-radius: 20px;
+
+align-items: center;
+justify-content: center;
+text-align: center;
+
+background-color: red;
+color: #e9e5dc;
+
+-webkit-user-select: none;
+user-select: none;
+font-family: 'Calibri';
+font-weight: normal;
+font-size: smaller;
+
+visibility: hidden;
+}
+.popup_manageArtefacts_List_Row:hover{
+    background-color: #56585d;
+}
+.popup_manageArtefacts_List_Row:hover .popup_manageArtefacts_List_Remove{  
+    visibility: visible;
 }

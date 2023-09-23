@@ -3,6 +3,7 @@ import { ArtefactSet } from "./ArtefactSet.model";
 import { ArtefactPiece } from "./artefactPiece.model";
 
 export class Artefact{
+    id!: number;
     setId!: number;
     pieceId!: number;
     set!: ArtefactSet;

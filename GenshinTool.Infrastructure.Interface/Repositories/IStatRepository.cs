@@ -6,5 +6,5 @@ namespace GenshinTool.Infrastructure.Interface.Repositories;
 
 public interface IStatRepository : IRepository<StatDom, StatDto>
 {
-
+    IEnumerable<StatDom> GetByAssociationId(long id);
 }

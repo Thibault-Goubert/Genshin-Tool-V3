@@ -57,6 +57,7 @@ internal class ArtefactService : BaseService, IArtefactService
             var statNameRepo = unitOfWork.GetRepository<IStatNameRepository>().GetByIds(statsNameIds);
 
             var result = artefacts.Select(x => new ArtefactDom() {
+                Id = x.Id,
                 SetId = x.SetId,
                 PieceId = x.PieceId,
                 Set = x.Set,
@@ -69,6 +70,15 @@ internal class ArtefactService : BaseService, IArtefactService
 
             return result;
         });
+    }
+
+    public bool DeleteArtefact(long id) {
+        Execute(unitOfWork => {
+            var stats = unitOfWork.GetRepository<IStatRepository>().GetByAssociationId(id);
+            unitOfWork.GetRepository<IArtefactRepository>().Delete(id);
+            unitOfWork.GetRepository<IStatRepository>().Delete(stats.Select(x => x.Id));
+        });
+        return true;
     }
 
 

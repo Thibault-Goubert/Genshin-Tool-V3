@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { DropdownlistComponent } from 'src/app/Genshin/components/common/dropdownlist/dropdownlist/dropdownlist.component';
 import { ArtefactSet } from 'src/app/Genshin/models/Artefact/ArtefactSet.model';
 import { Artefact } from 'src/app/Genshin/models/Artefact/artefact.model';
@@ -60,6 +60,8 @@ export class ManageArtefactsPopupComponent implements OnInit{
   @ViewChild('DDSetSelector', {static: true}) DDSetSelector!: DropdownlistComponent;
   //#endregion
 
+  @Output() closeArtefactsPopupEvent = new EventEmitter();
+  
   ngOnInit(): void {
     this.artefactService.getAllSet().subscribe(result => {
       result.items.forEach(element => {
@@ -210,5 +212,20 @@ export class ManageArtefactsPopupComponent implements OnInit{
   }
   filterBySet(artes: Artefact[]): Artefact[]{
     return artes.filter(x => x.set.name == this.dropdownSeFilterChoiceSelected.name);
+  }
+  removeArtefact(arte: Artefact): void {
+    var id = arte.id;
+    this.artefactService.delete(arte.id).subscribe(result => {
+      if(result.item){
+        var invIdx = this.inventoryList.map(function(v){ return v.id; }).indexOf(id);
+        var disIdx = this.inventoryListDisplayed.map(function(v){ return v.id; }).indexOf(id);
+
+        this.inventoryList.splice(invIdx, 1);
+        this.inventoryListDisplayed.splice(disIdx, 1);
+      } 
+    })
+  }
+  onClose(){
+    this.closeArtefactsPopupEvent.emit();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { filter } from 'rxjs';
 import { SelectPickerValue } from 'src/app/Genshin/models/selectPickerValue.model';
 
 @Component({
@@ -17,9 +18,8 @@ export class DropdownlistComponent {
 
   onInput(value: string): void {
     this.dropdownInputValue = value;
-    this.dropdownChoiceListDisplayed = this.dropdownChoiceList.filter(s => s.displayValue.toLowerCase().includes(value.toLowerCase()));
+    this.dropdownChoiceListDisplayed = this.dropdownChoiceList.filter(c => c.displayValue.toLowerCase().includes(value.toLowerCase()));
     this.isListDisplayed = (value || value.trim() !== "") ? true : false;
-    console.log(this.canUnselect, value.trim())
     if(this.canUnselect && value.trim() == ""){
       this.onSelected.emit(undefined);
     }

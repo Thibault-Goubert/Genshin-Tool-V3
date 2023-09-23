@@ -2,7 +2,7 @@
     <div id="popup_manageArtefacts_Header" class="flex row">
         <span id="popup_manageArtefacts_Header_Title">Gestion des artéfacts</span>
         <div id="popup_manageArtefacts_Header_Close" class="flex">
-            <span>🞩</span>
+            <span (click)="onClose()">X</span>
         </div>
     </div>        
     <div id="popup_manageArtefacts_Content" class="flex row">
@@ -28,6 +28,7 @@
             </div>
             <div id="popup_manageArtefacts_List" class="flex col">
                 <div *ngFor="let arte of inventoryListDisplayed" class="flex row popup_manageArtefacts_List_Row">
+                    <div class="popup_manageArtefacts_List_Remove" (click)="removeArtefact(arte)">X</div>
                     <img [src]="buildArtefactImgPath(arte.set.initials, arte.piece.name)">
                     <div *ngFor="let stat of filterStats(arte.stats, true)" class="flex row popup_manageArtefacts_List_Row_Main">
                         <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>

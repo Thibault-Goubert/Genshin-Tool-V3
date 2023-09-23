@@ -77,6 +77,10 @@ export class ArtefactsPageComponent implements OnInit{
   closeCharactersPopupHandler(){
     this.isCharPopupDisplayed = false;
   }
+  closeArtefactsPopupHandler(){
+    this.isArtePopupDisplayed = false;
+    console.log("emit close")
+  }
 
   getCharacterSideImgSrc(name: string): string{
     return "assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_face.png";

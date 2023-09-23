@@ -370,7 +370,7 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
     private static IEnumerable<TDto> MapAggregates(GridReader reader, IEnumerable<IQueryChildContext> aggregates)
     {
         var parent = reader.Read<TDto>().ToList();
-        if (!parent.HasAny())
+        if (!parent.HasAny() || aggregates is null)
         {
             return parent;
         }

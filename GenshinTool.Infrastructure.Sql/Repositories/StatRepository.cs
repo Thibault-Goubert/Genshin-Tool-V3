@@ -11,4 +11,8 @@ public class StatRepository : GenshinToolSqlRepository<StatDom, StatDto>, IStatR
     public StatRepository(IBaseMapper mapper) : base(mapper)
     {
     }
+
+    public IEnumerable<StatDom> GetByAssociationId(long id) {
+        return GetByDynamicParameters(new { AssociationId = id });
+    }
 }

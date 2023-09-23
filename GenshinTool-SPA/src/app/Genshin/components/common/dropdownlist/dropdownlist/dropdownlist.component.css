@@ -33,6 +33,7 @@ span{
     overflow: auto;
     box-shadow: 0px 0px 4px black;
     padding-top: 3px;
+    z-index: 1;
 }
 .dropdownListRow{    
     align-items: center;
