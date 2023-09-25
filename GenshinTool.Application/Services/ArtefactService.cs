@@ -71,10 +71,34 @@ internal class ArtefactService : BaseService, IArtefactService
             return result;
         });
     }
+    public IEnumerable<ArtefactDom> GetAllByCharacter(int id)
+    {
+        return ExecuteWithTransaction((unitOfWork) => {
+            var artefacts = unitOfWork.GetRepository<IArtefactRepository>().GetAllWithAggregatesByCharacter(id);
+
+            var statsNameIds = artefacts.SelectMany(x => x.Stats.Select(y => y.StatNameId)).Distinct();
+            var statNameRepo = unitOfWork.GetRepository<IStatNameRepository>().GetByIds(statsNameIds);
+
+            var result = artefacts.Select(x => new ArtefactDom()
+            {
+                Id = x.Id,
+                SetId = x.SetId,
+                PieceId = x.PieceId,
+                Set = x.Set,
+                Piece = x.Piece,
+                Stats = x.Stats.Select(y => {
+                    y.StatName = statNameRepo.FirstOrDefault(z => z.Id == y.StatNameId);
+                    return y;
+                })
+            });
+
+            return result;
+        });
+    }
 
     public bool DeleteArtefact(long id) {
-        Execute(unitOfWork => {
-            var stats = unitOfWork.GetRepository<IStatRepository>().GetByAssociationId(id);
+    Execute(unitOfWork => {
+        var stats = unitOfWork.GetRepository<IStatRepository>().GetByAssociationId(id);
             unitOfWork.GetRepository<IArtefactRepository>().Delete(id);
             unitOfWork.GetRepository<IStatRepository>().Delete(stats.Select(x => x.Id));
         });

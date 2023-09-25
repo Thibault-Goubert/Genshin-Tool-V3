@@ -63,5 +63,13 @@ public class ArtefactController : BaseGenericController
             () => _artefactService.GetAll(),
             $"{nameof(GetAll)} Success");
     }
+
+    [HttpGet(nameof(GetAllByCharacter) + "/{id:int}")]
+    public IResponseItems<IArtefactModel> GetAllByCharacter([FromRoute] int id)
+    {
+        return CreateResponseItems<IArtefactModel>(
+            () => _artefactService.GetAllByCharacter(id),
+            $"{nameof(GetAllByCharacter)} Success");
+    }
 }
 

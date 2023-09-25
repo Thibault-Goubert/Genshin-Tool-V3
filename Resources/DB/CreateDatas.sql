@@ -33,7 +33,7 @@ SET IDENTITY_INSERT StatsNames OFF;
 SET IDENTITY_INSERT ArtefactPieces ON;
 INSERT INTO ArtefactPieces (Id,Name)
 VALUES
-(1,'Plume'),(2,'Flower'),(3,'Sand'),
+(1,'Flower'),(2,'Plume'),(3,'Sand'),
 (4,'Goblet'),(5,'Circlet')
 SET IDENTITY_INSERT ArtefactPieces OFF;
 
@@ -62,7 +62,7 @@ SET IDENTITY_INSERT WeaponTypes OFF;
 
 -- Insert Chars --
 INSERT INTO Characters 
-(Name,ElementId,RegionId,WeaponTypeId,Rarity,SexId,IsCollab)
+(Name,ElementId,RegionId,WeaponTypeId,Rarity,SexId,IsCollab,IsUsed)
 VALUES
 ('Albedo',			2,1,1,5,2,0,0),
 ('Alhaitham',		4,4,1,5,2,0,0),

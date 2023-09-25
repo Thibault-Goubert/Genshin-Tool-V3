@@ -64,7 +64,9 @@ CREATE TABLE ArtefactSets (
 	Name VARCHAR(255) NOT NULL,
 	Initials VARCHAR(50) NOT NULL,
 	TwoPiecesEffect Text NOT NULL,
-	FourPiecesEffect Text NOT NULL
+	FourPiecesEffect Text NOT NULL,
+	AssociationId INT NULL,
+	FOREIGN KEY (AssociationId) REFERENCES Characters(Id)
 );
 
 ------- Create Main Tables -------

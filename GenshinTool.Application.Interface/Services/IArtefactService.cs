@@ -10,5 +10,6 @@ public interface IArtefactService : IBaseService
     IEnumerable<ArtefactPieceDom> GetAllPiece();
     ArtefactDom InsertArtefact(ArtefactDom Artefact);
     IEnumerable<ArtefactDom> GetAll();
+    IEnumerable<ArtefactDom> GetAllByCharacter(int id);
     bool DeleteArtefact(long id);
 }

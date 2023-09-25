@@ -50,4 +50,10 @@ public class ArtefactRepository : GenshinToolSqlRepository<ArtefactDom, Artefact
     public IEnumerable<ArtefactDom> GetAllWithAggregates() {
         return Get(GenerateQuery());
     }
+    public IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(int id)
+    {
+        var query = GenerateQuery();
+        query.ParentAggregateSelectors = new[] { new QueryFilterTypeLong { FieldName = "AssociationId", FieldValue = id } };
+        return Get(query);
+    }    
 }

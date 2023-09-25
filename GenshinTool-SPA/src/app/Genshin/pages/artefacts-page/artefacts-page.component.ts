@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { routes } from 'src/routes';
 import { Character } from '../../models/Character/character.model';
 import { CharacterService } from '../../services/characters.service';
+import { ArtefactService } from '../../services/artefact.service';
+import { ArtefactPiece } from '../../models/Artefact/artefactPiece.model';
+import { Artefact } from '../../models/Artefact/artefact.model';
 
 @Component({
   selector: 'app-artefacts-page',
@@ -18,9 +21,14 @@ export class ArtefactsPageComponent implements OnInit{
   public characters!: Character[];
 
   public selectedCharacter!: Character;
+  public selectedCharacterArtefacts!: Artefact[]; 
   private selectedCardFace!: HTMLDivElement;
 
-  constructor(private router: Router, private characterService: CharacterService) {
+  public pieces!: ArtefactPiece[];
+
+  constructor(private router: Router, 
+    private characterService: CharacterService, 
+    private artefactService: ArtefactService) {
     this.characters = [];
   }
 
@@ -28,7 +36,9 @@ export class ArtefactsPageComponent implements OnInit{
     this.removeOtherTabSavedKeyFromStorage();
     localStorage.setItem(this.tabOpenedSaveKey, "open");
     this.updateUsed();
-    this.onManageArtefactsClick();
+    this.artefactService.getAllPiece().subscribe(result => {
+      this.pieces = result.items;
+    });
   }
   
   removeOtherTabSavedKeyFromStorage() {
@@ -79,7 +89,6 @@ export class ArtefactsPageComponent implements OnInit{
   }
   closeArtefactsPopupHandler(){
     this.isArtePopupDisplayed = false;
-    console.log("emit close")
   }
 
   getCharacterSideImgSrc(name: string): string{
@@ -99,5 +108,27 @@ export class ArtefactsPageComponent implements OnInit{
 
     this.selectedCardFace = cardCharFace;
     this.selectedCardFace.classList.add("selected");
+
+    this.getCharacterArtefacts(character.id);
+  }
+
+  getCharacterArtefacts(id: Number) {
+    this.artefactService.GetAllByCharacter(id).subscribe(result => {
+      this.selectedCharacterArtefacts = result.items;
+    });
+  }
+
+  getArtefactTypeImgSrc(name: string): string{
+    return "assets/icons/filters/artifact_icon_"+name.toLowerCase()+"50.png";
+  }
+
+  getArtefactPiece(piece: ArtefactPiece): Artefact{
+    if(piece){
+      var arte = this.selectedCharacterArtefacts.find(x => x.pieceId == piece.id);
+      var result = arte ?? new Artefact();
+      console.log(result)
+      return result
+    }
+    return new Artefact();
   }
 }

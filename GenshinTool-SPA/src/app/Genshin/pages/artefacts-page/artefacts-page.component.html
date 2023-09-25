@@ -23,8 +23,54 @@
     <div id="artefacts_CharacterInfos_Card" class="relative">
         <img class="absolute center" *ngIf="selectedCharacter" [src]="getCharacterCardImgSrc()">
     </div>
-
+    <div id="artefacts_CharacterInfos_Artefacts" class="flex col">
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces" class="flex row">
+            <div *ngFor="let piece of pieces">
+                <ng-container *ngTemplateOutlet="tmpl; context: {piece: piece, arte : getArtefactPiece(piece)}">
+                </ng-container>
+            </div>
+        </div>
+    </div>
 </div>
+
+<ng-template #tmpl let-piece let-arte>    
+    <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece">
+        <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type absolute">
+            <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Border absolute center"></div>
+            <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Background absolute center"></div>
+            <img class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Icon absolute center" 
+                [src]="getArtefactTypeImgSrc(piece.name)">
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Header" class="flex row">
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_SetName">
+                <span>{{arte.set.name}}</span>
+            </div>
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Img" class="relative">
+                <img src="\assets\icons\artifact\artifact_ap_flower.png" class="absolute center">
+            </div>
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats">
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main" class="flex row">
+                <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Stat">DEF</span>
+                <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Value">58,3%</span>
+            </div>
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Subs" class="flex col">
+                <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                    <span>ATK 4,1%</span>
+                </div>
+                <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                    <span>DEF 19</span>
+                </div>
+                <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                    <span>CRIT DMG 18,7%</span>
+                </div>
+                <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                    <span>ATK 62</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
 
 <div id="artefacts_popup" *ngIf="isCharPopupDisplayed || isArtePopupDisplayed">
     <app-manage-characters-popup *ngIf="isCharPopupDisplayed"
