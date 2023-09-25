@@ -122,13 +122,17 @@ export class ArtefactsPageComponent implements OnInit{
     return "assets/icons/filters/artifact_icon_"+name.toLowerCase()+"50.png";
   }
 
-  getArtefactPiece(piece: ArtefactPiece): Artefact{
-    if(piece){
-      var arte = this.selectedCharacterArtefacts.find(x => x.pieceId == piece.id);
-      var result = arte ?? new Artefact();
-      console.log(result)
-      return result
+  getSelectedCharacterArteByPiece(piece: ArtefactPiece): any{
+    return this.selectedCharacterArtefacts.find(x => x.pieceId == piece.id);
+  }
+
+  getArtefactSetName(piece: ArtefactPiece): string{
+    if(this.selectedCharacterArtefacts){
+      var arte = this.getSelectedCharacterArteByPiece(piece);
+      if(arte){
+        return arte.set.name;
+      }
     }
-    return new Artefact();
+    return "";
   }
 }
