@@ -49,6 +49,7 @@ import { GiToolsComponent } from './Genshin/components/gi-tools/gi-tools.compone
 import { ManageCharactersPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-characters-popup/manage-characters-popup.component';
 import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-artefacts-popup/manage-artefacts-popup.component';
 import { DropdownlistComponent } from './Genshin/components/common/dropdownlist/dropdownlist/dropdownlist.component';
+import { ArtefactCardComponent } from './Genshin/pages/artefacts-page/components/artefact-card/artefact-card.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { DropdownlistComponent } from './Genshin/components/common/dropdownlist/
     GiToolsComponent,
     ManageCharactersPopupComponent,
     ManageArtefactsPopupComponent,
-    DropdownlistComponent
+    DropdownlistComponent,
+    ArtefactCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+
+<div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece">
+    <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type absolute">
+        <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Border absolute center"></div>
+        <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Background absolute center"></div>
+        <img class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Icon absolute center" 
+            [src]="getArtefactTypeImgSrc(piece.name)">
+    </div>
+    <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Header" class="flex row">
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_SetName">
+            <span>{{artefact.set.name}}</span>
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Img" class="relative">
+            <img src="\assets\icons\artifact\artifact_{{artefact.set.initials}}_{{piece.name.toLowerCase()}}.png" class="absolute center">
+        </div>
+    </div>
+    <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats">
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main" class="flex row">
+            <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Stat">{{artefact.stats[0].statName.label}}</span>
+            <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Value">{{artefact.stats[0].value}}</span>
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Subs" class="flex col">
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                <span>{{artefact.stats[1].statName.label}} {{artefact.stats[0].value}}</span>
+            </div>
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                <span>{{artefact.stats[2].statName.label}} {{artefact.stats[0].value}}</span>
+            </div>
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                <span>{{artefact.stats[3].statName.label}} {{artefact.stats[0].value}}</span>
+            </div>
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub">
+                <span>{{artefact.stats[4].statName.label}} {{artefact.stats[0].value}}</span>
+            </div>
+        </div>
+    </div>
+</div>
