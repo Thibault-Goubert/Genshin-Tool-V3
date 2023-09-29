@@ -35,6 +35,10 @@ import { Artefact } from "../models/Artefact/artefact.model";
       return this.http.get<ResponseItems<Artefact>>(this.baseUrl + 'GetAllByCharacter/' + id); 
     }
 
+    public GetAllByPiece(id: Number): Observable<ResponseItems<Artefact>>{
+      return this.http.get<ResponseItems<Artefact>>(this.baseUrl + 'GetAllByPiece/' + id); 
+    }
+
     public delete(id: number): Observable<ResponseItem<boolean>>{
       return this.http.delete<ResponseItem<boolean>>(this.baseUrl + 'DeleteArtefact/' + id);
     }

@@ -77,3 +77,9 @@ span{
 .artefacts_ChracterList_Character.selected > div.artefacts_ChracterList_Character_Background{
     background-color: #e9e5dc;
 }
+#artefacts_CharacterInfos_Artefacts_Pieces{
+    margin-top: 35px;
+    margin-left: 50px;
+    width: 1148px;
+    justify-content: space-between;
+}

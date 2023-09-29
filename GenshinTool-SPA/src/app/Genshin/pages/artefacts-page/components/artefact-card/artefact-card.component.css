@@ -1,9 +1,6 @@
-
-#artefacts_CharacterInfos_Artefacts_Pieces{
-    margin-top: 35px;
-    margin-left: 50px;
-    width: 1148px;
-    justify-content: space-between;
+span{
+    background: none;
+    color: #e9e5dc;
 }
 .artefacts_CharacterInfos_Artefacts_Pieces_Piece{
     width: 220px;
@@ -96,4 +93,12 @@
 #artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub>span{
     font-weight: bolder;
     font-size: 14px;    
+}
+
+#popupChangeArtefact{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
 }

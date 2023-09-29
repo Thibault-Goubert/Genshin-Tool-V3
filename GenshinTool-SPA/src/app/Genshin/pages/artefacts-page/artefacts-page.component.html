@@ -23,15 +23,15 @@
     <div id="artefacts_CharacterInfos_Card" class="relative">
         <img class="absolute center" *ngIf="selectedCharacter" [src]="getCharacterCardImgSrc()">
     </div>
-    <div id="artefacts_CharacterInfos_Artefacts" class="flex col">
-        <div id="artefacts_CharacterInfos_Artefacts_Pieces" class="flex row">
-            <div *ngFor="let piece of pieces">
-                <app-artefact-card
-                    [artefact]="getSelectedCharacterArteByPiece(piece)"
-                    [piece]="piece"
-                ></app-artefact-card>
-            </div>
-        </div>
+    <div id="artefacts_CharacterInfos_Artefacts" class="flex" id="artefacts_CharacterInfos_Artefacts_Pieces" >
+        <div *ngFor="let arte of displayedArtefactList" 
+            id="artefacts_CharacterInfos_Artefacts_Piece" 
+            class="flex row">
+            <app-artefact-card
+                [artefact]="arte"
+                [piece]="arte.piece">
+            </app-artefact-card>
+        </div> 
     </div>
 </div>
 

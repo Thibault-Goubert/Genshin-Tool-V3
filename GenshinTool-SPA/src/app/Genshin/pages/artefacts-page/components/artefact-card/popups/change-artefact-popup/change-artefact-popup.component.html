@@ -1,0 +1,48 @@
+<div id="popup_changeArtefact" class="flex col">
+    <div class="popup_changeArtefact_Piece_Type absolute">
+        <div class="popup_changeArtefact_Piece_Type_Border absolute center"></div>
+        <div class="popup_changeArtefact_Piece_Type_Background absolute center"></div>
+        <img class="popup_changeArtefact_Piece_Type_Icon absolute center" [src]="artefactPieceImgPath">
+    </div>
+    <div id="popup_changeArtefact_Header" class="flex row">
+        <span id="popup_changeArtefact_Header_Title">Choix de l'artefact</span>
+        <div id="popup_changeArtefact_Header_Close" class="flex">
+            <span (click)="onClose()">X</span>
+        </div>
+    </div> 
+    <div class="flex row">
+        <div id="popup_changeArtefact_leftContent" class="flex">
+            <app-artefact-card        
+                [artefact]="artefact"
+                [piece]="artefact.piece">
+            </app-artefact-card>
+        </div>
+        <div id="popup_changeArtefact_rightContent" class="flex col">
+            <div id="popup_changeArtefact_Filter">
+                <div id="popup_changeArtefact_Filter_BySet">
+                    <app-dropdownlist id="popup_changeArtefact_Filter_BySet_Input"
+                        class="flex"
+                        [dropdownInputPlaceholder]="dropdownSetFilterPlaceholder"
+                        [dropdownChoiceList]="dropdownSetChoiceList"
+                        (onSelected)="dropdownSetFilterOnSelect($event)"
+                        [canUnselect]="true"
+                    ></app-dropdownlist>
+                </div>  
+            </div>    
+            <div id="popup_changeArtefact_List" class="flex col">
+                <div *ngFor="let arte of artefactListDisplayed" class="flex rowpopup_changeArtefact_List_Row">
+                    <img [src]="buildArtefactImgPath(arte.set.initials, arte.piece.name)">
+                    <div *ngFor="let stat of filterStats(arte.stats, true)" class="flex row popup_changeArtefact_List_Row_Main">
+                        <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>
+                    </div>
+                    <div class="flex col popup_changeArtefact_List_Row_Subs">
+                        <div *ngFor="let stat of filterStats(arte.stats)" 
+                            class="flex row popup_changeArtefact_List_Row_Sub">
+                            <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

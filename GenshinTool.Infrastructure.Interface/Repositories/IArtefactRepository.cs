@@ -8,4 +8,5 @@ public interface IArtefactRepository : IRepository<ArtefactDom, ArtefactDto>
 {
     IEnumerable<ArtefactDom> GetAllWithAggregates();
     IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(int id);
+    IEnumerable<ArtefactDom> GetAllWithAggregatesByPiece(int id);
 }

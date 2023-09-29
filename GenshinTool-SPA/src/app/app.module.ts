@@ -50,6 +50,7 @@ import { ManageCharactersPopupComponent } from './Genshin/pages/artefacts-page/p
 import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-artefacts-popup/manage-artefacts-popup.component';
 import { DropdownlistComponent } from './Genshin/components/common/dropdownlist/dropdownlist/dropdownlist.component';
 import { ArtefactCardComponent } from './Genshin/pages/artefacts-page/components/artefact-card/artefact-card.component';
+import { ChangeArtefactPopupComponent } from './Genshin/pages/artefacts-page/components/artefact-card/popups/change-artefact-popup/change-artefact-popup.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { ArtefactCardComponent } from './Genshin/pages/artefacts-page/components
     ManageCharactersPopupComponent,
     ManageArtefactsPopupComponent,
     DropdownlistComponent,
-    ArtefactCardComponent
+    ArtefactCardComponent,
+    ChangeArtefactPopupComponent
   ],
   imports: [
     BrowserModule,

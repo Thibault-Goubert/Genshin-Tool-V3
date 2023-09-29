@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { routes } from 'src/routes';
 import { Character } from '../../models/Character/character.model';
@@ -24,7 +24,8 @@ export class ArtefactsPageComponent implements OnInit{
   public selectedCharacterArtefacts!: Artefact[]; 
   private selectedCardFace!: HTMLDivElement;
 
-  public pieces!: ArtefactPiece[];
+  public pieces: ArtefactPiece[] = [];
+  public displayedArtefactList: Artefact[] = [];
 
   constructor(private router: Router, 
     private characterService: CharacterService, 
@@ -50,7 +51,6 @@ export class ArtefactsPageComponent implements OnInit{
       }
     }
   }
-
   onManageCharactersClick(){
     this.isCharPopupDisplayed = !this.isCharPopupDisplayed;
     this.isArtePopupDisplayed = false;
@@ -59,7 +59,6 @@ export class ArtefactsPageComponent implements OnInit{
       this.updateUsed();
     }
   }
-
   onManageArtefactsClick(){
     this.isArtePopupDisplayed = !this.isArtePopupDisplayed;
 
@@ -73,66 +72,52 @@ export class ArtefactsPageComponent implements OnInit{
       this.router.navigateByUrl(routes.genshinArtefacts);
     }
   }
-
   updateUsed(){
     this.characterService.getCharactersUsed().subscribe(characters => {
       this.characters = characters.items.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
     });
   }
-
   updateCharactersListHandler($event: Character[]){
     this.characters = $event;
   }
-
   closeCharactersPopupHandler(){
     this.isCharPopupDisplayed = false;
   }
   closeArtefactsPopupHandler(){
     this.isArtePopupDisplayed = false;
   }
-
   getCharacterSideImgSrc(name: string): string{
     return "assets/icons/characters/char_"+name.toLowerCase().replace(' ','_')+"_face.png";
   }
-
   getCharacterCardImgSrc(): string{
     return "assets/icons/characters/char_"+this.selectedCharacter.name.toLowerCase().replace(' ','_')+"_card.png";
   }
-
   onCharacterClick(character: Character, cardCharFace: HTMLDivElement){
     this.selectedCharacter = character;
-
     if(this.selectedCardFace){
       this.selectedCardFace.classList.remove("selected");
     }
-
     this.selectedCardFace = cardCharFace;
     this.selectedCardFace.classList.add("selected");
 
     this.getCharacterArtefacts(character.id);
   }
-
-  getCharacterArtefacts(id: Number) {
+  getCharacterArtefacts(id: Number): void {
     this.artefactService.GetAllByCharacter(id).subscribe(result => {
       this.selectedCharacterArtefacts = result.items;
+      this.manageDisplayedArtefactList();
     });
   }
-
-  getArtefactTypeImgSrc(name: string): string{
-    return "assets/icons/filters/artifact_icon_"+name.toLowerCase()+"50.png";
-  }
-
-  getSelectedCharacterArteByPiece(piece: ArtefactPiece): any{
-    return this.selectedCharacterArtefacts.find(x => x.pieceId == piece.id);
-  }
-
-  getArtefactSetName(piece: ArtefactPiece): string{
-    if(this.selectedCharacterArtefacts){
-      var arte = this.getSelectedCharacterArteByPiece(piece);
-      if(arte){
-        return arte.set.name;
+  manageDisplayedArtefactList(): void{
+    this.displayedArtefactList = [];
+    this.pieces.forEach(piece => {
+      var arte = this.selectedCharacterArtefacts.find(x => x.pieceId == piece.id)
+      if(arte == undefined){
+        arte = new Artefact();
+        arte.piece = piece;
+        arte.pieceId = piece.id;
       }
-    }
-    return "";
+      this.displayedArtefactList.push(arte);
+    });
   }
 }

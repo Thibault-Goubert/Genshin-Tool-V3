@@ -48,7 +48,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
   public inventoryList!: Artefact[];
   public inventoryListDisplayed!: Artefact[];
   public dropdownSetFilterPlaceholder: string = "Filtrer par set";
-  private dropdownSeFilterChoiceSelected!: ArtefactSet;
+  private dropdownSetFilterChoiceSelected!: ArtefactSet;
   public setFilterSelectedPiece: ArtefactPiece[] = [];
   //#endregion
   //#region inputs
@@ -187,17 +187,17 @@ export class ManageArtefactsPopupComponent implements OnInit{
     return stats.filter(s => !s.isMain);
   }
   dropdownSetFilterOnSelect(choice: SelectPickerValue): void{
-    this.dropdownSeFilterChoiceSelected = choice?.value;
+    this.dropdownSetFilterChoiceSelected = choice?.value;
     this.updateInventoryList();
   }
   updateInventoryList(){
     if(this.setFilterSelectedPiece.length > 0){
       this.inventoryListDisplayed = this.filterByPiece(this.inventoryList);
-      if(this.dropdownSeFilterChoiceSelected){
+      if(this.dropdownSetFilterChoiceSelected){
         this.inventoryListDisplayed = this.filterBySet(this.inventoryListDisplayed);
       }
     }
-    else if(this.dropdownSeFilterChoiceSelected != undefined){
+    else if(this.dropdownSetFilterChoiceSelected != undefined){
       this.inventoryListDisplayed = this.filterBySet(this.inventoryList);
       if(this.setFilterSelectedPiece.length > 0){
         this.inventoryListDisplayed = this.filterByPiece(this.inventoryListDisplayed);
@@ -211,7 +211,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
     return artes.filter(x => this.setFilterSelectedPiece.find(p => p.id == x.pieceId));
   }
   filterBySet(artes: Artefact[]): Artefact[]{
-    return artes.filter(x => x.set.name == this.dropdownSeFilterChoiceSelected.name);
+    return artes.filter(x => x.set.name == this.dropdownSetFilterChoiceSelected.name);
   }
   removeArtefact(arte: Artefact): void {
     var id = arte.id;
