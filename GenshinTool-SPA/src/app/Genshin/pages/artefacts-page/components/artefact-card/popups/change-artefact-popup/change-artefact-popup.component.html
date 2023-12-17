@@ -12,9 +12,10 @@
     </div> 
     <div class="flex row">
         <div id="popup_changeArtefact_leftContent" class="flex">
-            <app-artefact-card        
+            <app-artefact-card
                 [artefact]="artefact"
-                [piece]="artefact.piece">
+                [piece]="artefact.piece"
+                [isOnClickDisplayChangeArtefactPopupDisabled]="true">
             </app-artefact-card>
         </div>
         <div id="popup_changeArtefact_rightContent" class="flex col">
@@ -30,7 +31,7 @@
                 </div>  
             </div>    
             <div id="popup_changeArtefact_List" class="flex col">
-                <div *ngFor="let arte of artefactListDisplayed" class="flex rowpopup_changeArtefact_List_Row">
+                <div *ngFor="let arte of artefactListDisplayed" class="flex row popup_changeArtefact_List_Row" (click)="onChangeArtefactListElementClick(arte)">
                     <img [src]="buildArtefactImgPath(arte.set.initials, arte.piece.name)">
                     <div *ngFor="let stat of filterStats(arte.stats, true)" class="flex row popup_changeArtefact_List_Row_Main">
                         <span>{{stat.statName.label}} {{stat.value.toString().replace('.',',')}}</span>

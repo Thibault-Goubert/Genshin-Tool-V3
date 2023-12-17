@@ -98,3 +98,10 @@ span{
    width: 59px;
    margin-right: auto;
 }
+
+.popup_changeArtefact_List_Row:hover{
+   background-color: #56585d;
+}
+.popup_changeArtefact_List_Row:hover .popup_manageArtefacts_List_Remove{  
+   visibility: visible;
+}

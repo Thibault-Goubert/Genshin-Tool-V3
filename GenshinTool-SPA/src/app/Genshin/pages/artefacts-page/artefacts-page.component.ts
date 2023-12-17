@@ -80,6 +80,13 @@ export class ArtefactsPageComponent implements OnInit{
   updateCharactersListHandler($event: Character[]){
     this.characters = $event;
   }
+  changeArtefactPopupOpenedHandler($childPopupId: string){
+    //TODO    
+  }
+  onChangeArtefactHandler($event: Artefact){
+    var arteIndex = this.displayedArtefactList.findIndex(x => x.pieceId == $event.pieceId);
+    this.displayedArtefactList[arteIndex] = $event;
+  }
   closeCharactersPopupHandler(){
     this.isCharPopupDisplayed = false;
   }

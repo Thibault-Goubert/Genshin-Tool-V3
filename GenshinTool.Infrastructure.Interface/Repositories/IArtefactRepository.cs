@@ -7,6 +7,6 @@ namespace GenshinTool.Infrastructure.Interface.Repositories;
 public interface IArtefactRepository : IRepository<ArtefactDom, ArtefactDto>
 {
     IEnumerable<ArtefactDom> GetAllWithAggregates();
-    IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(int id);
-    IEnumerable<ArtefactDom> GetAllWithAggregatesByPiece(int id);
+    IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(long id);
+    IEnumerable<ArtefactDom> GetAllWithAggregatesByPiece(long id);
 }

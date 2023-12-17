@@ -79,5 +79,14 @@ public class ArtefactController : BaseGenericController
             () => _artefactService.GetAllByPiece(id),
             $"{nameof(GetAllByPiece)} Success");
     }
+
+    [HttpPost(nameof(AssociateArtefactToCharacter) + "/{characterId:long}")]
+    public IResponseItem<bool> AssociateArtefactToCharacter([FromBody] IArtefactModel artefact, [FromRoute] long characterId)
+    {
+        return CreateResponse(
+            () => _artefactService.AssociateArtefactToCharacter(artefact, characterId),
+            $"{nameof(AssociateArtefactToCharacter)} Success");
+    }
+
 }
 

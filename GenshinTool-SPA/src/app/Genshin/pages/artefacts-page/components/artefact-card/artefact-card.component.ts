@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Artefact } from 'src/app/Genshin/models/Artefact/artefact.model';
 import { ArtefactPiece } from 'src/app/Genshin/models/Artefact/artefactPiece.model';
+import { Character } from 'src/app/Genshin/models/Character/character.model';
 import { Stat } from 'src/app/Genshin/models/Stat/stat.model';
 
 @Component({
@@ -9,8 +11,13 @@ import { Stat } from 'src/app/Genshin/models/Stat/stat.model';
   styleUrls: ['./artefact-card.component.css']
 })
 export class ArtefactCardComponent implements OnInit{
+  @Input() character!: Character;
   @Input() artefact!: Artefact;
   @Input() piece!: ArtefactPiece;
+  @Input() isOnClickDisplayChangeArtefactPopupDisabled = false;
+
+  @Output() changeArtefactPopupOpenedEvent = new EventEmitter();
+  @Output() onChangeArtefactEvent = new EventEmitter();
 
   public mainStat!: Stat | undefined;
   public subStats!: Stat[] | undefined;
@@ -21,7 +28,14 @@ export class ArtefactCardComponent implements OnInit{
   public displayArtefactImg!: boolean;
   public displayChangeArtefactPopup: boolean = false;
 
+  private id!: string;
+
   ngOnInit(): void {
+    this.setValues();
+    this.id = "popupChangeArtefact_"+this.artefactPieceName;
+  }
+
+  setValues(){
     this.mainStat = this.artefact?.stats?.find(x => x.isMain);
     this.subStats = this.artefact?.stats?.filter(x => !x.isMain);
     this.artefactPieceImgPath = this.buildArtefactPieceImgPath();
@@ -29,7 +43,6 @@ export class ArtefactCardComponent implements OnInit{
     this.artefactSetInitials = this.artefact?.set?.initials ?? "";
     this.artefactPieceName = this.piece?.name?.toLowerCase() ?? "";
     this.displayArtefactImg = (this.artefactSetInitials != "" && this.artefactPieceName != "");
-    console.log("display arte")
   }
   
   buildArtefactPieceImgPath(): string{
@@ -40,7 +53,22 @@ export class ArtefactCardComponent implements OnInit{
   }
 
   onClickChangeArtefact(){
-    this.displayChangeArtefactPopup = true;
-    console.log("onClickChangeArtefact")
+    if(!this.isOnClickDisplayChangeArtefactPopupDisabled){
+      this.changeArtefactPopupOpenedEvent.emit(this.id);
+      this.displayChangeArtefactPopup = true;
+    }
+  }
+  closeChangeArtefactsPopupHandler(){
+    this.displayChangeArtefactPopup = false;
+  }
+  onChangeArtefactHandler($event: Artefact){
+    this.artefact = $event;
+    this.onChangeArtefactEvent.emit($event);
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    if(changes['artefact']){
+      this.setValues();
+    }
   }
 }

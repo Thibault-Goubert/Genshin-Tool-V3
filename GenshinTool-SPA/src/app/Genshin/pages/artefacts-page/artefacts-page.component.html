@@ -28,8 +28,11 @@
             id="artefacts_CharacterInfos_Artefacts_Piece" 
             class="flex row">
             <app-artefact-card
+                [character]="selectedCharacter"
                 [artefact]="arte"
-                [piece]="arte.piece">
+                [piece]="arte.piece"
+                (changeArtefactPopupOpenedEvent)="changeArtefactPopupOpenedHandler($event)"
+                (onChangeArtefactEvent)="onChangeArtefactHandler($event)">
             </app-artefact-card>
         </div> 
     </div>

@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments";
 import { ResponseItem, ResponseItems } from "../models/responseItems.model";
-import { ArtefactSet } from "../models/Artefact/ArtefactSet.model";
 import { ArtefactPiece } from "../models/Artefact/artefactPiece.model";
 import { Artefact } from "../models/Artefact/artefact.model";
+import { ArtefactSet } from "../models/Artefact/ArtefactSet.model";
 
 @Injectable({
     providedIn: 'root'
@@ -37,6 +37,10 @@ import { Artefact } from "../models/Artefact/artefact.model";
 
     public GetAllByPiece(id: Number): Observable<ResponseItems<Artefact>>{
       return this.http.get<ResponseItems<Artefact>>(this.baseUrl + 'GetAllByPiece/' + id); 
+    }
+
+    public AssociateArtefactToCharacter(artefact: Artefact, characterId: number){
+      return this.http.post<ResponseItem<Artefact>>(this.baseUrl + 'AssociateArtefactToCharacter/' + characterId, artefact);
     }
 
     public delete(id: number): Observable<ResponseItem<boolean>>{

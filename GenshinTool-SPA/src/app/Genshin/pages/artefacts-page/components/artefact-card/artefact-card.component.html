@@ -29,10 +29,12 @@
     </div>
 </div>
 
-<div id="popupChangeArtefact" *ngIf="displayChangeArtefactPopup">
+<div id="popupChangeArtefact_{{artefactPieceName}}" *ngIf="displayChangeArtefactPopup" class="popupChangeArtefact">
     <app-change-artefact-popup
+        [character]="character"
         [artefact]="artefact"
         [artefactPieceImgPath]="artefactPieceImgPath"
-    >
+        (closeChangeArtefactsPopupEvent)="closeChangeArtefactsPopupHandler()"
+        (onChangeArtefactEvent)="onChangeArtefactHandler($event)">
     </app-change-artefact-popup>
 </div>

@@ -50,17 +50,16 @@ public class ArtefactRepository : GenshinToolSqlRepository<ArtefactDom, Artefact
     public IEnumerable<ArtefactDom> GetAllWithAggregates() {
         return Get(GenerateQuery());
     }
-    public IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(int id)
+    public IEnumerable<ArtefactDom> GetAllWithAggregatesByCharacter(long id)
     {
         var query = GenerateQuery();
         query.ParentAggregateSelectors = new[] { new QueryFilterTypeLong { FieldName = "AssociationId", FieldValue = id } };
         return Get(query);
     }
-    public IEnumerable<ArtefactDom> GetAllWithAggregatesByPiece(int id)
+    public IEnumerable<ArtefactDom> GetAllWithAggregatesByPiece(long id)
     {
         var query = GenerateQuery();
         query.ParentAggregateSelectors = new[] { new QueryFilterTypeLong { FieldName = "PieceId", FieldValue = id } };
         return Get(query);
     }
-    
 }

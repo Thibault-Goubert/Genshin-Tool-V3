@@ -1,5 +1,6 @@
 ﻿using GenshinTool.Application.Domain.Models;
 using GenshinTool.Application.Interface.Services;
+using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Enums;
 using GenshinTool.Common.Service.Concrete;
 using GenshinTool.Common.Service.Interface.Core;
@@ -71,7 +72,7 @@ internal class ArtefactService : BaseService, IArtefactService
             return result;
         });
     }
-    public IEnumerable<ArtefactDom> GetAllByCharacter(int id)
+    public IEnumerable<ArtefactDom> GetAllByCharacter(long id)
     {
         return ExecuteWithTransaction((unitOfWork) => {
             var artefacts = unitOfWork.GetRepository<IArtefactRepository>().GetAllWithAggregatesByCharacter(id);
@@ -95,7 +96,7 @@ internal class ArtefactService : BaseService, IArtefactService
             return result;
         });
     }
-    public IEnumerable<ArtefactDom> GetAllByPiece(int id)
+    public IEnumerable<ArtefactDom> GetAllByPiece(long id)
     {
         return ExecuteWithTransaction((unitOfWork) => {
             var artefacts = unitOfWork.GetRepository<IArtefactRepository>().GetAllWithAggregatesByPiece(id);
@@ -119,11 +120,38 @@ internal class ArtefactService : BaseService, IArtefactService
             return result;
         });
     }
+    public bool AssociateArtefactToCharacter(IArtefactModel artefactMod, long characterId) {
+        return Execute(unitOfWork => {
+            var arteRepo = unitOfWork.GetRepository<IArtefactRepository>();
+            var charRepo = unitOfWork.GetRepository<ICharacterRepository>();
+
+            var character = charRepo.GetById(characterId);
+            var artefact = arteRepo.GetById(artefactMod.Id);
+
+            if (character is null || artefact is null) {
+                return false;
+            }
+
+            var sameArtefactPieceEquipped = arteRepo
+                .GetAllWithAggregatesByCharacter(character.Id)
+                .FirstOrDefault(x => x.PieceId == artefact.PieceId);
+
+            if(sameArtefactPieceEquipped is not null) {
+                sameArtefactPieceEquipped.AssociationId = null;
+                arteRepo.Update(sameArtefactPieceEquipped);
+            }
+
+            artefact.AssociationId = character.Id;
+            arteRepo.Update(artefact);
+
+            return true;
+        });
+    }
     public bool DeleteArtefact(long id) {
-    Execute(unitOfWork => {
-        var stats = unitOfWork.GetRepository<IStatRepository>().GetByAssociationId(id);
-            unitOfWork.GetRepository<IArtefactRepository>().Delete(id);
-            unitOfWork.GetRepository<IStatRepository>().Delete(stats.Select(x => x.Id));
+        Execute(unitOfWork => {
+            var stats = unitOfWork.GetRepository<IStatRepository>().GetByAssociationId(id);
+                unitOfWork.GetRepository<IArtefactRepository>().Delete(id);
+                unitOfWork.GetRepository<IStatRepository>().Delete(stats.Select(x => x.Id));
         });
         return true;
     }
