@@ -2,7 +2,6 @@
 using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Service.Concrete;
 using GenshinTool.Common.Service.Interface.Core;
-using System;
 using System.Diagnostics;
 
 namespace GenshinTool.Application.Services;

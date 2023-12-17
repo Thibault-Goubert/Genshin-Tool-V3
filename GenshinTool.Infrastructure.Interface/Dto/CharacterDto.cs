@@ -1,5 +1,4 @@
-﻿using Dapper.Contrib.Extensions;
-using GenshinTool.Common.Models.Core.Dto;
+﻿using GenshinTool.Common.Models.Core.Dto;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

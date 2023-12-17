@@ -5,7 +5,6 @@ using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Models.Rest.Interfaces;
 using GenshinTool.Common.Rest.Core;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 
 namespace GenshinTool.Controllers;
 

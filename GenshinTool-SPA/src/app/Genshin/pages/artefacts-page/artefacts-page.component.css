@@ -1,3 +1,8 @@
+span{
+    background: none;
+    color: #e9e5dc;
+}
+
 #btnGroup_Artefacts{
     margin-top: 23px;
 }
@@ -64,8 +69,17 @@
 #artefacts_CharacterInfos_Card{
     width: 186px;
     height: 611px;
+
+    min-width: 186px;
+    min-height: 611px;
 }
 
 .artefacts_ChracterList_Character.selected > div.artefacts_ChracterList_Character_Background{
     background-color: #e9e5dc;
+}
+#artefacts_CharacterInfos_Artefacts_Pieces{
+    margin-top: 35px;
+    margin-left: 50px;
+    width: 1148px;
+    justify-content: space-between;
 }

@@ -48,6 +48,9 @@ import { HsrToolsComponent } from './HonkaiStarRail/Components/hsr-tools/hsr-too
 import { GiToolsComponent } from './Genshin/components/gi-tools/gi-tools.component';
 import { ManageCharactersPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-characters-popup/manage-characters-popup.component';
 import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/popups/manage-artefacts-popup/manage-artefacts-popup.component';
+import { DropdownlistComponent } from './Genshin/components/common/dropdownlist/dropdownlist/dropdownlist.component';
+import { ArtefactCardComponent } from './Genshin/pages/artefacts-page/components/artefact-card/artefact-card.component';
+import { ChangeArtefactPopupComponent } from './Genshin/pages/artefacts-page/components/artefact-card/popups/change-artefact-popup/change-artefact-popup.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +102,10 @@ import { ManageArtefactsPopupComponent } from './Genshin/pages/artefacts-page/po
     HsrToolsComponent,
     GiToolsComponent,
     ManageCharactersPopupComponent,
-    ManageArtefactsPopupComponent
+    ManageArtefactsPopupComponent,
+    DropdownlistComponent,
+    ArtefactCardComponent,
+    ChangeArtefactPopupComponent
   ],
   imports: [
     BrowserModule,

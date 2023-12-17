@@ -1,7 +1,10 @@
 using GenshinTool.Api.Extensions;
+using GenshinTool.Common.Converters.Json;
 using GenshinTool.Common.Extensions;
 using GenshinTool.Controllers;
 using Mapster;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +21,12 @@ builder.Services.InjectSwaggerGen(
     "My Genshin resources management tool",
     nameAssembly??"NoName", serverUrl);
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.InjectMapster(TypeAdapterConfig.GlobalSettings);
 builder.Services.InjectRepositoriesServices();
 builder.Services.InjectResponseCompression();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors();
 

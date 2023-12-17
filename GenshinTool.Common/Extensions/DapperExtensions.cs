@@ -1,11 +1,6 @@
 ﻿using Dapper;
 using GenshinTool.Common.Base;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenshinTool.Common.Extensions
 {
@@ -30,8 +25,7 @@ namespace GenshinTool.Common.Extensions
 
             for (var i = 0; i < numberOfBatches; i++)
             {
-                var dataToInsert = items.Skip(i * batchSize)
-                    .Take(batchSize);
+                var dataToInsert = items.Skip(i * batchSize).Take(batchSize);
                 var valueSql = GetQueries(dataToInsert, dataFunc);
 
                 sqlToExecute.Add($"{insertSql}{string.Join(", ", valueSql)}");

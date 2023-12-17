@@ -1,0 +1,40 @@
+
+<div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece">
+    <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type absolute" (click)="onClickChangeArtefact()">
+        <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Border absolute center"></div>
+        <div class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Background absolute center"></div>
+        <img class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Type_Icon absolute center" 
+            [src]="artefactPieceImgPath">
+    </div>
+    <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Header" class="flex row">
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_SetName">
+            <span>{{artefactSetName}}</span>
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Img" class="relative">
+            <img *ngIf="displayArtefactImg" 
+            src="\assets\icons\artifact\artifact_{{artefactSetInitials}}_{{artefactPieceName}}.png" 
+            class="absolute center">
+        </div>
+    </div>
+    <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats">
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main" class="flex row">
+            <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Stat">{{mainStat?.statName?.label}}</span>
+            <span class="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Main_Value">{{mainStat?.value}}</span>
+        </div>
+        <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Subs" class="flex col">
+            <div id="artefacts_CharacterInfos_Artefacts_Pieces_Piece_Stats_Sub" *ngFor="let stat of subStats">
+                <span>{{stat.statName.label}} {{stat.value}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupChangeArtefact_{{artefactPieceName}}" *ngIf="displayChangeArtefactPopup" class="popupChangeArtefact">
+    <app-change-artefact-popup
+        [character]="character"
+        [artefact]="artefact"
+        [artefactPieceImgPath]="artefactPieceImgPath"
+        (closeChangeArtefactsPopupEvent)="closeChangeArtefactsPopupHandler()"
+        (onChangeArtefactEvent)="onChangeArtefactHandler($event)">
+    </app-change-artefact-popup>
+</div>

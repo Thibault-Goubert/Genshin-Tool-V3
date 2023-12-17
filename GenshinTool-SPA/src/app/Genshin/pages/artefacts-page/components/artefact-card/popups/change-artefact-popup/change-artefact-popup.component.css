@@ -1,0 +1,107 @@
+span{
+   background: none;
+   color: #e9e5dc;
+   font-family: 'Calibri';
+}
+#popup_changeArtefact{
+    width: 550px;
+    height: 460px;
+    background-color: #282a2f;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;
+}
+.popup_changeArtefact_Piece_Type{
+    width: inherit;
+    top: -8px;
+}
+.popup_changeArtefact_Piece_Type_Border{
+   width: 55px;
+   height: 55px;
+   border-radius: 55px;
+   background-color: #474a4e;
+   box-shadow: 0 0 2px black;
+}
+.popup_changeArtefact_Piece_Type_Background{
+   width: 51px;
+   height: 51px;
+
+   border-radius: 51px;
+   background-color: #282a2f;
+   box-shadow: #282a2f;
+   box-shadow: inset 0 0 2px black;
+}
+.popup_changeArtefact_Piece_Type_Icon{
+   width: 51px;
+   height: 51px;
+   border-radius: 25px;
+} 
+#popup_changeArtefact_Header{
+   height: 30px;  
+   align-items: center;
+}
+#popup_changeArtefact_Header_Title{
+   margin-left: 10px;
+}
+#popup_changeArtefact_Header_Close{    
+   margin-left: auto;
+   width: 30px;
+   height: 30px;
+   align-items: center;
+}
+#popup_changeArtefact_Header_Close>span{
+   font-size: 30px;
+}
+#popup_changeArtefact_leftContent{
+   width: 50%; 
+   height: 430px;
+   align-items: center;
+   justify-content: center;
+}
+#popup_changeArtefact_rightContent{
+   width: 50%; 
+   height: 430px;
+   align-items: center;
+   justify-content: center;
+}
+#popup_changeArtefact_Filter_BySet_Input{
+   width: 200px;
+   height: 30px;
+}
+#popup_changeArtefact_List{
+   width: 200px;
+   height: 300px;
+   background-color: #36393f;
+   margin-top: 12px;
+}
+
+
+.popup_changeArtefact_List_Row img{
+   width: 40px;
+   height: 40px;
+}
+.popup_changeArtefact_List_Row{
+   position: relative;
+   background-color: #46484d;
+   height: 42px;
+   margin-bottom: 1px;
+   align-items: center;
+   font-size: 10px;
+}
+.popup_changeArtefact_List_Row_Main{
+   margin-left: 6px;
+   width: 71px;
+   justify-content: center;
+   font-size: 12px;
+}
+.popup_changeArtefact_List_Row_Subs{
+   margin-left: 8px;
+   width: 59px;
+   margin-right: auto;
+}
+
+.popup_changeArtefact_List_Row:hover{
+   background-color: #56585d;
+}
+.popup_changeArtefact_List_Row:hover .popup_manageArtefacts_List_Remove{  
+   visibility: visible;
+}

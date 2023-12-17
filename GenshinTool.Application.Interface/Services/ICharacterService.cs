@@ -1,5 +1,4 @@
 ﻿using GenshinTool.Application.Domain.Models;
-using GenshinTool.Common.Models.Domain.Interfaces;
 using GenshinTool.Common.Models.Requests;
 using GenshinTool.Common.Service.Interface.Core;
 

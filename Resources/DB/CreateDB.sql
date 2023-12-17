@@ -52,13 +52,22 @@ CREATE TABLE StatsNames(
 	FOREIGN KEY (StatTypeId) REFERENCES StatTypes(Id)
 );
 -- Create the Piece table
-IF OBJECT_ID(N'Pieces', N'U') IS NULL
-CREATE TABLE Pieces (
+IF OBJECT_ID(N'ArtefactPieces', N'U') IS NULL
+CREATE TABLE ArtefactPieces (
 	Id INT IDENTITY(1,1) PRIMARY KEY,	
 	Name VARCHAR(255) NOT NULL,
 );
-
-
+-- Create the ArtefactSets table
+IF OBJECT_ID(N'ArtefactSets', N'U') IS NULL
+CREATE TABLE ArtefactSets (
+	Id INT IDENTITY(1,1) PRIMARY KEY,	
+	Name VARCHAR(255) NOT NULL,
+	Initials VARCHAR(50) NOT NULL,
+	TwoPiecesEffect Text NOT NULL,
+	FourPiecesEffect Text NOT NULL,
+	AssociationId INT NULL,
+	FOREIGN KEY (AssociationId) REFERENCES Characters(Id)
+);
 
 ------- Create Main Tables -------
 
@@ -66,27 +75,29 @@ CREATE TABLE Pieces (
 IF OBJECT_ID(N'Stats', N'U') IS NULL
 CREATE TABLE Stats(
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    Value INT NOT NULL,
-    StatsNameId INT NOT NULL,
-	FOREIGN KEY (StatsNameId) REFERENCES StatsNames(Id)
+    Value decimal(10,3) NOT NULL,
+    StatNameId INT NOT NULL,
+	IsMain bit not null,
+	AssociationId INT NOT NULL,
+	FOREIGN KEY (StatNameId) REFERENCES StatsNames(Id)
 );
 
 -- Create the Weapons table
 IF OBJECT_ID(N'Weapons', N'U') IS NULL
 CREATE TABLE Weapons(
-    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Id INT IDENTITY(10000,1) PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     Description TEXT NULL,
 );
 -- Create the Artefacts table
 IF OBJECT_ID(N'Artefacts', N'U') IS NULL
 CREATE TABLE Artefacts(
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Description TEXT NULL,
+    Id INT IDENTITY(1000000,1) PRIMARY KEY,
+    SetId INT NOT NULL,
     PieceId INT NOT NULL,
 
-    FOREIGN KEY (PieceId) REFERENCES Pieces(Id)
+    FOREIGN KEY (PieceId) REFERENCES ArtefactPieces(Id),
+    FOREIGN KEY (SetId) REFERENCES ArtefactSets(Id)
 );
 -- Create the Characters table
 IF OBJECT_ID(N'Characters', N'U') IS NULL
@@ -112,9 +123,6 @@ CREATE TABLE Characters(
     FOREIGN KEY (WeaponTypeId) REFERENCES WeaponTypes(Id),
     FOREIGN KEY (SexId) REFERENCES Sex(Id)
 );
-ALTER TABLE Characters
-	ADD IsUsed BIT NOT NULL
-	DEFAULT (0);
 
 ------ Create associations tables ------
 

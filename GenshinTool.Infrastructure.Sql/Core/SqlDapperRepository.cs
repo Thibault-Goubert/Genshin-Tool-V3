@@ -5,18 +5,17 @@ using GenshinTool.Common.Rest.Core;
 using GenshinTool.Common.Watcher;
 using Dapper.Contrib.Extensions;
 using Dapper;
-using log4net;
 using static Dapper.SqlMapper;
 using GenshinTool.Common.Service.Interface.Repo;
 using GenshinTool.Common.Service.Interface.Context;
 using GenshinTool.Common.Models.Core.Dom;
 using GenshinTool.Common.Models.Core.Dto;
 using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using GenshinTool.Common.Data.Sql.Dapper.QueryGenerator;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Collections;
-using Microsoft.Extensions.Primitives;
+using System.Reflection.PortableExecutable;
 
 namespace GenshinTool.Infrastructure.Sql.Core;
 
@@ -59,17 +58,21 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         }
     }
 
+    public virtual IEnumerable<TDom> GetByIds(IEnumerable<long> ids)
+    {
+        return GetByParameters(new Dictionary<string, IEnumerable<long>> { { "Id", ids } });
+    }
+
     protected IEnumerable<TDom> GetByDynamicParameters(object parameters)
     {
         if (parameters != null)
         {
-            var builder = new StringBuilder();
             var dbParams = CreateDynamicParameters(parameters);
             var props = parameters.GetType().GetProperties();
             var sql = GetAllQuery + " 1 = 1 ";
 
             sql = props.Aggregate(sql, (current, prop) =>
-                    $"{current} {SqlConstants.AND} {prop.Name} = LOWER('{prop.GetValue(parameters)}') ");
+                    $"{current} {SqlConstants.AND} {prop.Name} = '{prop.GetValue(parameters)}' ");
 
             using (new ExecutionWatcher(sql))
             {
@@ -106,22 +109,36 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
     public IEnumerable<TDom> Get(IQueryContext contextQuery)
     {
         var query = new StringBuilder();
+        var queryAggregates = new StringBuilder();
+
+        var setMainTable = false;
 
         query.Append($"{SqlConstants.SET_NOCOUNT}{SqlConstants.ON};");
-        query.Append($"{SqlConstants.SELECT}{SqlConstants.ALL_FROM}{SqlTableName}");
+        query.Append($"{SqlConstants.GetDropTmpInstruction()}");
+        query.Append($"{SqlConstants.SELECT}{SqlTableName}.{SqlConstants.INTO}" +
+                        $"{SqlConstants.TMP}{SqlConstants.FROM}{SqlTableName} ");
 
         if (contextQuery != null)
         {
+            if (contextQuery.ChildAggregateSelectors.HasAny())
+            {
+                GenerateAggregateChild(contextQuery, setMainTable, query, queryAggregates);
+            }
+
             if (contextQuery.ParentAggregateSelectors.HasAny())
             {
                 query.Append($"{SqlConstants.WHERE} 1=1");
-                GenerateParentQuery(contextQuery, query);
+                GenerateAggregateParent(contextQuery, query);
             }
         }
 
+        query.Append($";{SqlConstants.SELECT}{SqlConstants.ALL_FROM}{SqlConstants.TMP};");
+        query.Append(queryAggregates);
+        query.Append($"{SqlConstants.GetDropTmpInstruction()}");
         query.Append($"{SqlConstants.SET_NOCOUNT}{SqlConstants.OFF};");
 
-        return Mapper.Map<IEnumerable<TDom>>(_dataSourceContext.Connection.Query(query.ToString()));
+        return Mapper.Map<IEnumerable<TDom>>(MapAggregates(_dataSourceContext.Connection
+            .QueryMultiple(query.ToString()), contextQuery?.ChildAggregateSelectors));
     }
     #endregion
 
@@ -169,11 +186,13 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
             return default;
         }
 
-        var dic =
-            typeof(TDto)
-                .GetProperties()
-                .Where(propertyInfo => propertyInfo.Name != PropertyId)
-                .ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
+        var type = typeof(TDto);
+        var props = type.GetProperties();
+        var filtered = props.Where(propertyInfo => 
+            propertyInfo.CustomAttributes.All(s => s.AttributeType != typeof(ComputedAttribute)) &&
+            propertyInfo.Name != PropertyId);
+
+        var dic = filtered.ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => new Func<TDto, object?>(propertyInfo.GetValue));
 
         var entities = Mapper.Map<IEnumerable<TDto>>(domainEntities).ToList();
         var result = await _dataSourceContext.Connection.BulkInsert(entities, SqlTableName, dic);
@@ -279,4 +298,118 @@ public class SqlDapperRepository<TDom, TDto> : IDatabaseRepository<TDom, TDto>
         }
     }
 
+
+    private void GenerateAggregateChild(IQueryContext contextQuery, bool setMainTable, StringBuilder query, StringBuilder queryAggregates)
+    {
+        foreach (var selector in contextQuery?.ChildAggregateSelectors)
+        {
+            var aggregate = selector.GetChildType().GetTableAttributeName<TableAttribute>();
+            if (!setMainTable)
+            {
+                if (selector.FilterOnParentAggregateKeyId.HasValue)
+                {
+                    query.Append($"{SqlConstants.WHERE} {selector.GetParentKeyPropertyName()} = {selector.FilterOnParentAggregateKeyId.Value}");
+                }
+
+                setMainTable = true;
+            }
+
+            if (selector.FilterOnChildKeys.HasAny())
+            {
+                query.Append(
+                    $"{SqlConstants.INNER_JOIN}{aggregate}{SqlConstants.ON}{aggregate}.{selector.GetChildKeyPropertyName()}" + $" = {SqlTableName}.{selector.GetParentKeyPropertyName()}");
+                foreach (var filterOnChildKey in selector.FilterOnChildKeys)
+                {
+                    var idsJoin = string.Join(",", filterOnChildKey.Value.Select(n => n.ToString()).ToArray());
+                    query.Append($"{SqlConstants.AND}{aggregate}.{filterOnChildKey.Key}{SqlConstants.IN}({idsJoin})");
+                }
+            }
+
+            queryAggregates.Append($"{SqlConstants.SELECT}{SqlConstants.DISTINCT}{SqlConstants.ALL_FROM}{aggregate}" +
+                                   $"{SqlConstants.WHERE} {selector.GetChildKeyPropertyName()} {SqlConstants.IN}" +
+                                   $"({SqlConstants.SELECT} {selector.GetParentKeyPropertyName()} {SqlConstants.FROM} {SqlConstants.TMP})");
+
+            if (selector.QueryChilderContext is not null)
+            {
+                var subaggregate = selector.QueryChilderContext.GetChildType().GetTableAttributeName<TableAttribute>();
+                queryAggregates.Append($"{SqlConstants.SELECT}{SqlConstants.DISTINCT}{SqlConstants.ALL_FROM}{subaggregate}" +
+                                       $"{SqlConstants.WHERE} {selector.QueryChilderContext.GetChildKeyPropertyName()} {SqlConstants.IN}" +
+                                       $"({SqlConstants.SELECT} {selector.QueryChilderContext.GetParentKeyPropertyName()} {SqlConstants.FROM} (" +
+                                           $"{SqlConstants.SELECT}{SqlConstants.DISTINCT}{SqlConstants.ALL_FROM}{aggregate}" +
+                                           $"{SqlConstants.WHERE} {selector.GetChildKeyPropertyName()} {SqlConstants.IN}" +
+                                           $"({SqlConstants.SELECT} {selector.GetParentKeyPropertyName()} {SqlConstants.FROM} {SqlConstants.TMP})) as test{selector.GetChildKeyPropertyName()})");
+            }
+        }
+    }
+
+    private void GenerateAggregateParent(IQueryContext contextQuery, StringBuilder query)
+    {
+        foreach (var paramField in contextQuery.ParentAggregateSelectors)
+        {
+            switch (paramField)
+            {
+                case QueryFilter<bool>:
+                    {
+                        query.Append($"{SqlConstants.AND} {SqlTableName}.{paramField.FieldName} = ({paramField.GetValue().GetHashCode().ToString()})");
+                        break;
+                    }
+                case QueryFilterTypeIdListLong:
+                case QueryFilter<IEnumerable<long>>:
+                    {
+                        var idsJoin = string.Join(",", ((IEnumerable<long>)paramField.GetValue()).Select(n => n.ToString()).ToArray());
+                        query.Append($"{SqlConstants.AND} {SqlTableName}.{paramField.FieldName} {SqlConstants.IN} ({idsJoin})");
+                        break;
+                    }
+                default:
+                    query.Append($"{SqlConstants.AND} {SqlTableName}.{paramField.FieldName} = ({paramField.GetValue().ToString()})");
+                    break;
+            }
+        }
+    }
+
+    private static IEnumerable<TDto> MapAggregates(GridReader reader, IEnumerable<IQueryChildContext> aggregates)
+    {
+        var parent = reader.Read<TDto>().ToList();
+        if (!parent.HasAny() || aggregates is null)
+        {
+            return parent;
+        }
+
+        foreach (var agr in aggregates)
+        {
+            var childMap = reader.Read(agr.GetChildType())
+                .GroupBy(x => x.GetType().GetProperty(agr.GetChildKeyPropertyName())?.GetValue(x, null))
+                ?.ToDictionary(g => g.Key, g => g.AsEnumerable());
+
+            Parallel.ForEach(parent, item =>
+            {
+                var key = item.GetType().GetProperty(agr.GetParentKeyPropertyName())?.GetValue(item);
+                var aggregate = childMap.FirstOrDefault(x => key != null && x.Key != null && (long)x.Key == (long)key);
+
+                if (agr.IsManyLink())
+                {
+                    var prop = item.GetType().GetProperty(agr.GetPropertyNameToSet());
+
+                    if (prop == null)
+                    {
+                        return;
+                    }
+
+                    var type = prop.PropertyType;
+                    if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+                    {
+                        var itemType = type.GetGenericArguments()[0];
+                        var listToSet = ConvertHelper.ConvertList(aggregate.Value.ToList(), itemType);
+                        prop?.SetValue(item, listToSet);
+                    }
+                }
+                else
+                {
+                    item.GetType().GetProperty(agr.GetPropertyNameToSet())?.SetValue(item, aggregate.Value?.FirstOrDefault());
+                }
+            });
+        }
+
+        return parent;
+    }
 }

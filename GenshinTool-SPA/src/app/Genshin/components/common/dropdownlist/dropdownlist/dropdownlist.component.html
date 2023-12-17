@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <input #dropdownInput
+        class="dropdownInput"
+        placeholder="{{dropdownInputPlaceholder}}"
+        (input)="onInput(dropdownInput.value)" 
+        [value]="dropdownInputValue">
+    <div class="dropdownList flex col absolute" *ngIf="isListDisplayed">
+        <div *ngFor="let choice of dropdownChoiceListDisplayed"
+            class="flex row dropdownListRow"
+            (click)="onSelect(choice)">
+            <span class="dropdownListRowValue">{{choice.displayValue}}</span>
+        </div>
+    </div>
+</div>

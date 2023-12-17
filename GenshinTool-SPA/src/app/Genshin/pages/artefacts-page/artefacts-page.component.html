@@ -23,7 +23,19 @@
     <div id="artefacts_CharacterInfos_Card" class="relative">
         <img class="absolute center" *ngIf="selectedCharacter" [src]="getCharacterCardImgSrc()">
     </div>
-
+    <div id="artefacts_CharacterInfos_Artefacts" class="flex" id="artefacts_CharacterInfos_Artefacts_Pieces" >
+        <div *ngFor="let arte of displayedArtefactList" 
+            id="artefacts_CharacterInfos_Artefacts_Piece" 
+            class="flex row">
+            <app-artefact-card
+                [character]="selectedCharacter"
+                [artefact]="arte"
+                [piece]="arte.piece"
+                (changeArtefactPopupOpenedEvent)="changeArtefactPopupOpenedHandler($event)"
+                (onChangeArtefactEvent)="onChangeArtefactHandler($event)">
+            </app-artefact-card>
+        </div> 
+    </div>
 </div>
 
 <div id="artefacts_popup" *ngIf="isCharPopupDisplayed || isArtePopupDisplayed">
@@ -31,6 +43,8 @@
         (characterUsedListChangedEvent)="updateCharactersListHandler($event)" 
         (closeCharactersPopupEvent)="closeCharactersPopupHandler()">
     </app-manage-characters-popup>
-    <app-manage-artefacts-popup *ngIf="isArtePopupDisplayed"></app-manage-artefacts-popup>
+    <app-manage-artefacts-popup *ngIf="isArtePopupDisplayed"
+        (closeArtefactsPopupEvent)="closeArtefactsPopupHandler()">
+    </app-manage-artefacts-popup>
 </div>
 
