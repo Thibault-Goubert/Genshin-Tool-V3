@@ -35,9 +35,9 @@ export class ManageCharactersPopupComponent implements OnInit{
 
   ngOnInit(): void {    
     this.characterService.getAllCharacters().subscribe(characters => {
-      this.allCharacters = characters.items.filter(character => !character.isUsed);
+      this.allCharacters = characters.items.filter(character => !character.isUsed).sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
       console.log(this.allCharacters);
-      this.currentCharacters = characters.items.filter(character => character.isUsed);
+      this.currentCharacters = characters.items.filter(character => character.isUsed).sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
       this.updateDisplayedLists();
     });
   }
@@ -110,8 +110,8 @@ export class ManageCharactersPopupComponent implements OnInit{
   }
 
   updateDisplayedLists(){
-    this.currentDisplayedCharacters = this.filterCharacters(this.currentCharacterFilter, this.currentCharacters);
-    this.allDisplayedCharacters = this.filterCharacters(this.allCharacterFilter, this.allCharacters);
+    this.currentDisplayedCharacters = this.filterCharacters(this.currentCharacterFilter, this.currentCharacters).sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    this.allDisplayedCharacters = this.filterCharacters(this.allCharacterFilter, this.allCharacters).sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 
   onClose(){

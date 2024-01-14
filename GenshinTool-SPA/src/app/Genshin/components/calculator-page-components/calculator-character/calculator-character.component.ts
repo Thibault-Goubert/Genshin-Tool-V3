@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core'
 import { SelectPickerValue } from 'src/app/Genshin/models/selectPickerValue.model';
 import { CharacterCalculatorResult } from 'src/app/Genshin/models/characterCalculatorResult.model';
 import { CalculatorService } from 'src/app/Genshin/services/calculator/calculator.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-calculator-character',
@@ -19,7 +20,7 @@ export class CalculatorCharacterComponent implements OnInit{
 
   result: CharacterCalculatorResult = new CharacterCalculatorResult();
 
-  constructor(private calculatorService: CalculatorService){}
+  constructor(private calculatorService: CalculatorService, private clipboard: Clipboard){}
 
   ngOnInit(): void {
     this.lvlChoicesValues = [
@@ -49,6 +50,16 @@ export class CalculatorCharacterComponent implements OnInit{
   onComputeCharacterRessourcesClick(): void{
     this.characterResult.nativeElement.classList.remove("collapsed");
     this.result = this.calculatorService.ComputeCharacterRessources(Number.parseInt(this.selectedCurrentLvl, 10), this.currentTalentValues, this.selectedTargetTalents);
+    this.clipboard.copy(
+    `XP Books: ${this.result.xpBook}
+Moras: ${this.result.mora}
+Gems ❔: ${this.result.gemVe}ve ${this.result.gemB}b ${this.result.gemVi}vi ${this.result.gemG}g
+Elem ❔: ${this.result.elem}
+(Local❔): ${this.result.local}
+Boss ❔: ${this.result.boss}
+Crown: ${this.result.crown}
+(Common❔): ${this.result.commonGr}gr ${this.result.commonVe}ve ${this.result.commonB}b
+Talents ❔: ${this.result.talentVe}ve ${this.result.talentB}b ${this.result.talentVi}vi`);
   }
 
   currentLvlSelected(currentLvl: string){

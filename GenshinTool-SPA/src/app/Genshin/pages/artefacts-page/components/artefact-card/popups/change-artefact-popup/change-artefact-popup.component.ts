@@ -33,6 +33,7 @@ export class ChangeArtefactPopupComponent implements OnInit{
   ngOnInit(): void {
     this.artefactService.GetAllByPiece(this.artefact.piece.id).subscribe(result => {
       this.artefactList = result.items;
+      this.updateInventoryList();
     });
     this.artefactService.getAllSet().subscribe(result => {
       result.items.forEach(element => {
@@ -54,7 +55,7 @@ export class ChangeArtefactPopupComponent implements OnInit{
 
   updateInventoryList(){
     if(this.dropdownSetFilterChoiceSelected != undefined){
-      this.artefactList = this.filterBySet(this.artefactList);
+      this.artefactListDisplayed = this.filterBySet(this.artefactList);
     }
     else{
       this.artefactListDisplayed = this.artefactList;

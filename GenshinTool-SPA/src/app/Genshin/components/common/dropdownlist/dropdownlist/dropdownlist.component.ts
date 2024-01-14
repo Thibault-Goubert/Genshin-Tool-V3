@@ -17,10 +17,12 @@ export class DropdownlistComponent {
   @Input() canUnselect: boolean = false;
 
   onInput(value: string): void {
+    console.log(value);
     this.dropdownInputValue = value;
     this.dropdownChoiceListDisplayed = this.dropdownChoiceList.filter(c => c.displayValue.toLowerCase().includes(value.toLowerCase()));
     this.isListDisplayed = (value || value.trim() !== "") ? true : false;
     if(this.canUnselect && value.trim() == ""){
+      console.log("reset");
       this.onSelected.emit(undefined);
     }
   }

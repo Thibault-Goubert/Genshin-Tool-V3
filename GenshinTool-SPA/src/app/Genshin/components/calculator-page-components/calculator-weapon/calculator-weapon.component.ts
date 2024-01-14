@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SelectPickerValue } from 'src/app/Genshin/models/selectPickerValue.model';
 import { WeaponCalculatorResult } from 'src/app/Genshin/models/weaponCalculatorResult.model';
 import { CalculatorService } from 'src/app/Genshin/services/calculator/calculator.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-calculator-weapon',
@@ -18,7 +19,7 @@ export class CalculatorWeaponComponent implements OnInit{
 
   result: WeaponCalculatorResult = new WeaponCalculatorResult();
   
-  constructor(private calculatorService: CalculatorService){}
+  constructor(private calculatorService: CalculatorService, private clipboard: Clipboard){}
 
   ngOnInit(): void {
     this.lvlChoicesValues = [
@@ -48,7 +49,13 @@ export class CalculatorWeaponComponent implements OnInit{
 
   onComputeWeaponRessourcesClick(){
     this.weaponResult.nativeElement.classList.remove("collapsed");
-    this.result = this.calculatorService.ComputeWeaponRessources(Number.parseInt(this.selectedCurrentLvl, 10), this.selectedCurrentRarity)
+    this.result = this.calculatorService.ComputeWeaponRessources(Number.parseInt(this.selectedCurrentLvl, 10), this.selectedCurrentRarity);
+    this.clipboard.copy(
+    `Minerais: ${this.result.xpOre}
+Moras: ${this.result.mora}
+Weapon ❔: ${this.result.weaponVe}ve ${this.result.weaponB}b ${this.result.weaponVi}vi ${this.result.weaponG}g
+(Elite❔): ${this.result.eliteVe}ve ${this.result.eliteB}b ${this.result.eliteVi}vi
+(Common❔): ${this.result.commonGr}gr ${this.result.commonVe}ve ${this.result.commonB}b`);
   }
 
 }

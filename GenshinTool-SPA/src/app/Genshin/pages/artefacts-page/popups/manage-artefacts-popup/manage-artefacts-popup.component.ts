@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { switchAll } from 'rxjs';
 import { DropdownlistComponent } from 'src/app/Genshin/components/common/dropdownlist/dropdownlist/dropdownlist.component';
 import { ArtefactSet } from 'src/app/Genshin/models/Artefact/ArtefactSet.model';
 import { Artefact } from 'src/app/Genshin/models/Artefact/artefact.model';
@@ -87,7 +88,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
   onPieceSelectorClick(piece: ArtefactPiece): void {
     document.getElementById("popup_manageArtefacts_Creator_PieceSelector_"+this.setSelectorSelectedPiece?.name)?.classList.remove("selected");
     document.getElementById("popup_manageArtefacts_Creator_PieceSelector_"+piece?.name)?.classList.add("selected");
-    this.setSelectorSelectedPiece = piece;    
+    this.setSelectorSelectedPiece = piece;
     this.updateDisplay();
   }
   onPieceFilterClick(piece: ArtefactPiece): void {
@@ -108,7 +109,36 @@ export class ManageArtefactsPopupComponent implements OnInit{
     if(this.dropdownSetSelectorChoiceSelected && this.setSelectorSelectedPiece){
       this.setSelectorSelectedArtefactImg = 
         this.buildArtefactImgPath(this.dropdownSetSelectorChoiceSelected.initials, this.setSelectorSelectedPiece.name);
+        this.autoSelectStats();
     }
+  }
+  autoSelectStats(){
+    let setName = this.dropdownSetSelectorChoiceSelected?.name;
+    
+    switch (this.setSelectorSelectedPiece?.name) {
+      case "Flower":
+        this.mainName = this.statNames.find(x => x.label == "HP") as StatName;
+        this.inputMain.nativeElement.value = (setName == "The Exile") ? "3,571" : "4,780";
+        break;
+      case "Plume":
+        this.mainName = this.statNames.find(x => x.label == "ATK") as StatName;
+        this.inputMain.nativeElement.value = (setName == "The Exile") ? "232" : "311";
+        break;    
+      default:    
+        switch (this.mainName?.label) {
+          case "ATK%": case "HP%": case "ElemDMG":           
+                                this.inputMain.nativeElement.value = (setName == "The Exile") ? "34.8" : "46.6"; break;
+          case "EM":            this.inputMain.nativeElement.value = (setName == "The Exile") ? "139"  : "187" ; break;
+          case "DEF%":          this.inputMain.nativeElement.value = (setName == "The Exile") ? "43.5" : "58.3"; break;
+          case "Crit Rate":     this.inputMain.nativeElement.value = (setName == "The Exile") ? "23.2" : "31.1"; break;
+          case "Crit DMG":      this.inputMain.nativeElement.value = (setName == "The Exile") ? "46.4" : "62.2"; break;
+          case "Healing Bonus": this.inputMain.nativeElement.value = (setName == "The Exile") ? "26.8" : "35.9"; break;
+          case "ER":            this.inputMain.nativeElement.value = (setName == "The Exile") ? "38.7" : "51.8"; break;
+          default: break;
+        }
+        break;
+    }
+    this.onStatValueInput(this.inputMain.nativeElement.value, 0);
   }
   buildArtefactImgPath(initials: string, pieceName: string): string {    
     var basePath = "assets/icons/artifact/artifact_";
@@ -125,7 +155,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
   onStatSelected(statSelected: StatName): void{
     this.showPopupStatSelector = false;
     switch (this.statChanging) {
-      case "main": this.mainName = statSelected; break;
+      case "main": this.mainName = statSelected; this.autoSelectStats(); break;
       case "sub1": this.sub1Name = statSelected; break;
       case "sub2": this.sub2Name = statSelected; break;
       case "sub3": this.sub3Name = statSelected; break;
@@ -134,7 +164,7 @@ export class ManageArtefactsPopupComponent implements OnInit{
     }
   }
   onStatValueInput(value: string, idx: Number): void{
-    var parseValue = parseFloat(value.replace(',','.'));
+    var parseValue = parseFloat(value.replace(',',''));
     switch (idx) {
       case 0: if(parseValue){this.mainValue = parseValue} break;
       case 1: if(parseValue){this.sub1Value = parseValue} break;
@@ -149,11 +179,11 @@ export class ManageArtefactsPopupComponent implements OnInit{
         this.mainName && this.sub1Name && this.sub2Name && this.sub3Name && this.sub4Name &&
         this.setSelectorSelectedPiece && this.dropdownSetSelectorChoiceSelected ){ 
 
-      var statsMain = new Stat(Number.parseFloat(this.mainValue.toString().replace(',','.')), this.mainName, true);
-      var stats1    = new Stat(Number.parseFloat(this.sub1Value.toString().replace(',','.')), this.sub1Name, false);
-      var stats2    = new Stat(Number.parseFloat(this.sub2Value.toString().replace(',','.')), this.sub2Name, false);
-      var stats3    = new Stat(Number.parseFloat(this.sub3Value.toString().replace(',','.')), this.sub3Name, false);
-      var stats4    = new Stat(Number.parseFloat(this.sub4Value.toString().replace(',','.')), this.sub4Name, false);
+      var statsMain = new Stat(Number.parseFloat(this.mainValue.toString().replace(',','')), this.mainName, true);
+      var stats1    = new Stat(Number.parseFloat(this.sub1Value.toString().replace(',','')), this.sub1Name, false);
+      var stats2    = new Stat(Number.parseFloat(this.sub2Value.toString().replace(',','')), this.sub2Name, false);
+      var stats3    = new Stat(Number.parseFloat(this.sub3Value.toString().replace(',','')), this.sub3Name, false);
+      var stats4    = new Stat(Number.parseFloat(this.sub4Value.toString().replace(',','')), this.sub4Name, false);
 
       var ArtefactToCreate    = new Artefact();
       ArtefactToCreate.piece  = this.setSelectorSelectedPiece;
@@ -214,14 +244,16 @@ export class ManageArtefactsPopupComponent implements OnInit{
     return artes.filter(x => x.set.name == this.dropdownSetFilterChoiceSelected.name);
   }
   removeArtefact(arte: Artefact): void {
-    var id = arte.id;
-    this.artefactService.delete(arte.id).subscribe(result => {
-      if(result.item){
-        var invIdx = this.inventoryList.map(function(v){ return v.id; }).indexOf(id);
-        var disIdx = this.inventoryListDisplayed.map(function(v){ return v.id; }).indexOf(id);
+    console.log(this.inventoryListDisplayed)
 
-        this.inventoryList.splice(invIdx, 1);
-        this.inventoryListDisplayed.splice(disIdx, 1);
+    this.artefactService.delete(arte.id).subscribe(result => {
+      console.log(this.inventoryListDisplayed)
+      if(result.item){
+        var invIdx = this.inventoryList.indexOf(arte);
+        var disIdx = this.inventoryListDisplayed.indexOf(arte);
+
+        if(invIdx != -1) { this.inventoryList = this.inventoryList.splice(invIdx, 1); }
+        if(disIdx != -1) { this.inventoryListDisplayed = this.inventoryListDisplayed.splice(invIdx, 1); }
       } 
     })
   }
